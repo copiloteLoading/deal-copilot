@@ -1,0 +1,69 @@
+{
+  "_note": "Variables inconnues du contrat de démo à la date du 2026-10-28. Les probabilités a priori sont des hypothèses de départ, à calibrer (modèle, base PPI). Le débrief actif choisira les questions qui réduisent le plus l'incertitude sur la probabilité de signature.",
+  "as_of": "2026-10-28",
+  "unknowns": [
+    {
+      "id": "bank_commitment",
+      "label": "La banque est-elle prête à financer ?",
+      "actor": "thomas_riou",
+      "values": {"engagée": 0.25, "attentiste": 0.5, "réticente": 0.25},
+      "why_unknown": "Thomas Riou n'a pas été vu depuis le 15 septembre et n'a pas répondu à la relance.",
+      "question": "Avez-vous eu un signe, même indirect, de la position de la banque depuis septembre ?",
+      "sources": ["2026-09-15_lancement", "2026-10-06_revue_technique", "2026-10-27_consortium"]
+    },
+    {
+      "id": "impact_study_status",
+      "label": "Où en est l'étude d'impact environnemental ?",
+      "actor": null,
+      "values": {"terminée": 0.1, "en cours": 0.4, "pas lancée": 0.5},
+      "why_unknown": "La banque l'exige avant de s'engager, mais personne n'en a de nouvelles.",
+      "question": "Savez-vous si l'étude d'impact a été lancée, et par qui ?",
+      "sources": ["2026-09-15_lancement", "2026-10-06_revue_technique"]
+    },
+    {
+      "id": "president_stance",
+      "label": "Position de Claire Dantec (décideur final)",
+      "actor": "claire_dantec",
+      "values": {"favorable": 0.3, "neutre": 0.5, "défavorable": 0.2},
+      "why_unknown": "Seule rencontre le 15 septembre, où elle est restée neutre.",
+      "question": "Claire Dantec a-t-elle laissé entendre une préférence entre nous et Oceanix ?",
+      "sources": ["2026-09-15_lancement"]
+    },
+    {
+      "id": "cfo_phasing",
+      "label": "Sophie Lenoir validera-t-elle si on passe à quatre ans ?",
+      "actor": "sophie_lenoir",
+      "values": {"oui": 0.6, "oui avec autres conditions": 0.3, "non": 0.1},
+      "why_unknown": "Elle a posé le phasage sur quatre ans comme condition, sans dire si c'était la seule.",
+      "question": "Le phasage sur quatre ans est-il sa seule condition, ou y en a-t-il d'autres ?",
+      "sources": ["2026-10-27_consortium"]
+    },
+    {
+      "id": "competitor_price_gap",
+      "label": "Écart de prix avec Oceanix Cables",
+      "actor": null,
+      "values": {"moins de 5 %": 0.3, "5 à 10 %": 0.45, "plus de 10 %": 0.25},
+      "why_unknown": "Rumeur d'un prix environ dix pour cent plus bas, montant non confirmé.",
+      "question": "D'où vient l'information sur le prix d'Oceanix, et l'écart est-il confirmé ?",
+      "sources": ["2026-10-27_consortium"]
+    },
+    {
+      "id": "buyer_procurement_stance",
+      "label": "Position de Yann Le Goff (achats Kerlis Connect)",
+      "actor": "yann_le_goff",
+      "values": {"favorable": 0.3, "neutre": 0.45, "défavorable": 0.25},
+      "why_unknown": "Il insiste sur les pénalités sans montrer de préférence ; pas revu depuis le 6 octobre.",
+      "question": "Yann Le Goff a-t-il réagi à notre proposition révisée sur les pénalités ?",
+      "sources": ["2026-10-06_revue_technique"]
+    },
+    {
+      "id": "permit_risk",
+      "label": "Risque sur le permis de pose",
+      "actor": "marion_kervella",
+      "values": {"faible": 0.5, "moyen": 0.35, "élevé": 0.15},
+      "why_unknown": "Aucun contact avec l'agence du littoral à ce jour.",
+      "question": "Le consortium a-t-il déjà échangé avec l'agence du littoral sur le tracé ?",
+      "sources": []
+    }
+  ]
+}

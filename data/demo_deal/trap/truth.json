@@ -1,0 +1,21 @@
+{
+  "_note": "Vérité cachée du scénario piège de la vidéo. Sert à vérifier l'agent et à simuler les réponses du commercial. Ne jamais la donner au modèle ni à l'agent.",
+  "debrief": "debrief_piege.txt",
+  "trap": "La réunion semble excellente, mais la directrice financière (détentrice de veto) a reporté sa décision : « on en reparlera après le budget ».",
+  "hidden_positions": {
+    "claire_dantec": "support",
+    "julien_marec": "support",
+    "yann_le_goff": "support",
+    "sophie_lenoir": "oppose",
+    "thomas_riou": "neutral",
+    "marion_kervella": "neutral"
+  },
+  "expected_agent_behavior": {
+    "question_target": "sophie_lenoir",
+    "question_idea": "Quand Sophie Lenoir dit « après le budget », savez-vous quand le budget est arrêté, et si notre projet y figure ?",
+    "rep_answer": "Le budget est voté en janvier, et d'après Julien, le câble n'est pas encore dans l'enveloppe prévue.",
+    "probability_direction": "down",
+    "plan_change": "L'action n°1 devient : obtenir avant janvier une réunion avec Sophie Lenoir pour inscrire le projet au budget, avec un phasage adapté."
+  },
+  "outcome": "delayed"
+}

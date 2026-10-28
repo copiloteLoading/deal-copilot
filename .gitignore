@@ -1,0 +1,11 @@
+.env
+
+# Environnement Python
+.venv/
+__pycache__/
+*.pyc
+
+# Résultats générés et fichiers lourds
+outputs/
+*.wav
+*.m4a
