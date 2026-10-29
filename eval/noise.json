@@ -1,0 +1,175 @@
+{
+  "rows": [
+    {
+      "noise": "propre",
+      "snr": null,
+      "denoised": false,
+      "estimated_snr": 119.41727555237556,
+      "wer": 0.058394160583941604,
+      "names": 0.875,
+      "transcript": "Débrié F de la réunion de ce matin avec le Consortium Nordlink Bay, projet PortAven Kerlis. Franchement, excellente réunion. Claire Dantec était là, elle a dit devant tout le monde que notre offre était la référence du marché sur la sur la partie technique. Julien Marec a encore défendu nos répéteurs et Yann Le Goff a accepté notre proposition sur les pénalités, il a dit que c'était un bon compromis. On a présenté le Faisige sur quatre ans, tout le monde a hoché la tête. Sophie Lenoir a juste dit on en reparlera après le budget et on est passé au point suivant Côté banque, toujours rien de Thomas Riou, mais Claire pense que ça va se débloquer Bref, je pense qu'on est en très bonne position Prochaine étape, envoyer le contrat révisé d'ici deux semaines"
+    },
+    {
+      "noise": "transport",
+      "snr": 10,
+      "denoised": false,
+      "estimated_snr": 9.825926618870596,
+      "wer": 0.051094890510948905,
+      "names": 0.875,
+      "transcript": "Débris EF de la réunion de ce matin avec le consortium Nordlink Bay, projet PortAven PortAven, Kerlis. Franchement, excellente réunion. Claire Dantec était là, elle a dit devant tout le monde que notre offre était la référence du marché sur la partie technique. Julien Marec a encore défendu nos répéteurs et Yann Le Goff a accepté notre proposition sur sur les pénalités, il a dit que c'était un bon compromis. On a présenté le paysage sur quatre ans, tout le monde a hoché la tête. Sophie Lenoir a juste dit on en reparlera après le budget et on est passé au point suivant. Côté banque, toujours rien de Thomas Riou, mais Claire pense que ça va se débloquer. Bref, je pense qu'on est en très bonne position. Prochaine étape, envoyer le contrat révisé d'ici deux semaines."
+    },
+    {
+      "noise": "transport",
+      "snr": 10,
+      "denoised": true,
+      "estimated_snr": 9.825926618870596,
+      "wer": 0.10218978102189781,
+      "names": 0.875,
+      "transcript": "Débrief et F de la réunion de ce matin avec le Consortium consortium Nordlink Bay, projet PortAven, Kerlis. Franchement, excellente réunion. Claire Dantec était là, elle a dit devant tout le monde que notre offre était la référence du marché sur marché sur la partie technique. Julien Marec a encore défendu défendu nos répéteurs et Yann Le Goff Goff a accepté notre proposition sur les pénalités, il a dit que c'était un bon compromis. On a présenté le phasage sur quatre ans, tout le monde a hoché la tête. Sophie Lenoir Lenoir a juste dit on en reparlera après le budget et on est passé au point suivant. Côté côté banque, toujours rien de Thomas Riou, Riou, mais Claire pense que ça va se débloquer. Bref, bref, je pense qu'on est en très bonne position. Prochaine étape, envoyer le contrat révisé d'ici deux semaines."
+    },
+    {
+      "noise": "transport",
+      "snr": 5,
+      "denoised": false,
+      "estimated_snr": 5.578907024855143,
+      "wer": 0.08029197080291971,
+      "names": 0.875,
+      "transcript": "Débris EF de la la réunion de ce matin avec le Consortium Nordlink Bay projet PortAven Kerlis. Franchement, excellente réunion. Claire Dantec était là, elle a dit devant tout le monde que notre offre était la référence du marché sur la partie technique. Julien Marec a encore défendu nos répéteurs et Yann Le Goff a accepté notre proposition sur les pénalités il a dit que c'était un un bon compromis. On a présenté le phase sur quatre ans, tout le monde a hoché la tête. Sophie Lenoir a juste dit on en reparlera après le budget et on est passé au point suivant. Côté banque, toujours rien de Thomas Riou mais Claire pense que ça va se débloquer. Bref, je pense qu'on est en très bonne position. Prochaine étape, envoyer envoyer le contrat à réviser d'ici deux semaines."
+    },
+    {
+      "noise": "transport",
+      "snr": 5,
+      "denoised": true,
+      "estimated_snr": 5.578907024855143,
+      "wer": 0.08029197080291971,
+      "names": 0.875,
+      "transcript": "Débris et f de la de la réunion de ce matin avec le consortium Nordlink Bay projet PortAven Kerlis. Franchement, excellente réunion. Claire Dantec était là, elle a dit devant tout le monde que notre offre était la référence du marché sur la partie technique. Julien Marec a encore défendu nos répéteurs et Yann Le Goff a accepté notre proposition sur les pénalités, il a dit que c'était un bon compromis. On a présenté le faisige sur quatre ans, tout le monde a hoché la tête. Sophie Lenoir a juste dit on en reparlera après le budget et on est passé au point suivant. Côté banque, toujours rien de Thomas Riou mais mais Claire pense que ça va se débloquer. débloquer. Bref, je pense qu'on est en très bonne position. Prochaine étape, envoyer le contrat révisé d'ici deux semaines."
+    },
+    {
+      "noise": "transport",
+      "snr": 0,
+      "denoised": false,
+      "estimated_snr": 1.5520637563348936,
+      "wer": 0.11678832116788321,
+      "names": 0.875,
+      "transcript": "Débrayer de la réunion de ce matin avec le consortium Nordlink Bay, projet PortAven, Kerlis. Franchement, excellente réunion. Claire Dantec était là, elle a elle a dit devant tout le monde que notre notre offre était la référence du marché sur la partie technique. Julien Marec a encore défendu nos défendu nos répéteurs et Yann Le Goff Goff a accepté notre proposition sur les pénalités, il a dit que c'était un bon compromis. On a présenté le visage sur quatre ans, tout le monde a hoché la tête. Sophie Lenoir a juste dit on en reparlera après le le budget et on est passé au point suivant. Côté banque, toujours rien de Thomas Riou mais Claire pense que ça va se développer. Bref, je pense qu'on est en très bonne position. Prochaine étape, envoyer le contrat révisé d'ici deux d'ici deux semaines."
+    },
+    {
+      "noise": "transport",
+      "snr": 0,
+      "denoised": true,
+      "estimated_snr": 1.5520637563348936,
+      "wer": 0.10218978102189781,
+      "names": 0.875,
+      "transcript": " débrouillez F de la réunion de ce matin avec le consortium Nordlink Bay, projet PortAven Kerlis. Franchement, excellente réunion. Claire Dantec était là, elle a dit devant tout le monde que notre offre était la référence du marché sur la partie technique. Julien Marec a encore défendu nos répéteurs, et Yann Le Goff a a accepté notre proposition sur les pénalités, il a dit que c'était un bon compromis. On a On a présenté le faisage sur quatre ans, tout le monde a hoché la tête. tête. Sophie Lenoir a Lenoir a juste dit on en reparlera après le budget, et on est passé au point suivant. Côté Côté banque, toujours rien de Thomas Riou, mais Claire pense que ça va se débloquer. Bref, je pense qu'on est en très bonne position. Prochaine étape envoyer le contrat révisé révisé d'ici deux semaines."
+    },
+    {
+      "noise": "douche",
+      "snr": 10,
+      "denoised": false,
+      "estimated_snr": 10.45722928901087,
+      "wer": 0.072992700729927,
+      "names": 0.875,
+      "transcript": "Débrie de la réunion de ce matin avec le Consortium Nordlink Bay, projet PortAven Kerlis. Franchement, excellente réunion. Claire Dantec était là, elle a dit devant tout le monde que notre offre offre était la référence du marché sur la partie technique. Julien Marec a encore défendu nos nos répéteurs et Yann Le Goff a accepté notre proposition sur les pénalités, il a dit que c'était un bon compromis. On a présenté le 6 sur quatre ans, tout le monde a hoché la tête. Sophie Lenoir a juste dit on en reparlera après le budget budget et on est passé au point suivant. suivant. Côté banque, toujours rien de Thomas Riou, mais Claire pense que ça va se développer. Bref, je pense qu'on est en très bonne position. Prochaine étape, envoyer le contrat révisé d'ici deux semaines."
+    },
+    {
+      "noise": "douche",
+      "snr": 10,
+      "denoised": true,
+      "estimated_snr": 10.45722928901087,
+      "wer": 0.0948905109489051,
+      "names": 0.875,
+      "transcript": "Débrie de la la réunion de ce matin avec le Consortium Nordlink Bay, projet PortAven, Kerlis. Franchement, excellente réunion. Claire Dantec était là, elle a dit devant tout le monde que notre offre était la référence du marché sur la sur la partie technique. Julien Marec a encore défendu nos répéteurs et Yann Le Goff a accepté notre proposition sur les pénalités, il a dit que c'était un bon compromis. On a présenté le paysage sur quatre ans, tout le monde a hoché la tête. Sophie Lenoir a juste dit on en reparlera après le budget et on est passé au point suivant. Côté banque, toujours rien de Thomas Riou mais Claire Claire pense que ça va se développer. Bref, je pense qu'on qu'on est en très bonne position. position. Prochaine étape, envoyer le contrat révisé d'ici deux semaines."
+    },
+    {
+      "noise": "douche",
+      "snr": 5,
+      "denoised": false,
+      "estimated_snr": 5.775476825665686,
+      "wer": 0.10218978102189781,
+      "names": 0.875,
+      "transcript": "J'ai brillé la réunion de ce matin avec le consortium Nordlink Bay, projet PortAven, Kerlis. Franchement, excellente réunion. Claire Dantec était là, elle a dit devant tout le monde que notre offre était la référence du marché sur la la partie technique. Julien Marec a encore défendu nos répéteurs, Yann Le Goff a accepté notre proposition sur les pénalités, il a dit que c'était un bon compromis. On a présenté le plan sur quatre ans, tout le monde a hoché la tête. tête. Sophie Lenoir a juste juste dit on en reparlera après le budget et on est passé au point suivant. Côté Banque, toujours rien de Thomas Riou mais Claire pense que ça va se développer. Bref, je pense qu'on est en très bonne position. Prochaine étape envoyer le contrat rédigé d'ici deux deux semaines."
+    },
+    {
+      "noise": "douche",
+      "snr": 5,
+      "denoised": true,
+      "estimated_snr": 5.775476825665686,
+      "wer": 0.10218978102189781,
+      "names": 0.875,
+      "transcript": "J'ai brillé la réunion de ce matin avec le consortium Nordlink Bay, projet PortAven Kerlis. Franchement, excellente réunion. Claire Dantec était là, elle a elle a dit de devant tout le monde que notre offre était la référence du marché sur sur la partie technique. Julien Marec a encore défendu nos nous répéteurs, Yann Le Goff a accepté notre proposition sur les pénalités, il a dit que c'était un bon compromis. On a présenté le planning sur quatre ans, tout le monde a hoché la tête. Sophie Lenoir a juste dit on en reparlera après le budget et on est passé au point suivant. Côté banque, toujours rien de Thomas Riou, mais Claire pense que ça va se développer. Bref, je pense qu'on est en très bonne position. Prochaine étape, envoyer le contrat révisé d'ici deux semaines."
+    },
+    {
+      "noise": "douche",
+      "snr": 0,
+      "denoised": false,
+      "estimated_snr": 1.2810672930914393,
+      "wer": 0.10948905109489052,
+      "names": 0.875,
+      "transcript": "J'ai de la réunion la réunion de ce matin avec le consortium Nordlink Bay, projet PortAven Kerlis. Franchement, excellente réunion. Claire Dantec était là, elle a dit devant tout le monde que notre offre était la référence du marché sur la sur la partie technique. Julien Marec a encore défendu nos répéteurs, Yann Le Goff a accepté notre proposition sur les pénalités, il a dit que c'était c'était un bon compromis. On a présenté le crédit sur quatre ans, tout le monde a hoché la tête. Sophie Lenoir a juste dit on en reparlera après le budget et on est passé au point suivant. Côté banque, toujours rien de Thomas Riou mais Claire pense que ça va se développer. Bref, je pense pense qu'on est en très bonne position. Prochaine étape, envoyer le contrat révisé d'ici deux semaines."
+    },
+    {
+      "noise": "douche",
+      "snr": 0,
+      "denoised": true,
+      "estimated_snr": 1.2810672930914393,
+      "wer": 0.0948905109489051,
+      "names": 0.875,
+      "transcript": "J'ai créé la réunion de ce matin avec le Consortium Nordlink Bay, projet PortAvenAven Kerlis. Franchement, excellente réunion. Claire Dantec était là, elle a dit devant tout le monde que notre offre offre était la référence du marché sur la partie technique. Julien Marec a encore défendu nos répéteurs, Yann Le Goff a accepté notre proposition sur les pénalités, il a dit que c'était était un bon compromis. On a présenté le quatre ans, ans, tout le monde a hoché la tête. Sophie Lenoir a juste dit on en reparlera après le budget et on est passé au point suivant. Côté banque, toujours rien de Thomas Riou, mais Claire pense que ça va se développer. Bref, je pense qu'on est en très bonne position. Prochaine étape, envoyer le contrat révisé d'ici deux semaines."
+    },
+    {
+      "noise": "brouhaha",
+      "snr": 10,
+      "denoised": false,
+      "estimated_snr": 11.762409376826586,
+      "wer": 0.043795620437956206,
+      "names": 0.875,
+      "transcript": "Débrief de la réunion de ce matin avec le Consortium Nordlink Bay, projet PortAven Kerlis. Franchement, excellente réunion. Claire Dantec était là, elle elle a dit devant tout le monde que notre offre était la référence du marché sur la partie technique. Julien Marec a encore défendu nos répéteurs et Yann Le Goff a accepté notre proposition sur les pénalités, il a dit que c'était un bon compromis. On a présenté le phased sur quatre ans, tout le monde a hoché la tête. Sophie Lenoir a juste dit on en reparlera après le budget et on est passé au point suivant. Côté Banque, toujours rien de Thomas Riou mais Claire pense que ça va se débloquer. Bref, je pense qu'on est en très bonne position. Prochaine étape, envoyer le le contrat révisé d'ici deux semaines."
+    },
+    {
+      "noise": "brouhaha",
+      "snr": 10,
+      "denoised": true,
+      "estimated_snr": 11.762409376826586,
+      "wer": 0.058394160583941604,
+      "names": 0.875,
+      "transcript": "DébriéF de la réunion de ce matin avec le consortium Nordlink Bay, projet PortAven Kerlis. Franchement, excellente réunion. Claire Dantec était là, elle a dit devant tout le monde que notre offre était la référence du marché sur la partie technique. Julien Marec a encore défendu nos répéteurs et Yann Le Goff a accepté notre proposition sur les les pénalités, il a dit que c'était'était un bon compromis. On a présenté le phase sur quatre ans, tout le monde a hoché la tête. Sophie Lenoir a juste juste dit on en reparlera après le le budget et on est passé au point suivant. Côté Banque, toujours rien de Thomas Riou, mais Claire pense que ça va se débloquer. Bref, je pense qu'on est en très bonne position. Prochaine étape, envoyer le contrat révisé d'ici deux semaines."
+    },
+    {
+      "noise": "brouhaha",
+      "snr": 5,
+      "denoised": false,
+      "estimated_snr": 7.901519217675896,
+      "wer": 0.051094890510948905,
+      "names": 0.875,
+      "transcript": "Débrayer F de la réunion de ce matin avec le consortium Nordlink Bay projet PortAven Kerlis Franchement, excellente réunion. Claire Dantec était là, elle a dit devant tout le monde que notre offre était la référence du marché sur la partie technique. Julien Marec a encore défendu nos répéteurs et Yann Le Goff a a accepté notre proposition sur les pénalités, il a dit que c'était un bon compromis. On a présenté le visage sur quatre ans, tout le monde a hoché la tête. Sophie Lenoir a juste dit on en reparlera après le budget et on est passé au point suivant. Côté banque, toujours rien de Thomas Riou mais Claire pense que ça va se débloquer. Bref, je pense qu'on est en très bonne position. Prochaine étape, envoyer le contrat révisé d'ici deux semaines."
+    },
+    {
+      "noise": "brouhaha",
+      "snr": 5,
+      "denoised": true,
+      "estimated_snr": 7.901519217675896,
+      "wer": 0.08029197080291971,
+      "names": 0.875,
+      "transcript": "Débrief de la réunion de ce matin avec le consortium Nordlink Bay, projet PortAven PortAven Kerlis. Branchement, excellente réunion. Claire Dantec était là, elle a dit devant tout le monde que notre offre était la référence du marché sur la partie technique. Julien Marec a encore défendu nos répéteurs et Yann Le Goff a accepté notre proposition sur les pénalités, il a dit que c'était un un bon compromis. On On a présenté le faisage sur quatre ans, quatre ans, tout le monde a hoché la tête. Sophie Lenoir a juste dit on en reparlera après après le budget, et on est passé au point suivant. Côté banque, toujours rien de Thomas Riou, mais Claire pense que ça va se débloquer. Bref, je pense qu'on est en très bonne position. Prochaine étape, étape, envoyer le contrat révisé d'ici deux semaines."
+    },
+    {
+      "noise": "brouhaha",
+      "snr": 0,
+      "denoised": false,
+      "estimated_snr": 4.809137962619726,
+      "wer": 0.1386861313868613,
+      "names": 0.875,
+      "transcript": "DRIF de la région de ce matin avec le consortium Nordlink Bay projet PortAven PortAven Kerlis arrangement excellente réunion Claire Dantec était là elle a dit devant tout le monde que notre offre était était la référence du marché sur la partie technique Julien Marec a encore défendu nos revêteurs Yann Le Goff a accepté notre proposition sur les pénalités il a dit que c'était un bon compromis on a présenté le sur quatre ans tout le monde a hoché la tête Sophie Lenoir ajoute qu'on en reparlera après le budget et on est passé au point suivant côté Banque toujours bien de Thomas Riou mais Claire pense que ça va se développer bref je pense qu'on est en très bonne position Prochaine étape envoyer des contrats à vérifier d'ici deux semaines."
+    },
+    {
+      "noise": "brouhaha",
+      "snr": 0,
+      "denoised": true,
+      "estimated_snr": 4.809137962619726,
+      "wer": 0.17518248175182483,
+      "names": 0.875,
+      "transcript": "DRIF de la région de ce matin avec le Consortium Nordlink Bay, projet PortAven Kerlis. Arrangement excellente réunion. Claire Dantec était là, elle a dit devant tout le monde que notre offre était était la référence du marché sur la partie technique. Julien Marec a encore défendu nos réalisateurs, Yann Le Goff a accepté accepté notre proposition sur les pénalités, il a dit que c'était un un beau compromis. On a On a présenté le projet sur quatre ans, tout le monde a hoché la tête. Sophie Lenoir ajoute qu'on en reparlera après le budget et on est passé au point suivant. Côté banque, toujours rien de Thomas Riou, mais Claire Claire pense que ça va se développer. Bref, je pense qu'on est en très bonne position. Prochaine étape, envoyer les contrats à réviser d'ici deux semaines."
+    }
+  ]
+}

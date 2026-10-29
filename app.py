@@ -50,6 +50,7 @@ st.markdown(f"""
 }}
 [data-testid="stMetricValue"] {{ font-weight: 600; font-size: 1.7rem; }}
 [class*="st-key-card_actions"] hr {{ margin: 0.5rem 0; }}
+[class*="st-key-card_confirm"] {{ border-left: 4px solid {WARN}; }}
 .dc-overline {{ font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
     text-transform: uppercase; color: {NAVY}; }}
 .dc-title {{ font-size: 2rem; font-weight: 700; color: {INK}; margin: 0.15rem 0 0.2rem; }}
@@ -83,7 +84,7 @@ def stance_of(b) -> str:
 
 
 def reset_session() -> None:
-    for k in ["plan", "answers", "email", "transcript", "debrief_text"]:
+    for k in ["plan", "answers", "email", "transcript", "debrief_text", "reminders", "noisy"]:
         st.session_state.pop(k, None)
 
 
@@ -107,6 +108,8 @@ def is_silent(actor_id: str) -> bool:
 
 
 silent = [a for a in S.data.actors if is_silent(a["id"])]
+pending = pipeline.pending_changes(S)
+pending_ids = {c["actor"]["id"] for c in pending}
 vetoes = [a for a in S.data.actors if a["veto"]]
 most_uncertain = max(vetoes, key=lambda a: model.entropy(S.post.beliefs[a["id"]])) if vetoes else None
 
@@ -195,6 +198,8 @@ def stakeholder_map() -> go.Figure:
             if is_silent(a):
                 silence = (f"<br><span style='color:{WARN};font-size:10px'>"
                            f"{'aucun échange direct' if d is None else f'silence {d} j'}</span>")
+            if a in pending_ids:
+                silence += f"<br><span style='color:{WARN};font-size:10px'><b>à confirmer</b></span>"
             texts.append(act["name"] + silence)
             hovers.append(f"<b>{act['name']}</b><br>{act['role']}"
                           f"{'<br><b>Détenteur de veto</b>' if act['veto'] else ''}"
@@ -259,6 +264,35 @@ tab_deal, tab_sources = st.tabs([":material/dashboard: Dossier", ":material/desc
 
 # ------------------------------------------------------------------ onglet Dossier
 with tab_deal:
+    if pending:
+        with st.container(key="card_confirm"):
+            section("À confirmer avant de continuer",
+                    "Changements de position importants tirés du dernier débrief. Le modèle les compte "
+                    "déjà ; une erreur de lecture ici changerait tout le plan.")
+            for i, c in enumerate(pending):
+                a = c["actor"]
+                quotes = " · ".join(f"« {s['quote']} »" for s in c["signals"])
+                st.markdown(f"**{a['name']}** ({a['role']}){' · **veto**' if a['veto'] else ''} passerait "
+                            f"de **{STANCE[c['before']][0].lower()}** à **{STANCE[c['after']][0].lower()}** "
+                            f"d'après : {quotes}")
+                b1, b2, b3, b4 = st.columns([1.2, 1.2, 1.4, 1], vertical_alignment="bottom")
+                if b1.button("Confirmer", key=f"conf_ok_{i}", type="primary", width="stretch",
+                             icon=":material/check:"):
+                    pipeline.confirm_change(conn, c)
+                    st.rerun()
+                fix = b3.selectbox("Corriger en", ["support", "neutral", "conditional", "oppose"],
+                                   format_func=lambda s: STANCE[s][0], key=f"conf_fix_{i}")
+                if b4.button("Corriger", key=f"conf_set_{i}", width="stretch"):
+                    pipeline.confirm_change(conn, c, stance=fix)
+                    st.session_state.pop("plan", None)   # positions changées : l'agent refait son plan
+                    st.rerun()
+                if b2.button("Rejeter", key=f"conf_no_{i}", width="stretch", icon=":material/close:",
+                             help="Erreur de lecture : ces signaux ne comptent plus pour le modèle."):
+                    pipeline.confirm_change(conn, c, stance="unknown")
+                    st.session_state.pop("plan", None)
+                    st.rerun()
+        st.write("")
+
     left, right = st.columns([1, 1.4], gap="medium")
 
     with left:
@@ -282,6 +316,8 @@ with tab_deal:
                             st.write("Transcription (Muse Voice Transcribe)…")
                             text = capture.transcribe(source.getvalue(), memory.keywords(conn, deal_id))
                             st.session_state.transcript = text
+                            snr = capture.estimate_snr(capture.read_wav16k(source.getvalue()))
+                            st.session_state.noisy = snr < capture.NOISY_BELOW_DB
                         if not (text or "").strip():
                             status.update(label="Aucun débrief à analyser", state="error")
                             st.stop()
@@ -295,6 +331,9 @@ with tab_deal:
                     st.rerun()
                 except Exception as e:   # l'appli doit rester debout en démo
                     st.error(f"Échec de l'analyse : {e}")
+            if st.session_state.get("noisy"):
+                st.warning("Enregistrement très bruité : relisez la transcription avant de vous y fier.",
+                           icon=":material/hearing:")
             if st.session_state.get("transcript"):
                 with st.expander("Transcription", icon=":material/record_voice_over:"):
                     st.write(st.session_state.transcript)
@@ -412,11 +451,20 @@ with tab_deal:
                         st.text_area("E-mail", st.session_state.email, height=260,
                                      label_visibility="collapsed")
             with st.expander(f"Acteurs silencieux ({len(silent)})", icon=":material/notifications:"):
-                for a in silent:
+                reminders = st.session_state.setdefault("reminders", {})
+                for a in sorted(silent, key=lambda x: (not x["veto"], -x["influence"])):
                     d = days_since(S.last_contact.get(a["id"]))
                     when = "aucun échange direct enregistré" if d is None else f"silence depuis {d} jours"
-                    st.markdown(f"- **{a['name']}** ({a['role']}, {orgs[a['org_id']]['name']})"
+                    c1, c2 = st.columns([4, 1.6], vertical_alignment="center")
+                    c1.markdown(f"**{a['name']}** ({a['role']}, {orgs[a['org_id']]['name']})"
                                 f"{' · veto' if a['veto'] else ''} · {when}")
+                    if c2.button("Rédiger un rappel", key=f"remind_{a['id']}", icon=":material/edit:",
+                                 width="stretch"):
+                        with st.spinner("Rédaction (Muse Spark)…"):
+                            reminders[a["id"]] = pipeline.reminder(S, a)
+                    if a["id"] in reminders:
+                        st.text_area("Rappel", reminders[a["id"]], height=200, key=f"remind_txt_{a['id']}",
+                                     label_visibility="collapsed")
 
     with st.container(key="card_agent"):
         section("Raisonnement de l'agent",

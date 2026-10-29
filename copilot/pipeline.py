@@ -84,6 +84,35 @@ def state(conn, deal_id: str, as_of: str | None = None) -> DealState:
                      latest_signals, moves)
 
 
+def pending_changes(st: DealState, as_of: str | None = None) -> list[dict]:
+    """Changements de position importants dus au dernier débrief et pas encore confirmés :
+    un acteur qui passe de « pour » à « contre » (ou l'inverse), ou un veto qui bascule « contre ».
+    Le modèle les compte déjà, mais le commercial doit les valider : une erreur d'extraction
+    sur ces signaux-là changerait tout le plan."""
+    as_of = as_of or date.today().isoformat()
+    latest = {s["id"] for s in st.latest_signals}
+    before = model.posterior(st.data, as_of, exclude=latest).beliefs
+    out = []
+    for a in st.data.actors:
+        unconfirmed = [s for s in st.data.signals[a["id"]] if s["id"] in latest and not s.get("confirmed")]
+        if not unconfirmed:
+            continue
+        was = model.STATES[int(before[a["id"]].argmax())]
+        now = model.STATES[int(st.post.beliefs[a["id"]].argmax())]
+        flip = {was, now} == {"support", "oppose"}
+        veto_turns = a["veto"] and now == "oppose" and was != "oppose"
+        if flip or veto_turns:
+            out.append({"actor": a, "before": was, "after": now, "signals": unconfirmed})
+    return out
+
+
+def confirm_change(conn, change: dict, stance: str | None = None) -> None:
+    """Le commercial valide le changement (stance=None), le corrige (stance donnée)
+    ou le rejette (stance='unknown' : le signal ne compte plus pour le modèle)."""
+    for s in change["signals"]:
+        memory.confirm_signal(conn, s["id"], stance)
+
+
 def plan(conn, deal_id: str) -> dict:
     """Questions et actions proposées par l'agent (Muse Spark + outils du modèle).
     En cas d'échec (pas de réseau, erreur d'API), on retombe sur les gabarits de decision.py."""
@@ -125,3 +154,28 @@ def followup_email(st: DealState, action: dict) -> str:
         facts.append(f"Summary of the last meeting: {st.latest_debrief['summary']}")
     return llm.chat([{"role": "developer", "content": EMAIL_RULES},
                      {"role": "user", "content": "\n".join(facts)}], **llm.effort("low"))
+
+
+REMINDER_RULES = """You write a short message in French (5 to 8 lines) from a sales rep to a stakeholder
+they have not talked to directly for a while, to re-establish contact and propose a short exchange.
+Use only the facts given. Never invent a number, a date, a meeting or a commitment.
+Never reveal the rep's internal analysis: no positions, no probabilities, no "you have been silent".
+Courteous and concrete, adapted to the recipient's role. Sign with the rep's name.
+Return only the message (subject line first, starting with "Objet :")."""
+
+
+def reminder(st: DealState, actor: dict) -> str:
+    """Message de reprise de contact pour un acteur silencieux, rédigé par Muse Spark."""
+    org = next((o["name"] for o in st.deal["organizations"] if o["id"] == actor["org_id"]), "")
+    last = st.last_contact.get(actor["id"])
+    facts = [f"Rep: {st.deal['sales_rep']} ({st.deal['seller']})",
+             f"Deal: {st.deal['name']} ({st.deal['description']})",
+             f"Recipient: {actor['name']}, {actor['role']}, {org}",
+             f"Last direct exchange: {last or 'none recorded'}"]
+    known = st.data.signals[actor["id"]]
+    if known:
+        s = known[-1]
+        facts.append(f"Last thing reported about them ({s['date']}): « {s['quote']} »")
+    return llm.chat([{"role": "developer", "content": REMINDER_RULES},
+                     {"role": "user", "content": "\n".join(facts)}], **llm.effort("low"))
+
