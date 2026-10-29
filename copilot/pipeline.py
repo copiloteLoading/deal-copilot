@@ -8,7 +8,7 @@ from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
-from copilot import decision, extract, llm, memory, model
+from copilot import agent, decision, extract, llm, memory, model
 
 DEMO_DIR = Path(__file__).resolve().parent.parent / "data" / "demo_deal"
 DEMO_ID = "port-aven-kerlis"
@@ -84,12 +84,27 @@ def state(conn, deal_id: str, as_of: str | None = None) -> DealState:
                      latest_signals, moves)
 
 
-def questions(st: DealState, k: int = 2) -> list[dict]:
-    return decision.rank_questions(st.data, st.last_contact, k=k)
+def plan(conn, deal_id: str) -> dict:
+    """Questions et actions proposées par l'agent (Muse Spark + outils du modèle).
+    En cas d'échec (pas de réseau, erreur d'API), on retombe sur les gabarits de decision.py."""
+    try:
+        result = agent.run(conn, deal_id)
+        result["fallback"] = None
+    except Exception as e:
+        st = state(conn, deal_id)
+        result = {"questions": decision.rank_questions(st.data, st.last_contact),
+                  "actions": decision.rank_actions(st.data, st.last_contact),
+                  "trace": [], "rejected": [], "steps": 0, "fallback": str(e)}
+    return result
 
 
-def actions(st: DealState) -> list[dict]:
-    return decision.rank_actions(st.data, st.last_contact)
+def refresh_actions(st: DealState, actions: list[dict]) -> list[dict]:
+    """Rechiffre les actions déjà proposées avec l'état actuel (après une réponse, par exemple)."""
+    out = []
+    for act in actions:
+        v = decision.action_value(st.data, st.post, act["effects"], date.today().isoformat())
+        out.append({**act, **v})
+    return sorted(out, key=lambda a: -a["gain"])
 
 
 EMAIL_RULES = """You write a short, professional follow-up email in French for a sales rep.

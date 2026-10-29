@@ -83,7 +83,7 @@ def stance_of(b) -> str:
 
 
 def reset_session() -> None:
-    for k in ["questions", "answers", "email", "transcript", "debrief_text"]:
+    for k in ["plan", "answers", "email", "transcript", "debrief_text"]:
         st.session_state.pop(k, None)
 
 
@@ -94,9 +94,13 @@ with st.spinner("Préparation du dossier de démonstration…"):
 S = pipeline.state(conn, deal_id)
 actors = {a["id"]: a for a in S.data.actors}
 orgs = {o["id"]: o for o in S.deal["organizations"]}
-if "questions" not in st.session_state:
-    st.session_state.questions = pipeline.questions(S)
+if "plan" not in st.session_state:
+    with st.spinner("L'agent prépare ses questions et son plan d'action (Muse Spark + modèle)…"):
+        st.session_state.plan = pipeline.plan(conn, deal_id)
     st.session_state.answers = {}
+PLAN = st.session_state.plan
+
+
 def is_silent(actor_id: str) -> bool:
     d = days_since(S.last_contact.get(actor_id))
     return d is None or d > SILENCE_DAYS
@@ -283,8 +287,8 @@ with tab_deal:
                             st.stop()
                         st.write("Extraction des signaux (Muse Spark)…")
                         pipeline.analyze_debrief(conn, deal_id, text)
-                        st.write("Mise à jour du modèle et choix des questions…")
-                        st.session_state.questions = pipeline.questions(pipeline.state(conn, deal_id))
+                        st.write("L'agent choisit ses questions et son plan (Muse Spark + modèle)…")
+                        st.session_state.plan = pipeline.plan(conn, deal_id)
                         st.session_state.answers = {}
                         st.session_state.pop("email", None)
                         status.update(label="Débrief analysé", state="complete")
@@ -336,9 +340,9 @@ with tab_deal:
     left, right = st.columns(2, gap="medium")
     with left:
         with st.container(key="card_questions"):
-            qs = st.session_state.questions
-            section("Débrief actif", "Les questions qui réduisent le plus l'incertitude sur la "
-                                     "signature (au plus 2).")
+            qs = PLAN["questions"]
+            section("Débrief actif", "Proposées par l'agent, retenues et classées par le modèle selon "
+                                     "la baisse d'incertitude qu'elles apportent (au plus 2).")
             if not qs:
                 st.info("Aucune question utile : la suivante n'apporterait presque rien.")
             for i, q in enumerate(qs):
@@ -384,9 +388,9 @@ with tab_deal:
 
     with right:
         with st.container(key="card_actions"):
-            section("Plan d'action", "Classé selon la probabilité de signature si l'action aboutit "
-                                     "(simulée par le modèle).")
-            acts = pipeline.actions(S)
+            section("Plan d'action", "Actions proposées par l'agent, classées selon la probabilité "
+                                     "de signature si elles aboutissent (simulée par le modèle).")
+            acts = pipeline.refresh_actions(S, PLAN["actions"])
             for i, act in enumerate(acts):
                 if i:
                     st.divider()
@@ -413,6 +417,42 @@ with tab_deal:
                     when = "aucun échange direct enregistré" if d is None else f"silence depuis {d} jours"
                     st.markdown(f"- **{a['name']}** ({a['role']}, {orgs[a['org_id']]['name']})"
                                 f"{' · veto' if a['veto'] else ''} · {when}")
+
+    with st.container(key="card_agent"):
+        section("Raisonnement de l'agent",
+                "Muse Spark propose et interroge le modèle par ses outils ; le modèle chiffre et "
+                "tranche. Aucun chiffre ne vient du LLM.")
+        if PLAN.get("fallback"):
+            st.warning(f"Agent indisponible ({PLAN['fallback']}) : questions et actions issues des "
+                       "gabarits du moteur de décision.", icon=":material/warning:")
+        else:
+            n_tools = sum(1 for c in PLAN["trace"] if c["tool"] != "submit_plan")
+            st.caption(f"{PLAN['steps']} tours · {n_tools} appels d'outils · "
+                       f"{len(PLAN['rejected'])} proposition(s) écartée(s) par le modèle")
+            with st.expander("Voir chaque appel d'outil", icon=":material/account_tree:"):
+                for c in PLAN["trace"]:
+                    args, res = c["args"], c["result"]
+                    name = actors.get(args.get("actor_id"), {}).get("name", args.get("actor_id"))
+                    if "error" in res:
+                        st.markdown(f"- `{c['tool']}` → erreur : {res['error']}")
+                    elif c["tool"] == "get_signals":
+                        st.markdown(f"- **Lit les signaux** de {name} ({len(res['signals'])})")
+                    elif c["tool"] == "evaluate_question":
+                        lo, hi = res["expected_interval_after_answer"]
+                        st.markdown(f"- **Évalue une question** sur {name} : incertitude réduite de "
+                                    f"{res['uncertainty_reduction_points']} pts (intervalle attendu "
+                                    f"{lo} – {hi} %)")
+                    elif c["tool"] == "simulate_action":
+                        fx = ", ".join(f"{actors[e['actor_id']]['name']} → "
+                                       f"{STANCE[e['stance']][0].lower()}"
+                                       for e in args["effects"] if e["actor_id"] in actors)
+                        st.markdown(f"- **Simule** « {fx} » : {res['probability_now_percent']} % → "
+                                    f"{res['probability_if_success_percent']} %")
+                    else:
+                        st.markdown(f"- **Rend son plan** : {len(args.get('questions', []))} question(s), "
+                                    f"{len(args.get('actions', []))} action(s)")
+                for r in PLAN["rejected"]:
+                    st.markdown(f"- ✕ Écarté ({r['kind']}) : {r['reason']}")
 
 # ------------------------------------------------------------------ onglet Sources
 with tab_sources:

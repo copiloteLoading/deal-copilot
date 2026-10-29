@@ -48,26 +48,39 @@ def _question_text(actor: dict, signals: list[dict], silence: int | None) -> tup
             f"sur notre offre ?", _last(signals))
 
 
+def question_value(data: model.DealData, base: model.Posterior, actor_id: str,
+                   as_of: str) -> dict:
+    """Valeur de l'information d'une question sur un acteur : baisse attendue de l'écart-type,
+    en moyenne sur ses positions possibles pondérées par leur probabilité actuelle."""
+    b = base.beliefs[actor_id]
+    exp_std = exp_low = exp_high = 0.0
+    for i, state in enumerate(model.STATES):
+        if b[i] < 1e-3:
+            continue
+        post = model.simulate(data, {actor_id: state}, as_of)
+        exp_std += b[i] * post.std
+        exp_low += b[i] * post.low
+        exp_high += b[i] * post.high
+    return {"gain": base.std - exp_std, "expected_low": exp_low, "expected_high": exp_high}
+
+
+def action_value(data: model.DealData, base: model.Posterior, effects: dict[str, str],
+                 as_of: str) -> dict:
+    """Probabilité si l'action réussit, c'est-à-dire si les acteurs visés prennent ces positions."""
+    after = model.simulate(data, effects, as_of)
+    return {"p_before": base.p, "p_after": after.p, "gain": after.p - base.p}
+
+
 def rank_questions(data: model.DealData, last_contact: dict[str, str | None],
                    as_of: str | None = None, k: int = 2, min_gain: float = 0.01) -> list[dict]:
     as_of = as_of or date.today().isoformat()
     base = model.posterior(data, as_of)
     out = []
     for a in data.actors:
-        b = base.beliefs[a["id"]]
-        exp_std = exp_low = exp_high = 0.0
-        for i, state in enumerate(model.STATES):
-            if b[i] < 1e-3:
-                continue
-            post = model.simulate(data, {a["id"]: state}, as_of)
-            exp_std += b[i] * post.std
-            exp_low += b[i] * post.low
-            exp_high += b[i] * post.high
-        gain = base.std - exp_std
         silence = _days_since(last_contact.get(a["id"]), as_of)
         text, source = _question_text(a, data.signals[a["id"]], silence)
-        out.append({"actor": a, "gain": gain, "text": text, "source": source,
-                    "expected_low": exp_low, "expected_high": exp_high})
+        out.append({"actor": a, "text": text, "source": source,
+                    **question_value(data, base, a["id"], as_of)})
     out.sort(key=lambda q: -q["gain"])
     return [q for q in out if q["gain"] >= min_gain][:k]
 
@@ -81,7 +94,6 @@ def rank_actions(data: model.DealData, last_contact: dict[str, str | None],
         b = base.beliefs[a["id"]]
         if b[0] > 0.85:                       # déjà acquis : rien à gagner
             continue
-        after = model.simulate(data, {a["id"]: "support"}, as_of)
         silence = _days_since(last_contact.get(a["id"]), as_of)
         cond = _last(data.signals[a["id"]], stance="conditional")
         if cond:
@@ -96,6 +108,7 @@ def rank_actions(data: model.DealData, last_contact: dict[str, str | None],
         if a["veto"]:
             why = "détenteur de veto · " + why
         out.append({"actor": a, "title": title, "why": why, "source": cond or _last(data.signals[a["id"]]),
-                    "p_before": base.p, "p_after": after.p, "gain": after.p - base.p})
+                    "effects": {a["id"]: "support"},
+                    **action_value(data, base, {a["id"]: "support"}, as_of)})
     out.sort(key=lambda x: -x["gain"])
     return out[:k]

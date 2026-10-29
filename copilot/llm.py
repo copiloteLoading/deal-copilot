@@ -116,6 +116,16 @@ def chat(messages: list[dict], response_format: dict | None = None, **params) ->
     return content
 
 
+def chat_tools(messages: list[dict], tools: list[dict], tool_choice="auto", **params):
+    """Un tour de conversation avec appels d'outils (sans cache : c'est l'agent qui met en cache
+    le résultat complet de sa boucle). Renvoie le message de l'assistant."""
+    if provider() == "offline":
+        raise OfflineMiss("Appels d'outils impossibles hors ligne.")
+    resp = _get_client().chat.completions.create(
+        model=model_name(), messages=messages, tools=tools, tool_choice=tool_choice, **params)
+    return resp.choices[0].message
+
+
 def chat_json(messages: list[dict], name: str, schema: dict, **params) -> dict:
     """Comme chat(), mais avec une sortie structurée validée par un JSON schema."""
     response_format = {"type": "json_schema", "json_schema": {"name": name, "schema": schema}}

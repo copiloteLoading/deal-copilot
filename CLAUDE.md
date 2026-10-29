@@ -205,7 +205,8 @@ Un seul écran principal :
 - Reste de mer 28 : test de transcription vocale (il faut un fichier WAV enregistré).
 - Fait (jeu 29, après-midi) : `extract.py` (position « conditionnelle », force du signal, `source_type`, citations vérifiées mot pour mot, effort de raisonnement `low`) et son enregistrement dans la mémoire. Le débrief piège donne bien Sophie Lenoir « conditionnelle ».
 - Fait (jeu 29, soir) : V1 de bout en bout. `capture.py` (transcription testée, mots-clés ≤ 30 caractères imposés par l'API), `model.py` (positions par acteur, veto, Monte-Carlo, `simulate`, `explain`), `decision.py` (questions classées par baisse de l'écart-type, actions par `simulate`), `pipeline.py`, lecture dédiée des réponses (`interpret_answer`), interface branchée sur la vraie chaîne. Scénario piège : 31 % → 38 % après la réunion, questions sur Thomas Riou et Sophie Lenoir, 34 % après la réponse, action n° 1 « lever la condition de Sophie Lenoir ».
-- Avancé sur ven 30 : le modèle et le moteur de décision existent déjà ; reste la version de secours à règles et les tests du modèle.
+- Avancé sur ven 30 : le modèle et le moteur de décision existent déjà, avec leurs tests ; reste la version de secours à règles.
+- Avancé sur sam 31 : `agent.py` fait (appels d'outils de Muse Spark : `get_signals`, `evaluate_question`, `simulate_action`, `submit_plan` ; au plus 8 tours ; plan vérifié et rechiffré par le modèle ; repli sur les gabarits si l'API échoue ; résultat mis en cache). Sur le scénario piège : 6 tours, 14 appels d'outils, action créative « échéancier adossé à une garantie bancaire ». Interface : section « Raisonnement de l'agent ». Reste : confirmation des changements de position importants, rappels rédigés.
 - Reste de jeu 29 : fiches de personnages et jeu de test, mesure de l'extraction.
 
 **Points de décision** :
