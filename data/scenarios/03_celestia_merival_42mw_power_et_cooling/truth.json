@@ -1,0 +1,87 @@
+{
+  "outcome": "signed",
+  "outcome_explanation": "Signé quelques semaines après la dernière réunion car la championne technique a fait basculer les prudents : ses pilotes mesurés et le soutien de l'ingénieur-conseil ont convaincu le DG, puis le TCO plafonné et les garanties de PUE pénalisées ont levé le veto du DAF. La financière, passée de opposante à neutre, n'a plus bloqué une fois les pénalités et la caution obtenues, et le certificateur a validé la conformité.",
+  "hidden_interests": {
+    "helene_v": "Veut imposer le refroidissement liquide par immersion pour décrocher la direction des opérations du futur campus et prouver que son pari technique était juste.",
+    "olivier_b": "Craint un dérapage du coût énergétique et du CAPEX ; veut protéger sa crédibilité auprès du conseil après un projet précédent en surcoût.",
+    "didier_l": "Veut sécuriser la mise en service sans panne médiatique et garder la confiance du conseil pour renouveler son mandat.",
+    "nadia_p": "Doit justifier le financement de 42 MW auprès de son comité ; cherche des garanties de performance et des pénalités solides pour couvrir son risque personnel.",
+    "marc_a": "Veut valider une architecture innovante à faible PUE pour la publier comme référence et développer sa mission d'assistance à l'exploitation.",
+    "julien_s": "Veut éviter tout refus de certification qui engagerait son bureau ; cherche un dossier traçable et sans zone grise sur la redondance électrique."
+  },
+  "positions": [
+    {
+      "date": "2026-02-17",
+      "attendees": [
+        "helene_v",
+        "marc_a",
+        "olivier_b"
+      ],
+      "what_really_happens": "Hélène fait visiter les dalles et défend l'immersion contre l'air pulsé classique des concurrents. Marc reste prudent sur la redondance. Olivier chiffre en direct et juge le CAPEX 18% trop haut, il freine. Nadia, en visio, dit que sans garantie de PUE pénalisée elle ne financera pas. En coulisses, Hélène demande au commercial de lui fournir des références mesurées pour retourner son DAF.",
+      "stances": {
+        "helene_v": "support",
+        "olivier_b": "oppose",
+        "didier_l": "neutral",
+        "nadia_p": "oppose",
+        "marc_a": "neutral",
+        "julien_s": "neutral"
+      }
+    },
+    {
+      "date": "2026-04-23",
+      "attendees": [
+        "helene_v",
+        "marc_a",
+        "julien_s",
+        "olivier_b"
+      ],
+      "what_really_happens": "Présentation détaillée des chaînes électriques 2N et du free-cooling. Marc bascule et valide par écrit que le PUE à 1,18 est crédible, ce qui renforce Hélène. Olivier s'oppose toujours sur le prix et pousse Frigélor, moins cher en CAPEX. Julien liste 11 points de conformité à lever sur la sécurité électrique. Nadia réclame un audit de la société venderesse.",
+      "stances": {
+        "helene_v": "support",
+        "olivier_b": "oppose",
+        "didier_l": "neutral",
+        "nadia_p": "oppose",
+        "marc_a": "support",
+        "julien_s": "neutral"
+      }
+    },
+    {
+      "date": "2026-07-09",
+      "attendees": [
+        "helene_v",
+        "olivier_b",
+        "didier_l",
+        "nadia_p",
+        "marc_a"
+      ],
+      "what_really_happens": "Démonstration sur boucle pilote à Valbréon : PUE mesuré à 1,16 et bascule sans coupure réussie. Le commercial dévoile un TCO à 6 ans inférieur de 9% grâce aux économies d'énergie, avec plafonnement du prix maintenance. Olivier arrête de s'opposer et demande un cap contractuel. Didier, rassuré par le pilote, soutient ouvertement l'option. Nadia passe à neutre mais exige des pénalités de retard et de performance.",
+      "stances": {
+        "helene_v": "support",
+        "olivier_b": "neutral",
+        "didier_l": "support",
+        "nadia_p": "neutral",
+        "marc_a": "support",
+        "julien_s": "neutral"
+      }
+    },
+    {
+      "date": "2026-09-30",
+      "attendees": [
+        "helene_v",
+        "olivier_b",
+        "didier_l",
+        "nadia_p",
+        "julien_s"
+      ],
+      "what_really_happens": "Le vendeur accepte une garantie de PUE pénalisée, un plafond de CAPEX phase 1 et des pénalités de mise en service adossées à une caution bancaire. Julien confirme que le dossier est certifiable sous réserve de deux essais complémentaires. Olivier obtient le cap budgétaire qu'il voulait et donne son feu vert financier. Nadia ne s'oppose plus mais attend le feu vert final de son comité ; plus aucun veto ne bloque. Hélène verrouille le planning de commande des groupes.",
+      "stances": {
+        "helene_v": "support",
+        "olivier_b": "support",
+        "didier_l": "support",
+        "nadia_p": "neutral",
+        "marc_a": "support",
+        "julien_s": "support"
+      }
+    }
+  ]
+}

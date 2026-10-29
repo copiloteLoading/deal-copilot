@@ -1,0 +1,157 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "09_ferme_pilote_eole_flottante_de_valbrise",
+  "name": "Ferme Pilote Éole Flottante de Valbrise",
+  "seller": "Nautelia Systèmes Flottants",
+  "sales_rep": "Julien Marceau",
+  "buyer": "Consortium Azuréole Flottante",
+  "description": "Contrat clé en main pluriannuel pour la conception, la fabrication et l'installation de six flotteurs, leurs ancrages et le raccordement sous-marin d'une ferme pilote éolienne flottante au large de Port-Brumeval, porté par le Consortium Azuréole Flottante pour le compte de Voltis et AéroCiel. Le vendeur Nautelia Systèmes Flottants propose une solution de flotteurs à lignes tendues avec maintenance sur 10 ans. Le montage prévoit un cofinancement privé via la Caisse Méridienne et une certification privée par Certimer.",
+  "value_meur": 168.0,
+  "opened": "2026-02-18",
+  "target_signature": null,
+  "competitors": [
+    "Alize Flottante Industrie",
+    "Nordvik Offshore Systems"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "Azuréole",
+        "le consortium"
+      ],
+      "id": "consortium_azur",
+      "name": "Consortium Azuréole Flottante",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "Voltis"
+      ],
+      "id": "voltis_energie",
+      "name": "Voltis Énergies Marines",
+      "type": "consortium_member"
+    },
+    {
+      "aliases": [
+        "AéroCiel"
+      ],
+      "id": "aerociel_prod",
+      "name": "AéroCiel Production",
+      "type": "consortium_member"
+    },
+    {
+      "aliases": [
+        "la Caisse",
+        "CMI"
+      ],
+      "id": "caisse_meridienne",
+      "name": "Caisse Méridienne d'Investissement",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "Certimer",
+        "le certificateur"
+      ],
+      "id": "certimer",
+      "name": "Certimer Contrôle Naval",
+      "type": "regulator"
+    }
+  ],
+  "actors": [
+    {
+      "id": "helene_brossard",
+      "name": "Hélène Brossard",
+      "org": "consortium_azur",
+      "role": "Directrice du consortium pilote",
+      "influence": 0.9,
+      "veto": true,
+      "aliases": [
+        "Hélène",
+        "la directrice"
+      ]
+    },
+    {
+      "id": "marc_aubry",
+      "name": "Marc Aubry",
+      "org": "voltis_energie",
+      "role": "Directeur technique de Voltis Énergies Marines",
+      "influence": 0.8,
+      "veto": true,
+      "aliases": [
+        "Marc",
+        "le tech Voltis"
+      ]
+    },
+    {
+      "id": "sophie_leroux",
+      "name": "Sophie Leroux",
+      "org": "aerociel_prod",
+      "role": "Directrice financière d'AéroCiel Production",
+      "influence": 0.75,
+      "veto": true,
+      "aliases": [
+        "Sophie",
+        "la DAF"
+      ]
+    },
+    {
+      "id": "karim_benali",
+      "name": "Karim Benali",
+      "org": "voltis_energie",
+      "role": "Responsable du lot flotteurs et ancrages",
+      "influence": 0.5,
+      "veto": false,
+      "aliases": [
+        "Karim",
+        "le chef de projet"
+      ]
+    },
+    {
+      "id": "elodie_perrin",
+      "name": "Élodie Perrin",
+      "org": "caisse_meridienne",
+      "role": "Directrice des financements de projet",
+      "influence": 0.65,
+      "veto": false,
+      "aliases": [
+        "Élodie",
+        "la banquière"
+      ]
+    },
+    {
+      "id": "thomas_vidal",
+      "name": "Thomas Vidal",
+      "org": "certimer",
+      "role": "Expert en certification des structures flottantes",
+      "influence": 0.4,
+      "veto": false,
+      "aliases": [
+        "Thomas",
+        "le certificateur"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-02-18",
+      "title": "Présentation technique des flotteurs et ancrages",
+      "debrief": "debriefs/1_2026-02-18.txt"
+    },
+    {
+      "date": "2026-05-06",
+      "title": "Revue des coûts d'ancrage et clé de partage",
+      "debrief": "debriefs/2_2026-05-06.txt"
+    },
+    {
+      "date": "2026-07-22",
+      "title": "Négociation du contrat clé en main et avenants",
+      "debrief": "debriefs/3_2026-07-22.txt"
+    },
+    {
+      "date": "2026-10-02",
+      "title": "Tentative de bouclage technique et financier",
+      "debrief": "debriefs/4_2026-10-02.txt"
+    }
+  ]
+}

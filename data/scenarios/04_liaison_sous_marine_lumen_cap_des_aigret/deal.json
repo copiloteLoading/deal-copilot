@@ -1,0 +1,158 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "04_liaison_sous_marine_lumen_cap_des_aigret",
+  "name": "Liaison Sous-Marine Lumen - Cap des Aigrettes",
+  "seller": "Meridienne Câbles Systèmes",
+  "sales_rep": "Claire Vasseur",
+  "buyer": "Lumen Ouest Réseaux",
+  "description": "Contrat clé en main de 7 ans pour la fourniture, la pose et la maintenance d'un interconnexeur sous-marin de 320 MW sur 68 km entre le réseau privé de Lumen Ouest Réseaux et le réseau privé de Cap Nord Grid, incluant deux postes de conversion et la garantie de disponibilité. Montant estimé à 345 millions d'euros.",
+  "value_meur": 345.0,
+  "opened": "2026-02-19",
+  "target_signature": null,
+  "competitors": [
+    "Voltamar Industries"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "Lumen",
+        "le client"
+      ],
+      "id": "lumen_ouest",
+      "name": "Lumen Ouest Réseaux",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "Cap Nord",
+        "le partenaire"
+      ],
+      "id": "cap_nord",
+      "name": "Cap Nord Grid Privé",
+      "type": "consortium_member"
+    },
+    {
+      "aliases": [
+        "Meridia",
+        "la banque privée"
+      ],
+      "id": "meridia_fin",
+      "name": "Meridia Financements Privés",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "Certimar",
+        "le certificateur"
+      ],
+      "id": "certimar",
+      "name": "Certimar Contrôle Technique",
+      "type": "regulator"
+    },
+    {
+      "aliases": [
+        "Voltamar",
+        "le concurrent"
+      ],
+      "id": "voltamar",
+      "name": "Voltamar Industries",
+      "type": "competitor"
+    }
+  ],
+  "actors": [
+    {
+      "id": "sophie_marchand",
+      "name": "Sophie Marchand",
+      "org": "lumen_ouest",
+      "role": "Directrice des Achats du programme de liaison sous-marine",
+      "influence": 0.85,
+      "veto": true,
+      "aliases": [
+        "Sophie",
+        "la cheffe achats"
+      ]
+    },
+    {
+      "id": "julien_ferrat",
+      "name": "Julien Ferrat",
+      "org": "lumen_ouest",
+      "role": "Directeur Technique de l'interconnexion et responsable du choix câblier",
+      "influence": 0.8,
+      "veto": true,
+      "aliases": [
+        "Julien",
+        "le tech"
+      ]
+    },
+    {
+      "id": "marc_aubry",
+      "name": "Marc Aubry",
+      "org": "lumen_ouest",
+      "role": "Directeur Administratif et Financier de Lumen Ouest Réseaux",
+      "influence": 0.9,
+      "veto": true,
+      "aliases": [
+        "Marc",
+        "le DAF"
+      ]
+    },
+    {
+      "id": "elise_berthier",
+      "name": "Elise Berthier",
+      "org": "cap_nord",
+      "role": "Responsable du consortium partenaire Cap Nord Grid Privé",
+      "influence": 0.6,
+      "veto": false,
+      "aliases": [
+        "Elise",
+        "la partenaire Cap Nord"
+      ]
+    },
+    {
+      "id": "karim_benali",
+      "name": "Karim Benali",
+      "org": "meridia_fin",
+      "role": "Chargé d'affaires senior chez Meridia Financements Privés, prêteur du projet",
+      "influence": 0.65,
+      "veto": false,
+      "aliases": [
+        "Karim",
+        "le banquier"
+      ]
+    },
+    {
+      "id": "paul_renard",
+      "name": "Paul Renard",
+      "org": "certimar",
+      "role": "Expert certificateur privé pour la liaison sous-marine haute tension",
+      "influence": 0.5,
+      "veto": false,
+      "aliases": [
+        "Paul",
+        "le certificateur"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-02-19",
+      "title": "Cadrage technique et capacitaire de la liaison",
+      "debrief": "debriefs/1_2026-02-19.txt"
+    },
+    {
+      "date": "2026-05-07",
+      "title": "Revue budgétaire et première offre Voltamar",
+      "debrief": "debriefs/2_2026-05-07.txt"
+    },
+    {
+      "date": "2026-07-16",
+      "title": "Comparatif technico-économique approfondi",
+      "debrief": "debriefs/3_2026-07-16.txt"
+    },
+    {
+      "date": "2026-09-25",
+      "title": "Dernière négociation avant décision interne",
+      "debrief": "debriefs/4_2026-09-25.txt"
+    }
+  ]
+}

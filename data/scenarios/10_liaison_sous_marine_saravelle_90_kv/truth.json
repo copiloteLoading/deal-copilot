@@ -1,0 +1,87 @@
+{
+  "outcome": "lost",
+  "outcome_explanation": "Le contrat a été attribué quelques semaines après la dernière réunion à la Câblerie du Ponant Réunis. Dès février, le président du conseil avait orienté le cahier des charges, la pondération et le montage en garanties pour favoriser le fournisseur local lié à sa famille. Malgré la supériorité technique initiale du vendeur, les trois veto se sont alignés contre lui et la certification privée a achevé de le disqualifier sur les délais.",
+  "hidden_interests": {
+    "corentin_marlec": "Protéger ses liens familiaux avec la direction de la câblerie locale et ancrer l'emploi sur l'île, quitte à écarter toute offre extérieure.",
+    "solene_kerbrat": "Obtenir le câble le plus fiable en milieu corrosif et houleux pour ne pas engager sa responsabilité technique.",
+    "gwenael_priou": "Sécuriser son poste en restant loyal au président, même s'il doute du coût de maintenance de l'offre locale.",
+    "maelle_tremeur": "Faire poser le câble avant la saison des houles d'automne pour décrocher une promotion interne.",
+    "erwan_castel": "Limiter l'exposition de la financière en exigeant des garanties adossées à des actifs insulaires, ce que seul le fournisseur local propose.",
+    "ines_larnicol": "Éviter tout contentieux d'homologation en privilégiant un matériel déjà certifié par son organisme pour l'archipel."
+  },
+  "positions": [
+    {
+      "date": "2026-02-19",
+      "attendees": [
+        "solene_kerbrat",
+        "maelle_tremeur",
+        "gwenael_priou",
+        "erwan_castel"
+      ],
+      "what_really_happens": "La directrice technique démontre la supériorité de l'armure anti-corrosion du vendeur. En coulisses, le président, absent, a déjà demandé au DAF de calibrer le cahier des charges sur les capacités de la Câblerie du Ponant Réunis et de limiter les critères discriminants.",
+      "stances": {
+        "corentin_marlec": "oppose",
+        "solene_kerbrat": "support",
+        "gwenael_priou": "neutral",
+        "maelle_tremeur": "support",
+        "erwan_castel": "neutral",
+        "ines_larnicol": "neutral"
+      }
+    },
+    {
+      "date": "2026-04-23",
+      "attendees": [
+        "corentin_marlec",
+        "solene_kerbrat",
+        "gwenael_priou",
+        "maelle_tremeur"
+      ],
+      "what_really_happens": "Le président impose en séance un critère de proximité de maintenance et de stock local à 30% de la note, qui défavorise le vendeur. Le DAF s'aligne publiquement sur lui. La cheffe de projet, inquiète des délais, commence à douter de la capacité du vendeur à mobiliser un navire câblier à temps.",
+      "stances": {
+        "corentin_marlec": "oppose",
+        "solene_kerbrat": "support",
+        "gwenael_priou": "oppose",
+        "maelle_tremeur": "neutral",
+        "erwan_castel": "neutral",
+        "ines_larnicol": "neutral"
+      }
+    },
+    {
+      "date": "2026-07-02",
+      "attendees": [
+        "solene_kerbrat",
+        "erwan_castel",
+        "ines_larnicol",
+        "maelle_tremeur"
+      ],
+      "what_really_happens": "Le représentant du financeur exige des garanties adossées à des actifs sur l'île et un cautionnement local, monté sur mesure avec l'offre du Ponant. La responsable de certification signale que l'homologation du câble du vendeur demanderait 4 mois d'essais complémentaires. La directrice technique, isolée, ne défend plus ouvertement le vendeur.",
+      "stances": {
+        "corentin_marlec": "oppose",
+        "solene_kerbrat": "neutral",
+        "gwenael_priou": "oppose",
+        "maelle_tremeur": "neutral",
+        "erwan_castel": "oppose",
+        "ines_larnicol": "neutral"
+      }
+    },
+    {
+      "date": "2026-09-24",
+      "attendees": [
+        "corentin_marlec",
+        "gwenael_priou",
+        "erwan_castel",
+        "solene_kerbrat",
+        "ines_larnicol"
+      ],
+      "what_really_happens": "Le président verrouille la grille de notation et fait valider que seule l'offre locale coche tous les critères de proximité, de garantie et d'homologation existante. La cheffe de projet rallie l'option locale pour tenir le planning de pose. Personne ne contredit le président, mais aucune décision formelle n'est votée en séance, elle est renvoyée au conseil suivant.",
+      "stances": {
+        "corentin_marlec": "oppose",
+        "solene_kerbrat": "neutral",
+        "gwenael_priou": "oppose",
+        "maelle_tremeur": "oppose",
+        "erwan_castel": "oppose",
+        "ines_larnicol": "oppose"
+      }
+    }
+  ]
+}

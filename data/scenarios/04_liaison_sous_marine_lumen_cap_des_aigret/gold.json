@@ -1,0 +1,94 @@
+[
+  {
+    "date": "2026-02-19",
+    "mentions": [
+      {
+        "actor_id": "julien_ferrat",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "sophie_marchand",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "elise_berthier",
+        "stance_expressed": "support"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-07",
+    "mentions": [
+      {
+        "actor_id": "sophie_marchand",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "julien_ferrat",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "marc_aubry",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "karim_benali",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-07-16",
+    "mentions": [
+      {
+        "actor_id": "sophie_marchand",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "marc_aubry",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "julien_ferrat",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "elise_berthier",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "paul_renard",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "karim_benali",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-25",
+    "mentions": [
+      {
+        "actor_id": "sophie_marchand",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "marc_aubry",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "karim_benali",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "elise_berthier",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "julien_ferrat",
+        "stance_expressed": "conditional"
+      }
+    ]
+  }
+]

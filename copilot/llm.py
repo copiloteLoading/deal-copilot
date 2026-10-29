@@ -91,13 +91,18 @@ def _cache_path(request: dict) -> Path:
     return CACHE_DIR / (hashlib.sha256(raw.encode("utf-8")).hexdigest()[:16] + ".json")
 
 
-def chat(messages: list[dict], response_format: dict | None = None, **params) -> str:
-    """Envoie une conversation et renvoie le texte de la réponse (avec cache)."""
+def chat(messages: list[dict], response_format: dict | None = None, cache_tag: str | None = None,
+         **params) -> str:
+    """Envoie une conversation et renvoie le texte de la réponse (avec cache).
+
+    cache_tag : étiquette ajoutée à la clé du cache seulement (pas envoyée), pour obtenir
+    plusieurs tirages indépendants d'une même requête (test de stabilité).
+    """
     request = {"model": model_name(), "messages": messages, **params}
     if response_format:
         request["response_format"] = response_format
 
-    path = _cache_path(request)
+    path = _cache_path({**request, "cache_tag": cache_tag} if cache_tag else request)
     if path.exists():
         return json.loads(path.read_text(encoding="utf-8"))["content"]
     if provider() == "offline":

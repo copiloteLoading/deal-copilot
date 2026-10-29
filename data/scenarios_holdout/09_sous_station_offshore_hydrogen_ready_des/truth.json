@@ -1,0 +1,88 @@
+{
+  "outcome": "delayed",
+  "outcome_explanation": "Quelques semaines après la dernière réunion, le conseil de Brume Énergies Marines acte son changement de stratégie vers un export hydrogène prioritaire et demande une nouvelle étude de faisabilité complète comparant les architectures full-électrique, hydrogen-ready et full-H2. La signature est donc suspendue pour au moins 12 mois, dans l'attente des conclusions technico-économiques et de la revalidation du financement.",
+  "hidden_interests": {
+    "helene_marchand": "Veut garder la confiance du nouveau président du conseil et éviter de signer un scope qui serait désavuoué trois mois plus tard.",
+    "marc_legoff": "Veut prouver la faisabilité du design hydrogen-ready et garder son équipe mobilisée, même si le scope doit évoluer.",
+    "sophie_aubert": "Protège la rentabilité du consortium : ne veut pas figer 8 ans de capex si la stratégie bascule vers du tout-hydrogène exporté.",
+    "julien_perrot": "Craint un surcoût de 20% lié aux modules hydrogène et veut une étude de rentabilité actualisée avant de verrouiller le financement.",
+    "claire_fontaine": "Veut éviter toute certification précipitée d'un module H2 offshore sans référentiel stabilisé, pour ne pas engager sa responsabilité.",
+    "karim_benali": "Espère vendre une mission d'assistance longue durée sur l'intégration hydrogène et pousse donc à élargir les études préalables."
+  },
+  "positions": [
+    {
+      "date": "2026-02-18",
+      "attendees": [
+        "helene_marchand",
+        "marc_legoff",
+        "karim_benali",
+        "julien_perrot"
+      ],
+      "what_really_happens": "Antoine présente l'architecture hydrogen-ready en deux phases : export électrique immédiat, puis ajout d'électrolyseurs sans remplacement de plateforme. Marc et Karim adhèrent, Hélène confirme l'alignement avec la feuille de route. Julien s'inquiète du surcoût des espaces réservés mais reste ouvert.",
+      "stances": {
+        "helene_marchand": "support",
+        "marc_legoff": "support",
+        "sophie_aubert": "support",
+        "julien_perrot": "neutral",
+        "claire_fontaine": "neutral",
+        "karim_benali": "support"
+      }
+    },
+    {
+      "date": "2026-05-07",
+      "attendees": [
+        "marc_legoff",
+        "sophie_aubert",
+        "claire_fontaine",
+        "karim_benali"
+      ],
+      "what_really_happens": "Claire exige des essais complémentaires et un référentiel stabilisé pour les traversées H2 et la sécurité ATEX en offshore, ce qui allonge le planning de 4 mois. Sophie commence à calculer l'impact capacitaire et demande une variante sans pré-équipement. Marc défend le design actuel pour ne pas perdre l'année.",
+      "stances": {
+        "helene_marchand": "support",
+        "marc_legoff": "support",
+        "sophie_aubert": "neutral",
+        "julien_perrot": "neutral",
+        "claire_fontaine": "oppose",
+        "karim_benali": "support"
+      }
+    },
+    {
+      "date": "2026-08-26",
+      "attendees": [
+        "helene_marchand",
+        "marc_legoff",
+        "sophie_aubert",
+        "julien_perrot"
+      ],
+      "what_really_happens": "Hélène évoque à mots couverts le débat au conseil : bascule possible d'une stratégie power-to-grid avec petit pilote H2 vers une stratégie hydrogène massifiée avec export par canalisation. Julien refuse de valider la grille tarifaire en l'état et réclame des hypothèses de revenus H2 révisées. Marc tente de sauver le planning en proposant une plateforme évolutive.",
+      "stances": {
+        "helene_marchand": "neutral",
+        "marc_legoff": "support",
+        "sophie_aubert": "neutral",
+        "julien_perrot": "oppose",
+        "claire_fontaine": "neutral",
+        "karim_benali": "neutral"
+      }
+    },
+    {
+      "date": "2026-10-14",
+      "attendees": [
+        "helene_marchand",
+        "marc_legoff",
+        "sophie_aubert",
+        "julien_perrot",
+        "claire_fontaine",
+        "karim_benali"
+      ],
+      "what_really_happens": "Antoine propose de figer le prix pour la partie électrique et de mettre le lot hydrogène en option valorisée. Sophie et Julien estiment qu'on ne peut plus signer sur ces bases sans cadrage stratégique clair du conseil et demandent des éléments comparatifs full-électrique versus full-H2. Hélène acte le besoin d'arbitrage interne, Marc lui-même admet qu'il faut re-chiffrer. Aucune décision formelle n'est prise en séance.",
+      "stances": {
+        "helene_marchand": "neutral",
+        "marc_legoff": "neutral",
+        "sophie_aubert": "oppose",
+        "julien_perrot": "oppose",
+        "claire_fontaine": "neutral",
+        "karim_benali": "neutral"
+      }
+    }
+  ]
+}

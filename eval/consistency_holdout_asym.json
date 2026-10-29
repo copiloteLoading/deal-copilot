@@ -1,0 +1,683 @@
+{
+  "summary": {
+    "n_points": 20,
+    "llm": {
+      "stability_std": 0.02519225508058511,
+      "stability_range_mean": 0.06749999999999999,
+      "stability_range_max": 0.2,
+      "stability_visible": 0.2,
+      "monotone": 0.35,
+      "inverted": 0.05,
+      "move_oppose": -0.23360000000000003,
+      "move_support": 0.00490000000000001,
+      "what_if_gap_mean": 0.04875,
+      "what_if_gap_max": 0.17999999999999994,
+      "what_if_direction": 0.7
+    },
+    "model": {
+      "stability_std": 0.0,
+      "stability_range_mean": 0.0,
+      "stability_range_max": 0.0,
+      "stability_visible": 0.0,
+      "monotone": 1.0,
+      "inverted": 0.0,
+      "move_oppose": -0.1324844642652579,
+      "move_support": 0.03675703175789279,
+      "what_if_gap_mean": 0.0,
+      "what_if_gap_max": 0.0,
+      "what_if_direction": 1.0
+    }
+  },
+  "results": [
+    {
+      "deal_id": "01_modernisation_station_d_atterrissage_cap",
+      "points": [
+        {
+          "meeting": 2,
+          "veto": "helene_vasseur",
+          "llm_draws": [
+            0.25,
+            0.3,
+            0.2,
+            0.24,
+            0.18
+          ],
+          "model_draws": [
+            0.019450563183146252,
+            0.019450563183146252
+          ],
+          "llm_oppose": 0.07,
+          "model_oppose": 0.018314963827557762,
+          "llm_if_oppose": [
+            0.0,
+            0.03
+          ],
+          "model_if_oppose": 0.018314963827557762,
+          "llm_support": 0.32,
+          "model_support": 0.02043580413443824,
+          "llm_if_support": [
+            0.35,
+            0.38
+          ],
+          "model_if_support": 0.1831496382755776,
+          "model": 0.019450563183146252
+        },
+        {
+          "meeting": 4,
+          "veto": "helene_vasseur",
+          "llm_draws": [
+            0.81,
+            0.84,
+            0.7,
+            0.82,
+            0.8
+          ],
+          "model_draws": [
+            0.3280188069340255,
+            0.3280188069340255
+          ],
+          "llm_oppose": 0.08,
+          "model_oppose": 0.10256874222548755,
+          "llm_if_oppose": [
+            0.0,
+            0.1
+          ],
+          "model_if_oppose": 0.048759894029643036,
+          "llm_support": 0.78,
+          "model_support": 0.4099303556712601,
+          "llm_if_support": [
+            0.75,
+            0.78
+          ],
+          "model_if_support": 0.48759894029643025,
+          "model": 0.3280188069340255
+        }
+      ]
+    },
+    {
+      "deal_id": "02_array_cables_66_kv_ferme_des_brumes_780_",
+      "points": [
+        {
+          "meeting": 2,
+          "veto": "antoine_mercier",
+          "llm_draws": [
+            0.17,
+            0.18,
+            0.2,
+            0.12,
+            0.15
+          ],
+          "model_draws": [
+            0.35944353549203734,
+            0.35944353549203734
+          ],
+          "llm_oppose": 0.04,
+          "model_oppose": 0.167529474617404,
+          "llm_if_oppose": [
+            0.0,
+            0.07
+          ],
+          "model_if_oppose": 0.046810886992739796,
+          "llm_support": 0.15,
+          "model_support": 0.4073964242861786,
+          "llm_if_support": [
+            0.35,
+            0.32
+          ],
+          "model_if_support": 0.4681088699273978,
+          "model": 0.35944353549203734
+        },
+        {
+          "meeting": 4,
+          "veto": "antoine_mercier",
+          "llm_draws": [
+            0.08,
+            0.08,
+            0.08,
+            0.08,
+            0.08
+          ],
+          "model_draws": [
+            0.06309103480062456,
+            0.06309103480062456
+          ],
+          "llm_oppose": 0.07,
+          "model_oppose": 0.037781101953105606,
+          "llm_if_oppose": [
+            0.01,
+            0.03
+          ],
+          "model_if_oppose": 0.03476946051666583,
+          "llm_support": 0.07,
+          "model_support": 0.0897784491321941,
+          "llm_if_support": [
+            0.3,
+            0.17
+          ],
+          "model_if_support": 0.34769460516665823,
+          "model": 0.06309103480062456
+        }
+      ]
+    },
+    {
+      "deal_id": "03_orivale_edge_horizon_24",
+      "points": [
+        {
+          "meeting": 2,
+          "veto": "olivier_ravel",
+          "llm_draws": [
+            0.35,
+            0.18,
+            0.3,
+            0.38,
+            0.2
+          ],
+          "model_draws": [
+            0.33815428285741134,
+            0.33815428285741134
+          ],
+          "llm_oppose": 0.08,
+          "model_oppose": 0.14581448046061704,
+          "llm_if_oppose": [
+            0.0,
+            0.03
+          ],
+          "model_if_oppose": 0.04551401399009694,
+          "llm_support": 0.45,
+          "model_support": 0.38384173961234935,
+          "llm_if_support": [
+            0.65,
+            0.62
+          ],
+          "model_if_support": 0.45514013990096935,
+          "model": 0.33815428285741134
+        },
+        {
+          "meeting": 4,
+          "veto": "olivier_ravel",
+          "llm_draws": [
+            0.78,
+            0.85,
+            0.85,
+            0.85,
+            0.85
+          ],
+          "model_draws": [
+            0.45836254469453286,
+            0.45836254469453286
+          ],
+          "llm_oppose": 0.1,
+          "model_oppose": 0.2181981483227069,
+          "llm_if_oppose": [
+            0.0,
+            0.07
+          ],
+          "model_if_oppose": 0.061823808196749284,
+          "llm_support": 0.85,
+          "model_support": 0.5094263898976197,
+          "llm_if_support": [
+            0.85,
+            0.85
+          ],
+          "model_if_support": 0.6182380819674929,
+          "model": 0.45836254469453286
+        }
+      ]
+    },
+    {
+      "deal_id": "04_liaison_fibre_abyssale_alizee_segment_va",
+      "points": [
+        {
+          "meeting": 2,
+          "veto": "elise_marchand",
+          "llm_draws": [
+            0.18,
+            0.25,
+            0.18,
+            0.22,
+            0.2
+          ],
+          "model_draws": [
+            0.19092842735064722,
+            0.19092842735064722
+          ],
+          "llm_oppose": 0.08,
+          "model_oppose": 0.06907016063165174,
+          "llm_if_oppose": [
+            0.0,
+            0.04
+          ],
+          "model_if_oppose": 0.04681233683989061,
+          "llm_support": 0.18,
+          "model_support": 0.25359936556874074,
+          "llm_if_support": [
+            0.38,
+            0.45
+          ],
+          "model_if_support": 0.468123368398906,
+          "model": 0.19092842735064722
+        },
+        {
+          "meeting": 4,
+          "veto": "elise_marchand",
+          "llm_draws": [
+            0.12,
+            0.12,
+            0.12,
+            0.12,
+            0.12
+          ],
+          "model_draws": [
+            0.06410476575067434,
+            0.06410476575067434
+          ],
+          "llm_oppose": 0.07,
+          "model_oppose": 0.043849215990748557,
+          "llm_if_oppose": [
+            0.0,
+            0.05
+          ],
+          "model_if_oppose": 0.04147840455634993,
+          "llm_support": 0.12,
+          "model_support": 0.08875210710051915,
+          "llm_if_support": [
+            0.32,
+            0.22
+          ],
+          "model_if_support": 0.4147840455634992,
+          "model": 0.06410476575067434
+        }
+      ]
+    },
+    {
+      "deal_id": "05_retrofit_cooling_hexacube_valmea_free_co",
+      "points": [
+        {
+          "meeting": 2,
+          "veto": "sophie_legrand",
+          "llm_draws": [
+            0.22,
+            0.28,
+            0.28,
+            0.2,
+            0.22
+          ],
+          "model_draws": [
+            0.30868355064040515,
+            0.30868355064040515
+          ],
+          "llm_oppose": 0.07,
+          "model_oppose": 0.13338798835598425,
+          "llm_if_oppose": [
+            0.01,
+            0.05
+          ],
+          "model_if_oppose": 0.04163486457899412,
+          "llm_support": 0.2,
+          "model_support": 0.3565036597245764,
+          "llm_if_support": [
+            0.18,
+            0.2
+          ],
+          "model_if_support": 0.41634864578994113,
+          "model": 0.30868355064040515
+        },
+        {
+          "meeting": 4,
+          "veto": "sophie_legrand",
+          "llm_draws": [
+            0.15,
+            0.15,
+            0.18,
+            0.15,
+            0.15
+          ],
+          "model_draws": [
+            0.26863406568945253,
+            0.26863406568945253
+          ],
+          "llm_oppose": 0.05,
+          "model_oppose": 0.12792701868765163,
+          "llm_if_oppose": [
+            0.0,
+            0.03
+          ],
+          "model_if_oppose": 0.037081412484022525,
+          "llm_support": 0.15,
+          "model_support": 0.30261953110422074,
+          "llm_if_support": [
+            0.2,
+            0.12
+          ],
+          "model_if_support": 0.37081412484022513,
+          "model": 0.26863406568945253
+        }
+      ]
+    },
+    {
+      "deal_id": "06_cable_aurore_liaison_sous_marine_mirval_",
+      "points": [
+        {
+          "meeting": 2,
+          "veto": "helene_rochebrune",
+          "llm_draws": [
+            0.15,
+            0.18,
+            0.15,
+            0.18,
+            0.15
+          ],
+          "model_draws": [
+            0.048991067350971605,
+            0.048991067350971605
+          ],
+          "llm_oppose": 0.07,
+          "model_oppose": 0.029253519430795797,
+          "llm_if_oppose": [
+            0.0,
+            0.04
+          ],
+          "model_if_oppose": 0.005342507923025732,
+          "llm_support": 0.15,
+          "model_support": 0.0516860023008403,
+          "llm_if_support": [
+            0.15,
+            0.15
+          ],
+          "model_if_support": 0.05342507923025733,
+          "model": 0.048991067350971605
+        },
+        {
+          "meeting": 4,
+          "veto": "helene_rochebrune",
+          "llm_draws": [
+            0.72,
+            0.72,
+            0.72,
+            0.68,
+            0.72
+          ],
+          "model_draws": [
+            0.3877739650370234,
+            0.3877739650370234
+          ],
+          "llm_oppose": 0.08,
+          "model_oppose": 0.24182857168871624,
+          "llm_if_oppose": [
+            0.0,
+            0.03
+          ],
+          "model_if_oppose": 0.0412404243142835,
+          "llm_support": 0.68,
+          "model_support": 0.4027250186930622,
+          "llm_if_support": [
+            0.68,
+            0.68
+          ],
+          "model_if_support": 0.4124042431428349,
+          "model": 0.3877739650370234
+        }
+      ]
+    },
+    {
+      "deal_id": "07_cadre_reparation_cables_brume_2026_2031",
+      "points": [
+        {
+          "meeting": 2,
+          "veto": "edouard_vasseur",
+          "llm_draws": [
+            0.3,
+            0.35,
+            0.28,
+            0.2,
+            0.32
+          ],
+          "model_draws": [
+            0.32801408539013654,
+            0.32801408539013654
+          ],
+          "llm_oppose": 0.05,
+          "model_oppose": 0.13549459030356104,
+          "llm_if_oppose": [
+            0.0,
+            0.08
+          ],
+          "model_if_oppose": 0.04299601998498793,
+          "llm_support": 0.2,
+          "model_support": 0.37666995068995024,
+          "llm_if_support": [
+            0.48,
+            0.6
+          ],
+          "model_if_support": 0.42996019984987915,
+          "model": 0.32801408539013654
+        },
+        {
+          "meeting": 4,
+          "veto": "edouard_vasseur",
+          "llm_draws": [
+            0.08,
+            0.08,
+            0.07,
+            0.07,
+            0.1
+          ],
+          "model_draws": [
+            0.03041490302368074,
+            0.03041490302368074
+          ],
+          "llm_oppose": 0.05,
+          "model_oppose": 0.01661300318722733,
+          "llm_if_oppose": [
+            0.02,
+            0.05
+          ],
+          "model_if_oppose": 0.01428507763796508,
+          "llm_support": 0.08,
+          "model_support": 0.04496882311285145,
+          "llm_if_support": [
+            0.2,
+            0.18
+          ],
+          "model_if_support": 0.1428507763796508,
+          "model": 0.03041490302368074
+        }
+      ]
+    },
+    {
+      "deal_id": "08_anneau_fibre_clairval_cur_rhea",
+      "points": [
+        {
+          "meeting": 2,
+          "veto": "camille_verdier",
+          "llm_draws": [
+            0.2,
+            0.22,
+            0.18,
+            0.22,
+            0.22
+          ],
+          "model_draws": [
+            0.26038861887440007,
+            0.26038861887440007
+          ],
+          "llm_oppose": 0.08,
+          "model_oppose": 0.11280907193631273,
+          "llm_if_oppose": [
+            0.0,
+            0.05
+          ],
+          "model_if_oppose": 0.033059351918385875,
+          "llm_support": 0.22,
+          "model_support": 0.29509616872883054,
+          "llm_if_support": [
+            0.22,
+            0.2
+          ],
+          "model_if_support": 0.33059351918385876,
+          "model": 0.26038861887440007
+        },
+        {
+          "meeting": 4,
+          "veto": "camille_verdier",
+          "llm_draws": [
+            0.68,
+            0.7,
+            0.65,
+            0.73,
+            0.75
+          ],
+          "model_draws": [
+            0.4203339121351339,
+            0.4203339121351339
+          ],
+          "llm_oppose": 0.07,
+          "model_oppose": 0.2220126539880739,
+          "llm_if_oppose": [
+            0.0,
+            0.05
+          ],
+          "model_if_oppose": 0.04805002772667673,
+          "llm_support": 0.78,
+          "model_support": 0.45566126377486493,
+          "llm_if_support": [
+            0.65,
+            0.7
+          ],
+          "model_if_support": 0.48050027726676725,
+          "model": 0.4203339121351339
+        }
+      ]
+    },
+    {
+      "deal_id": "09_sous_station_offshore_hydrogen_ready_des",
+      "points": [
+        {
+          "meeting": 2,
+          "veto": "helene_marchand",
+          "llm_draws": [
+            0.22,
+            0.18,
+            0.22,
+            0.22,
+            0.24
+          ],
+          "model_draws": [
+            0.3522936530296578,
+            0.3522936530296578
+          ],
+          "llm_oppose": 0.03,
+          "model_oppose": 0.1598689643030125,
+          "llm_if_oppose": [
+            0.0,
+            0.04
+          ],
+          "model_if_oppose": 0.0429461093402368,
+          "llm_support": 0.22,
+          "model_support": 0.3928310632943555,
+          "llm_if_support": [
+            0.25,
+            0.28
+          ],
+          "model_if_support": 0.42946109340236793,
+          "model": 0.3522936530296578
+        },
+        {
+          "meeting": 4,
+          "veto": "helene_marchand",
+          "llm_draws": [
+            0.12,
+            0.14,
+            0.12,
+            0.12,
+            0.15
+          ],
+          "model_draws": [
+            0.2670606575951521,
+            0.2670606575951521
+          ],
+          "llm_oppose": 0.05,
+          "model_oppose": 0.12662385610583363,
+          "llm_if_oppose": [
+            0.02,
+            0.03
+          ],
+          "model_if_oppose": 0.03577780350849828,
+          "llm_support": 0.12,
+          "model_support": 0.30105068119665507,
+          "llm_if_support": [
+            0.18,
+            0.15
+          ],
+          "model_if_support": 0.3577780350849828,
+          "model": 0.2670606575951521
+        }
+      ]
+    },
+    {
+      "deal_id": "10_novacentre_valtaneuse_nord_distributio",
+      "points": [
+        {
+          "meeting": 2,
+          "veto": "nadine_perrin",
+          "llm_draws": [
+            0.22,
+            0.28,
+            0.22,
+            0.25,
+            0.25
+          ],
+          "model_draws": [
+            0.41507982532671805,
+            0.41507982532671805
+          ],
+          "llm_oppose": 0.05,
+          "model_oppose": 0.17216693754198878,
+          "llm_if_oppose": [
+            0.0,
+            0.07
+          ],
+          "model_if_oppose": 0.05440945663448225,
+          "llm_support": 0.25,
+          "model_support": 0.4784531341156497,
+          "llm_if_support": [
+            0.4,
+            0.58
+          ],
+          "model_if_support": 0.5440945663448226,
+          "model": 0.41507982532671805
+        },
+        {
+          "meeting": 4,
+          "veto": "nadine_perrin",
+          "llm_draws": [
+            0.12,
+            0.1,
+            0.12,
+            0.12,
+            0.12
+          ],
+          "model_draws": [
+            0.0439176011037724,
+            0.0439176011037724
+          ],
+          "llm_oppose": 0.06,
+          "model_oppose": 0.022338117396008456,
+          "llm_if_oppose": [
+            0.0,
+            0.03
+          ],
+          "model_if_oppose": 0.020163595266082846,
+          "llm_support": 0.1,
+          "model_support": 0.06685456927830223,
+          "llm_if_support": [
+            0.25,
+            0.18
+          ],
+          "model_if_support": 0.20163595266082843,
+          "model": 0.0439176011037724
+        }
+      ]
+    }
+  ]
+}

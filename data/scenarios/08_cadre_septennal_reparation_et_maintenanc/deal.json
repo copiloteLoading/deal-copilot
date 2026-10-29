@@ -1,0 +1,162 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "08_cadre_septennal_reparation_et_maintenanc",
+  "name": "Cadre septennal réparation et maintenance câbles Valmarec",
+  "seller": "Ateliers Marlec Subsea SAS",
+  "sales_rep": "Hélène Perrot",
+  "buyer": "Groupement Valmarec Entretien Câbles",
+  "description": "Contrat-cadre de 7 ans pour la maintenance préventive, la permanence d'intervention et la réparation des câbles sous-marins reliant les stations de Valmarec, Port-Belin et du plateau de Trevallion. Le vendeur met à disposition un navire câblier dédié, un stock mutualisé de câbles et répéteurs, et une astreinte 24/7 pour le compte du groupement d'opérateurs. Le dossier est techniquement consensuel dès le départ, mais la revue juridique des clauses de responsabilité, d'assurance et de pénalités ralentit fortement le calendrier.",
+  "value_meur": 42.7,
+  "opened": "2026-02-18",
+  "target_signature": null,
+  "competitors": [
+    "Entreprise Sorel Marine Travaux",
+    "Compagnie Vasseur Câbles Océaniques"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "le Groupement",
+        "GVE"
+      ],
+      "id": "gema",
+      "name": "Groupement Valmarec Entretien Câbles",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "Noroit",
+        "Noroit Co"
+      ],
+      "id": "tel_noroit",
+      "name": "Noroit Connectivité SA",
+      "type": "consortium_member"
+    },
+    {
+      "aliases": [
+        "Belin Telecom",
+        "BTR"
+      ],
+      "id": "tel_belin",
+      "name": "Belin Télécom Réseaux SA",
+      "type": "consortium_member"
+    },
+    {
+      "aliases": [
+        "Valmont",
+        "la banque"
+      ],
+      "id": "fin_valmont",
+      "name": "Banque Valmont Infrastructures",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "Certibel",
+        "le bureau"
+      ],
+      "id": "cert_belin",
+      "name": "Bureau Certibel Marine",
+      "type": "regulator"
+    }
+  ],
+  "actors": [
+    {
+      "id": "y_lefebvre",
+      "name": "Yann Lefebvre",
+      "org": "gema",
+      "role": "Directeur du groupement d'entretien des câbles",
+      "influence": 0.9,
+      "veto": true,
+      "aliases": [
+        "Yann",
+        "le directeur",
+        "le patron du groupement"
+      ]
+    },
+    {
+      "id": "s_berthier",
+      "name": "Sophie Berthier",
+      "org": "gema",
+      "role": "Responsable juridique du groupement",
+      "influence": 0.82,
+      "veto": true,
+      "aliases": [
+        "Sophie",
+        "la juriste",
+        "le frein légal"
+      ]
+    },
+    {
+      "id": "c_aubert",
+      "name": "Claire Aubert",
+      "org": "tel_noroit",
+      "role": "Directrice maintenance réseau de l'opérateur membre",
+      "influence": 0.65,
+      "veto": false,
+      "aliases": [
+        "Claire",
+        "la tech Noroit"
+      ]
+    },
+    {
+      "id": "m_fontan",
+      "name": "Marc Fontan",
+      "org": "tel_belin",
+      "role": "Responsable des opérations sous-marines de l'opérateur membre",
+      "influence": 0.6,
+      "veto": false,
+      "aliases": [
+        "Marc",
+        "l'ops"
+      ]
+    },
+    {
+      "id": "l_girard",
+      "name": "Laurence Girard",
+      "org": "fin_valmont",
+      "role": "Directrice financements d'infrastructures de la banque privée",
+      "influence": 0.55,
+      "veto": false,
+      "aliases": [
+        "Laurence",
+        "la banquière"
+      ]
+    },
+    {
+      "id": "p_leroux",
+      "name": "Philippe Leroux",
+      "org": "cert_belin",
+      "role": "Auditeur technique indépendant du bureau certificateur privé",
+      "influence": 0.5,
+      "veto": false,
+      "aliases": [
+        "Philippe",
+        "le certificateur",
+        "l'auditeur"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-02-18",
+      "title": "Lancement technique et visite du navire câblier",
+      "debrief": "debriefs/1_2026-02-18.txt"
+    },
+    {
+      "date": "2026-05-06",
+      "title": "Revue contractuelle du cadre septennal",
+      "debrief": "debriefs/2_2026-05-06.txt"
+    },
+    {
+      "date": "2026-07-22",
+      "title": "Essai d'intervention et audit de conformité",
+      "debrief": "debriefs/3_2026-07-22.txt"
+    },
+    {
+      "date": "2026-09-30",
+      "title": "Finalisation juridique et plan de mobilisation",
+      "debrief": "debriefs/4_2026-09-30.txt"
+    }
+  ]
+}

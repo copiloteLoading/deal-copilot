@@ -1,0 +1,90 @@
+[
+  {
+    "date": "2026-02-18",
+    "mentions": [
+      {
+        "actor_id": "julien_favre",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "thomas_leroux",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "claire_voisin",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "karim_benali",
+        "stance_expressed": "conditional"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-23",
+    "mentions": [
+      {
+        "actor_id": "julien_favre",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "claire_voisin",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "thomas_leroux",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "antoine_mercier",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-06-25",
+    "mentions": [
+      {
+        "actor_id": "antoine_mercier",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "claire_voisin",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "helene_brossard",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "thomas_leroux",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-17",
+    "mentions": [
+      {
+        "actor_id": "antoine_mercier",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "thomas_leroux",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "claire_voisin",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "helene_brossard",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "karim_benali",
+        "stance_expressed": "neutral"
+      }
+    ]
+  }
+]

@@ -1,0 +1,163 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "04_liaison_fibre_abyssale_alizee_segment_va",
+  "name": "Liaison Fibre Abyssale Alizee - Segment Valbreuse",
+  "seller": "Nautile Fibre Systèmes",
+  "sales_rep": "Claire Vasseur",
+  "buyer": "Pelagos Laboratoire Hauturier",
+  "description": "Contrat pluriannuel de 8 ans pour la conception, la fabrication et la pose d'une liaison privée en fibre optique sous-marine de 118 km entre la station hauturière Alizée et le point d'atterrage de Valbreuse, avec maintenance et supervision, pour l'opérateur de recherche Pelagos Laboratoire Hauturier.",
+  "value_meur": 38.4,
+  "opened": "2026-02-18",
+  "target_signature": null,
+  "competitors": [
+    "Hélior Networks Câbles",
+    "Baltic Link Fibre"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "Pelagos",
+        "le Labo"
+      ],
+      "id": "pelagos_lab",
+      "name": "Pelagos Laboratoire Hauturier",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "BFA",
+        "la banque"
+      ],
+      "id": "bfa_partners",
+      "name": "Banque Franco-Atlantique",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "le Comité",
+        "CEREM"
+      ],
+      "id": "cerem",
+      "name": "CEREM - Comité d'Evaluation des Réseaux Marins",
+      "type": "regulator"
+    },
+    {
+      "aliases": [
+        "NTS",
+        "le poseur"
+      ],
+      "id": "nord_travaux",
+      "name": "Nord Travaux Sous-Marins",
+      "type": "subcontractor"
+    },
+    {
+      "aliases": [
+        "Hélior"
+      ],
+      "id": "helior_net",
+      "name": "Hélior Networks Câbles",
+      "type": "competitor"
+    }
+  ],
+  "actors": [
+    {
+      "id": "elise_marchand",
+      "name": "Elise Marchand",
+      "org": "pelagos_lab",
+      "role": "Directrice administrative et financière du laboratoire, responsable du plan d'investissement",
+      "influence": 0.92,
+      "veto": true,
+      "aliases": [
+        "la DAF",
+        "Elise",
+        "la financiere"
+      ]
+    },
+    {
+      "id": "romain_bellec",
+      "name": "Romain Bellec",
+      "org": "pelagos_lab",
+      "role": "Directeur général de l'opérateur de la station, décideur final du programme câblier",
+      "influence": 0.85,
+      "veto": true,
+      "aliases": [
+        "Romain",
+        "le DG",
+        "Bellec"
+      ]
+    },
+    {
+      "id": "ines_leroux",
+      "name": "Ines Leroux",
+      "org": "pelagos_lab",
+      "role": "Directrice technique réseaux et infrastructures sous-marines, porteuse du besoin",
+      "influence": 0.62,
+      "veto": false,
+      "aliases": [
+        "Ines",
+        "la tech",
+        "Madame Fibre"
+      ]
+    },
+    {
+      "id": "karim_bensaid",
+      "name": "Karim Bensaid",
+      "org": "pelagos_lab",
+      "role": "Responsable des opérations offshore et de la maintenance de la station Alizee",
+      "influence": 0.55,
+      "veto": false,
+      "aliases": [
+        "Karim",
+        "le chef ops"
+      ]
+    },
+    {
+      "id": "marc_aubert",
+      "name": "Marc Aubert",
+      "org": "bfa_partners",
+      "role": "Chargé d'affaires financement d'infrastructures, conditionne le prêt relais",
+      "influence": 0.7,
+      "veto": true,
+      "aliases": [
+        "le banquier",
+        "Marc",
+        "Monsieur BFA"
+      ]
+    },
+    {
+      "id": "sophie_queneau",
+      "name": "Sophie Queneau",
+      "org": "cerem",
+      "role": "Rapporteure autorisation de pose au comité d'évaluation des réseaux marins",
+      "influence": 0.48,
+      "veto": false,
+      "aliases": [
+        "Sophie",
+        "la rapporteure",
+        "Madame CEREM"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-02-18",
+      "title": "Cadrage technique et capacité 400G",
+      "debrief": "debriefs/1_2026-02-18.txt"
+    },
+    {
+      "date": "2026-05-14",
+      "title": "Revue budgétaire et schéma de financement",
+      "debrief": "debriefs/2_2026-05-14.txt"
+    },
+    {
+      "date": "2026-07-23",
+      "title": "Point d'avancement tracé et coûts re-phasés",
+      "debrief": "debriefs/3_2026-07-23.txt"
+    },
+    {
+      "date": "2026-10-06",
+      "title": "Arbitrage d'automne du programme câblier",
+      "debrief": "debriefs/4_2026-10-06.txt"
+    }
+  ]
+}

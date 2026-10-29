@@ -1,0 +1,168 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "07_cadre_reparation_cables_brume_2026_2031",
+  "name": "Cadre réparation câbles Brume 2026-2031",
+  "seller": "Câblerie Valmer Océane",
+  "sales_rep": "Julien Fabre",
+  "buyer": "Société Parc Brume Énergie",
+  "description": "Accord-cadre de 5 ans pour la surveillance, la localisation de défauts et la réparation des câbles inter-turbines et d'export du parc Brume, avec stockage de câbles de rechange, astreinte 24/7 et mobilisation navale sous 48h. Le vendeur, ETI spécialisée, propose une offre technique compétitive mais adossée à une surface financière limitée. Le prêteur chef de file conditionne tout le financement à des garanties lourdes que le vendeur ne peut pas apporter.",
+  "value_meur": 57.5,
+  "opened": "2026-02-18",
+  "target_signature": null,
+  "competitors": [
+    "Voltsea Câbles Réunis",
+    "Société Tressal Réparation Marine"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "Brume Énergie",
+        "le Parc"
+      ],
+      "id": "brume_energie",
+      "name": "Société Parc Brume Énergie",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "Hodierne",
+        "la banque du projet"
+      ],
+      "id": "hodierne_fin",
+      "name": "Financière Hodierne Maritime",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "Littoral Partenaires",
+        "la coop"
+      ],
+      "id": "littoral_part",
+      "name": "Coopérative Littoral Partenaires",
+      "type": "consortium_member"
+    },
+    {
+      "aliases": [
+        "Certimer",
+        "le certificateur"
+      ],
+      "id": "certimer",
+      "name": "Certimer Offshore",
+      "type": "regulator"
+    },
+    {
+      "aliases": [
+        "Naviris",
+        "l'armateur"
+      ],
+      "id": "naviris_serv",
+      "name": "Naviris Services Maritimes",
+      "type": "subcontractor"
+    },
+    {
+      "aliases": [
+        "Voltsea"
+      ],
+      "id": "voltsea_reunis",
+      "name": "Voltsea Câbles Réunis",
+      "type": "competitor"
+    }
+  ],
+  "actors": [
+    {
+      "id": "ophelie_marchand",
+      "name": "Ophélie Marchand",
+      "org": "brume_energie",
+      "role": "Directrice Opérations du parc",
+      "influence": 0.85,
+      "veto": false,
+      "aliases": [
+        "Ophélie",
+        "la Directrice Ops"
+      ]
+    },
+    {
+      "id": "yannick_perrot",
+      "name": "Yannick Perrot",
+      "org": "brume_energie",
+      "role": "Directeur Administratif et Financier du parc",
+      "influence": 0.7,
+      "veto": false,
+      "aliases": [
+        "Yannick",
+        "le DAF"
+      ]
+    },
+    {
+      "id": "edouard_vasseur",
+      "name": "Édouard Vasseur",
+      "org": "hodierne_fin",
+      "role": "Directeur Risques Projet de la financière cheffe de file",
+      "influence": 0.95,
+      "veto": true,
+      "aliases": [
+        "Édouard",
+        "le banquier",
+        "le prêteur"
+      ]
+    },
+    {
+      "id": "laure_belin",
+      "name": "Laure Bélin",
+      "org": "littoral_part",
+      "role": "Présidente de la coopérative co-actionnaire",
+      "influence": 0.75,
+      "veto": true,
+      "aliases": [
+        "Laure",
+        "la coop"
+      ]
+    },
+    {
+      "id": "severin_collet",
+      "name": "Séverin Collet",
+      "org": "certimer",
+      "role": "Responsable Certification des activités de maintenance",
+      "influence": 0.8,
+      "veto": true,
+      "aliases": [
+        "Séverin",
+        "le certificateur"
+      ]
+    },
+    {
+      "id": "tristan_aubert",
+      "name": "Tristan Aubert",
+      "org": "naviris_serv",
+      "role": "Directeur Flotte du sous-traitant maritime pressenti",
+      "influence": 0.5,
+      "veto": false,
+      "aliases": [
+        "Tristan",
+        "l'armateur"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-02-18",
+      "title": "Lancement technique - périmètre de maintenance",
+      "debrief": "debriefs/1_2026-02-18.txt"
+    },
+    {
+      "date": "2026-04-24",
+      "title": "Revue offre technique et moyens navals",
+      "debrief": "debriefs/2_2026-04-24.txt"
+    },
+    {
+      "date": "2026-07-02",
+      "title": "Revue financière et garanties",
+      "debrief": "debriefs/3_2026-07-02.txt"
+    },
+    {
+      "date": "2026-09-25",
+      "title": "Dernière négociation - allocation des risques",
+      "debrief": "debriefs/4_2026-09-25.txt"
+    }
+  ]
+}

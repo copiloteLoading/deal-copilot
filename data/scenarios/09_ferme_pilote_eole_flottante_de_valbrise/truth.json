@@ -1,0 +1,88 @@
+{
+  "outcome": "delayed",
+  "outcome_explanation": "Le projet n'est ni signé ni abandonné. Quelques semaines après la réunion d'octobre, les deux membres du consortium, Voltis et AéroCiel, restent bloqués sur la répartition des surcoûts d'ancrage : chacun détient un veto et refuse la clé proposée par l'autre. La directrice du consortium ne peut pas trancher seule et le financeur suspend son instruction. Le contrat avec Nautelia est mis en attente d'un nouveau modèle de partage des coûts.",
+  "hidden_interests": {
+    "helene_brossard": "veut absolument faire aboutir la ferme pilote pour sa réputation, mais refuse de porter seule le risque financier du consortium",
+    "marc_aubry": "cherche à limiter l'exposition de Voltis aux surcoûts des flotteurs et veut renégocier la clé de répartition",
+    "sophie_leroux": "doit protéger la rentabilité d'AéroCiel et refuse toute dérive du partage 50/50 initial vers un 60/40",
+    "karim_benali": "veut que le projet se fasse vite pour sécuriser son poste et valider sa solution d'ancrage",
+    "elodie_perrin": "ne débloquera le prêt que si la clé de partage des coûts et des risques est signée par les deux partenaires",
+    "thomas_vidal": "veut imposer des études complémentaires de tenue en mer pour justifier de nouvelles missions"
+  },
+  "positions": [
+    {
+      "date": "2026-02-18",
+      "attendees": [
+        "helene_brossard",
+        "marc_aubry",
+        "karim_benali",
+        "thomas_vidal"
+      ],
+      "what_really_happens": "Démonstration réussie du flotteur en bassin. Marc et Karim sont enthousiastes, Hélène pousse pour un calendrier rapide. Sophie, absente, valide sur le principe. Personne ne parle encore de dérapage budgétaire.",
+      "stances": {
+        "helene_brossard": "support",
+        "marc_aubry": "support",
+        "sophie_leroux": "support",
+        "karim_benali": "support",
+        "elodie_perrin": "neutral",
+        "thomas_vidal": "neutral"
+      }
+    },
+    {
+      "date": "2026-05-06",
+      "attendees": [
+        "helene_brossard",
+        "marc_aubry",
+        "sophie_leroux",
+        "elodie_perrin"
+      ],
+      "what_really_happens": "Nautelia annonce +18% sur les ancrages à cause des sols. Sophie refuse que AéroCiel absorbe la moitié du surcoût et exige un partage au prorata de l'usage. Marc reste prudent et demande un audit. Hélène tente de calmer le jeu.",
+      "stances": {
+        "helene_brossard": "neutral",
+        "marc_aubry": "neutral",
+        "sophie_leroux": "oppose",
+        "karim_benali": "support",
+        "elodie_perrin": "neutral",
+        "thomas_vidal": "neutral"
+      }
+    },
+    {
+      "date": "2026-07-22",
+      "attendees": [
+        "helene_brossard",
+        "marc_aubry",
+        "sophie_leroux",
+        "karim_benali",
+        "elodie_perrin"
+      ],
+      "what_really_happens": "Voltis propose une répartition 60/40 des surcoûts, AéroCiel la rejette frontalement. Marc dit que sans nouvel équilibre, Voltis ne signera pas le lot flotteurs. Élodie prévient qu'en l'état le dossier n'est pas finlançable. Karim se désolidarise de sa direction.",
+      "stances": {
+        "helene_brossard": "neutral",
+        "marc_aubry": "oppose",
+        "sophie_leroux": "oppose",
+        "karim_benali": "neutral",
+        "elodie_perrin": "oppose",
+        "thomas_vidal": "neutral"
+      }
+    },
+    {
+      "date": "2026-10-02",
+      "attendees": [
+        "helene_brossard",
+        "marc_aubry",
+        "sophie_leroux",
+        "elodie_perrin",
+        "thomas_vidal"
+      ],
+      "what_really_happens": "Thomas valide la solution technique, mais cela ne suffit pas. Sophie et Marc campent chacun sur leur clé de partage et demandent de nouveaux chiffrages à Nautelia. Hélène propose un groupe de travail sur les coûts. La réunion se termine sans accord sur le partage, chacun repart avec des devoirs.",
+      "stances": {
+        "helene_brossard": "neutral",
+        "marc_aubry": "oppose",
+        "sophie_leroux": "oppose",
+        "karim_benali": "neutral",
+        "elodie_perrin": "neutral",
+        "thomas_vidal": "support"
+      }
+    }
+  ]
+}

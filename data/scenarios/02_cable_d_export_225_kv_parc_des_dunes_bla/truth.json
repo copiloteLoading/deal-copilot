@@ -1,0 +1,88 @@
+{
+  "outcome": "lost",
+  "outcome_explanation": "Quelques semaines après la dernière réunion, le rapport environnemental complémentaire n'est toujours pas validé et la Banque Seinoise a silencieusement réaffecté la ligne de crédit sans notifier formellement son retrait. Sans financement, Thibault oppose son veto à la signature au prix initial et Sofia refuse de couvrir le coût d'attente. Le dossier est gelé puis relancé en décalé six mois plus tard sur une base moins chère remportée par la Câblerie du Fjord Septentrional.",
+  "hidden_interests": {
+    "helene_voisard": "Veut livrer le parc à l'heure pour obtenir son bonus et une promotion interne ; craint d'être tenue responsable du retard.",
+    "thibault_renard": "Veut protéger la trésorerie du projet et ne signer aucun contrat tant que le financement n'est pas sécurisé ; vise un poste au comité de direction.",
+    "marc_aubertin": "Veut imposer une solution technique robuste à 225 kV pour laisser sa marque d'expert ; reste loyal au planning initial.",
+    "sofia_belkacem": "Doit justifier l'investissement de sa coopérative auprès de ses adhérents ; cherche à éviter tout surcoût ou report de dividendes.",
+    "antoine_lefevre": "Veut afficher un portefeuille vert sans aucun risque réputationnel sur l'impact benthique ; préfère se retirer en silence plutôt que dire non frontalement.",
+    "claire_duret": "Veut protéger sa crédibilité de certificateur indépendant ; n'accepte de valider que des études complètes pour garder ses autres mandats."
+  },
+  "positions": [
+    {
+      "date": "2026-02-19",
+      "attendees": [
+        "helene_voisard",
+        "marc_aubertin",
+        "sofia_belkacem",
+        "antoine_lefevre"
+      ],
+      "what_really_happens": "Présentation de l'offre de la Câblerie Armoricaine Moderne pour les deux liaisons 225 kV. Marc défend le dimensionnement, Hélène pousse pour un calendrier resserré, Sofia valide le budget. Antoine se montre poli mais conditionne tout au bouclage de l'étude environnementale benthique attendue en mai. Claire rappelle les points de vigilance sur l'atterrage.",
+      "stances": {
+        "helene_voisard": "support",
+        "thibault_renard": "neutral",
+        "marc_aubertin": "support",
+        "sofia_belkacem": "support",
+        "antoine_lefevre": "neutral",
+        "claire_duret": "neutral"
+      }
+    },
+    {
+      "date": "2026-04-24",
+      "attendees": [
+        "helene_voisard",
+        "thibault_renard",
+        "marc_aubertin",
+        "claire_duret"
+      ],
+      "what_really_happens": "Le laboratoire sous-traitant annonce trois semaines de retard sur l'analyse des carottages et un échantillonnage incomplet sur le corridor d'atterrage. Claire refuse de pré-valider en l'état. Thibault commence à s'inquiéter des pénalités de planning. Le commercial croit encore à un simple glissement.",
+      "stances": {
+        "helene_voisard": "support",
+        "thibault_renard": "neutral",
+        "marc_aubertin": "support",
+        "sofia_belkacem": "neutral",
+        "antoine_lefevre": "neutral",
+        "claire_duret": "neutral"
+      }
+    },
+    {
+      "date": "2026-07-03",
+      "attendees": [
+        "helene_voisard",
+        "thibault_renard",
+        "sofia_belkacem",
+        "antoine_lefevre",
+        "claire_duret"
+      ],
+      "what_really_happens": "Claire exige une campagne complémentaire en fin d'été car la première campagne est inexploitable, ce qui repousse la remise finale à octobre. Hélène tente de minimiser pour garder le financement. Antoine ne pose aucune question, ne demande aucun document, prend très peu de notes et éc ourte la réunion : en réalité sa direction lui a déjà demandé de geler discrètement le dossier. Sofia s'agace du risque de report de mise en service.",
+      "stances": {
+        "helene_voisard": "support",
+        "thibault_renard": "neutral",
+        "marc_aubertin": "support",
+        "sofia_belkacem": "neutral",
+        "antoine_lefevre": "neutral",
+        "claire_duret": "oppose"
+      }
+    },
+    {
+      "date": "2026-09-25",
+      "attendees": [
+        "helene_voisard",
+        "thibault_renard",
+        "marc_aubertin",
+        "sofia_belkacem",
+        "claire_duret"
+      ],
+      "what_really_happens": "Antoine est absent excusé, ne répond plus aux relances du vendeur et a fait savoir en interne à la banque que la ligne de crédit serait réaffectée : le retrait est silencieux, sans courrier de refus. Sans attestation bancaire, Thibault explique qu'il ne peut plus faire signer le contrat au prix et au planning initiaux. Sofia refuse tout avenant avec surcoût de maintien d'équipe. Claire confirme que son rapport final ne sortira pas avant fin octobre. Hélène, isolée, demande un dernier chiffrage décalé que le vendeur prépare sans savoir que le financement est déjà perdu.",
+      "stances": {
+        "helene_voisard": "neutral",
+        "thibault_renard": "oppose",
+        "marc_aubertin": "neutral",
+        "sofia_belkacem": "oppose",
+        "antoine_lefevre": "oppose",
+        "claire_duret": "oppose"
+      }
+    }
+  ]
+}

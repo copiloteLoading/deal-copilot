@@ -1,0 +1,90 @@
+[
+  {
+    "date": "2026-02-18",
+    "mentions": [
+      {
+        "actor_id": "sophie_leroux",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "camille_verne",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "laurent_bodin",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "nicolas_fabre",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-22",
+    "mentions": [
+      {
+        "actor_id": "camille_verne",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "sophie_leroux",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "mehdi_kaci",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "elise_perrot",
+        "stance_expressed": "conditional"
+      }
+    ]
+  },
+  {
+    "date": "2026-07-08",
+    "mentions": [
+      {
+        "actor_id": "camille_verne",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "sophie_leroux",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "elise_perrot",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "laurent_bodin",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-24",
+    "mentions": [
+      {
+        "actor_id": "camille_verne",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "nicolas_fabre",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "sophie_leroux",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "mehdi_kaci",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "elise_perrot",
+        "stance_expressed": "support"
+      }
+    ]
+  }
+]

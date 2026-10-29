@@ -1,0 +1,87 @@
+{
+  "outcome": "signed",
+  "outcome_explanation": "La signature intervient quelques semaines après la réunion de septembre, une fois la relecture juridique purgée et l'attestation d'assurance reçue. Le compromis à 150% global avec sous-plafonds et faute lourde plafonnée à 200% a permis à la Directrice juridique de lever son veto sans dés Commit le DAF sur l'enveloppe, entraînant l'alignement du financeur et la signature du contrat de 48,6 MEUR.",
+  "hidden_interests": {
+    "camille_verdier": "Veut inaugurer l'anneau cœur avant fin 2027 pour décrocher la direction générale du groupe.",
+    "antoine_bertel": "Veut protéger le plan de financement : aucun engagement hors cap global validé par le fonds.",
+    "sophie_lamare": "Veut laisser une trace de négociatrice intransigeante sur les plafonds pour valoriser son équipe.",
+    "mehdi_kaci": "Veut un constructeur unique responsable de bout en bout pour éviter de gérer trois sous-traitants en exploitation.",
+    "laurent_porcher": "Veut un partage de risque vendeur suffisant pour faire passer le crédit projet sans provision supplémentaire.",
+    "elise_bouvard": "Veut être reconduite en mission de contrôle travaux sur les trois ans de déploiement."
+  },
+  "positions": [
+    {
+      "date": "2026-02-18",
+      "attendees": [
+        "camille_verdier",
+        "mehdi_kaci",
+        "antoine_bertel",
+        "elise_bouvard"
+      ],
+      "what_really_happens": "Vialys présente le tracé double boucle et le planning 30 mois. Mehdi et Camille adhèrent sur le plan technique. Antoine demande un cap global unique. Sophie, absente mais en copie, a déjà rejeté par note le plafond proposé à 100% du contrat comme insuffisant pour les coupures longues.",
+      "stances": {
+        "camille_verdier": "support",
+        "antoine_bertel": "neutral",
+        "sophie_lamare": "oppose",
+        "mehdi_kaci": "support",
+        "laurent_porcher": "neutral",
+        "elise_bouvard": "support"
+      }
+    },
+    {
+      "date": "2026-05-06",
+      "attendees": [
+        "sophie_lamare",
+        "antoine_bertel",
+        "camille_verdier",
+        "laurent_porcher"
+      ],
+      "what_really_happens": "Sophie exige un plafond à 200% du marché plus responsabilité illimitée pour faute lourde et atteinte aux données transitées. Vialys refuse en séance. Laurent, le financeur, s'inquiète du risque résiduel pour Rhéa et se range derrière la juridique. La réunion se termine sans accord, chacun campant sur son modèle de clause.",
+      "stances": {
+        "camille_verdier": "support",
+        "antoine_bertel": "neutral",
+        "sophie_lamare": "oppose",
+        "mehdi_kaci": "support",
+        "laurent_porcher": "oppose",
+        "elise_bouvard": "neutral"
+      }
+    },
+    {
+      "date": "2026-07-09",
+      "attendees": [
+        "sophie_lamare",
+        "mehdi_kaci",
+        "elise_bouvard",
+        "antoine_bertel"
+      ],
+      "what_really_happens": "Travail de 4 heures sur le contrat : distinction entre dommages directs d'infra, pénalités de disponibilité et dommages indirects. Vialys accepte l'idée de sous-plafonds par sinistre et par année. Sophie reconnaît que le 200% global était un point de départ et accepte de chiffrer un scénario à paliers. Laurent se détend, Antoine reste focalisé sur l'enveloppe.",
+      "stances": {
+        "camille_verdier": "support",
+        "antoine_bertel": "neutral",
+        "sophie_lamare": "neutral",
+        "mehdi_kaci": "support",
+        "laurent_porcher": "neutral",
+        "elise_bouvard": "support"
+      }
+    },
+    {
+      "date": "2026-09-24",
+      "attendees": [
+        "sophie_lamare",
+        "antoine_bertel",
+        "camille_verdier",
+        "laurent_porcher",
+        "mehdi_kaci"
+      ],
+      "what_really_happens": "Accord de principe en séance : plafond global porté à 150% avec sous-plafond annuel, pénalités de coupure plafonnées séparément à 12% annuel, faute lourde plafonnée à 200% au lieu d'illimitée, assurance complémentaire souscrite par Vialys. Sophie valide la rédaction sous réserve de relecture, Antoine valide l'enveloppe, Laurent ne s'oppose plus mais attend la police d'assurance définitive. Aucune signature en séance.",
+      "stances": {
+        "camille_verdier": "support",
+        "antoine_bertel": "support",
+        "sophie_lamare": "support",
+        "mehdi_kaci": "support",
+        "laurent_porcher": "neutral",
+        "elise_bouvard": "support"
+      }
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "date": "2026-02-18",
+    "mentions": [
+      {
+        "actor_id": "sophie_marchand",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "karim_benali",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "philippe_laroche",
+        "stance_expressed": "conditional"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-06",
+    "mentions": [
+      {
+        "actor_id": "karim_benali",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "julien_perrot",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "philippe_laroche",
+        "stance_expressed": "conditional"
+      }
+    ]
+  },
+  {
+    "date": "2026-07-09",
+    "mentions": [
+      {
+        "actor_id": "sophie_marchand",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "philippe_laroche",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "karim_benali",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "julien_perrot",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "marc_aubry",
+        "stance_expressed": "conditional"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-24",
+    "mentions": [
+      {
+        "actor_id": "sophie_marchand",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "philippe_laroche",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "karim_benali",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "elise_fontaine",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "julien_perrot",
+        "stance_expressed": "conditional"
+      }
+    ]
+  }
+]

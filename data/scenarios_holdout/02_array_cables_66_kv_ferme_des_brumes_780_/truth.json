@@ -1,0 +1,87 @@
+{
+  "outcome": "lost",
+  "outcome_explanation": "Le champion technique Julien Favre quitte l'acheteur fin mai 2026. Son successeur Antoine Mercier, issu de l'incumbent, rouvre les spécifications en faveur du cuivre connu et convainc achats, finance et installateur que l'offre aluminium du vendeur coûte trop cher en requalification et en risques. Quelques semaines après le dernier comité, l'acheteur attribue le lot array câbles à la Câblerie du Vieux Chêne.",
+  "hidden_interests": {
+    "julien_favre": "Veut imposer l'aluminium 66 kV comme vitrine d'innovation pour sa carrière ; minimise les risques d'interface pour faire avancer vite le dossier vendeur.",
+    "antoine_mercier": "A passé huit ans chez l'incumbent, y garde réseau et intéressement ; veut sécuriser sa prise de poste en revenant à une technologie cuivre connue.",
+    "claire_voisin": "Veut éviter tout dérapage planning qui lui serait imputé ; préfère le fournisseur qui demande le moins de pilotage et de requalification.",
+    "helene_brossard": "Doit rassurer la banque sur le coût complet et l'assurabilité ; toute requalification technique la fait basculer vers la solution la moins risquée financièrement.",
+    "karim_benali": "Veut une certification sans réserve pour débloquer le financement ; neutre sur la marque tant que le risque technique est couvert par le certificateur.",
+    "thomas_leroux": "Préfère les câbles qu'il sait déjà tirer et raccorder ; veut éviter de former ses équipes à de nouvelles têtes de tirage aluminium."
+  },
+  "positions": [
+    {
+      "date": "2026-02-18",
+      "attendees": [
+        "julien_favre",
+        "claire_voisin",
+        "thomas_leroux",
+        "karim_benali"
+      ],
+      "what_really_happens": "Julien Favre défend l'offre aluminium du vendeur devant les achats et l'installateur : poids réduit, essais de type prometteurs, planning tenu. Claire Voisin reste prudente mais ouverte, Thomas Leroux apprécie la légèreté pour la pose, Karim Benali attend la certification. Aucune décision actée, mais dynamique favorable au vendeur.",
+      "stances": {
+        "julien_favre": "support",
+        "antoine_mercier": "neutral",
+        "claire_voisin": "neutral",
+        "helene_brossard": "neutral",
+        "karim_benali": "neutral",
+        "thomas_leroux": "support"
+      }
+    },
+    {
+      "date": "2026-04-23",
+      "attendees": [
+        "julien_favre",
+        "antoine_mercier",
+        "claire_voisin",
+        "thomas_leroux"
+      ],
+      "what_really_happens": "Démonstration réussie en usine, Julien fait valider les programmes d'essais. En marge, il annonce son départ pour fin mai vers un poste hors du parc. Antoine Mercier, pressenti pour le remplacer, est invité en observateur : poli, il pose des questions pointues sur le retour d'expérience aluminium et les connecteurs. Claire obtient une remise conditionnelle du vendeur.",
+      "stances": {
+        "julien_favre": "support",
+        "antoine_mercier": "neutral",
+        "claire_voisin": "support",
+        "helene_brossard": "neutral",
+        "karim_benali": "neutral",
+        "thomas_leroux": "support"
+      }
+    },
+    {
+      "date": "2026-06-25",
+      "attendees": [
+        "antoine_mercier",
+        "claire_voisin",
+        "helene_brossard",
+        "thomas_leroux"
+      ],
+      "what_really_happens": "Julien est parti, Antoine prend la main et rouvre le cahier des charges : il exige un historique de pose de 5 ans sur aluminium 66 kV et critique les têtes de tirage du vendeur. Il cite en exemple les jonctions de l'incumbent qu'il connaît bien. Claire et Hélène, inquiètes du retard induit par une requalification, demandent au vendeur des garanties supplémentaires. Thomas se rallie à l'idée du connu pour sécuriser sa campagne de pose.",
+      "stances": {
+        "julien_favre": "neutral",
+        "antoine_mercier": "oppose",
+        "claire_voisin": "neutral",
+        "helene_brossard": "neutral",
+        "karim_benali": "neutral",
+        "thomas_leroux": "neutral"
+      }
+    },
+    {
+      "date": "2026-09-17",
+      "attendees": [
+        "antoine_mercier",
+        "claire_voisin",
+        "helene_brossard",
+        "karim_benali",
+        "thomas_leroux"
+      ],
+      "what_really_happens": "Antoine présente une matrice de risques défavorable à l'aluminium et recommande de figer le design cuivre de l'incumbent, déjà certifié. Thomas confirme qu'il chiffrera un surcoût de formation si le vendeur est retenu. Claire acte que l'écart de prix ne compense plus le coût de requalification, Hélène suit pour protéger le financement, Karim rappelle l'exigence de certification sans réserve. Le comité demande une dernière offre alignée, sans préjuger du choix final.",
+      "stances": {
+        "julien_favre": "neutral",
+        "antoine_mercier": "oppose",
+        "claire_voisin": "oppose",
+        "helene_brossard": "oppose",
+        "karim_benali": "neutral",
+        "thomas_leroux": "oppose"
+      }
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "outcome": "lost",
+  "outcome_explanation": "Quelques semaines après la dernière réunion, le comité interne suit la recommandation de Sophie Marchand et attribue le contrat à Voltamar Industries, environ 18% moins cher. La bascule de la directrice achats, suivie par le DAF et le financeur privé, a rendu l'argument technique de Meridienne inaudible malgré la remise de dernière minute.",
+  "hidden_interests": {
+    "sophie_marchand": "Veut démontrer une économie d'au moins 15% sur les achats pour obtenir le bonus annuel et la direction des achats groupe.",
+    "julien_ferrat": "Veut une liaison à très faible taux de panne pour protéger sa réputation d'ingénieur et éviter toute astreinte de maintenance.",
+    "marc_aubry": "Doit tenir le ratio d'endettement imposé par le pool bancaire privé et cherche le CAPEX le plus bas finançable.",
+    "elise_berthier": "Veut sécuriser la capacité réservée pour Cap Nord Grid sans payer de surcoût de développement.",
+    "karim_benali": "Veut un projet finançable sans réserve technique et une marge bancaire sécurisée, quitte à imposer le moins-disant.",
+    "paul_renard": "Veut éviter tout risque de non-certification de la pose en grande profondeur qui engagerait la responsabilité de Certimar."
+  },
+  "positions": [
+    {
+      "date": "2026-02-19",
+      "attendees": [
+        "sophie_marchand",
+        "julien_ferrat",
+        "elise_berthier"
+      ],
+      "what_really_happens": "Julien Ferrat fait l'éloge de la solution à isolation renforcée de Meridienne Câbles Systèmes. Sophie Marchand, encore en phase de découverte, soutient l'option qualité pour sécuriser le planning. Aucun chiffrage concurrent détaillé n'est sur la table, l'ambiance est favorable au vendeur.",
+      "stances": {
+        "sophie_marchand": "support",
+        "julien_ferrat": "support",
+        "marc_aubry": "neutral",
+        "elise_berthier": "support",
+        "karim_benali": "neutral",
+        "paul_renard": "neutral"
+      }
+    },
+    {
+      "date": "2026-05-07",
+      "attendees": [
+        "sophie_marchand",
+        "julien_ferrat",
+        "marc_aubry",
+        "karim_benali"
+      ],
+      "what_really_happens": "Voltamar Industries dépose une offre indicative 15% sous celle de Meridienne. Sophie Marchand demande à Claire Vasseur un alignement et se met en retrait. Marc Aubry exige une décomposition complète des coûts de pose. Julien Ferrat défend seul le surcoût par la fiabilité, mais le doute prix s'installe.",
+      "stances": {
+        "sophie_marchand": "neutral",
+        "julien_ferrat": "support",
+        "marc_aubry": "neutral",
+        "elise_berthier": "neutral",
+        "karim_benali": "neutral",
+        "paul_renard": "neutral"
+      }
+    },
+    {
+      "date": "2026-07-16",
+      "attendees": [
+        "sophie_marchand",
+        "marc_aubry",
+        "julien_ferrat",
+        "elise_berthier",
+        "paul_renard"
+      ],
+      "what_really_happens": "L'écart se confirme à 18% après mise à jour Voltamar avec navire de pose mutualisé. Sophie Marchand bascule ouvertement : elle juge l'écart injustifiable devant ses objectifs d'économies. Marc Aubry et Karim Benali la suivent pour des raisons de finançabilité. Julien Ferrat s'accroche à l'argument pertes et maintenance, Paul Renard déclare les deux solutions certifiables.",
+      "stances": {
+        "sophie_marchand": "oppose",
+        "julien_ferrat": "support",
+        "marc_aubry": "oppose",
+        "elise_berthier": "neutral",
+        "karim_benali": "oppose",
+        "paul_renard": "neutral"
+      }
+    },
+    {
+      "date": "2026-09-25",
+      "attendees": [
+        "sophie_marchand",
+        "marc_aubry",
+        "julien_ferrat",
+        "elise_berthier",
+        "karim_benali"
+      ],
+      "what_really_happens": "Claire Vasseur propose une remise de 6% et une extension de garantie, insuffisante face aux 18% d'écart. Sophie Marchand refuse de défendre le dossier en comité et annonce qu'elle recommandera l'offre la moins chère. Elise Berthier s'aligne pour ne pas payer de surcoût. Julien Ferrat, isolé, ne s'oppose plus au choix low-cost et demande seulement des pénalités renforcées.",
+      "stances": {
+        "sophie_marchand": "oppose",
+        "julien_ferrat": "neutral",
+        "marc_aubry": "oppose",
+        "elise_berthier": "oppose",
+        "karim_benali": "oppose",
+        "paul_renard": "neutral"
+      }
+    }
+  ]
+}

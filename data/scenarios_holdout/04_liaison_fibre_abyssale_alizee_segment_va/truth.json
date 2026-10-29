@@ -1,0 +1,88 @@
+{
+  "outcome": "lost",
+  "outcome_explanation": "Après avoir multiplié les demandes de re-chiffrage et de re-phasage de février à octobre, la directrice financière a obtenu fin novembre un gel général de tous les investissements supérieurs à 2 MEUR pour préserver la trésorerie. Le directeur général n'a pas défendu le dossier et la banque a retiré son principe de financement. Le projet de liaison sous-marine est abandonné sans attribution.",
+  "hidden_interests": {
+    "elise_marchand": "Préserver la trésorerie après deux années déficitaires et éviter tout nouvel endettement ; veut garder la main sur l'arbitrage CAPEX.",
+    "romain_bellec": "Veut rester loyal à son équipe scientifique mais ne veut pas entrer en conflit ouvert avec la DAF et la banque ; cherche un prétexte consensuel pour attendre.",
+    "ines_leroux": "Faire aboutir le doublement de capacité pour sécuriser ses programmes de recherche et sa légitimité interne.",
+    "karim_bensaid": "Craindre une surcharge d'exploitation sans budget de maintenance associé ; veut un contrat avec exploitation incluse.",
+    "marc_aubert": "Ne pas augmenter l'exposition sur un client dont le ratio d'endettement se dégrade ; attend un gel des projets non critiques.",
+    "sophie_queneau": "Faire valider un dossier techniquement irréprochable pour justifier les nouvelles consignes de pose en zone sensible."
+  },
+  "positions": [
+    {
+      "date": "2026-02-18",
+      "attendees": [
+        "ines_leroux",
+        "karim_bensaid",
+        "romain_bellec",
+        "elise_marchand"
+      ],
+      "what_really_happens": "Ines détaille le besoin de doublement de capacité et valide le tracé avec Karim. Romain affiche son soutien au projet. Elise demande une première estimation budgétaire complète et le montage financier, sans s'opposer, et propose de revoir le dossier une fois le plan de charge chiffré.",
+      "stances": {
+        "elise_marchand": "neutral",
+        "romain_bellec": "support",
+        "ines_leroux": "support",
+        "karim_bensaid": "support",
+        "marc_aubert": "neutral",
+        "sophie_queneau": "neutral"
+      }
+    },
+    {
+      "date": "2026-05-14",
+      "attendees": [
+        "elise_marchand",
+        "romain_bellec",
+        "ines_leroux",
+        "marc_aubert"
+      ],
+      "what_really_happens": "Elise juge l'enveloppe de 38 MEUR trop lourde pour la trésorerie et demande un re-phasage en deux tranches et un nouveau scénario locatif. Marc indique que la banque suivra seulement si les fonds propres sont préservés. Romain maintient l'intérêt mais accepte de refaire tourner les chiffres.",
+      "stances": {
+        "elise_marchand": "oppose",
+        "romain_bellec": "support",
+        "ines_leroux": "support",
+        "karim_bensaid": "support",
+        "marc_aubert": "neutral",
+        "sophie_queneau": "neutral"
+      }
+    },
+    {
+      "date": "2026-07-23",
+      "attendees": [
+        "elise_marchand",
+        "marc_aubert",
+        "romain_bellec",
+        "ines_leroux",
+        "sophie_queneau"
+      ],
+      "what_really_happens": "Sophie donne un pré-avis favorable sur le tracé et Ines défend l'offre re-phasée. Elise estime que même phasé le projet pèse trop sur le plan à 3 ans et demande des études complémentaires sur la durée de vie de l'ancien câble. Marc durcit ses conditions de prêt. Romain ne tranche plus et renvoie à l'automne.",
+      "stances": {
+        "elise_marchand": "oppose",
+        "romain_bellec": "neutral",
+        "ines_leroux": "support",
+        "karim_bensaid": "neutral",
+        "marc_aubert": "oppose",
+        "sophie_queneau": "support"
+      }
+    },
+    {
+      "date": "2026-10-06",
+      "attendees": [
+        "elise_marchand",
+        "romain_bellec",
+        "marc_aubert",
+        "ines_leroux",
+        "karim_bensaid"
+      ],
+      "what_really_happens": "Elise explique que la clôture semestrielle est mauvaise et qu'il faut prioriser la maintenance courante, et demande de suspendre les études payantes. Ines tente de sauver la tranche 1. Romain propose de laisser passer la fin d'année et de reconvoquer un comité d'investissement. Aucune attribution ni rejet formel n'est prononcé en séance.",
+      "stances": {
+        "elise_marchand": "oppose",
+        "romain_bellec": "neutral",
+        "ines_leroux": "support",
+        "karim_bensaid": "neutral",
+        "marc_aubert": "oppose",
+        "sophie_queneau": "neutral"
+      }
+    }
+  ]
+}

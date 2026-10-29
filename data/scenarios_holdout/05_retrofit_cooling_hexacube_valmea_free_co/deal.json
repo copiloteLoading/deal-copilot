@@ -1,0 +1,159 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "05_retrofit_cooling_hexacube_valmea_free_co",
+  "name": "Retrofit Cooling Hexacube Valméa - Free-Cooling",
+  "seller": "Novafroid Systèmes SAS",
+  "sales_rep": "Claire Vasseur",
+  "buyer": "Hexacube Data SAS",
+  "description": "Contrat pluriannuel de retrofit du refroidissement du data center Hexacube de Valméa négocié par Novafroid Systèmes SAS. Remplacement de 4 groupes froids anciens par 3 centrales à free-cooling adiabatique + boucle d'eau glacée, rénovation des salles et supervision sur 5 ans de maintenance. Montant travaux et maintenance d'environ 22 MEUR, avec besoin d'augmentation de puissance électrique de 6 MW pour les pompes, ventilateurs et secours.",
+  "value_meur": 22.4,
+  "opened": "2026-02-18",
+  "target_signature": null,
+  "competitors": [
+    "Climadata Solutions",
+    "Froidis Technic"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "Hexacube",
+        "le client data"
+      ],
+      "id": "hexacube_data",
+      "name": "Hexacube Data SAS",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "Becquerel",
+        "la MOE"
+      ],
+      "id": "bec_inge",
+      "name": "Atelier Becquerel Ingénierie",
+      "type": "consortium_member"
+    },
+    {
+      "aliases": [
+        "la Lorienne",
+        "la banque"
+      ],
+      "id": "banque_lorienne",
+      "name": "Banque Lorienne Privée",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "Voltis",
+        "l'utilité privée"
+      ],
+      "id": "voltis",
+      "name": "Voltis Réseaux SARL",
+      "type": "subcontractor"
+    },
+    {
+      "aliases": [
+        "Frigex",
+        "l'installateur"
+      ],
+      "id": "frigex_inst",
+      "name": "Frigex Installations SAS",
+      "type": "subcontractor"
+    }
+  ],
+  "actors": [
+    {
+      "id": "sophie_legrand",
+      "name": "Sophie Legrand",
+      "org": "hexacube_data",
+      "role": "Directrice des opérations du data center",
+      "influence": 0.9,
+      "veto": true,
+      "aliases": [
+        "Sophie",
+        "la directrice ops"
+      ]
+    },
+    {
+      "id": "marc_aubert",
+      "name": "Marc Aubert",
+      "org": "hexacube_data",
+      "role": "Responsable efficacité énergétique et cooling",
+      "influence": 0.75,
+      "veto": false,
+      "aliases": [
+        "Marc",
+        "l'énergéticien"
+      ]
+    },
+    {
+      "id": "julien_perrot",
+      "name": "Julien Perrot",
+      "org": "bec_inge",
+      "role": "Chef de projet maîtrise d'œuvre",
+      "influence": 0.6,
+      "veto": false,
+      "aliases": [
+        "Julien",
+        "le MOE"
+      ]
+    },
+    {
+      "id": "elodie_marchand",
+      "name": "Élodie Marchand",
+      "org": "banque_lorienne",
+      "role": "Chargée de financement de projet",
+      "influence": 0.85,
+      "veto": true,
+      "aliases": [
+        "Élodie",
+        "la banquière"
+      ]
+    },
+    {
+      "id": "karim_bensaid",
+      "name": "Karim Bensaïd",
+      "org": "voltis",
+      "role": "Responsable raccordement haute tension",
+      "influence": 0.8,
+      "veto": true,
+      "aliases": [
+        "Karim",
+        "le raccordeur"
+      ]
+    },
+    {
+      "id": "nathalie_roux",
+      "name": "Nathalie Roux",
+      "org": "frigex_inst",
+      "role": "Directrice travaux installation",
+      "influence": 0.5,
+      "veto": false,
+      "aliases": [
+        "Nathalie",
+        "la travaux"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-02-18",
+      "title": "Visite site et cadrage retrofit cooling",
+      "debrief": "debriefs/1_2026-02-18.txt"
+    },
+    {
+      "date": "2026-04-24",
+      "title": "Avant-projet et besoin de puissance grid",
+      "debrief": "debriefs/2_2026-04-24.txt"
+    },
+    {
+      "date": "2026-07-03",
+      "title": "Revue d'offre et planning de raccordement",
+      "debrief": "debriefs/3_2026-07-03.txt"
+    },
+    {
+      "date": "2026-10-02",
+      "title": "Comité pré-financement et séquencement travaux",
+      "debrief": "debriefs/4_2026-10-02.txt"
+    }
+  ]
+}

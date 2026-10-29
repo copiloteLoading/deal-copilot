@@ -1,0 +1,85 @@
+{
+  "outcome": "lost",
+  "outcome_explanation": "Malgré le soutien fervent de la directrice technique Élodie Roussel et de l'exploitant, convaincus par la supériorité et la fiabilité de l'architecture Voltelia, le comité achats présidé par Nadine Perrin a imposé le critère prix à 60%. Avec le DAF Olivier Fontan, tous deux veto, ils ont jugé l'écart de 9 MEUR avec Translek Énergie rédhibitoire malgré le geste commercial. La banque et le groupement travaux ont suivi. Le contrat 120 MW a été attribué au moins-disant quelques semaines après la dernière clarification.",
+  "hidden_interests": {
+    "elodie_roussel": "Veut imposer une architecture busbar redondante de pointe pour décrocher sa promotion au comex et asseoir sa réputation d'experte haute densité.",
+    "nadine_perrin": "Évaluée sur 12% d'économies CAPEX annuelles ; privilégie le prix facial et la standardisation du panel fournisseurs.",
+    "olivier_fontan": "Doit rassurer la banque sur le TRI du projet ; tout surcoût de plus de 5 MEUR menace son bonus et les covenants.",
+    "mehdi_kaci": "Craint les coupures et les astreintes de nuit ; veut un matériel fiable et facile à maintenir par ses équipes.",
+    "camille_leroy": "Veut un projet bancable sans dérive CAPEX ; soutiendra l'offre la moins chère à garanties équivalentes sur le papier.",
+    "bastien_girard": "Veut des lots électriques simples à poser dans les délais gros-oeuvre ; prime la simplicité d'installation et les pénalités évitées."
+  },
+  "positions": [
+    {
+      "date": "2026-02-19",
+      "attendees": [
+        "elodie_roussel",
+        "mehdi_kaci",
+        "bastien_girard"
+      ],
+      "what_really_happens": "Élodie Roussel fait visiter les halls en chantier et détaille son besoin 120 MW avec redondance 2N. Elle est conquise par l'architecture busbar de Voltelia et en parle comme de la future référence. Mehdi écoute, intéressé mais prudent sur la maintenabilité. Bastien ne se prononce pas. Les achats et la finance ne sont pas là, mais surveillent déjà l'enveloppe.",
+      "stances": {
+        "elodie_roussel": "support",
+        "nadine_perrin": "neutral",
+        "olivier_fontan": "neutral",
+        "mehdi_kaci": "neutral",
+        "camille_leroy": "neutral",
+        "bastien_girard": "neutral"
+      }
+    },
+    {
+      "date": "2026-05-06",
+      "attendees": [
+        "elodie_roussel",
+        "mehdi_kaci",
+        "bastien_girard",
+        "olivier_fontan"
+      ],
+      "what_really_happens": "Essai réussi en atelier : bascule de charge sans micro-coupure, supervision fine. Élodie exulte et veut verrouiller le choix technique. Mehdi est convaincu par la fiabilité et le diagnostic à distance. Olivier, venu en observateur, salue la performance mais tique ouvertement sur l'estimation budgétaire 20% au-dessus du budget. Nadine réclame en coulisses un appel d'offres strictement au prix.",
+      "stances": {
+        "elodie_roussel": "support",
+        "nadine_perrin": "neutral",
+        "olivier_fontan": "neutral",
+        "mehdi_kaci": "support",
+        "camille_leroy": "neutral",
+        "bastien_girard": "neutral"
+      }
+    },
+    {
+      "date": "2026-07-09",
+      "attendees": [
+        "elodie_roussel",
+        "nadine_perrin",
+        "olivier_fontan",
+        "mehdi_kaci"
+      ],
+      "what_really_happens": "Voltelia défend son surcoût par le TCO, la disponibilité et 5 ans de maintenance incluse. Nadine Perrin oppose le tableau comparatif : Translek Énergie est 22% moins cher à périmètre facialement identique. Olivier Fontan bascule et exige un alignement prix pour tenir le TRI présenté à la banque. Élodie s'énerve, Mehdi la soutient sur le risque d'exploitation, mais le comité acte que le critère prix pèsera 60%.",
+      "stances": {
+        "elodie_roussel": "support",
+        "nadine_perrin": "oppose",
+        "olivier_fontan": "oppose",
+        "mehdi_kaci": "support",
+        "camille_leroy": "neutral",
+        "bastien_girard": "neutral"
+      }
+    },
+    {
+      "date": "2026-09-24",
+      "attendees": [
+        "elodie_roussel",
+        "nadine_perrin",
+        "olivier_fontan",
+        "camille_leroy"
+      ],
+      "what_really_happens": "Dernière tentative de Voltelia : geste de 6% et extension de garantie. Nadine juge l'effort insuffisant face à l'écart restant de 9 MEUR avec Translek. Camille Leroy confirme que la banque préfère le CAPEX bas. Bastien, consulté par téléphone, préfère la simplicité de pose de Translek. Élodie, isolée, demande en vain une pondération TCO. La décision formelle est renvoyée au comité de novembre, mais l'issue est déjà scellée en interne.",
+      "stances": {
+        "elodie_roussel": "support",
+        "nadine_perrin": "oppose",
+        "olivier_fontan": "oppose",
+        "mehdi_kaci": "support",
+        "camille_leroy": "oppose",
+        "bastien_girard": "oppose"
+      }
+    }
+  ]
+}

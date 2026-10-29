@@ -1,0 +1,86 @@
+{
+  "outcome": "signed",
+  "outcome_explanation": "L'exigence du prêteur Civalp d'un audit indépendant a été satisfaite par un rapport Certival très positif sur la performance et l'exploitabilité. Ce feu vert technique a levé le veto du banquier puis celui du DAF, permettant la signature du contrat de 62,4 MEUR quelques semaines après la restitution.",
+  "hidden_interests": {
+    "elodie_vansart": "Veut prouver qu'elle peut moderniser le réseau sans coupure et décrocher la direction des opérations.",
+    "thomas_perrin": "Craint un dérapage de CAPEX et veut sécuriser un financement sans covenant trop strict.",
+    "nadia_belkacem": "Veut travailler sur une architecture edge moderne et publier un retour d'expérience interne.",
+    "olivier_ravel": "Doit protéger la banque d'un risque technologique et justifier le dossier devant son comité d'engagement.",
+    "helene_cordier": "Veut préserver sa réputation d'indépendance et décrocher d'autres missions d'audit edge.",
+    "yann_legoff": "Espère obtenir le lot d'installation sur 3 ans pour stabiliser ses équipes terrain."
+  },
+  "positions": [
+    {
+      "date": "2026-02-19",
+      "attendees": [
+        "elodie_vansart",
+        "nadia_belkacem",
+        "yann_legoff"
+      ],
+      "what_really_happens": "Nadia défend la solution Valdoré pour la latence et la consommation. Elodie reste prudente sur la capacité à déployer 24 sites sans perturber le réseau. Thomas, absent, a fait savoir en interne que le CAPEX de 62 MEUR est trop élevé sans garantie bancaire.",
+      "stances": {
+        "elodie_vansart": "neutral",
+        "thomas_perrin": "oppose",
+        "nadia_belkacem": "support",
+        "olivier_ravel": "neutral",
+        "helene_cordier": "neutral",
+        "yann_legoff": "support"
+      }
+    },
+    {
+      "date": "2026-04-23",
+      "attendees": [
+        "elodie_vansart",
+        "thomas_perrin",
+        "nadia_belkacem",
+        "olivier_ravel"
+      ],
+      "what_really_happens": "Olivier Ravel conditionne tout financement à un audit technique indépendant sur le PUE, la redondance électrique et la cybersécurité des modules Valdoré. Thomas s'aligne sur cette exigence pour gagner du temps. Elodie accepte l'audit pour rassurer la banque.",
+      "stances": {
+        "elodie_vansart": "support",
+        "thomas_perrin": "oppose",
+        "nadia_belkacem": "support",
+        "olivier_ravel": "oppose",
+        "helene_cordier": "neutral",
+        "yann_legoff": "support"
+      }
+    },
+    {
+      "date": "2026-07-03",
+      "attendees": [
+        "nadia_belkacem",
+        "olivier_ravel",
+        "helene_cordier",
+        "elodie_vansart"
+      ],
+      "what_really_happens": "Hélène Cordier présente les résultats intermédiaires après visite du site pilote de Villerive : PUE mesuré à 1,28, bascule électrique conforme, aucune faille critique. Olivier passe de méfiant à attentif et demande un rapport final chiffré. Thomas commence à chiffrer le montage avec la banque.",
+      "stances": {
+        "elodie_vansart": "support",
+        "thomas_perrin": "neutral",
+        "nadia_belkacem": "support",
+        "olivier_ravel": "neutral",
+        "helene_cordier": "support",
+        "yann_legoff": "support"
+      }
+    },
+    {
+      "date": "2026-09-24",
+      "attendees": [
+        "elodie_vansart",
+        "thomas_perrin",
+        "nadia_belkacem",
+        "olivier_ravel",
+        "helene_cordier"
+      ],
+      "what_really_happens": "Le rapport Certival est nettement positif : disponibilité validée, coûts d'exploitation inférieurs de 12% aux hypothèses, plan de déploiement jugé réaliste avec Bréval. Olivier annonce que son comité validera le financement sur cette base. Thomas valide l'enveloppe budgétaire, Elodie acte le choix Valdoré. Il reste à formaliser les contrats, sans annonce officielle en séance.",
+      "stances": {
+        "elodie_vansart": "support",
+        "thomas_perrin": "support",
+        "nadia_belkacem": "support",
+        "olivier_ravel": "support",
+        "helene_cordier": "support",
+        "yann_legoff": "support"
+      }
+    }
+  ]
+}

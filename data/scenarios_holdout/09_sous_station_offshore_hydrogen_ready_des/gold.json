@@ -1,0 +1,90 @@
+[
+  {
+    "date": "2026-02-18",
+    "mentions": [
+      {
+        "actor_id": "helene_marchand",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "marc_legoff",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "karim_benali",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "julien_perrot",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "sophie_aubert",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-07",
+    "mentions": [
+      {
+        "actor_id": "marc_legoff",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "karim_benali",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "claire_fontaine",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "sophie_aubert",
+        "stance_expressed": "conditional"
+      }
+    ]
+  },
+  {
+    "date": "2026-08-26",
+    "mentions": [
+      {
+        "actor_id": "helene_marchand",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "marc_legoff",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "sophie_aubert",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "julien_perrot",
+        "stance_expressed": "oppose"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-14",
+    "mentions": [
+      {
+        "actor_id": "sophie_aubert",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "julien_perrot",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "helene_marchand",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "marc_legoff",
+        "stance_expressed": "neutral"
+      }
+    ]
+  }
+]

@@ -1,0 +1,87 @@
+{
+  "outcome": "signed",
+  "outcome_explanation": "Signature quelques semaines après la dernière réunion. L'opposition initiale de la directrice financière, qui bloquait sur l'acompte de 40% et la concentration des paiements sur 2026, a été levée par le nouvel échéancier en 8 jalons adossés à des procès-verbaux, sans pic d'endettement. Devenue elle-même promotrice du montage, elle a entraîné l'accord de la banque et du directeur général, malgré une offre faciale plus élevée que les concurrents.",
+  "hidden_interests": {
+    "helene_marchand": "Protéger la trésorerie du consortium et sécuriser son bonus annuel lié au respect du plafond d'endettement à court terme.",
+    "marc_aubry": "Signer vite pour afficher une liaison opérationnelle avant la fin de son mandat de trois ans et consolider sa légitimité.",
+    "thierry_vasseur": "Ne débloquer les fonds que si les risques de trésorerie sont étalés et si la certification privée garantit la valeur de revente de l'actif.",
+    "julien_perrot": "Obtenir la fibre à très haute capacité avec redondance pour éviter les astreintes nocturnes à son équipe.",
+    "nadia_belhacem": "Avoir un contrat de maintenance simple avec pièces de rechange stockées près de Port-Brume.",
+    "paul_ribiere": "Faire valider son référentiel de certification interne pour le vendre à d'autres projets de câbles."
+  },
+  "positions": [
+    {
+      "date": "2026-02-19",
+      "attendees": [
+        "marc_aubry",
+        "helene_marchand",
+        "julien_perrot",
+        "nadia_belhacem"
+      ],
+      "what_really_happens": "La commerciale présente l'architecture 240 Tbps et un prix global de 148,2 millions. Julien et Nadia sont conquis techniquement. Hélène bloque immédiatement sur l'acompte de 40% et les appels de fonds concentrés sur 2026, qu'elle juge incompatibles avec le plafond d'endettement. Marc temporise et demande une offre financière alternative.",
+      "stances": {
+        "helene_marchand": "oppose",
+        "marc_aubry": "neutral",
+        "thierry_vasseur": "neutral",
+        "julien_perrot": "support",
+        "nadia_belhacem": "support",
+        "paul_ribiere": "neutral"
+      }
+    },
+    {
+      "date": "2026-05-07",
+      "attendees": [
+        "helene_marchand",
+        "julien_perrot",
+        "thierry_vasseur",
+        "paul_ribiere"
+      ],
+      "what_really_happens": "Le certificateur valide la durée de vie et la valeur d'actif, ce qui rassure la banque. Thierry dit qu'il suivra si la trésorerie est lissée. Hélène reste fermement opposée : elle montre un tableau de trésorerie avec deux trimestres en rouge et menace de proposer la solution moins chère d'Abyss Line Câbles. Elle exige un échéancier par jalons sans acompte massif.",
+      "stances": {
+        "helene_marchand": "oppose",
+        "marc_aubry": "neutral",
+        "thierry_vasseur": "neutral",
+        "julien_perrot": "support",
+        "nadia_belhacem": "support",
+        "paul_ribiere": "support"
+      }
+    },
+    {
+      "date": "2026-07-16",
+      "attendees": [
+        "helene_marchand",
+        "marc_aubry",
+        "thierry_vasseur",
+        "julien_perrot"
+      ],
+      "what_really_happens": "La vendeuse revient avec un nouvel échéancier en 8 jalons : 10% à la commande, 15% à la fin de fabrication, 25% à la pose, 30% à la recette, 20% étalés sur la maintenance, avec retenue de garantie et pénalités symétriques. Hélène fait recalculer en séance : la courbe de trésorerie passe au vert, le ratio d'endettement est respecté. Elle lève son opposition de principe et bascule neutre-positive, sous réserve de validation juridique.",
+      "stances": {
+        "helene_marchand": "neutral",
+        "marc_aubry": "support",
+        "thierry_vasseur": "support",
+        "julien_perrot": "support",
+        "nadia_belhacem": "support",
+        "paul_ribiere": "support"
+      }
+    },
+    {
+      "date": "2026-09-25",
+      "attendees": [
+        "helene_marchand",
+        "marc_aubry",
+        "thierry_vasseur",
+        "nadia_belhacem",
+        "paul_ribiere"
+      ],
+      "what_really_happens": "Hélène elle-même défend le montage devant Marc et la banque : paiements conditionnés aux procès-verbaux de jalons, audit de fabrication, et clause de report sans frais si la fenêtre météo de pose est manquée. Thierry confirme le déblocage par tranches alignées. Marc arbitre en faveur de Méridien malgré un prix facial supérieur aux concurrents. Les juristes sont mandatés pour purger les dernières clauses, sans signature ni annonce officielle ce jour-là.",
+      "stances": {
+        "helene_marchand": "support",
+        "marc_aubry": "support",
+        "thierry_vasseur": "support",
+        "julien_perrot": "support",
+        "nadia_belhacem": "support",
+        "paul_ribiere": "support"
+      }
+    }
+  ]
+}

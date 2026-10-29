@@ -1,0 +1,87 @@
+{
+  "outcome": "lost",
+  "outcome_explanation": "Affaire perdue quelques semaines après la dernière réunion : le conseil d'octobre n'a voté aucune enveloppe CAPEX pour le campus avec stockage. Malgré des échanges toujours amicaux, le DAF Philippe Laroche n'a jamais budgété le projet pour protéger trésorerie et covenants avant le refinancement. Sans budget, la Caisse s'est retirée et la DG n'a pas arbitré. Ossonet a gelé le grand campus et s'est contenté d'un petit lot de batteries en OPEX attribué à Helion Grid Solutions.",
+  "hidden_interests": {
+    "sophie_marchand": "Veut afficher un campus vert pour les gros clients, mais refuse un conflit ouvert avec son DAF avant le refinancement de fin d'année.",
+    "philippe_laroche": "Protège la trésorerie et les covenants bancaires ; son bonus dépend du cash-flow, il ne veut jamais inscrire le CAPEX stockage au budget.",
+    "karim_benali": "Veut une vitrine technique avec stockage on-site pour ses équipes et pour publier sur la résilience énergétique.",
+    "elise_fontaine": "Craint une surcharge d'exploitation et des astreintes supplémentaires si le stockage est ajouté sans renfort d'équipe.",
+    "julien_perrot": "Ne débloquera le prêt vert que si le CAPEX est voté en conseil et couvert par des contrats clients fermes.",
+    "marc_aubry": "Veut un dossier stockage irréprochable sur la sécurité incendie et le raccordement pour couvrir le Bureau."
+  },
+  "positions": [
+    {
+      "date": "2026-02-18",
+      "attendees": [
+        "sophie_marchand",
+        "philippe_laroche",
+        "karim_benali",
+        "elise_fontaine"
+      ],
+      "what_really_happens": "Accueil très chaleureux, cafés et visite de la maquette. Karim défend le stockage, Sophie applaudit. Philippe sourit, dit que le dossier est intéressant mais qu'il est en arbitrage budgétaire et qu'il ne peut inscrire aucune ligne CAPEX pour l'instant. En réalité il a déjà décidé de sanctuariser la trésorerie pour le refinancement.",
+      "stances": {
+        "sophie_marchand": "support",
+        "philippe_laroche": "oppose",
+        "karim_benali": "support",
+        "elise_fontaine": "neutral",
+        "julien_perrot": "neutral",
+        "marc_aubry": "neutral"
+      }
+    },
+    {
+      "date": "2026-05-06",
+      "attendees": [
+        "philippe_laroche",
+        "karim_benali",
+        "julien_perrot"
+      ],
+      "what_really_happens": "Présentation technique réussie, Julien salue le modèle. Philippe, toujours cordial, félicite l'équipe puis explique qu'il repousse toute décision budgétaire au cycle 2027 et propose de travailler en OPEX diffus. Il refuse en privé à Karim de porter la demande au conseil d'avril.",
+      "stances": {
+        "sophie_marchand": "support",
+        "philippe_laroche": "oppose",
+        "karim_benali": "support",
+        "elise_fontaine": "neutral",
+        "julien_perrot": "neutral",
+        "marc_aubry": "neutral"
+      }
+    },
+    {
+      "date": "2026-07-09",
+      "attendees": [
+        "sophie_marchand",
+        "philippe_laroche",
+        "karim_benali",
+        "julien_perrot",
+        "marc_aubry"
+      ],
+      "what_really_happens": "Julien durcit le ton poliment : sans inscription du CAPEX de 42 MEUR au budget voté, la Caisse ne peut ni chiffrer le prêt vert ni passer en comité. Marc demande des études incendie complémentaires. Sophie, gênée, évite d'arbitrer contre Philippe. Ambiance toujours aimable, mais le dossier financier est vide.",
+      "stances": {
+        "sophie_marchand": "neutral",
+        "philippe_laroche": "oppose",
+        "karim_benali": "support",
+        "elise_fontaine": "neutral",
+        "julien_perrot": "oppose",
+        "marc_aubry": "neutral"
+      }
+    },
+    {
+      "date": "2026-09-24",
+      "attendees": [
+        "sophie_marchand",
+        "philippe_laroche",
+        "karim_benali",
+        "elise_fontaine",
+        "julien_perrot"
+      ],
+      "what_really_happens": "Dernière réunion très courtoise, poignées de main et promesse de se revoir. Philippe confirme qu'il ne présentera pas de demande de budget au conseil d'octobre, arguant des incertitudes sur les prix de l'électricité. Sophie ne le contredit pas. Karim reste seul à défendre le projet, Julien acte qu'il ne financera rien sans délibération.",
+      "stances": {
+        "sophie_marchand": "neutral",
+        "philippe_laroche": "oppose",
+        "karim_benali": "support",
+        "elise_fontaine": "neutral",
+        "julien_perrot": "oppose",
+        "marc_aubry": "neutral"
+      }
+    }
+  ]
+}

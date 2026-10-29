@@ -1,0 +1,157 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "05_sous_station_haute_mer_des_brumes",
+  "name": "Sous-station Haute-Mer des Brumes",
+  "seller": "Merawatt Ingénierie SAS",
+  "sales_rep": "Claire Fontaine",
+  "buyer": "Parc Éolien des Brumes SARL",
+  "description": "Contrat pluriannuel de conception, fabrication, transport et installation d'une sous-station offshore de 320 MW pour le parc éolien des Brumes, négocié par Merawatt Ingénierie SAS avec le consortium exploitant. Le contrat inclut la plateforme topside, les fondations jacket, les systèmes haute tension et la maintenance de 8 ans. La signature dépend de l'homologation technique délivrée par l'organisme privé Certimar, exigée par la banque pour le financement.",
+  "value_meur": 148.5,
+  "opened": "2026-02-18",
+  "target_signature": null,
+  "competitors": [
+    "Seavolt Équipements Marins",
+    "Nordcâble Offshore Solutions"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "Parc des Brumes",
+        "PEB"
+      ],
+      "id": "parc_brume",
+      "name": "Parc Éolien des Brumes SARL",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "Novamer"
+      ],
+      "id": "novamer_energie",
+      "name": "Novamer Énergies SAS",
+      "type": "consortium_member"
+    },
+    {
+      "aliases": [
+        "CLM",
+        "la banque"
+      ],
+      "id": "credit_littoral",
+      "name": "Crédit Littoral Mutuel",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "Certimar",
+        "le certificateur"
+      ],
+      "id": "certimar",
+      "name": "Certimar Certification Maritime",
+      "type": "regulator"
+    },
+    {
+      "aliases": [
+        "Fondamar"
+      ],
+      "id": "fondamar",
+      "name": "Fondamar Travaux Offshore",
+      "type": "subcontractor"
+    }
+  ],
+  "actors": [
+    {
+      "id": "helene_roux",
+      "name": "Hélène Roux",
+      "org": "parc_brume",
+      "role": "Directrice du projet de parc éolien en mer",
+      "influence": 0.9,
+      "veto": true,
+      "aliases": [
+        "Hélène",
+        "la directrice parc"
+      ]
+    },
+    {
+      "id": "julien_perrot",
+      "name": "Julien Perrot",
+      "org": "parc_brume",
+      "role": "Responsable technique de la sous-station offshore",
+      "influence": 0.6,
+      "veto": false,
+      "aliases": [
+        "Julien",
+        "le tech"
+      ]
+    },
+    {
+      "id": "marc_aubertin",
+      "name": "Marc Aubertin",
+      "org": "novamer_energie",
+      "role": "Directeur des investissements du consortium",
+      "influence": 0.72,
+      "veto": false,
+      "aliases": [
+        "Marc",
+        "l'investisseur"
+      ]
+    },
+    {
+      "id": "sylvie_marchand",
+      "name": "Sylvie Marchand",
+      "org": "credit_littoral",
+      "role": "Directrice des financements de projets structurés",
+      "influence": 0.82,
+      "veto": true,
+      "aliases": [
+        "Sylvie",
+        "la banquière"
+      ]
+    },
+    {
+      "id": "etienne_lavigne",
+      "name": "Étienne Lavigne",
+      "org": "certimar",
+      "role": "Responsable homologation des plateformes offshore",
+      "influence": 0.88,
+      "veto": true,
+      "aliases": [
+        "Étienne",
+        "le certificateur"
+      ]
+    },
+    {
+      "id": "karim_bensaid",
+      "name": "Karim Bensaïd",
+      "org": "fondamar",
+      "role": "Directeur des opérations d'installation offshore",
+      "influence": 0.48,
+      "veto": false,
+      "aliases": [
+        "Karim",
+        "le poseur"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-02-18",
+      "title": "Présentation technique initiale de la sous-station",
+      "debrief": "debriefs/1_2026-02-18.txt"
+    },
+    {
+      "date": "2026-05-07",
+      "title": "Revue d'homologation et de finançabilité",
+      "debrief": "debriefs/2_2026-05-07.txt"
+    },
+    {
+      "date": "2026-07-22",
+      "title": "Point de blocage sur le permis d'homologation",
+      "debrief": "debriefs/3_2026-07-22.txt"
+    },
+    {
+      "date": "2026-10-06",
+      "title": "Replanification de la mise en service",
+      "debrief": "debriefs/4_2026-10-06.txt"
+    }
+  ]
+}

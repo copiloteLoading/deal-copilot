@@ -1,0 +1,140 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "08_anneau_fibre_clairval_cur_rhea",
+  "name": "Anneau Fibre Clairval Cœur - Rhéa",
+  "seller": "Vialys Infrastructures",
+  "sales_rep": "Julien Marec",
+  "buyer": "Rhéa Réseaux Métropolitains",
+  "description": "Conception-construction d'un anneau de fibre optique métropolitain de 285 km pour l'opérateur privé Rhéa Réseaux Métropolitains dans l'agglomération de Clairval : double boucle cœur, 42 sites techniques, 18 raccordements data et supervision. Contrat de 48,6 MEUR sur 4 ans dont maintenance. La négociation achoppe pendant 7 mois sur les plafonds de responsabilité et les pénalités de coupure avant de converger sur un schéma à paliers.",
+  "value_meur": 48.6,
+  "opened": "2026-02-18",
+  "target_signature": null,
+  "competitors": [
+    "Tisselec Fibre",
+    "Câblor Atlantique"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "Rhéa",
+        "l'opérateur"
+      ],
+      "id": "rhea_reseaux",
+      "name": "Rhéa Réseaux Métropolitains",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "Cap Nord",
+        "le fonds"
+      ],
+      "id": "cap_nord",
+      "name": "Cap Nord Investissements",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "Soterna"
+      ],
+      "id": "soterna",
+      "name": "Soterna Ingénierie",
+      "type": "subcontractor"
+    }
+  ],
+  "actors": [
+    {
+      "id": "camille_verdier",
+      "name": "Camille Verdier",
+      "org": "rhea_reseaux",
+      "role": "Directrice générale déléguée Réseaux de l'opérateur",
+      "influence": 0.9,
+      "veto": true,
+      "aliases": [
+        "Camille",
+        "la DG Réseaux"
+      ]
+    },
+    {
+      "id": "antoine_bertel",
+      "name": "Antoine Bertel",
+      "org": "rhea_reseaux",
+      "role": "Directeur administratif et financier de l'opérateur",
+      "influence": 0.75,
+      "veto": true,
+      "aliases": [
+        "Antoine",
+        "le DAF"
+      ]
+    },
+    {
+      "id": "sophie_lamare",
+      "name": "Sophie Lamare",
+      "org": "rhea_reseaux",
+      "role": "Directrice juridique et contrats de l'opérateur",
+      "influence": 0.85,
+      "veto": true,
+      "aliases": [
+        "Sophie",
+        "la Juridique"
+      ]
+    },
+    {
+      "id": "mehdi_kaci",
+      "name": "Mehdi Kaci",
+      "org": "rhea_reseaux",
+      "role": "Directeur technique déploiement et exploitation fibre",
+      "influence": 0.7,
+      "veto": false,
+      "aliases": [
+        "Mehdi",
+        "le tech"
+      ]
+    },
+    {
+      "id": "laurent_porcher",
+      "name": "Laurent Porcher",
+      "org": "cap_nord",
+      "role": "Chargé d'affaires senior du financeur privé du projet",
+      "influence": 0.65,
+      "veto": false,
+      "aliases": [
+        "Laurent",
+        "le banquier"
+      ]
+    },
+    {
+      "id": "elise_bouvard",
+      "name": "Elise Bouvard",
+      "org": "soterna",
+      "role": "Cheffe de projet de l'ingénierie-conseil de l'opérateur",
+      "influence": 0.45,
+      "veto": false,
+      "aliases": [
+        "Elise",
+        "la consultante"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-02-18",
+      "title": "Cadrage technique et premiers jalons contractuels",
+      "debrief": "debriefs/1_2026-02-18.txt"
+    },
+    {
+      "date": "2026-05-06",
+      "title": "Revue d'offre et point dur sur les plafonds de responsabilité",
+      "debrief": "debriefs/2_2026-05-06.txt"
+    },
+    {
+      "date": "2026-07-09",
+      "title": "Atelier juridique clause à clause sur garanties et pénalités",
+      "debrief": "debriefs/3_2026-07-09.txt"
+    },
+    {
+      "date": "2026-09-24",
+      "title": "Convergence sur le schéma de responsabilité à paliers",
+      "debrief": "debriefs/4_2026-09-24.txt"
+    }
+  ]
+}

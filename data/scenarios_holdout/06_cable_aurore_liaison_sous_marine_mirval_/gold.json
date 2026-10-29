@@ -1,0 +1,94 @@
+[
+  {
+    "date": "2026-03-04",
+    "mentions": [
+      {
+        "actor_id": "helene_rochebrune",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "sophie_lerbier",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "karim_bensaid",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "claire_montigny",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-12",
+    "mentions": [
+      {
+        "actor_id": "helene_rochebrune",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "marc_levasseur",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "julien_fabrel",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "karim_bensaid",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-07-08",
+    "mentions": [
+      {
+        "actor_id": "helene_rochebrune",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "sophie_lerbier",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "marc_levasseur",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "julien_fabrel",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-22",
+    "mentions": [
+      {
+        "actor_id": "helene_rochebrune",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "marc_levasseur",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "sophie_lerbier",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "julien_fabrel",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "karim_bensaid",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "claire_montigny",
+        "stance_expressed": "support"
+      }
+    ]
+  }
+]

@@ -1,0 +1,170 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "07_campus_ossonet_val_d_aubray_stockage_on_",
+  "name": "Campus Ossonet Val d'Aubray + Stockage on-site",
+  "seller": "Auvray Énergie Systèmes",
+  "sales_rep": "Claire Deschamps",
+  "buyer": "Ossonet Data Services",
+  "description": "Contrat pluriannuel de 7 ans pour la conception, la construction et l'exploitation d'un campus datacenter de 24 MW au Val d'Aubray avec centrale de stockage batteries on-site de 20 MWh, porté par Auvray Énergie Systèmes pour Ossonet Data Services. Le montage inclut le génie modulaire, l'intégration électrique et un contrat de performance énergétique.",
+  "value_meur": 42.0,
+  "opened": "2026-02-18",
+  "target_signature": null,
+  "competitors": [
+    "Helion Grid Solutions"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "Ossonet",
+        "le client",
+        "ODS"
+      ],
+      "id": "ossonet",
+      "name": "Ossonet Data Services",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "Sorevia"
+      ],
+      "id": "sorevia",
+      "name": "Sorevia Énergie Partagée",
+      "type": "consortium_member"
+    },
+    {
+      "aliases": [
+        "la Caisse",
+        "CMIO"
+      ],
+      "id": "cmio",
+      "name": "Caisse Mutuelle d'Investissement de l'Ouest",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "le Bureau",
+        "la conformité"
+      ],
+      "id": "arin",
+      "name": "Bureau de Conformité des Infrastructures Numériques",
+      "type": "regulator"
+    },
+    {
+      "aliases": [
+        "Batelier",
+        "le constructeur"
+      ],
+      "id": "batelier",
+      "name": "Batelier Construction Modulaire",
+      "type": "subcontractor"
+    },
+    {
+      "aliases": [
+        "Helion"
+      ],
+      "id": "helion",
+      "name": "Helion Grid Solutions",
+      "type": "competitor"
+    }
+  ],
+  "actors": [
+    {
+      "id": "sophie_marchand",
+      "name": "Sophie Marchand",
+      "org": "ossonet",
+      "role": "Directrice générale d'Ossonet Data Services",
+      "influence": 0.85,
+      "veto": true,
+      "aliases": [
+        "Sophie",
+        "la DG",
+        "la patronne"
+      ]
+    },
+    {
+      "id": "philippe_laroche",
+      "name": "Philippe Laroche",
+      "org": "ossonet",
+      "role": "Directeur administratif et financier, gardien du budget d'investissement",
+      "influence": 0.92,
+      "veto": true,
+      "aliases": [
+        "le DAF",
+        "Philippe",
+        "le financier"
+      ]
+    },
+    {
+      "id": "karim_benali",
+      "name": "Karim Benali",
+      "org": "ossonet",
+      "role": "Directeur technique et énergie du campus",
+      "influence": 0.68,
+      "veto": false,
+      "aliases": [
+        "Karim",
+        "le CTO",
+        "le tech"
+      ]
+    },
+    {
+      "id": "elise_fontaine",
+      "name": "Elise Fontaine",
+      "org": "ossonet",
+      "role": "Directrice des opérations du datacenter",
+      "influence": 0.55,
+      "veto": false,
+      "aliases": [
+        "Elise",
+        "la directrice ops"
+      ]
+    },
+    {
+      "id": "julien_perrot",
+      "name": "Julien Perrot",
+      "org": "cmio",
+      "role": "Responsable financements d'infrastructures à la Caisse Mutuelle",
+      "influence": 0.75,
+      "veto": true,
+      "aliases": [
+        "le banquier",
+        "Julien",
+        "la Caisse"
+      ]
+    },
+    {
+      "id": "marc_aubry",
+      "name": "Marc Aubry",
+      "org": "arin",
+      "role": "Chargé d'instruction au Bureau de Conformité des Infrastructures Numériques",
+      "influence": 0.45,
+      "veto": false,
+      "aliases": [
+        "Marc",
+        "le conformité"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-02-18",
+      "title": "Réunion de cadrage campus et stockage",
+      "debrief": "debriefs/1_2026-02-18.txt"
+    },
+    {
+      "date": "2026-05-06",
+      "title": "Revue capacité et dimensionnement batteries",
+      "debrief": "debriefs/2_2026-05-06.txt"
+    },
+    {
+      "date": "2026-07-09",
+      "title": "Montage financier et conformité stockage",
+      "debrief": "debriefs/3_2026-07-09.txt"
+    },
+    {
+      "date": "2026-09-24",
+      "title": "Comité de synthèse avant conseil",
+      "debrief": "debriefs/4_2026-09-24.txt"
+    }
+  ]
+}

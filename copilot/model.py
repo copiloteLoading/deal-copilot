@@ -4,7 +4,7 @@ Pour chaque acteur, la position cachée est une distribution sur {support, neutr
 - elle part d'un a priori (config/model_params.yaml) ;
 - chaque signal du débrief la met à jour par la règle de Bayes (vraisemblance tempérée
   par la confiance, la force et l'origine du signal) ;
-- entre deux signaux, elle dérive vers l'incertitude totale : le silence se paie.
+- entre deux signaux, elle dérive vers l'a priori : le silence se paie.
 C'est un filtre forward de modèle de Markov caché, acteur par acteur.
 
 La probabilité de signature exige que chaque détenteur de veto laisse passer, et pondère
@@ -15,6 +15,7 @@ Hypothèse simplificatrice : les acteurs sont indépendants entre eux.
 
 from __future__ import annotations
 
+import os
 from dataclasses import dataclass
 from datetime import date
 from functools import lru_cache
@@ -25,7 +26,9 @@ import yaml
 
 from copilot import memory
 
-PARAMS_PATH = Path(__file__).resolve().parent.parent / "config" / "model_params.yaml"
+# MODEL_PARAMS permet de comparer une autre version des paramètres (évaluation)
+PARAMS_PATH = Path(os.environ.get("MODEL_PARAMS")
+                   or Path(__file__).resolve().parent.parent / "config" / "model_params.yaml")
 STATES = ["support", "neutral", "oppose"]
 
 

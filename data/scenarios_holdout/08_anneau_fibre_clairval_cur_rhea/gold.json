@@ -1,0 +1,98 @@
+[
+  {
+    "date": "2026-02-18",
+    "mentions": [
+      {
+        "actor_id": "camille_verdier",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "mehdi_kaci",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "antoine_bertel",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "sophie_lamare",
+        "stance_expressed": "oppose"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-06",
+    "mentions": [
+      {
+        "actor_id": "camille_verdier",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "sophie_lamare",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "antoine_bertel",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "laurent_porcher",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "mehdi_kaci",
+        "stance_expressed": "support"
+      }
+    ]
+  },
+  {
+    "date": "2026-07-09",
+    "mentions": [
+      {
+        "actor_id": "sophie_lamare",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "antoine_bertel",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "mehdi_kaci",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "elise_bouvard",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "camille_verdier",
+        "stance_expressed": "support"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-24",
+    "mentions": [
+      {
+        "actor_id": "camille_verdier",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "antoine_bertel",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "sophie_lamare",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "mehdi_kaci",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "laurent_porcher",
+        "stance_expressed": "conditional"
+      }
+    ]
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "date": "2026-02-19",
+    "mentions": [
+      {
+        "actor_id": "helene_voisard",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "marc_aubertin",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "sofia_belkacem",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "antoine_lefevre",
+        "stance_expressed": "conditional"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-24",
+    "mentions": [
+      {
+        "actor_id": "helene_voisard",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "marc_aubertin",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "thibault_renard",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "claire_duret",
+        "stance_expressed": "conditional"
+      }
+    ]
+  },
+  {
+    "date": "2026-07-03",
+    "mentions": [
+      {
+        "actor_id": "claire_duret",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "helene_voisard",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "sofia_belkacem",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "thibault_renard",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "antoine_lefevre",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-25",
+    "mentions": [
+      {
+        "actor_id": "helene_voisard",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "thibault_renard",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "sofia_belkacem",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "claire_duret",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "antoine_lefevre",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "marc_aubertin",
+        "stance_expressed": "neutral"
+      }
+    ]
+  }
+]

@@ -23,6 +23,9 @@ weekly_drift: 0.06
 # le décrive comme « support ».
 # Une condition ou un report (« on en reparlera après le budget ») est ambigu : c'est aussi
 # la façon polie de dire non. On le juge presque aussi compatible avec « oppose » qu'avec « neutral ».
+# Variante testée puis écartée (config/model_params_asym.yaml) : vraisemblance asymétrique
+# (un refus pèse plus qu'un soutien). Plus cohérente face au refus net d'un veto, mais moins
+# bonne sur les contrats jamais vus (Brier 0,263 contre 0,243) : voir eval/results_holdout_asym.md.
 likelihood:
   support:     [0.80, 0.15, 0.05]
   conditional: [0.20, 0.45, 0.35]

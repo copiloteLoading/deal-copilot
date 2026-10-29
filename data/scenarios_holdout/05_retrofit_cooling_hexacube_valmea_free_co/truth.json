@@ -1,0 +1,86 @@
+{
+  "outcome": "delayed",
+  "outcome_explanation": "Quelques semaines après le comité d'octobre, Hexacube décide de décaler la signature à la fin du troisième trimestre 2027. La cause unique est le raccordement de la société privée Voltis Réseaux : poste saturé à Valméa, transformateur à commander et 11 à 14 mois de travaux. Sans date ferme de mise à disposition des 6 MW, la banque refuse de débloquer le financement et la direction des opérations refuse tout risque de coupure. Le projet reste validé techniquement avec Novafroid mais gelé en attente de l'attestation grid.",
+  "hidden_interests": {
+    "sophie_legrand": "Veut moderniser sans aucune coupure client et protéger son bonus lié au PUE et à la disponibilité.",
+    "marc_aubert": "Veut imposer le free-cooling adiabatique pour en faire sa référence technique et évoluer vers directeur énergie.",
+    "julien_perrot": "Veut sécuriser des honoraires d'études complémentaires si le planning glisse et rester incontournable.",
+    "elodie_marchand": "Refuse de débloquer les fonds tant que la puissance additionnelle n'est pas garantie par écrit par l'opérateur de réseau.",
+    "karim_bensaid": "Doit prioriser d'autres raccordements industriels plus rentables et cherche à éviter toute pénalité contractuelle.",
+    "nathalie_roux": "Veut éviter de mobiliser ses équipes dans le vide et préfère les basculer sur d'autres chantiers l'hiver."
+  },
+  "positions": [
+    {
+      "date": "2026-02-18",
+      "attendees": [
+        "sophie_legrand",
+        "marc_aubert",
+        "julien_perrot",
+        "nathalie_roux"
+      ],
+      "what_really_happens": "Visite des salles et des toitures au parc de Valméa. Enthousiasme général pour le free-cooling. Marc pousse l'option adiabatique, Sophie valide le principe sans arrêt d'exploitation. Personne ne mesure encore l'impact électrique, la question du raccordement Voltis est à peine évoquée.",
+      "stances": {
+        "sophie_legrand": "support",
+        "marc_aubert": "support",
+        "julien_perrot": "support",
+        "elodie_marchand": "neutral",
+        "karim_bensaid": "neutral",
+        "nathalie_roux": "support"
+      }
+    },
+    {
+      "date": "2026-04-24",
+      "attendees": [
+        "marc_aubert",
+        "julien_perrot",
+        "karim_bensaid",
+        "nathalie_roux"
+      ],
+      "what_really_happens": "Becquerel chiffre le besoin à +6 MW en pointe. Karim découvre la demande et explique qu'il faut une étude de capacité, un nouveau départ haute tension et des travaux sur le poste de Valméa. Il parle de 4 à 6 mois d'étude puis travaux. Julien commence à s'inquiéter du chemin critique.",
+      "stances": {
+        "sophie_legrand": "support",
+        "marc_aubert": "support",
+        "julien_perrot": "neutral",
+        "elodie_marchand": "neutral",
+        "karim_bensaid": "neutral",
+        "nathalie_roux": "support"
+      }
+    },
+    {
+      "date": "2026-07-03",
+      "attendees": [
+        "sophie_legrand",
+        "marc_aubert",
+        "elodie_marchand",
+        "karim_bensaid"
+      ],
+      "what_really_happens": "Novafroid remet son offre finale. Karim annonce que l'étude capacité révèle une saturation du poste et qu'il faut commander un transformateur avec un délai fournisseur de 9 mois minimum, hors génie civil. Élodie déclare qu'elle ne financera pas sans date ferme de mise à disposition de la puissance. Sophie refuse de prendre le risque d'installer des machines sans alimentation.",
+      "stances": {
+        "sophie_legrand": "neutral",
+        "marc_aubert": "support",
+        "julien_perrot": "neutral",
+        "elodie_marchand": "oppose",
+        "karim_bensaid": "neutral",
+        "nathalie_roux": "neutral"
+      }
+    },
+    {
+      "date": "2026-10-02",
+      "attendees": [
+        "sophie_legrand",
+        "marc_aubert",
+        "julien_perrot",
+        "elodie_marchand"
+      ],
+      "what_really_happens": "Karim, en visio, confirme par écrit un délai de 11 à 14 mois pour le raccordement définitif, sans engagement ferme avant commande du transformateur. Élodie conditionne tout déblocage à cette attestation. Marc propose un phasage avec groupes provisoires, jugé trop risqué et trop cher. Aucune décision formelle de report n'est actée en séance, mais tous actent qu'on ne peut pas signer en l'état.",
+      "stances": {
+        "sophie_legrand": "neutral",
+        "marc_aubert": "neutral",
+        "julien_perrot": "neutral",
+        "elodie_marchand": "oppose",
+        "karim_bensaid": "oppose",
+        "nathalie_roux": "neutral"
+      }
+    }
+  ]
+}

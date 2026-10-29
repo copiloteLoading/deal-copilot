@@ -1,0 +1,159 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "01_cable_sous_marin_aurore_liaison_brume_va",
+  "name": "Câble Sous-Marin Aurore - Liaison Brume-Valserine",
+  "seller": "Méridien Systèmes Sous-Marins",
+  "sales_rep": "Claire Fontaine",
+  "buyer": "Consortium Azur Connect",
+  "description": "Contrat pluriannuel de 4 ans pour la conception, la fabrication, la pose et la maintenance d'un câble sous-marin de télécommunications de 780 km entre Port-Brume et l'île de Valserine, pour le compte du Consortium Azur Connect. Le projet comprend deux paires de fibres à 240 Tbps, les stations d'atterrage, la formation et un engagement de disponibilité de 15 ans. Valeur construction et installation.",
+  "value_meur": 148.2,
+  "opened": "2026-02-19",
+  "target_signature": null,
+  "competitors": [
+    "Nordkabel Systèmes",
+    "Abyss Line Câbles"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "Azur",
+        "le Consortium"
+      ],
+      "id": "azur_connect",
+      "name": "Consortium Azur Connect",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "TDL"
+      ],
+      "id": "tdl",
+      "name": "Télécommunications du Littoral",
+      "type": "consortium_member"
+    },
+    {
+      "aliases": [
+        "la Banque",
+        "BNO"
+      ],
+      "id": "bnap",
+      "name": "Banque Privée Nord Océane",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "Certimer",
+        "le certificateur privé"
+      ],
+      "id": "certimer",
+      "name": "Certimer Contrôle Privé",
+      "type": "regulator"
+    },
+    {
+      "aliases": [
+        "ASB",
+        "les poseurs"
+      ],
+      "id": "asb",
+      "name": "Ateliers Sous-Marins de Brume",
+      "type": "subcontractor"
+    }
+  ],
+  "actors": [
+    {
+      "id": "helene_marchand",
+      "name": "Hélène Marchand",
+      "org": "azur_connect",
+      "role": "Directrice financière du consortium",
+      "influence": 0.92,
+      "veto": true,
+      "aliases": [
+        "la DAF",
+        "Hélène",
+        "la financière"
+      ]
+    },
+    {
+      "id": "marc_aubry",
+      "name": "Marc Aubry",
+      "org": "azur_connect",
+      "role": "Directeur général du consortium",
+      "influence": 0.88,
+      "veto": true,
+      "aliases": [
+        "Marc",
+        "le DG"
+      ]
+    },
+    {
+      "id": "thierry_vasseur",
+      "name": "Thierry Vasseur",
+      "org": "bnap",
+      "role": "Directeur des financements d'infrastructures à la banque privée",
+      "influence": 0.8,
+      "veto": true,
+      "aliases": [
+        "le banquier",
+        "Thierry"
+      ]
+    },
+    {
+      "id": "julien_perrot",
+      "name": "Julien Perrot",
+      "org": "tdl",
+      "role": "Directeur technique du membre opérateur",
+      "influence": 0.75,
+      "veto": false,
+      "aliases": [
+        "Julien",
+        "le tech"
+      ]
+    },
+    {
+      "id": "nadia_belhacem",
+      "name": "Nadia Belhacem",
+      "org": "azur_connect",
+      "role": "Responsable exploitation et maintenance réseau",
+      "influence": 0.55,
+      "veto": false,
+      "aliases": [
+        "Nadia",
+        "l'exploit"
+      ]
+    },
+    {
+      "id": "paul_ribiere",
+      "name": "Paul Ribière",
+      "org": "certimer",
+      "role": "Expert en certification privée des liaisons sous-marines",
+      "influence": 0.5,
+      "veto": false,
+      "aliases": [
+        "le certificateur",
+        "Paul"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-02-19",
+      "title": "Présentation capacitaire et chiffrage initial",
+      "debrief": "debriefs/1_2026-02-19.txt"
+    },
+    {
+      "date": "2026-05-07",
+      "title": "Revue technique et inquiétudes budgétaires",
+      "debrief": "debriefs/2_2026-05-07.txt"
+    },
+    {
+      "date": "2026-07-16",
+      "title": "Proposition d'échéancier de paiement jalonné",
+      "debrief": "debriefs/3_2026-07-16.txt"
+    },
+    {
+      "date": "2026-09-25",
+      "title": "Finalisation contractuelle et plan de financement",
+      "debrief": "debriefs/4_2026-09-25.txt"
+    }
+  ]
+}

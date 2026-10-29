@@ -1,0 +1,88 @@
+{
+  "outcome": "signed",
+  "outcome_explanation": "Signature intervenue quelques semaines après la dernière réunion, une fois la documentation finalisée. Le partenaire tiède, Réseau Varec Océan, a été convaincu par la proposition de partage des revenus wholesale avec plancher garanti, qui sécurisait son retour sur le segment de Varecq sans le faire subventionner les autres îles. Son ralliement a entraîné celui du banquier, rendant le financement possible et permettant la signature du contrat clé en main.",
+  "hidden_interests": {
+    "helene_rochebrune": "Veut réussir son premier grand projet mutualisé pour asseoir sa légitimité et obtenir un second mandat à la tête du groupement.",
+    "marc_levasseur": "Craint de subventionner le câble pour les deux autres îles alors que son marché de Varecq est plus petit ; cherche une garantie de revenus wholesale avant d'engager ses fonds propres.",
+    "sophie_lerbier": "Veut des capacités élevées et une mise en service rapide pour absorber la croissance du trafic data de ses abonnés.",
+    "julien_fabrel": "Ne veut financer que si les deux opérateurs restent solidaires sur 15 ans ; obsédé par la prévisibilité des cash-flows wholesale.",
+    "karim_bensaid": "Veut un contrat de maintenance simple avec un seul interlocuteur et des pénalités claires en cas de coupure.",
+    "claire_montigny": "Veut imposer un standard de pose et de protection élevé pour valoriser son bureau sur d'autres projets sous-marins."
+  },
+  "positions": [
+    {
+      "date": "2026-03-04",
+      "attendees": [
+        "helene_rochebrune",
+        "sophie_lerbier",
+        "karim_bensaid",
+        "claire_montigny"
+      ],
+      "what_really_happens": "Présentation du tracé préférentiel, des atterrages et des capacités par paire de fibres. Enthousiasme technique de Sophie Lerbier et Karim Bensaïd. Claire Montigny liste ses exigences de protection. Marc Levasseur est excusé mais a fait savoir en bilatéral qu'il trouve le projet surdimensionné pour Varecq. La vendeuse comprend que le risque n'est pas technique mais économique.",
+      "stances": {
+        "helene_rochebrune": "support",
+        "marc_levasseur": "neutral",
+        "sophie_lerbier": "support",
+        "julien_fabrel": "neutral",
+        "karim_bensaid": "support",
+        "claire_montigny": "neutral"
+      }
+    },
+    {
+      "date": "2026-05-12",
+      "attendees": [
+        "helene_rochebrune",
+        "marc_levasseur",
+        "julien_fabrel",
+        "karim_bensaid"
+      ],
+      "what_really_happens": "Marc Levasseur conteste ouvertement la clé de répartition 50/50 et menace de ramener sa part à 25% ou de louer de la capacité au lieu de co-investir. Julien Fabrel prévient que sans engagement ferme des deux opérateurs, la dette n'est pas bancable. Hélène Rochebrune tente de recoller les morceaux. En aparté, Levasseur confie qu'il ne croit pas aux prévisions de trafic vers Varecq.",
+      "stances": {
+        "helene_rochebrune": "support",
+        "marc_levasseur": "oppose",
+        "sophie_lerbier": "support",
+        "julien_fabrel": "neutral",
+        "karim_bensaid": "neutral",
+        "claire_montigny": "neutral"
+      }
+    },
+    {
+      "date": "2026-07-08",
+      "attendees": [
+        "helene_rochebrune",
+        "marc_levasseur",
+        "sophie_lerbier",
+        "julien_fabrel"
+      ],
+      "what_really_happens": "La vendeuse propose un nouveau montage : mutualisation des paires, partage des revenus wholesale au prorata du trafic réellement écoulé avec plancher garanti pour Varec Océan pendant 6 ans, plus clause de revente de capacités excédentaires. Levasseur cesse son opposition frontale, se montre curieux et demande une modélisation chiffrée. Le banquier juge le principe intéressant car il lisse le risque.",
+      "stances": {
+        "helene_rochebrune": "support",
+        "marc_levasseur": "neutral",
+        "sophie_lerbier": "support",
+        "julien_fabrel": "neutral",
+        "karim_bensaid": "support",
+        "claire_montigny": "support"
+      }
+    },
+    {
+      "date": "2026-09-22",
+      "attendees": [
+        "helene_rochebrune",
+        "marc_levasseur",
+        "sophie_lerbier",
+        "julien_fabrel",
+        "karim_bensaid",
+        "claire_montigny"
+      ],
+      "what_really_happens": "Présentation du modèle définitif : contribution 55/45, reversement mutualisé, minimum garanti et plafond, engagement de durée 15 ans. Marc Levasseur donne son accord de principe, rassuré par le plancher de revenus. Julien Fabrel confirme la bancabilité sous réserve de documentation. Claire Montigny valide la faisabilité technique du partage capacitaire. Il reste à finaliser les contrats, sans décision formelle ce jour-là.",
+      "stances": {
+        "helene_rochebrune": "support",
+        "marc_levasseur": "support",
+        "sophie_lerbier": "support",
+        "julien_fabrel": "support",
+        "karim_bensaid": "support",
+        "claire_montigny": "support"
+      }
+    }
+  ]
+}

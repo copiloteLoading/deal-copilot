@@ -1,0 +1,90 @@
+[
+  {
+    "date": "2026-02-18",
+    "mentions": [
+      {
+        "actor_id": "ophelie_marchand",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "laure_belin",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "tristan_aubert",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "severin_collet",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-24",
+    "mentions": [
+      {
+        "actor_id": "ophelie_marchand",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "yannick_perrot",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "severin_collet",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "tristan_aubert",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-07-02",
+    "mentions": [
+      {
+        "actor_id": "edouard_vasseur",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "yannick_perrot",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "ophelie_marchand",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "laure_belin",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-25",
+    "mentions": [
+      {
+        "actor_id": "edouard_vasseur",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "yannick_perrot",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "laure_belin",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "severin_collet",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "ophelie_marchand",
+        "stance_expressed": "neutral"
+      }
+    ]
+  }
+]

@@ -1,0 +1,169 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "02_array_cables_66_kv_ferme_des_brumes_780_",
+  "name": "Array câbles 66 kV – Ferme des Brumes 780 MW",
+  "seller": "Câblerie Val Lumière SAS",
+  "sales_rep": "Sophie Delacroix",
+  "buyer": "Ferme Éolienne des Brumes SAS",
+  "description": "Contrat pluriannuel de fourniture de 92 km de câbles inter-éoliennes 66 kV aluminium, accessoires et supervision de pose pour la ferme des Brumes. Le vendeur, challenger avec une offre aluminium plus légère et moins chère, est porté par le directeur technique en place. Son départ en cours de négociation fait basculer le dossier au profit de l'incumbent historique en cuivre.",
+  "value_meur": 74.2,
+  "opened": "2026-02-18",
+  "target_signature": null,
+  "competitors": [
+    "Câblerie du Vieux Chêne SA",
+    "Nordlis Câbles Systems SAS"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "les Brumes",
+        "FEB",
+        "le client des Brumes"
+      ],
+      "id": "feb",
+      "name": "Ferme Éolienne des Brumes SAS",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "la Méridienne",
+        "la banque",
+        "BMP"
+      ],
+      "id": "bmp",
+      "name": "Banque Méridienne Privée SA",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "Lisel",
+        "l'installateur",
+        "SISL"
+      ],
+      "id": "sisl",
+      "name": "Société d'Installation Sous-Marine Lisel SARL",
+      "type": "subcontractor"
+    },
+    {
+      "aliases": [
+        "Vieux Chêne",
+        "l'incumbent",
+        "CVC"
+      ],
+      "id": "cvc",
+      "name": "Câblerie du Vieux Chêne SA",
+      "type": "competitor"
+    },
+    {
+      "aliases": [
+        "Certimer",
+        "le certificateur"
+      ],
+      "id": "cmi",
+      "name": "Certimer Inspection SAS",
+      "type": "regulator"
+    }
+  ],
+  "actors": [
+    {
+      "id": "julien_favre",
+      "name": "Julien Favre",
+      "org": "feb",
+      "role": "Directeur technique du parc, champion technique initial du vendeur",
+      "influence": 0.9,
+      "veto": false,
+      "aliases": [
+        "Julien",
+        "le champion tech",
+        "JT"
+      ]
+    },
+    {
+      "id": "antoine_mercier",
+      "name": "Antoine Mercier",
+      "org": "feb",
+      "role": "Directeur technique successeur, ancien chef de projet chez l'incumbent",
+      "influence": 0.82,
+      "veto": true,
+      "aliases": [
+        "Antoine",
+        "le successeur",
+        "l'ex-Vieux Chêne"
+      ]
+    },
+    {
+      "id": "claire_voisin",
+      "name": "Claire Voisin",
+      "org": "feb",
+      "role": "Directrice Achats du parc",
+      "influence": 0.75,
+      "veto": true,
+      "aliases": [
+        "Claire",
+        "la cheffe achats",
+        "CV"
+      ]
+    },
+    {
+      "id": "helene_brossard",
+      "name": "Hélène Brossard",
+      "org": "feb",
+      "role": "Directrice Administrative et Financière de l'acheteur",
+      "influence": 0.68,
+      "veto": true,
+      "aliases": [
+        "Hélène",
+        "la DAF",
+        "la financière"
+      ]
+    },
+    {
+      "id": "karim_benali",
+      "name": "Karim Benali",
+      "org": "bmp",
+      "role": "Directeur financement de projet chez la banque prêteuse",
+      "influence": 0.55,
+      "veto": false,
+      "aliases": [
+        "Karim",
+        "le banquier",
+        "KB"
+      ]
+    },
+    {
+      "id": "thomas_leroux",
+      "name": "Thomas Leroux",
+      "org": "sisl",
+      "role": "Responsable installation sous-marine chez le sous-traitant poseur",
+      "influence": 0.5,
+      "veto": false,
+      "aliases": [
+        "Thomas",
+        "l'installateur",
+        "le poseur"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-02-18",
+      "title": "Revue technique initiale 66 kV",
+      "debrief": "debriefs/1_2026-02-18.txt"
+    },
+    {
+      "date": "2026-04-23",
+      "title": "Visite d'usine et essais de qualification",
+      "debrief": "debriefs/2_2026-04-23.txt"
+    },
+    {
+      "date": "2026-06-25",
+      "title": "Prise de fonction du nouveau directeur technique",
+      "debrief": "debriefs/3_2026-06-25.txt"
+    },
+    {
+      "date": "2026-09-17",
+      "title": "Comité technique et risques avant décision",
+      "debrief": "debriefs/4_2026-09-17.txt"
+    }
+  ]
+}

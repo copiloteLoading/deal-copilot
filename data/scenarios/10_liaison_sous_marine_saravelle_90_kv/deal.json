@@ -1,0 +1,158 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "10_liaison_sous_marine_saravelle_90_kv",
+  "name": "Liaison Sous-Marine Saravelle 90 kV",
+  "seller": "Lorarmor Câbles Sous-Marins",
+  "sales_rep": "Thibault Le Roux",
+  "buyer": "Saelle Grid Exploitation",
+  "description": "Fourniture et pose d'une double liaison sous-marine 90 kV de 28 km pour relier les deux îles de l'archipel de Saravelle et sécuriser l'alimentation du réseau insulaire exploité par Saelle Grid Exploitation. Le contrat comprend les câbles, les atterrages, la pose en zone de houle et la maintenance sur 10 ans, pour un réseau vieillissant saturé chaque été.",
+  "value_meur": 46.8,
+  "opened": "2026-02-19",
+  "target_signature": null,
+  "competitors": [
+    "Câblerie du Ponant Réunis"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "SGE",
+        "Saelle Grid"
+      ],
+      "id": "saelle_grid",
+      "name": "Saelle Grid Exploitation",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "FOP"
+      ],
+      "id": "fin_oceane",
+      "name": "Financière Océane Privée",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "Certimer"
+      ],
+      "id": "certimer",
+      "name": "Certimer Contrôle Privé",
+      "type": "regulator"
+    },
+    {
+      "aliases": [
+        "CPR",
+        "le local"
+      ],
+      "id": "ponant_cables",
+      "name": "Câblerie du Ponant Réunis",
+      "type": "competitor"
+    },
+    {
+      "aliases": [
+        "Marenne"
+      ],
+      "id": "marenne_ing",
+      "name": "Bureau Marenne Ingénierie Marine",
+      "type": "subcontractor"
+    }
+  ],
+  "actors": [
+    {
+      "id": "corentin_marlec",
+      "name": "Corentin Marlec",
+      "org": "saelle_grid",
+      "role": "Président du conseil de surveillance de Saelle Grid",
+      "influence": 0.92,
+      "veto": true,
+      "aliases": [
+        "le Président",
+        "Corentin",
+        "le chair"
+      ]
+    },
+    {
+      "id": "solene_kerbrat",
+      "name": "Solène Kerbrat",
+      "org": "saelle_grid",
+      "role": "Directrice technique du réseau insulaire",
+      "influence": 0.78,
+      "veto": false,
+      "aliases": [
+        "Solène",
+        "la DT",
+        "la tech"
+      ]
+    },
+    {
+      "id": "gwenael_priou",
+      "name": "Gwenaël Priou",
+      "org": "saelle_grid",
+      "role": "Directeur administratif et financier de Saelle Grid",
+      "influence": 0.81,
+      "veto": true,
+      "aliases": [
+        "le DAF",
+        "Gwenaël"
+      ]
+    },
+    {
+      "id": "maelle_tremeur",
+      "name": "Maëlle Tremeur",
+      "org": "saelle_grid",
+      "role": "Cheffe du projet de liaison sous-marine Saravelle",
+      "influence": 0.62,
+      "veto": false,
+      "aliases": [
+        "Maëlle",
+        "la cheffe de projet"
+      ]
+    },
+    {
+      "id": "erwan_castel",
+      "name": "Erwan Castel",
+      "org": "fin_oceane",
+      "role": "Chargé d'affaires senior pour le financement du projet",
+      "influence": 0.7,
+      "veto": true,
+      "aliases": [
+        "le banquier",
+        "Erwan",
+        "le prêteur"
+      ]
+    },
+    {
+      "id": "ines_larnicol",
+      "name": "Inès Larnicol",
+      "org": "certimer",
+      "role": "Responsable de certification privée des liaisons sous-marines",
+      "influence": 0.55,
+      "veto": false,
+      "aliases": [
+        "Inès",
+        "la conformité"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-02-19",
+      "title": "Cadrage technique et financier initial",
+      "debrief": "debriefs/1_2026-02-19.txt"
+    },
+    {
+      "date": "2026-04-23",
+      "title": "Comparatif des offres et visite d'atterrage",
+      "debrief": "debriefs/2_2026-04-23.txt"
+    },
+    {
+      "date": "2026-07-02",
+      "title": "Revue de risques pose et certification",
+      "debrief": "debriefs/3_2026-07-02.txt"
+    },
+    {
+      "date": "2026-09-24",
+      "title": "Alignement final avant décision du conseil",
+      "debrief": "debriefs/4_2026-09-24.txt"
+    }
+  ]
+}

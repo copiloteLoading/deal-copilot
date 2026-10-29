@@ -1,0 +1,85 @@
+{
+  "outcome": "signed",
+  "outcome_explanation": "Signature quelques semaines après la dernière réunion, une fois la relecture formelle terminée. Le soutien technique et financier n'a jamais faibli, et la juriste, longtemps neutre et exigeante sur les plafonds de responsabilité, a basculé en soutien après l'acceptation du double plafond et du mécanisme d'assurance partagée. Sans opposition résiduelle, le directeur a pu faire signer le cadre septennal.",
+  "hidden_interests": {
+    "y_lefebvre": "Veut laisser un bilan de fiabilisation avant son départ en retraite et éviter toute coupure longue sur les liaisons des membres.",
+    "s_berthier": "Veut se couvrir personnellement sur les clauses de responsabilité et de pénalités ; craint un contentieux entre membres en cas d'avarie.",
+    "c_aubert": "Veut un navire d'intervention basé en permanence près de ses stations pour réduire ses temps de réparation.",
+    "m_fontan": "Veut des exercices conjoints et des pièces de rechange mutualisées pour soulager ses équipes d'astreinte.",
+    "l_girard": "Veut un contrat-cadre long et prévisible pour sécuriser le financement du navire et lisser les appels de fonds.",
+    "p_leroux": "Veut imposer son référentiel de conformité pour obtenir le renouvellement de sa mission d'audit annuelle."
+  },
+  "positions": [
+    {
+      "date": "2026-02-18",
+      "attendees": [
+        "y_lefebvre",
+        "c_aubert",
+        "m_fontan",
+        "p_leroux"
+      ],
+      "what_really_happens": "Visite du navire et présentation des moyens d'intervention. Les opérationnels sont conquis par le positionnement du navire et le stock proposé. La juriste, absente pour relire le projet de cadre, fait savoir par le directeur qu'elle ne validera rien avant une analyse complète des risques et plafonds d'indemnisation.",
+      "stances": {
+        "y_lefebvre": "support",
+        "s_berthier": "neutral",
+        "c_aubert": "support",
+        "m_fontan": "support",
+        "l_girard": "support",
+        "p_leroux": "support"
+      }
+    },
+    {
+      "date": "2026-05-06",
+      "attendees": [
+        "y_lefebvre",
+        "s_berthier",
+        "l_girard"
+      ],
+      "what_really_happens": "La juriste détaille 14 points bloquants : plafond de responsabilité en cas d'endommagement aggravé, articulation des assurances navire et cargaison, pénalités de délai d'intervention. Le directeur et la banquière soutiennent le vendeur sur le principe mais acceptent de laisser le temps à l'analyse. Le vendeur propose une nouvelle rédaction avec double plafond et franchise mutualisée.",
+      "stances": {
+        "y_lefebvre": "support",
+        "s_berthier": "neutral",
+        "c_aubert": "support",
+        "m_fontan": "support",
+        "l_girard": "support",
+        "p_leroux": "support"
+      }
+    },
+    {
+      "date": "2026-07-22",
+      "attendees": [
+        "y_lefebvre",
+        "c_aubert",
+        "m_fontan",
+        "p_leroux"
+      ],
+      "what_really_happens": "Démonstration en bassin d'une épissure et d'un relevage. L'auditeur valide la conformité méthodologique, les opérationnels confirment leur soutien écrit. En parallèle, la juriste continue son aller-retour écrit avec les avocats du vendeur, sans participer à l'essai. Personne ne s'y oppose, mais le calendrier glisse à cause d'elle.",
+      "stances": {
+        "y_lefebvre": "support",
+        "s_berthier": "neutral",
+        "c_aubert": "support",
+        "m_fontan": "support",
+        "l_girard": "support",
+        "p_leroux": "support"
+      }
+    },
+    {
+      "date": "2026-09-30",
+      "attendees": [
+        "y_lefebvre",
+        "s_berthier",
+        "c_aubert",
+        "l_girard"
+      ],
+      "what_really_happens": "La juriste annonce que la version 7 du cadre lève ses dernières réserves : responsabilité plafonnée par intervention et par an, assurance complémentaire partagée, clause de sortie encadrée. Elle donne un avis favorable sous réserve d'une dernière relecture formelle. Tous les autres confirment leur accord et demandent la préparation du dossier de signature.",
+      "stances": {
+        "y_lefebvre": "support",
+        "s_berthier": "support",
+        "c_aubert": "support",
+        "m_fontan": "support",
+        "l_girard": "support",
+        "p_leroux": "support"
+      }
+    }
+  ]
+}

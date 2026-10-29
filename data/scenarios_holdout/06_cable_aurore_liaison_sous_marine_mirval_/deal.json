@@ -1,0 +1,160 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "06_cable_aurore_liaison_sous_marine_mirval_",
+  "name": "Câble Aurore - Liaison sous-marine Mirval-Varecq-Sylmorne",
+  "seller": "Méridienne Câbles Océaniques",
+  "sales_rep": "Inès Vallombreuse",
+  "buyer": "Groupement Câble Aurore",
+  "description": "Contrat clé en main de 4 ans pour la fourniture, la pose et la maintenance d'un câble sous-marin en fibre optique de 214 km reliant les îles de Mirval, Varecq et Sylmorne au sein de l'Archipel des Aubes. Acheteur : le Groupement Câble Aurore mandaté par deux opérateurs membres, Télécom des Brumes Unies et Réseau Varec Océan, avec financement de la Banque Privée du Littoral et contrôle du Bureau Indépendant de Contrôle Sous-Marin. Le point dur est l'hésitation de Réseau Varec Océan, qui juge le segment vers Varecq peu rentable et menace de limiter sa contribution, ce qui fragilise tout le montage.",
+  "value_meur": 68.5,
+  "opened": "2026-03-04",
+  "target_signature": null,
+  "competitors": [
+    "Nordcâble Marine Systèmes",
+    "Abysses Fibre Optique"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "le Groupement",
+        "GCA"
+      ],
+      "id": "gca",
+      "name": "Groupement Câble Aurore",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "TBU",
+        "l'opérateur historique"
+      ],
+      "id": "tbu",
+      "name": "Télécom des Brumes Unies",
+      "type": "consortium_member"
+    },
+    {
+      "aliases": [
+        "Varec Océan",
+        "RVO"
+      ],
+      "id": "rvo",
+      "name": "Réseau Varec Océan",
+      "type": "consortium_member"
+    },
+    {
+      "aliases": [
+        "la Banque du Littoral",
+        "BPL"
+      ],
+      "id": "bpl",
+      "name": "Banque Privée du Littoral",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "le Bureau de contrôle",
+        "BICSM"
+      ],
+      "id": "bics",
+      "name": "Bureau Indépendant de Contrôle Sous-Marin",
+      "type": "regulator"
+    }
+  ],
+  "actors": [
+    {
+      "id": "helene_rochebrune",
+      "name": "Hélène Rochebrune",
+      "org": "gca",
+      "role": "Directrice du Groupement Câble Aurore, pilote l'achat commun pour les trois îles",
+      "influence": 0.9,
+      "veto": true,
+      "aliases": [
+        "Hélène",
+        "la directrice du Groupement"
+      ]
+    },
+    {
+      "id": "marc_levasseur",
+      "name": "Marc Levasseur",
+      "org": "rvo",
+      "role": "Directeur général de Réseau Varec Océan, partenaire tiède du consortium",
+      "influence": 0.85,
+      "veto": true,
+      "aliases": [
+        "Marc",
+        "le tiède",
+        "le patron de Varec"
+      ]
+    },
+    {
+      "id": "sophie_lerbier",
+      "name": "Sophie Lerbier",
+      "org": "tbu",
+      "role": "Directrice technique de Télécom des Brumes Unies, porteuse technique du projet",
+      "influence": 0.7,
+      "veto": false,
+      "aliases": [
+        "Sophie",
+        "la CTO"
+      ]
+    },
+    {
+      "id": "julien_fabrel",
+      "name": "Julien Fabrel",
+      "org": "bpl",
+      "role": "Responsable financements d'infrastructures à la Banque Privée du Littoral",
+      "influence": 0.8,
+      "veto": true,
+      "aliases": [
+        "le banquier",
+        "Julien"
+      ]
+    },
+    {
+      "id": "karim_bensaid",
+      "name": "Karim Bensaïd",
+      "org": "gca",
+      "role": "Responsable exploitation et maintenance du futur câble au sein du groupement",
+      "influence": 0.55,
+      "veto": false,
+      "aliases": [
+        "Karim",
+        "l'exploitant"
+      ]
+    },
+    {
+      "id": "claire_montigny",
+      "name": "Claire Montigny",
+      "org": "bics",
+      "role": "Experte certification au Bureau Indépendant de Contrôle Sous-Marin",
+      "influence": 0.45,
+      "veto": false,
+      "aliases": [
+        "Claire",
+        "la certificateure"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-03-04",
+      "title": "Réunion de cadrage technique - tracé inter-îles",
+      "debrief": "debriefs/1_2026-03-04.txt"
+    },
+    {
+      "date": "2026-05-12",
+      "title": "Comité financier - plan de financement initial",
+      "debrief": "debriefs/2_2026-05-12.txt"
+    },
+    {
+      "date": "2026-07-08",
+      "title": "Atelier proposition de partage de revenus wholesale",
+      "debrief": "debriefs/3_2026-07-08.txt"
+    },
+    {
+      "date": "2026-09-22",
+      "title": "Validation du montage révisé avec partage de revenus",
+      "debrief": "debriefs/4_2026-09-22.txt"
+    }
+  ]
+}

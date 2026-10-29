@@ -1,0 +1,156 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "02_cable_d_export_225_kv_parc_des_dunes_bla",
+  "name": "Câble d'export 225 kV – Parc des Dunes Blanches",
+  "seller": "Câblerie Armoricaine Moderne",
+  "sales_rep": "Julien Perrichet",
+  "buyer": "Éolienne Marine des Dunes Blanches",
+  "description": "Fourniture clé en main sur trois ans de deux câbles d'exportation sous-marins 225 kV de 38 km chacun, joints d'atterrage à Port-Brumeux, tirage et essais, pour raccorder le parc éolien en mer des Dunes Blanches (480 MW). Contrat d'environ 84 MEUR porté par Éolienne Marine des Dunes Blanches avec la Coopérative Énergétique du Littoral, financement de projet de la Banque Seinoise de Financement Vert et certification environnementale de Certimar.",
+  "value_meur": 84.0,
+  "opened": "2026-02-19",
+  "target_signature": null,
+  "competitors": [
+    "Câblerie du Fjord Septentrional",
+    "Intercâbles Méditerranéens"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "les Dunes Blanches",
+        "EMDB"
+      ],
+      "id": "dunes_blanches",
+      "name": "Éolienne Marine des Dunes Blanches",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "la Coopé du Littoral"
+      ],
+      "id": "cel_littoral",
+      "name": "Coopérative Énergétique du Littoral",
+      "type": "consortium_member"
+    },
+    {
+      "aliases": [
+        "la Seinoise Verte",
+        "BSFV"
+      ],
+      "id": "bs_finance",
+      "name": "Banque Seinoise de Financement Vert",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "Nauticat"
+      ],
+      "id": "nauticat_inst",
+      "name": "Nauticat Installation Maritime",
+      "type": "subcontractor"
+    },
+    {
+      "aliases": [
+        "Certimar"
+      ],
+      "id": "certimar",
+      "name": "Certimar Contrôle et Certification",
+      "type": "regulator"
+    }
+  ],
+  "actors": [
+    {
+      "id": "helene_voisard",
+      "name": "Hélène Voisard",
+      "org": "dunes_blanches",
+      "role": "Directrice du projet de parc éolien",
+      "influence": 0.9,
+      "veto": true,
+      "aliases": [
+        "Hélène",
+        "la directrice parc"
+      ]
+    },
+    {
+      "id": "thibault_renard",
+      "name": "Thibault Renard",
+      "org": "dunes_blanches",
+      "role": "Directeur administratif et financier du projet",
+      "influence": 0.78,
+      "veto": true,
+      "aliases": [
+        "Thibault",
+        "le DAF"
+      ]
+    },
+    {
+      "id": "marc_aubertin",
+      "name": "Marc Aubertin",
+      "org": "dunes_blanches",
+      "role": "Responsable raccordement et liaisons sous-marines",
+      "influence": 0.6,
+      "veto": false,
+      "aliases": [
+        "Marc",
+        "le tech raccordement"
+      ]
+    },
+    {
+      "id": "sofia_belkacem",
+      "name": "Sofia Belkacem",
+      "org": "cel_littoral",
+      "role": "Directrice partenariat du codéveloppeur",
+      "influence": 0.65,
+      "veto": false,
+      "aliases": [
+        "Sofia",
+        "la coopé"
+      ]
+    },
+    {
+      "id": "antoine_lefevre",
+      "name": "Antoine Lefèvre",
+      "org": "bs_finance",
+      "role": "Directeur de projet financement de la banque prêteuse",
+      "influence": 0.85,
+      "veto": true,
+      "aliases": [
+        "Antoine",
+        "le banquier"
+      ]
+    },
+    {
+      "id": "claire_duret",
+      "name": "Claire Duret",
+      "org": "certimar",
+      "role": "Auditeure environnementale indépendante",
+      "influence": 0.55,
+      "veto": false,
+      "aliases": [
+        "Claire",
+        "l'auditrice verte"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-02-19",
+      "title": "Lancement technique et cadrage raccordement",
+      "debrief": "debriefs/1_2026-02-19.txt"
+    },
+    {
+      "date": "2026-04-24",
+      "title": "Revue d'avancement et première alerte environnementale",
+      "debrief": "debriefs/2_2026-04-24.txt"
+    },
+    {
+      "date": "2026-07-03",
+      "title": "Report officiel de l'étude benthique complémentaire",
+      "debrief": "debriefs/3_2026-07-03.txt"
+    },
+    {
+      "date": "2026-09-25",
+      "title": "Recalage planning et point financement",
+      "debrief": "debriefs/4_2026-09-25.txt"
+    }
+  ]
+}

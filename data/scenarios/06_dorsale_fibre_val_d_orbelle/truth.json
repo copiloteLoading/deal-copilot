@@ -1,0 +1,87 @@
+{
+  "outcome": "signed",
+  "outcome_explanation": "Signature quelques semaines après le cadrage de septembre. Le basculement de Camille Verne, opposante initiale, après la visite du site pilote de Rovillac a levé le principal veto technique et entraîné l'alignement du DAF et de la banque sur un schéma phasé avec audits Certival. Travorel sécurisé comme sous-traitant a fiabilisé le planning, rendant l'offre Serevia moins risquée que celles de Fibroval et Norestia.",
+  "hidden_interests": {
+    "camille_verne": "Craint qu'un retard ou une casse sur le réseau existant lui soit imputé avant sa revue de promotion interne.",
+    "nicolas_fabre": "Veut lisser les CAPEX sur cinq ans et montrer une économie face au comité d'investissement.",
+    "sophie_leroux": "Veut imposer une architecture ouverte et éviter d'être enfermée chez l'équipementier historique.",
+    "mehdi_kaci": "Doit sécuriser le remboursement par des jalons fermes et des pénalités crédibles.",
+    "elise_perrot": "Veut être reconnue comme référente qualité sans se mettre à dos l'opérateur.",
+    "laurent_bodin": "Craint de devoir mobiliser ses équipes l'hiver sans compensation et cherche des marges de délai."
+  },
+  "positions": [
+    {
+      "date": "2026-02-18",
+      "attendees": [
+        "camille_verne",
+        "nicolas_fabre",
+        "sophie_leroux",
+        "laurent_bodin"
+      ],
+      "what_really_happens": "Serevia présente son tracé et sa méthode sans tranchée lourde. Camille Verne attaque frontalement la crédibilité du planning et du taux de casse, forte de deux chantiers ratés par d'autres prestataires. Laurent Bodin renchérit sur l'infaisabilité hivernale. Sophie Leroux défend l'architecture ouverte proposée. Nicolas Fabre écoute sur les prix sans se prononcer.",
+      "stances": {
+        "camille_verne": "oppose",
+        "nicolas_fabre": "neutral",
+        "sophie_leroux": "support",
+        "mehdi_kaci": "neutral",
+        "elise_perrot": "neutral",
+        "laurent_bodin": "oppose"
+      }
+    },
+    {
+      "date": "2026-04-22",
+      "attendees": [
+        "camille_verne",
+        "sophie_leroux",
+        "mehdi_kaci",
+        "elise_perrot"
+      ],
+      "what_really_happens": "Analyse détaillée des coûts, des jalons et des pénalités. Mehdi Kaci exige des garanties de délais et un audit qualité externe. Elise Perrot réclame des mesures de terrain. Camille reste opposée et demande une preuve grandeur nature, ce qui conduit à organiser une visite du tronçon pilote de Rovillac exploité par Serevia. Laurent, rassuré sur les moyens, passe neutre.",
+      "stances": {
+        "camille_verne": "oppose",
+        "nicolas_fabre": "neutral",
+        "sophie_leroux": "support",
+        "mehdi_kaci": "neutral",
+        "elise_perrot": "neutral",
+        "laurent_bodin": "neutral"
+      }
+    },
+    {
+      "date": "2026-07-08",
+      "attendees": [
+        "camille_verne",
+        "sophie_leroux",
+        "elise_perrot",
+        "laurent_bodin"
+      ],
+      "what_really_happens": "Visite terrain du tronçon de 12 km à Rovillac posé en micro-tunnelier l'hiver précédent : tiroirs, soudures, relevés OTDR et échanges sans filtre avec les équipes d'exploitation. Camille constate l'absence de casse, la rapidité de réparation et la propreté des chambres. Elle change publiquement de ton devant Sophie et Elise. Elise valide les métriques. Nicolas, qui reçoit les photos et le rapport, bascule en soutien sur le coût global.",
+      "stances": {
+        "camille_verne": "support",
+        "nicolas_fabre": "support",
+        "sophie_leroux": "support",
+        "mehdi_kaci": "neutral",
+        "elise_perrot": "support",
+        "laurent_bodin": "neutral"
+      }
+    },
+    {
+      "date": "2026-09-24",
+      "attendees": [
+        "camille_verne",
+        "nicolas_fabre",
+        "sophie_leroux",
+        "mehdi_kaci",
+        "elise_perrot"
+      ],
+      "what_really_happens": "Dernière mise au point sans décision formelle : planning phasé avec fenêtre hivernale protégée, pénalités plafonnées acceptées par Serevia, audit Certival à chaque jalon exigé par la banque. Camille défend désormais le dossier et propose Travorel comme sous-traitant cadre. Mehdi donne son feu vert de principe pour le financement. Le dossier part au comité d'investissement d'octobre, sans signature ni attribution notifiée en séance.",
+      "stances": {
+        "camille_verne": "support",
+        "nicolas_fabre": "support",
+        "sophie_leroux": "support",
+        "mehdi_kaci": "support",
+        "elise_perrot": "support",
+        "laurent_bodin": "support"
+      }
+    }
+  ]
+}

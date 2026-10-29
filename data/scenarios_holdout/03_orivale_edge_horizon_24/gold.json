@@ -1,0 +1,90 @@
+[
+  {
+    "date": "2026-02-19",
+    "mentions": [
+      {
+        "actor_id": "nadia_belkacem",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "elodie_vansart",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "yann_legoff",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "thomas_perrin",
+        "stance_expressed": "oppose"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-23",
+    "mentions": [
+      {
+        "actor_id": "elodie_vansart",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "nadia_belkacem",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "olivier_ravel",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "thomas_perrin",
+        "stance_expressed": "conditional"
+      }
+    ]
+  },
+  {
+    "date": "2026-07-03",
+    "mentions": [
+      {
+        "actor_id": "elodie_vansart",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "nadia_belkacem",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "helene_cordier",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "olivier_ravel",
+        "stance_expressed": "conditional"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-24",
+    "mentions": [
+      {
+        "actor_id": "elodie_vansart",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "thomas_perrin",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "nadia_belkacem",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "olivier_ravel",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "helene_cordier",
+        "stance_expressed": "support"
+      }
+    ]
+  }
+]

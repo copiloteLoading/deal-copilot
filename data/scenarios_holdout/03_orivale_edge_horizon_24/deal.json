@@ -1,0 +1,158 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "03_orivale_edge_horizon_24",
+  "name": "Orivale Edge Horizon 24",
+  "seller": "Valdoré Systèmes",
+  "sales_rep": "Manon Ferrier",
+  "buyer": "Orivale Télécoms",
+  "description": "Contrat pluriannuel de 5 ans pour la conception, la fourniture et la maintenance de 24 micro-datacenters edge pour l'opérateur Orivale Télécoms, porté par Valdoré Systèmes avec financement par Civalp Financement et déploiement par Bréval Réseaux Services.",
+  "value_meur": 62.4,
+  "opened": "2026-02-19",
+  "target_signature": null,
+  "competitors": [
+    "Stratocell Energie",
+    "Kastell Data Systems"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "Orivale",
+        "l'opérateur"
+      ],
+      "id": "orivale",
+      "name": "Orivale Télécoms",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "Civalp",
+        "la banque"
+      ],
+      "id": "civalp",
+      "name": "Civalp Financement Privé",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "Certival",
+        "l'auditeur"
+      ],
+      "id": "certival",
+      "name": "Certival Contrôle Technique",
+      "type": "regulator"
+    },
+    {
+      "aliases": [
+        "Bréval",
+        "l'installateur"
+      ],
+      "id": "breval",
+      "name": "Bréval Réseaux Services",
+      "type": "subcontractor"
+    },
+    {
+      "aliases": [
+        "Stratocell"
+      ],
+      "id": "stratocell",
+      "name": "Stratocell Energie",
+      "type": "competitor"
+    }
+  ],
+  "actors": [
+    {
+      "id": "elodie_vansart",
+      "name": "Elodie Vansart",
+      "org": "orivale",
+      "role": "Directrice du Réseau chez Orivale Télécoms, sponsor du programme edge",
+      "influence": 0.9,
+      "veto": true,
+      "aliases": [
+        "Elodie",
+        "la directrice réseau"
+      ]
+    },
+    {
+      "id": "thomas_perrin",
+      "name": "Thomas Perrin",
+      "org": "orivale",
+      "role": "Directeur Administratif et Financier d'Orivale Télécoms, gardien du budget",
+      "influence": 0.85,
+      "veto": true,
+      "aliases": [
+        "Thomas",
+        "le DAF"
+      ]
+    },
+    {
+      "id": "nadia_belkacem",
+      "name": "Nadia Belkacem",
+      "org": "orivale",
+      "role": "Responsable Edge et Cloud chez Orivale Télécoms, championne technique du projet",
+      "influence": 0.7,
+      "veto": false,
+      "aliases": [
+        "Nadia",
+        "la tech edge"
+      ]
+    },
+    {
+      "id": "olivier_ravel",
+      "name": "Olivier Ravel",
+      "org": "civalp",
+      "role": "Directeur des Investissements Infrastructures chez Civalp Financement, prêteur du projet",
+      "influence": 0.95,
+      "veto": true,
+      "aliases": [
+        "Olivier",
+        "le banquier"
+      ]
+    },
+    {
+      "id": "helene_cordier",
+      "name": "Hélène Cordier",
+      "org": "certival",
+      "role": "Auditrice principale chez Certival Contrôle Technique, mandatée pour l'audit indépendant",
+      "influence": 0.6,
+      "veto": false,
+      "aliases": [
+        "Hélène",
+        "l'auditrice"
+      ]
+    },
+    {
+      "id": "yann_legoff",
+      "name": "Yann Le Goff",
+      "org": "breval",
+      "role": "Directeur de Bréval Réseaux Services, sous-traitant pressenti pour le déploiement terrain",
+      "influence": 0.4,
+      "veto": false,
+      "aliases": [
+        "Yann",
+        "le poseur"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-02-19",
+      "title": "Cadrage technique edge",
+      "debrief": "debriefs/1_2026-02-19.txt"
+    },
+    {
+      "date": "2026-04-23",
+      "title": "Revue financière et condition du prêteur",
+      "debrief": "debriefs/2_2026-04-23.txt"
+    },
+    {
+      "date": "2026-07-03",
+      "title": "Point d'étape audit indépendant",
+      "debrief": "debriefs/3_2026-07-03.txt"
+    },
+    {
+      "date": "2026-09-24",
+      "title": "Restitution finale de l'audit et levée des réserves",
+      "debrief": "debriefs/4_2026-09-24.txt"
+    }
+  ]
+}

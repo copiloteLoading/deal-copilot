@@ -1,0 +1,86 @@
+{
+  "outcome": "signed",
+  "outcome_explanation": "La vente est signée quelques semaines après la dernière réunion. La direction achats a obtenu sa baisse de 7,5% sur l'investissement, que Novamar a concédée uniquement contre le passage de la maintenance de 5 à 8 ans à tarif verrouillé, ce qui a fait basculer la DAF et la banque en soutien et levé les trois vetos.",
+  "hidden_interests": {
+    "helene_vasseur": "Veut afficher au moins 10% d'économie sur le CAPEX pour décrocher sa prime annuelle et asseoir son autorité face à la technique.",
+    "marc_aubertin": "Craint une panne d'alimentation et de refroidissement pendant la saison haute ; veut du matériel robuste et un mainteneur unique responsable.",
+    "sophie_larnac": "Préfère un OPEX lissé et prévisible sur 8 ans plutôt qu'un CAPEX bas suivi de coûts incertains ; doit rassurer la banque.",
+    "julien_kerbrat": "Doit justifier auprès de ses associés d'Atlanor que la mutualisation du site reste rentable ; sensible à la durée d'engagement de maintenance.",
+    "antoine_serillac": "Veut un contrat de maintenance long adossé au financement pour sécuriser les flux de remboursement du prêt d'équipement.",
+    "paul_delsaux": "Veut remporter le lot d'installation pour occuper ses équipes à Cap-Méridien au printemps et éviter un concurrent moins cher."
+  },
+  "positions": [
+    {
+      "date": "2026-02-19",
+      "attendees": [
+        "marc_aubertin",
+        "julien_kerbrat",
+        "paul_delsaux"
+      ],
+      "what_really_happens": "Visite des locaux énergie et des chambres de tirage avec Marc et Sobatel. Constat partagé : onduleurs en fin de vie et climatisation sous-dimensionnée. Julien s'inquiète de la cohabitation des équipements du consortium. Aucune discussion prix, la commerciale Novamar prend des mesures et promet une offre globale travaux + maintenance 5 ans.",
+      "stances": {
+        "helene_vasseur": "neutral",
+        "marc_aubertin": "support",
+        "sophie_larnac": "neutral",
+        "julien_kerbrat": "neutral",
+        "antoine_serillac": "neutral",
+        "paul_delsaux": "support"
+      }
+    },
+    {
+      "date": "2026-04-23",
+      "attendees": [
+        "helene_vasseur",
+        "sophie_larnac",
+        "marc_aubertin",
+        "antoine_serillac"
+      ],
+      "what_really_happens": "Hélène juge l'offre Novamar 12% trop chère et brandit le chiffrage Abyssal Connectique pour mettre la pression. Sophie suit sur le CAPEX. Marc défend la solution technique Novamar, plus redondante. La banque reste en retrait mais note que le financement bloque si le budget ne baisse pas. Novamar repart avec un ultimatum : baisser le prix ou sortir du short-list.",
+      "stances": {
+        "helene_vasseur": "oppose",
+        "marc_aubertin": "support",
+        "sophie_larnac": "oppose",
+        "julien_kerbrat": "neutral",
+        "antoine_serillac": "neutral",
+        "paul_delsaux": "support"
+      }
+    },
+    {
+      "date": "2026-07-08",
+      "attendees": [
+        "helene_vasseur",
+        "sophie_larnac",
+        "marc_aubertin",
+        "julien_kerbrat"
+      ],
+      "what_really_happens": "Novamar propose un montage : -7,5% sur l'investissement contre extension de la maintenance de 5 à 8 ans avec prix annuel verrouillé et pénalités de disponibilité. Sophie adhère immédiatement au lissage OPEX. Hélène trouve la baisse encore juste mais accepte d'étudier car elle pourra afficher une économie CAPEX. Julien demande des garanties d'accès prioritaire pour Atlanor pendant la maintenance.",
+      "stances": {
+        "helene_vasseur": "neutral",
+        "marc_aubertin": "support",
+        "sophie_larnac": "support",
+        "julien_kerbrat": "neutral",
+        "antoine_serillac": "support",
+        "paul_delsaux": "support"
+      }
+    },
+    {
+      "date": "2026-09-30",
+      "attendees": [
+        "helene_vasseur",
+        "sophie_larnac",
+        "marc_aubertin",
+        "julien_kerbrat",
+        "antoine_serillac"
+      ],
+      "what_really_happens": "Dernière mise au point : prix d'équipement baissé de 7,5%, maintenance 8 ans fermes avec clause de sortie à 6 ans pour le consortium et planning Sobatel validé par Marc. Hélène obtient son économie affichable, Sophie son OPEX prévisible, Julien ses créneaux garantis, la banque valide le plan de financement adossé au contrat long. Reste à faire viser les contrats, sans annonce officielle en séance.",
+      "stances": {
+        "helene_vasseur": "support",
+        "marc_aubertin": "support",
+        "sophie_larnac": "support",
+        "julien_kerbrat": "support",
+        "antoine_serillac": "support",
+        "paul_delsaux": "support"
+      }
+    }
+  ]
+}

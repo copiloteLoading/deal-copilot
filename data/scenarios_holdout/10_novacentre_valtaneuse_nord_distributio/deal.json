@@ -1,0 +1,167 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "10_novacentre_valtaneuse_nord_distributio",
+  "name": "Novacentre Valtaneuse-Nord - Distribution 120 MW",
+  "seller": "Voltelia Systèmes SAS",
+  "sales_rep": "Maxime Charpentier",
+  "buyer": "Novacentre Data SAS",
+  "description": "Contrat pluriannuel de conception, fourniture et mise en service de la distribution électrique haute densité pour deux nouveaux halls hyperscale de 60 MW à Valtaneuse-Nord (busbars redondants, TGBT, tableaux HTA-BT, supervision), avec maintenance et extension capacitaire sur 5 ans, négocié avec Novacentre Data SAS et son groupement de construction.",
+  "value_meur": 46.8,
+  "opened": "2026-02-19",
+  "target_signature": null,
+  "competitors": [
+    "Translek Énergie",
+    "Caldor Power Systems"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "Novacentre",
+        "le client",
+        "NCD"
+      ],
+      "id": "novacentre",
+      "name": "Novacentre Data SAS",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "Bâticentre",
+        "le lot gros-oeuvre"
+      ],
+      "id": "baticentre",
+      "name": "Bâticentre Atlantique SAS",
+      "type": "consortium_member"
+    },
+    {
+      "aliases": [
+        "Sorel",
+        "la banque",
+        "le banquier"
+      ],
+      "id": "sorel_fin",
+      "name": "Banque Sorel Financement",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "Elecvia",
+        "l'installateur"
+      ],
+      "id": "elecvia",
+      "name": "Elecvia Installations SAS",
+      "type": "subcontractor"
+    },
+    {
+      "aliases": [
+        "Translek",
+        "le moins-disant"
+      ],
+      "id": "translek",
+      "name": "Translek Énergie",
+      "type": "competitor"
+    }
+  ],
+  "actors": [
+    {
+      "id": "elodie_roussel",
+      "name": "Élodie Roussel",
+      "org": "novacentre",
+      "role": "Directrice Technique et Innovation, sponsor du projet d'extension 120 MW",
+      "influence": 0.85,
+      "veto": false,
+      "aliases": [
+        "Élodie",
+        "la sponsor",
+        "la DT"
+      ]
+    },
+    {
+      "id": "nadine_perrin",
+      "name": "Nadine Perrin",
+      "org": "novacentre",
+      "role": "Directrice Achats Groupe, présidente du comité de sélection",
+      "influence": 0.92,
+      "veto": true,
+      "aliases": [
+        "Nadine",
+        "la patronne des achats",
+        "le comité"
+      ]
+    },
+    {
+      "id": "olivier_fontan",
+      "name": "Olivier Fontan",
+      "org": "novacentre",
+      "role": "Directeur Administratif et Financier",
+      "influence": 0.8,
+      "veto": true,
+      "aliases": [
+        "Olivier",
+        "le DAF",
+        "le financier"
+      ]
+    },
+    {
+      "id": "mehdi_kaci",
+      "name": "Mehdi Kaci",
+      "org": "novacentre",
+      "role": "Responsable Exploitation des Sites hyperscale",
+      "influence": 0.6,
+      "veto": false,
+      "aliases": [
+        "Mehdi",
+        "l'exploitant",
+        "Mehdi l'ops"
+      ]
+    },
+    {
+      "id": "camille_leroy",
+      "name": "Camille Leroy",
+      "org": "sorel_fin",
+      "role": "Directrice Financement de Projet",
+      "influence": 0.55,
+      "veto": false,
+      "aliases": [
+        "Camille",
+        "la banquière",
+        "Sorel"
+      ]
+    },
+    {
+      "id": "bastien_girard",
+      "name": "Bastien Girard",
+      "org": "baticentre",
+      "role": "Directeur Travaux Généraux du groupement de construction",
+      "influence": 0.65,
+      "veto": false,
+      "aliases": [
+        "Bastien",
+        "le travaux",
+        "BT"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-02-19",
+      "title": "Visite technique exploratoire - Site de Valtaneuse-Nord",
+      "debrief": "debriefs/1_2026-02-19.txt"
+    },
+    {
+      "date": "2026-05-06",
+      "title": "Démonstration architecture busbar redondante et essais en charge",
+      "debrief": "debriefs/2_2026-05-06.txt"
+    },
+    {
+      "date": "2026-07-09",
+      "title": "Soutenance technico-économique devant le comité achats",
+      "debrief": "debriefs/3_2026-07-09.txt"
+    },
+    {
+      "date": "2026-09-24",
+      "title": "Clarification finale - maintenance, garanties et planning",
+      "debrief": "debriefs/4_2026-09-24.txt"
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "01_modernisation_station_d_atterrissage_cap",
+  "name": "Modernisation Station d'Atterrissage Cap-Méridien",
+  "seller": "Novamar Systèmes",
+  "sales_rep": "Élodie Marchand",
+  "buyer": "Celtanor Réseaux Submarins",
+  "description": "Mise à niveau complète de la station d'atterrissage de câbles sous-marins de Cap-Lumière exploitée par Celtanor : remplacement des alimentations secourues, refonte du refroidissement, supervision et sécurisation des baies optiques. La direction achats exige une baisse significative du prix d'investissement, finalement accordée par Novamar en échange d'une extension du contrat de maintenance de 5 à 8 ans.",
+  "value_meur": 22.4,
+  "opened": "2026-02-19",
+  "target_signature": null,
+  "competitors": [
+    "Abyssal Connectique",
+    "Nordcâble Solutions"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "Celtanor",
+        "l'opérateur"
+      ],
+      "id": "celtanor",
+      "name": "Celtanor Réseaux Submarins",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "Atlanor",
+        "le consortium"
+      ],
+      "id": "atlanor",
+      "name": "Atlanor Fibre Partenaires",
+      "type": "consortium_member"
+    },
+    {
+      "aliases": [
+        "Seignan",
+        "la banque"
+      ],
+      "id": "seignan",
+      "name": "Banque Seignan & Associés",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "Sobatel",
+        "l'installateur"
+      ],
+      "id": "sobatel",
+      "name": "Sobatel Ingénierie Marine",
+      "type": "subcontractor"
+    },
+    {
+      "aliases": [
+        "Abyssal"
+      ],
+      "id": "abyssal",
+      "name": "Abyssal Connectique",
+      "type": "competitor"
+    },
+    {
+      "aliases": [
+        "Nordcâble"
+      ],
+      "id": "nordcable",
+      "name": "Nordcâble Solutions",
+      "type": "competitor"
+    }
+  ],
+  "actors": [
+    {
+      "id": "helene_vasseur",
+      "name": "Hélène Vasseur",
+      "org": "celtanor",
+      "role": "Directrice Achats de Celtanor, responsable de la négociation commerciale",
+      "influence": 0.9,
+      "veto": true,
+      "aliases": [
+        "Hélène",
+        "la cheffe des achats"
+      ]
+    },
+    {
+      "id": "marc_aubertin",
+      "name": "Marc Aubertin",
+      "org": "celtanor",
+      "role": "Directeur Technique Réseau, en charge de la station d'atterrissage",
+      "influence": 0.85,
+      "veto": false,
+      "aliases": [
+        "Marc",
+        "le tech"
+      ]
+    },
+    {
+      "id": "sophie_larnac",
+      "name": "Sophie Larnac",
+      "org": "celtanor",
+      "role": "Directrice Administrative et Financière de Celtanor",
+      "influence": 0.82,
+      "veto": true,
+      "aliases": [
+        "Sophie",
+        "la DAF"
+      ]
+    },
+    {
+      "id": "julien_kerbrat",
+      "name": "Julien Kerbrat",
+      "org": "atlanor",
+      "role": "Représentant du consortium Atlanor Fibre Partenaires, co-utilisateur du site",
+      "influence": 0.75,
+      "veto": true,
+      "aliases": [
+        "Julien",
+        "le consortium"
+      ]
+    },
+    {
+      "id": "antoine_serillac",
+      "name": "Antoine Sérillac",
+      "org": "seignan",
+      "role": "Chargé d'affaires senior chez Banque Seignan, financeur du projet",
+      "influence": 0.55,
+      "veto": false,
+      "aliases": [
+        "Antoine",
+        "le banquier"
+      ]
+    },
+    {
+      "id": "paul_delsaux",
+      "name": "Paul-Henri Delsaux",
+      "org": "sobatel",
+      "role": "Conducteur de travaux chez Sobatel Ingénierie, sous-traitant d'installation pressenti",
+      "influence": 0.45,
+      "veto": false,
+      "aliases": [
+        "Paulo",
+        "le chantier"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-02-19",
+      "title": "Visite technique station Cap-Lumière",
+      "debrief": "debriefs/1_2026-02-19.txt"
+    },
+    {
+      "date": "2026-04-23",
+      "title": "Revue d'offre et exigence de baisse de prix",
+      "debrief": "debriefs/2_2026-04-23.txt"
+    },
+    {
+      "date": "2026-07-08",
+      "title": "Négociation prix contre maintenance longue",
+      "debrief": "debriefs/3_2026-07-08.txt"
+    },
+    {
+      "date": "2026-09-30",
+      "title": "Alignement final consortium et financement",
+      "debrief": "debriefs/4_2026-09-30.txt"
+    }
+  ]
+}

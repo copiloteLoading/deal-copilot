@@ -1,0 +1,86 @@
+[
+  {
+    "date": "2026-02-19",
+    "mentions": [
+      {
+        "actor_id": "marc_aubertin",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "paul_delsaux",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "julien_kerbrat",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-23",
+    "mentions": [
+      {
+        "actor_id": "helene_vasseur",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "sophie_larnac",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "marc_aubertin",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "antoine_serillac",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-07-08",
+    "mentions": [
+      {
+        "actor_id": "sophie_larnac",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "marc_aubertin",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "helene_vasseur",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "julien_kerbrat",
+        "stance_expressed": "conditional"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-30",
+    "mentions": [
+      {
+        "actor_id": "helene_vasseur",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "sophie_larnac",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "marc_aubertin",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "julien_kerbrat",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "antoine_serillac",
+        "stance_expressed": "support"
+      }
+    ]
+  }
+]

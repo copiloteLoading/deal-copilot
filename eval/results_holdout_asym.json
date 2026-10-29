@@ -1,0 +1,2031 @@
+{
+  "summary": {
+    "n_deals": 10,
+    "n_forecasts": 40,
+    "outcomes": {
+      "signed": 4,
+      "lost": 4,
+      "delayed": 2
+    },
+    "brier": {
+      "llm": {
+        "all": 0.17818,
+        "early": 0.26389,
+        "last": 0.03438
+      },
+      "model": {
+        "all": 0.2626352612401863,
+        "early": 0.3101258660953642,
+        "last": 0.16101927258920112
+      },
+      "q_voi": {
+        "all": 0.281290309147031,
+        "early": 0.3806412472356532,
+        "last": 0.10327373731413221
+      },
+      "q_llm": {
+        "all": 0.2887415992914304,
+        "early": 0.3774145767035674,
+        "last": 0.11655556881222669
+      },
+      "q_random": {
+        "all": 0.2672578660268796,
+        "early": 0.3343871947937216,
+        "last": 0.12436985795890917
+      }
+    },
+    "extraction": {
+      "exact": {
+        "precision": 0.7950310559006211,
+        "recall": 0.7441860465116279,
+        "actors_found": 0.936046511627907
+      },
+      "lenient": {
+        "precision": 0.8881987577639752,
+        "recall": 0.8313953488372093,
+        "actors_found": 0.936046511627907
+      }
+    },
+    "positions": {
+      "acc_model": 0.7208333333333334,
+      "acc_voi": 0.7791666666666667,
+      "acc_llm": 0.7625,
+      "acc_random": 0.8
+    },
+    "uncertainty": {
+      "model_std": 0.20837669284179353,
+      "std_voi": 0.16709627909210406,
+      "std_llm": 0.16998538948632352,
+      "std_random": 0.19881821442813163
+    },
+    "veto_share": {
+      "voi": 1.0,
+      "llm": 0.975,
+      "random": 0.5125
+    },
+    "detection": {
+      "llm": {
+        "failed_deals_flagged": 6,
+        "n_failed": 6,
+        "mean_first_alert_meeting": 1.6666666666666667,
+        "signed_deals_falsely_flagged": 4
+      },
+      "model": {
+        "failed_deals_flagged": 6,
+        "n_failed": 6,
+        "mean_first_alert_meeting": 2.6666666666666665,
+        "signed_deals_falsely_flagged": 4
+      },
+      "q_voi": {
+        "failed_deals_flagged": 6,
+        "n_failed": 6,
+        "mean_first_alert_meeting": 2.8333333333333335,
+        "signed_deals_falsely_flagged": 4
+      }
+    }
+  },
+  "results": [
+    {
+      "deal_id": "01_modernisation_station_d_atterrissage_cap",
+      "outcome": "signed",
+      "y": 1,
+      "records": [
+        {
+          "meeting": 1,
+          "date": "2026-02-19",
+          "model": 0.3017330564549523,
+          "model_std": 0.2438756660724407,
+          "acc_model": 0.8333333333333334,
+          "llm": 0.22,
+          "q_voi": 0.3117060653637077,
+          "std_voi": 0.21794744542371486,
+          "acc_voi": 0.8333333333333334,
+          "picks_voi": [
+            "sophie_larnac",
+            "helene_vasseur"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.3117060653637077,
+          "std_llm": 0.21794744542371486,
+          "acc_llm": 0.8333333333333334,
+          "picks_llm": [
+            "helene_vasseur",
+            "sophie_larnac"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.3372877901561749,
+          "std_random": 0.24244646003935383,
+          "acc_random": 1.0,
+          "picks_random": [
+            "marc_aubertin",
+            "julien_kerbrat"
+          ],
+          "veto_picks_random": 1
+        },
+        {
+          "meeting": 2,
+          "date": "2026-04-23",
+          "model": 0.019450563183146252,
+          "model_std": 0.029497086490293502,
+          "acc_model": 1.0,
+          "llm": 0.25,
+          "q_voi": 0.009562491799187344,
+          "std_voi": 0.014006078520607744,
+          "acc_voi": 1.0,
+          "picks_voi": [
+            "sophie_larnac",
+            "helene_vasseur"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.009562491799187344,
+          "std_llm": 0.014006078520607744,
+          "acc_llm": 1.0,
+          "picks_llm": [
+            "helene_vasseur",
+            "sophie_larnac"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.0199037509203338,
+          "std_random": 0.023631873673333345,
+          "acc_random": 1.0,
+          "picks_random": [
+            "paul_delsaux",
+            "helene_vasseur"
+          ],
+          "veto_picks_random": 1
+        },
+        {
+          "meeting": 3,
+          "date": "2026-07-08",
+          "model": 0.17070512658584427,
+          "model_std": 0.2258972116385109,
+          "acc_model": 0.5,
+          "llm": 0.38,
+          "q_voi": 0.23158965758609457,
+          "std_voi": 0.24799112415094315,
+          "acc_voi": 0.6666666666666666,
+          "picks_voi": [
+            "helene_vasseur",
+            "sophie_larnac"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.18691492854735361,
+          "std_llm": 0.223237058824197,
+          "acc_llm": 0.6666666666666666,
+          "picks_llm": [
+            "helene_vasseur",
+            "julien_kerbrat"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.21615160877849512,
+          "std_random": 0.24391013494237876,
+          "acc_random": 1.0,
+          "picks_random": [
+            "helene_vasseur",
+            "antoine_serillac"
+          ],
+          "veto_picks_random": 1
+        },
+        {
+          "meeting": 4,
+          "date": "2026-09-30",
+          "model": 0.3280188069340255,
+          "model_std": 0.26917963660418104,
+          "acc_model": 0.5,
+          "llm": 0.81,
+          "q_voi": 0.4566420130321544,
+          "std_voi": 0.2623673753520079,
+          "acc_voi": 0.6666666666666666,
+          "picks_voi": [
+            "helene_vasseur",
+            "julien_kerbrat"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.4335920671905951,
+          "std_llm": 0.26054084075807654,
+          "acc_llm": 0.6666666666666666,
+          "picks_llm": [
+            "helene_vasseur",
+            "julien_kerbrat"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.38716699276644284,
+          "std_random": 0.28082707239667787,
+          "acc_random": 0.6666666666666666,
+          "picks_random": [
+            "paul_delsaux",
+            "marc_aubertin"
+          ],
+          "veto_picks_random": 0
+        }
+      ],
+      "extraction": [
+        {
+          "found": {
+            "marc_aubertin": "support",
+            "paul_delsaux": "support",
+            "julien_kerbrat": "neutral"
+          },
+          "expected": {
+            "marc_aubertin": "support",
+            "paul_delsaux": "support",
+            "julien_kerbrat": "neutral"
+          }
+        },
+        {
+          "found": {
+            "helene_vasseur": "oppose",
+            "sophie_larnac": "oppose",
+            "marc_aubertin": "support",
+            "antoine_serillac": "conditional"
+          },
+          "expected": {
+            "helene_vasseur": "oppose",
+            "sophie_larnac": "oppose",
+            "marc_aubertin": "support",
+            "antoine_serillac": "neutral"
+          }
+        },
+        {
+          "found": {
+            "sophie_larnac": "support",
+            "marc_aubertin": "support",
+            "helene_vasseur": "conditional",
+            "julien_kerbrat": "neutral"
+          },
+          "expected": {
+            "sophie_larnac": "support",
+            "marc_aubertin": "support",
+            "helene_vasseur": "neutral",
+            "julien_kerbrat": "conditional"
+          }
+        },
+        {
+          "found": {
+            "helene_vasseur": "support",
+            "sophie_larnac": "support",
+            "marc_aubertin": "conditional",
+            "julien_kerbrat": "conditional",
+            "antoine_serillac": "support"
+          },
+          "expected": {
+            "helene_vasseur": "support",
+            "sophie_larnac": "support",
+            "marc_aubertin": "support",
+            "julien_kerbrat": "conditional",
+            "antoine_serillac": "support"
+          }
+        }
+      ]
+    },
+    {
+      "deal_id": "02_array_cables_66_kv_ferme_des_brumes_780_",
+      "outcome": "lost",
+      "y": 0,
+      "records": [
+        {
+          "meeting": 1,
+          "date": "2026-02-18",
+          "model": 0.31379115809156005,
+          "model_std": 0.2524868155463665,
+          "acc_model": 1.0,
+          "llm": 0.25,
+          "q_voi": 0.32428544399940856,
+          "std_voi": 0.2258839450570931,
+          "acc_voi": 1.0,
+          "picks_voi": [
+            "claire_voisin",
+            "antoine_mercier"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.32462432499692134,
+          "std_llm": 0.22686590870280976,
+          "acc_llm": 1.0,
+          "picks_llm": [
+            "antoine_mercier",
+            "helene_brossard"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.31953958156363027,
+          "std_random": 0.23757764923165237,
+          "acc_random": 1.0,
+          "picks_random": [
+            "claire_voisin",
+            "karim_benali"
+          ],
+          "veto_picks_random": 1
+        },
+        {
+          "meeting": 2,
+          "date": "2026-04-23",
+          "model": 0.35944353549203734,
+          "model_std": 0.2626703481312034,
+          "acc_model": 0.8333333333333334,
+          "llm": 0.17,
+          "q_voi": 0.4052670955592871,
+          "std_voi": 0.22998694244552315,
+          "acc_voi": 0.8333333333333334,
+          "picks_voi": [
+            "helene_brossard",
+            "claire_voisin"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.38104324741224416,
+          "std_llm": 0.21563035691275442,
+          "acc_llm": 0.8333333333333334,
+          "picks_llm": [
+            "antoine_mercier",
+            "helene_brossard"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.36592860232223484,
+          "std_random": 0.23743707515539955,
+          "acc_random": 0.8333333333333334,
+          "picks_random": [
+            "antoine_mercier",
+            "karim_benali"
+          ],
+          "veto_picks_random": 1
+        },
+        {
+          "meeting": 3,
+          "date": "2026-06-25",
+          "model": 0.11420272292619968,
+          "model_std": 0.16751632137350367,
+          "acc_model": 0.6666666666666666,
+          "llm": 0.12,
+          "q_voi": 0.06397700995789021,
+          "std_voi": 0.09339930844805079,
+          "acc_voi": 0.6666666666666666,
+          "picks_voi": [
+            "antoine_mercier",
+            "helene_brossard"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.06948494433084208,
+          "std_llm": 0.10560268989180877,
+          "acc_llm": 0.6666666666666666,
+          "picks_llm": [
+            "antoine_mercier",
+            "claire_voisin"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.13713336119572553,
+          "std_random": 0.1735341245323581,
+          "acc_random": 0.8333333333333334,
+          "picks_random": [
+            "thomas_leroux",
+            "claire_voisin"
+          ],
+          "veto_picks_random": 1
+        },
+        {
+          "meeting": 4,
+          "date": "2026-09-17",
+          "model": 0.06309103480062456,
+          "model_std": 0.1081990685202108,
+          "acc_model": 0.3333333333333333,
+          "llm": 0.08,
+          "q_voi": 0.024547554207620663,
+          "std_voi": 0.03810974684436518,
+          "acc_voi": 0.5,
+          "picks_voi": [
+            "antoine_mercier",
+            "claire_voisin"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.025791237815330204,
+          "std_llm": 0.039837052199713854,
+          "acc_llm": 0.3333333333333333,
+          "picks_llm": [
+            "antoine_mercier",
+            "claire_voisin"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.02276322907277273,
+          "std_random": 0.04150388123596012,
+          "acc_random": 0.5,
+          "picks_random": [
+            "helene_brossard",
+            "antoine_mercier"
+          ],
+          "veto_picks_random": 2
+        }
+      ],
+      "extraction": [
+        {
+          "found": {
+            "julien_favre": "support",
+            "thomas_leroux": "support",
+            "claire_voisin": "conditional",
+            "karim_benali": "conditional"
+          },
+          "expected": {
+            "julien_favre": "support",
+            "thomas_leroux": "support",
+            "claire_voisin": "neutral",
+            "karim_benali": "conditional"
+          }
+        },
+        {
+          "found": {
+            "julien_favre": "support",
+            "claire_voisin": "support",
+            "thomas_leroux": "support",
+            "antoine_mercier": "neutral"
+          },
+          "expected": {
+            "julien_favre": "support",
+            "claire_voisin": "support",
+            "thomas_leroux": "support",
+            "antoine_mercier": "neutral"
+          }
+        },
+        {
+          "found": {
+            "antoine_mercier": "oppose",
+            "claire_voisin": "conditional",
+            "helene_brossard": "conditional",
+            "thomas_leroux": "conditional"
+          },
+          "expected": {
+            "antoine_mercier": "oppose",
+            "claire_voisin": "conditional",
+            "helene_brossard": "neutral",
+            "thomas_leroux": "neutral"
+          }
+        },
+        {
+          "found": {
+            "antoine_mercier": "oppose",
+            "thomas_leroux": "conditional",
+            "claire_voisin": "conditional",
+            "helene_brossard": "conditional",
+            "karim_benali": "neutral"
+          },
+          "expected": {
+            "antoine_mercier": "oppose",
+            "thomas_leroux": "oppose",
+            "claire_voisin": "oppose",
+            "helene_brossard": "oppose",
+            "karim_benali": "neutral"
+          }
+        }
+      ]
+    },
+    {
+      "deal_id": "03_orivale_edge_horizon_24",
+      "outcome": "signed",
+      "y": 1,
+      "records": [
+        {
+          "meeting": 1,
+          "date": "2026-02-19",
+          "model": 0.29942381595710865,
+          "model_std": 0.23773338794930832,
+          "acc_model": 0.6666666666666666,
+          "llm": 0.22,
+          "q_voi": 0.1593849385937252,
+          "std_voi": 0.19288899915989785,
+          "acc_voi": 0.8333333333333334,
+          "picks_voi": [
+            "thomas_perrin",
+            "elodie_vansart"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.15675218665647822,
+          "std_llm": 0.19133232034578698,
+          "acc_llm": 0.8333333333333334,
+          "picks_llm": [
+            "olivier_ravel",
+            "thomas_perrin"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.31862890044245185,
+          "std_random": 0.24297989889985894,
+          "acc_random": 0.6666666666666666,
+          "picks_random": [
+            "helene_cordier",
+            "nadia_belkacem"
+          ],
+          "veto_picks_random": 0
+        },
+        {
+          "meeting": 2,
+          "date": "2026-04-23",
+          "model": 0.33815428285741134,
+          "model_std": 0.22707683211109708,
+          "acc_model": 0.5,
+          "llm": 0.35,
+          "q_voi": 0.0644756259238288,
+          "std_voi": 0.12350912892900143,
+          "acc_voi": 0.6666666666666666,
+          "picks_voi": [
+            "thomas_perrin",
+            "olivier_ravel"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.07553093578764512,
+          "std_llm": 0.134608162302088,
+          "acc_llm": 0.6666666666666666,
+          "picks_llm": [
+            "olivier_ravel",
+            "thomas_perrin"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.21389522407397082,
+          "std_random": 0.22322667873082752,
+          "acc_random": 0.8333333333333334,
+          "picks_random": [
+            "yann_legoff",
+            "thomas_perrin"
+          ],
+          "veto_picks_random": 1
+        },
+        {
+          "meeting": 3,
+          "date": "2026-07-03",
+          "model": 0.36663856379050774,
+          "model_std": 0.24004013546780392,
+          "acc_model": 0.6666666666666666,
+          "llm": 0.6,
+          "q_voi": 0.25111251966879267,
+          "std_voi": 0.2323314677572257,
+          "acc_voi": 0.6666666666666666,
+          "picks_voi": [
+            "thomas_perrin",
+            "olivier_ravel"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.26357162866516737,
+          "std_llm": 0.2344019462317116,
+          "acc_llm": 0.6666666666666666,
+          "picks_llm": [
+            "olivier_ravel",
+            "thomas_perrin"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.32636850336811607,
+          "std_random": 0.267468810116439,
+          "acc_random": 0.8333333333333334,
+          "picks_random": [
+            "helene_cordier",
+            "elodie_vansart"
+          ],
+          "veto_picks_random": 1
+        },
+        {
+          "meeting": 4,
+          "date": "2026-09-24",
+          "model": 0.45836254469453286,
+          "model_std": 0.2448955290945657,
+          "acc_model": 0.5,
+          "llm": 0.78,
+          "q_voi": 0.5013442499706026,
+          "std_voi": 0.2410739295853825,
+          "acc_voi": 0.5,
+          "picks_voi": [
+            "olivier_ravel",
+            "thomas_perrin"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.5095878228101577,
+          "std_llm": 0.23606951368146084,
+          "acc_llm": 0.5,
+          "picks_llm": [
+            "olivier_ravel",
+            "thomas_perrin"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.5511506110421215,
+          "std_random": 0.23970536875896478,
+          "acc_random": 0.6666666666666666,
+          "picks_random": [
+            "olivier_ravel",
+            "thomas_perrin"
+          ],
+          "veto_picks_random": 2
+        }
+      ],
+      "extraction": [
+        {
+          "found": {
+            "nadia_belkacem": "support",
+            "elodie_vansart": "conditional",
+            "yann_legoff": "support"
+          },
+          "expected": {
+            "nadia_belkacem": "support",
+            "elodie_vansart": "neutral",
+            "yann_legoff": "support",
+            "thomas_perrin": "oppose"
+          }
+        },
+        {
+          "found": {
+            "elodie_vansart": "support",
+            "nadia_belkacem": "support",
+            "olivier_ravel": "conditional",
+            "thomas_perrin": "conditional"
+          },
+          "expected": {
+            "elodie_vansart": "support",
+            "nadia_belkacem": "support",
+            "olivier_ravel": "conditional",
+            "thomas_perrin": "conditional"
+          }
+        },
+        {
+          "found": {
+            "helene_cordier": "support",
+            "nadia_belkacem": "support",
+            "elodie_vansart": "support",
+            "olivier_ravel": "conditional"
+          },
+          "expected": {
+            "elodie_vansart": "support",
+            "nadia_belkacem": "support",
+            "helene_cordier": "support",
+            "olivier_ravel": "conditional"
+          }
+        },
+        {
+          "found": {
+            "helene_cordier": "support",
+            "elodie_vansart": "support",
+            "thomas_perrin": "support",
+            "olivier_ravel": "conditional",
+            "nadia_belkacem": "support"
+          },
+          "expected": {
+            "elodie_vansart": "support",
+            "thomas_perrin": "support",
+            "nadia_belkacem": "support",
+            "olivier_ravel": "support",
+            "helene_cordier": "support"
+          }
+        }
+      ]
+    },
+    {
+      "deal_id": "04_liaison_fibre_abyssale_alizee_segment_va",
+      "outcome": "lost",
+      "y": 0,
+      "records": [
+        {
+          "meeting": 1,
+          "date": "2026-02-18",
+          "model": 0.3684627268202105,
+          "model_std": 0.2558576791208976,
+          "acc_model": 1.0,
+          "llm": 0.35,
+          "q_voi": 0.3804439797761305,
+          "std_voi": 0.2207179119742866,
+          "acc_voi": 1.0,
+          "picks_voi": [
+            "elise_marchand",
+            "marc_aubert"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.3804439797761305,
+          "std_llm": 0.2207179119742866,
+          "acc_llm": 1.0,
+          "picks_llm": [
+            "elise_marchand",
+            "marc_aubert"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.3973530783745462,
+          "std_random": 0.24167068866710786,
+          "acc_random": 1.0,
+          "picks_random": [
+            "romain_bellec",
+            "marc_aubert"
+          ],
+          "veto_picks_random": 2
+        },
+        {
+          "meeting": 2,
+          "date": "2026-05-14",
+          "model": 0.19092842735064722,
+          "model_std": 0.21660341382603487,
+          "acc_model": 0.8333333333333334,
+          "llm": 0.18,
+          "q_voi": 0.09792064665908339,
+          "std_voi": 0.14026428314950468,
+          "acc_voi": 0.8333333333333334,
+          "picks_voi": [
+            "elise_marchand",
+            "marc_aubert"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.10201436526735093,
+          "std_llm": 0.14687149625994675,
+          "acc_llm": 0.8333333333333334,
+          "picks_llm": [
+            "elise_marchand",
+            "romain_bellec"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.2167712336199088,
+          "std_random": 0.22043397524465952,
+          "acc_random": 0.8333333333333334,
+          "picks_random": [
+            "romain_bellec",
+            "marc_aubert"
+          ],
+          "veto_picks_random": 2
+        },
+        {
+          "meeting": 3,
+          "date": "2026-07-23",
+          "model": 0.08773193466424827,
+          "model_std": 0.13555517540560363,
+          "acc_model": 0.6666666666666666,
+          "llm": 0.18,
+          "q_voi": 0.049670722909992575,
+          "std_voi": 0.047643700014814244,
+          "acc_voi": 0.6666666666666666,
+          "picks_voi": [
+            "elise_marchand",
+            "romain_bellec"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.050247886049260074,
+          "std_llm": 0.04983976159748513,
+          "acc_llm": 0.6666666666666666,
+          "picks_llm": [
+            "elise_marchand",
+            "romain_bellec"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.09700567366185872,
+          "std_random": 0.13964718837303175,
+          "acc_random": 0.8333333333333334,
+          "picks_random": [
+            "sophie_queneau",
+            "romain_bellec"
+          ],
+          "veto_picks_random": 1
+        },
+        {
+          "meeting": 4,
+          "date": "2026-10-06",
+          "model": 0.06410476575067434,
+          "model_std": 0.10068821341966488,
+          "acc_model": 0.8333333333333334,
+          "llm": 0.12,
+          "q_voi": 0.029459956900135288,
+          "std_voi": 0.04000164033235056,
+          "acc_voi": 0.8333333333333334,
+          "picks_voi": [
+            "elise_marchand",
+            "marc_aubert"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.04631450171196352,
+          "std_llm": 0.040312398061597206,
+          "acc_llm": 0.8333333333333334,
+          "picks_llm": [
+            "elise_marchand",
+            "romain_bellec"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.0677168465008832,
+          "std_random": 0.09990803672531075,
+          "acc_random": 0.8333333333333334,
+          "picks_random": [
+            "romain_bellec",
+            "sophie_queneau"
+          ],
+          "veto_picks_random": 1
+        }
+      ],
+      "extraction": [
+        {
+          "found": {
+            "ines_leroux": "support",
+            "karim_bensaid": "support",
+            "romain_bellec": "support",
+            "elise_marchand": "conditional"
+          },
+          "expected": {
+            "ines_leroux": "support",
+            "karim_bensaid": "support",
+            "romain_bellec": "support",
+            "elise_marchand": "neutral"
+          }
+        },
+        {
+          "found": {
+            "ines_leroux": "support",
+            "romain_bellec": "support",
+            "elise_marchand": "conditional",
+            "marc_aubert": "conditional"
+          },
+          "expected": {
+            "ines_leroux": "support",
+            "romain_bellec": "support",
+            "elise_marchand": "conditional",
+            "marc_aubert": "conditional"
+          }
+        },
+        {
+          "found": {
+            "ines_leroux": "support",
+            "sophie_queneau": "support",
+            "elise_marchand": "conditional",
+            "marc_aubert": "conditional",
+            "romain_bellec": "conditional"
+          },
+          "expected": {
+            "ines_leroux": "support",
+            "sophie_queneau": "support",
+            "elise_marchand": "oppose",
+            "marc_aubert": "conditional",
+            "romain_bellec": "conditional"
+          }
+        },
+        {
+          "found": {
+            "elise_marchand": "oppose",
+            "ines_leroux": "support",
+            "romain_bellec": "conditional",
+            "marc_aubert": "conditional"
+          },
+          "expected": {
+            "elise_marchand": "oppose",
+            "ines_leroux": "support",
+            "romain_bellec": "conditional",
+            "marc_aubert": "conditional",
+            "karim_bensaid": "neutral"
+          }
+        }
+      ]
+    },
+    {
+      "deal_id": "05_retrofit_cooling_hexacube_valmea_free_co",
+      "outcome": "delayed",
+      "y": 0,
+      "records": [
+        {
+          "meeting": 1,
+          "date": "2026-02-18",
+          "model": 0.2979077653033306,
+          "model_std": 0.2428121495229431,
+          "acc_model": 0.5,
+          "llm": 0.25,
+          "q_voi": 0.3368613792886171,
+          "std_voi": 0.2351068435460736,
+          "acc_voi": 0.5,
+          "picks_voi": [
+            "sophie_legrand",
+            "elodie_marchand"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.309470630483245,
+          "std_llm": 0.21784686437407094,
+          "acc_llm": 0.5,
+          "picks_llm": [
+            "elodie_marchand",
+            "karim_bensaid"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.3219420364658162,
+          "std_random": 0.23716551720739526,
+          "acc_random": 0.5,
+          "picks_random": [
+            "elodie_marchand",
+            "marc_aubert"
+          ],
+          "veto_picks_random": 1
+        },
+        {
+          "meeting": 2,
+          "date": "2026-04-24",
+          "model": 0.30868355064040515,
+          "model_std": 0.22373790524086398,
+          "acc_model": 0.6666666666666666,
+          "llm": 0.22,
+          "q_voi": 0.37271686025928613,
+          "std_voi": 0.20145579431516533,
+          "acc_voi": 0.8333333333333334,
+          "picks_voi": [
+            "elodie_marchand",
+            "sophie_legrand"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.36026003429017284,
+          "std_llm": 0.19377183048086852,
+          "acc_llm": 0.6666666666666666,
+          "picks_llm": [
+            "sophie_legrand",
+            "elodie_marchand"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.3791194560551922,
+          "std_random": 0.2268136735079228,
+          "acc_random": 0.6666666666666666,
+          "picks_random": [
+            "nathalie_roux",
+            "sophie_legrand"
+          ],
+          "veto_picks_random": 1
+        },
+        {
+          "meeting": 3,
+          "date": "2026-07-03",
+          "model": 0.3072530438988478,
+          "model_std": 0.21017477646327873,
+          "acc_model": 0.8333333333333334,
+          "llm": 0.15,
+          "q_voi": 0.23146056172809745,
+          "std_voi": 0.20054662750061114,
+          "acc_voi": 0.8333333333333334,
+          "picks_voi": [
+            "sophie_legrand",
+            "elodie_marchand"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.34419274581252535,
+          "std_llm": 0.17262032939602592,
+          "acc_llm": 0.8333333333333334,
+          "picks_llm": [
+            "sophie_legrand",
+            "karim_bensaid"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.2086621387234754,
+          "std_random": 0.2042267412951803,
+          "acc_random": 1.0,
+          "picks_random": [
+            "elodie_marchand",
+            "karim_bensaid"
+          ],
+          "veto_picks_random": 2
+        },
+        {
+          "meeting": 4,
+          "date": "2026-10-02",
+          "model": 0.26863406568945253,
+          "model_std": 0.20151815666031894,
+          "acc_model": 0.5,
+          "llm": 0.15,
+          "q_voi": 0.12509383961189802,
+          "std_voi": 0.16060480931549748,
+          "acc_voi": 0.6666666666666666,
+          "picks_voi": [
+            "elodie_marchand",
+            "sophie_legrand"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.18876951702317513,
+          "std_llm": 0.18306828902976893,
+          "acc_llm": 0.5,
+          "picks_llm": [
+            "sophie_legrand",
+            "elodie_marchand"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.15438025012389453,
+          "std_random": 0.17934249408712175,
+          "acc_random": 0.5,
+          "picks_random": [
+            "karim_bensaid",
+            "marc_aubert"
+          ],
+          "veto_picks_random": 1
+        }
+      ],
+      "extraction": [
+        {
+          "found": {
+            "marc_aubert": "support",
+            "sophie_legrand": "conditional",
+            "julien_perrot": "neutral",
+            "nathalie_roux": "support"
+          },
+          "expected": {
+            "sophie_legrand": "conditional",
+            "marc_aubert": "support",
+            "julien_perrot": "support",
+            "nathalie_roux": "support"
+          }
+        },
+        {
+          "found": {
+            "julien_perrot": "support",
+            "marc_aubert": "support",
+            "karim_bensaid": "conditional",
+            "nathalie_roux": "conditional"
+          },
+          "expected": {
+            "marc_aubert": "support",
+            "julien_perrot": "neutral",
+            "karim_bensaid": "conditional",
+            "nathalie_roux": "support"
+          }
+        },
+        {
+          "found": {
+            "marc_aubert": "support",
+            "karim_bensaid": "neutral",
+            "elodie_marchand": "conditional",
+            "sophie_legrand": "conditional"
+          },
+          "expected": {
+            "marc_aubert": "support",
+            "karim_bensaid": "neutral",
+            "elodie_marchand": "oppose",
+            "sophie_legrand": "conditional"
+          }
+        },
+        {
+          "found": {
+            "karim_bensaid": "conditional",
+            "elodie_marchand": "conditional",
+            "sophie_legrand": "conditional",
+            "marc_aubert": "support",
+            "julien_perrot": "oppose"
+          },
+          "expected": {
+            "elodie_marchand": "conditional",
+            "sophie_legrand": "conditional",
+            "marc_aubert": "support",
+            "julien_perrot": "neutral",
+            "karim_bensaid": "conditional"
+          }
+        }
+      ]
+    },
+    {
+      "deal_id": "06_cable_aurore_liaison_sous_marine_mirval_",
+      "outcome": "signed",
+      "y": 1,
+      "records": [
+        {
+          "meeting": 1,
+          "date": "2026-03-04",
+          "model": 0.36875225718542015,
+          "model_std": 0.2632594464386218,
+          "acc_model": 1.0,
+          "llm": 0.35,
+          "q_voi": 0.38465493231074505,
+          "std_voi": 0.22859416819402129,
+          "acc_voi": 1.0,
+          "picks_voi": [
+            "julien_fabrel",
+            "marc_levasseur"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.38465493231074505,
+          "std_llm": 0.22859416819402129,
+          "acc_llm": 1.0,
+          "picks_llm": [
+            "marc_levasseur",
+            "julien_fabrel"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.38492792517856805,
+          "std_random": 0.2690725674286124,
+          "acc_random": 1.0,
+          "picks_random": [
+            "karim_bensaid",
+            "claire_montigny"
+          ],
+          "veto_picks_random": 0
+        },
+        {
+          "meeting": 2,
+          "date": "2026-05-12",
+          "model": 0.048991067350971605,
+          "model_std": 0.05076093464806988,
+          "acc_model": 1.0,
+          "llm": 0.15,
+          "q_voi": 0.048558599925406586,
+          "std_voi": 0.031470765795770295,
+          "acc_voi": 1.0,
+          "picks_voi": [
+            "marc_levasseur",
+            "julien_fabrel"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.048558599925406586,
+          "std_llm": 0.031470765795770295,
+          "acc_llm": 1.0,
+          "picks_llm": [
+            "marc_levasseur",
+            "julien_fabrel"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.05259594623019549,
+          "std_random": 0.05177640059561112,
+          "acc_random": 1.0,
+          "picks_random": [
+            "karim_bensaid",
+            "sophie_lerbier"
+          ],
+          "veto_picks_random": 0
+        },
+        {
+          "meeting": 3,
+          "date": "2026-07-08",
+          "model": 0.17921768667523932,
+          "model_std": 0.22476731233277972,
+          "acc_model": 0.5,
+          "llm": 0.35,
+          "q_voi": 0.2342561979714693,
+          "std_voi": 0.2268657583885136,
+          "acc_voi": 0.5,
+          "picks_voi": [
+            "marc_levasseur",
+            "julien_fabrel"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.2342561979714693,
+          "std_llm": 0.2268657583885136,
+          "acc_llm": 0.5,
+          "picks_llm": [
+            "marc_levasseur",
+            "julien_fabrel"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.193315432806725,
+          "std_random": 0.2353073650417855,
+          "acc_random": 0.5,
+          "picks_random": [
+            "claire_montigny",
+            "helene_rochebrune"
+          ],
+          "veto_picks_random": 1
+        },
+        {
+          "meeting": 4,
+          "date": "2026-09-22",
+          "model": 0.3877739650370234,
+          "model_std": 0.2833480667355853,
+          "acc_model": 0.6666666666666666,
+          "llm": 0.72,
+          "q_voi": 0.5238244809247574,
+          "std_voi": 0.24138514246637943,
+          "acc_voi": 0.6666666666666666,
+          "picks_voi": [
+            "marc_levasseur",
+            "julien_fabrel"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.5238244809247574,
+          "std_llm": 0.24138514246637943,
+          "acc_llm": 0.6666666666666666,
+          "picks_llm": [
+            "marc_levasseur",
+            "julien_fabrel"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.4946027707059359,
+          "std_random": 0.2777940739703476,
+          "acc_random": 0.6666666666666666,
+          "picks_random": [
+            "marc_levasseur",
+            "sophie_lerbier"
+          ],
+          "veto_picks_random": 1
+        }
+      ],
+      "extraction": [
+        {
+          "found": {
+            "helene_rochebrune": "support",
+            "sophie_lerbier": "support",
+            "karim_bensaid": "support",
+            "claire_montigny": "neutral"
+          },
+          "expected": {
+            "helene_rochebrune": "support",
+            "sophie_lerbier": "support",
+            "karim_bensaid": "support",
+            "claire_montigny": "neutral"
+          }
+        },
+        {
+          "found": {
+            "helene_rochebrune": "support",
+            "marc_levasseur": "oppose",
+            "julien_fabrel": "conditional",
+            "karim_bensaid": "neutral"
+          },
+          "expected": {
+            "helene_rochebrune": "support",
+            "marc_levasseur": "oppose",
+            "julien_fabrel": "conditional",
+            "karim_bensaid": "neutral"
+          }
+        },
+        {
+          "found": {
+            "helene_rochebrune": "support",
+            "sophie_lerbier": "support",
+            "marc_levasseur": "conditional",
+            "julien_fabrel": "conditional"
+          },
+          "expected": {
+            "helene_rochebrune": "support",
+            "sophie_lerbier": "support",
+            "marc_levasseur": "conditional",
+            "julien_fabrel": "neutral"
+          }
+        },
+        {
+          "found": {
+            "helene_rochebrune": "support",
+            "marc_levasseur": "support",
+            "sophie_lerbier": "support",
+            "julien_fabrel": "conditional",
+            "karim_bensaid": "support",
+            "claire_montigny": "support"
+          },
+          "expected": {
+            "helene_rochebrune": "support",
+            "marc_levasseur": "support",
+            "sophie_lerbier": "support",
+            "julien_fabrel": "conditional",
+            "karim_bensaid": "support",
+            "claire_montigny": "support"
+          }
+        }
+      ]
+    },
+    {
+      "deal_id": "07_cadre_reparation_cables_brume_2026_2031",
+      "outcome": "lost",
+      "y": 0,
+      "records": [
+        {
+          "meeting": 1,
+          "date": "2026-02-18",
+          "model": 0.3743072459137946,
+          "model_std": 0.2318242118611078,
+          "acc_model": 0.8333333333333334,
+          "llm": 0.38,
+          "q_voi": 0.4181220468180636,
+          "std_voi": 0.20414074252802022,
+          "acc_voi": 1.0,
+          "picks_voi": [
+            "edouard_vasseur",
+            "laure_belin"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.38017040621378734,
+          "std_llm": 0.20726488088304829,
+          "acc_llm": 0.8333333333333334,
+          "picks_llm": [
+            "edouard_vasseur",
+            "severin_collet"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.4239369725050877,
+          "std_random": 0.22956817110055033,
+          "acc_random": 1.0,
+          "picks_random": [
+            "tristan_aubert",
+            "laure_belin"
+          ],
+          "veto_picks_random": 1
+        },
+        {
+          "meeting": 2,
+          "date": "2026-04-24",
+          "model": 0.32801408539013654,
+          "model_std": 0.22189903471232936,
+          "acc_model": 1.0,
+          "llm": 0.3,
+          "q_voi": 0.3501109375556063,
+          "std_voi": 0.1837321211265634,
+          "acc_voi": 1.0,
+          "picks_voi": [
+            "edouard_vasseur",
+            "laure_belin"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.3379732031677261,
+          "std_llm": 0.1930845037878646,
+          "acc_llm": 1.0,
+          "picks_llm": [
+            "edouard_vasseur",
+            "severin_collet"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.34393723190438824,
+          "std_random": 0.21826237790697525,
+          "acc_random": 0.8333333333333334,
+          "picks_random": [
+            "tristan_aubert",
+            "yannick_perrot"
+          ],
+          "veto_picks_random": 0
+        },
+        {
+          "meeting": 3,
+          "date": "2026-07-02",
+          "model": 0.11499276070513302,
+          "model_std": 0.15176976764972272,
+          "acc_model": 0.5,
+          "llm": 0.15,
+          "q_voi": 0.06377158154586367,
+          "std_voi": 0.09286243707968067,
+          "acc_voi": 0.5,
+          "picks_voi": [
+            "edouard_vasseur",
+            "laure_belin"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.14213420708572505,
+          "std_llm": 0.1557505087029507,
+          "acc_llm": 0.5,
+          "picks_llm": [
+            "laure_belin",
+            "ophelie_marchand"
+          ],
+          "veto_picks_llm": 1,
+          "q_random": 0.10375510570467558,
+          "std_random": 0.1484053658798994,
+          "acc_random": 0.6666666666666666,
+          "picks_random": [
+            "severin_collet",
+            "tristan_aubert"
+          ],
+          "veto_picks_random": 1
+        },
+        {
+          "meeting": 4,
+          "date": "2026-09-25",
+          "model": 0.03041490302368074,
+          "model_std": 0.07613942299988183,
+          "acc_model": 0.5,
+          "llm": 0.08,
+          "q_voi": 0.00781665258709095,
+          "std_voi": 0.01894567221653351,
+          "acc_voi": 0.5,
+          "picks_voi": [
+            "edouard_vasseur",
+            "laure_belin"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.009574250754929153,
+          "std_llm": 0.028300139590543366,
+          "acc_llm": 0.8333333333333334,
+          "picks_llm": [
+            "edouard_vasseur",
+            "severin_collet"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.012039571296535614,
+          "std_random": 0.03320707307443731,
+          "acc_random": 0.6666666666666666,
+          "picks_random": [
+            "edouard_vasseur",
+            "tristan_aubert"
+          ],
+          "veto_picks_random": 1
+        }
+      ],
+      "extraction": [
+        {
+          "found": {
+            "ophelie_marchand": "support",
+            "laure_belin": "support",
+            "tristan_aubert": "support",
+            "severin_collet": "neutral"
+          },
+          "expected": {
+            "ophelie_marchand": "support",
+            "laure_belin": "support",
+            "tristan_aubert": "support",
+            "severin_collet": "neutral"
+          }
+        },
+        {
+          "found": {
+            "ophelie_marchand": "support",
+            "yannick_perrot": "neutral",
+            "severin_collet": "conditional",
+            "tristan_aubert": "oppose"
+          },
+          "expected": {
+            "ophelie_marchand": "support",
+            "yannick_perrot": "neutral",
+            "severin_collet": "conditional",
+            "tristan_aubert": "neutral"
+          }
+        },
+        {
+          "found": {
+            "edouard_vasseur": "oppose",
+            "yannick_perrot": "oppose",
+            "ophelie_marchand": "neutral",
+            "laure_belin": "neutral"
+          },
+          "expected": {
+            "edouard_vasseur": "oppose",
+            "yannick_perrot": "oppose",
+            "ophelie_marchand": "neutral",
+            "laure_belin": "neutral"
+          }
+        },
+        {
+          "found": {
+            "edouard_vasseur": "oppose",
+            "yannick_perrot": "conditional",
+            "laure_belin": "oppose",
+            "severin_collet": "oppose",
+            "ophelie_marchand": "support"
+          },
+          "expected": {
+            "edouard_vasseur": "oppose",
+            "yannick_perrot": "oppose",
+            "laure_belin": "oppose",
+            "severin_collet": "oppose",
+            "ophelie_marchand": "neutral"
+          }
+        }
+      ]
+    },
+    {
+      "deal_id": "08_anneau_fibre_clairval_cur_rhea",
+      "outcome": "signed",
+      "y": 1,
+      "records": [
+        {
+          "meeting": 1,
+          "date": "2026-02-18",
+          "model": 0.24933526444249202,
+          "model_std": 0.23095620752374435,
+          "acc_model": 0.3333333333333333,
+          "llm": 0.35,
+          "q_voi": 0.11374035516758739,
+          "std_voi": 0.16339493265559332,
+          "acc_voi": 0.5,
+          "picks_voi": [
+            "sophie_lamare",
+            "antoine_bertel"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.12160698357585026,
+          "std_llm": 0.1747172714143013,
+          "acc_llm": 0.6666666666666666,
+          "picks_llm": [
+            "camille_verdier",
+            "sophie_lamare"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.28263473783692417,
+          "std_random": 0.22925538253773511,
+          "acc_random": 0.5,
+          "picks_random": [
+            "antoine_bertel",
+            "camille_verdier"
+          ],
+          "veto_picks_random": 2
+        },
+        {
+          "meeting": 2,
+          "date": "2026-05-06",
+          "model": 0.26038861887440007,
+          "model_std": 0.23343022726540266,
+          "acc_model": 0.3333333333333333,
+          "llm": 0.2,
+          "q_voi": 0.08360663413423057,
+          "std_voi": 0.13296018390507364,
+          "acc_voi": 0.6666666666666666,
+          "picks_voi": [
+            "sophie_lamare",
+            "camille_verdier"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.07898096903117466,
+          "std_llm": 0.12581642082204886,
+          "acc_llm": 0.6666666666666666,
+          "picks_llm": [
+            "sophie_lamare",
+            "antoine_bertel"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.14281066246285767,
+          "std_random": 0.19016627561818664,
+          "acc_random": 0.6666666666666666,
+          "picks_random": [
+            "camille_verdier",
+            "sophie_lamare"
+          ],
+          "veto_picks_random": 2
+        },
+        {
+          "meeting": 3,
+          "date": "2026-07-09",
+          "model": 0.18519262369832157,
+          "model_std": 0.22017731554542752,
+          "acc_model": 0.6666666666666666,
+          "llm": 0.38,
+          "q_voi": 0.1318790481145616,
+          "std_voi": 0.18259624580809636,
+          "acc_voi": 0.8333333333333334,
+          "picks_voi": [
+            "sophie_lamare",
+            "camille_verdier"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.11935454229741378,
+          "std_llm": 0.16708734987675725,
+          "acc_llm": 0.6666666666666666,
+          "picks_llm": [
+            "sophie_lamare",
+            "antoine_bertel"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.11264103369083489,
+          "std_random": 0.16134112210975102,
+          "acc_random": 0.8333333333333334,
+          "picks_random": [
+            "antoine_bertel",
+            "laurent_porcher"
+          ],
+          "veto_picks_random": 1
+        },
+        {
+          "meeting": 4,
+          "date": "2026-09-24",
+          "model": 0.4203339121351339,
+          "model_std": 0.26726209375665827,
+          "acc_model": 1.0,
+          "llm": 0.68,
+          "q_voi": 0.5160835052971084,
+          "std_voi": 0.2636848287861707,
+          "acc_voi": 1.0,
+          "picks_voi": [
+            "sophie_lamare",
+            "antoine_bertel"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.4596815634911759,
+          "std_llm": 0.2522066933618975,
+          "acc_llm": 0.8333333333333334,
+          "picks_llm": [
+            "sophie_lamare",
+            "laurent_porcher"
+          ],
+          "veto_picks_llm": 1,
+          "q_random": 0.4058270926041605,
+          "std_random": 0.2769791206745845,
+          "acc_random": 0.8333333333333334,
+          "picks_random": [
+            "laurent_porcher",
+            "mehdi_kaci"
+          ],
+          "veto_picks_random": 0
+        }
+      ],
+      "extraction": [
+        {
+          "found": {
+            "camille_verdier": "support",
+            "mehdi_kaci": "support",
+            "antoine_bertel": "conditional",
+            "sophie_lamare": "oppose"
+          },
+          "expected": {
+            "camille_verdier": "support",
+            "mehdi_kaci": "support",
+            "antoine_bertel": "conditional",
+            "sophie_lamare": "oppose"
+          }
+        },
+        {
+          "found": {},
+          "expected": {
+            "camille_verdier": "support",
+            "sophie_lamare": "oppose",
+            "antoine_bertel": "neutral",
+            "laurent_porcher": "oppose",
+            "mehdi_kaci": "support"
+          }
+        },
+        {
+          "found": {
+            "sophie_lamare": "oppose",
+            "antoine_bertel": "neutral",
+            "mehdi_kaci": "support",
+            "elise_bouvard": "support"
+          },
+          "expected": {
+            "sophie_lamare": "neutral",
+            "antoine_bertel": "neutral",
+            "mehdi_kaci": "support",
+            "elise_bouvard": "support",
+            "camille_verdier": "support"
+          }
+        },
+        {
+          "found": {
+            "sophie_lamare": "support",
+            "antoine_bertel": "support",
+            "camille_verdier": "support",
+            "mehdi_kaci": "support",
+            "laurent_porcher": "conditional"
+          },
+          "expected": {
+            "camille_verdier": "support",
+            "antoine_bertel": "support",
+            "sophie_lamare": "conditional",
+            "mehdi_kaci": "support",
+            "laurent_porcher": "conditional"
+          }
+        }
+      ]
+    },
+    {
+      "deal_id": "09_sous_station_offshore_hydrogen_ready_des",
+      "outcome": "delayed",
+      "y": 0,
+      "records": [
+        {
+          "meeting": 1,
+          "date": "2026-02-18",
+          "model": 0.3607351467737052,
+          "model_std": 0.2597320720592515,
+          "acc_model": 0.8333333333333334,
+          "llm": 0.35,
+          "q_voi": 0.4200411811058857,
+          "std_voi": 0.24222723151546363,
+          "acc_voi": 1.0,
+          "picks_voi": [
+            "sophie_aubert",
+            "julien_perrot"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.43738325354551255,
+          "std_llm": 0.26241900759114334,
+          "acc_llm": 1.0,
+          "picks_llm": [
+            "helene_marchand",
+            "sophie_aubert"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.4200411811058857,
+          "std_random": 0.24222723151546363,
+          "acc_random": 1.0,
+          "picks_random": [
+            "sophie_aubert",
+            "julien_perrot"
+          ],
+          "veto_picks_random": 2
+        },
+        {
+          "meeting": 2,
+          "date": "2026-05-07",
+          "model": 0.3522936530296578,
+          "model_std": 0.2542013872683567,
+          "acc_model": 0.8333333333333334,
+          "llm": 0.22,
+          "q_voi": 0.3904586823713531,
+          "std_voi": 0.21544087757397176,
+          "acc_voi": 0.8333333333333334,
+          "picks_voi": [
+            "julien_perrot",
+            "sophie_aubert"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.4219700627745105,
+          "std_llm": 0.2418333649916169,
+          "acc_llm": 0.8333333333333334,
+          "picks_llm": [
+            "helene_marchand",
+            "sophie_aubert"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.40173917739138165,
+          "std_random": 0.2568583413491105,
+          "acc_random": 0.8333333333333334,
+          "picks_random": [
+            "marc_legoff",
+            "karim_benali"
+          ],
+          "veto_picks_random": 0
+        },
+        {
+          "meeting": 3,
+          "date": "2026-08-26",
+          "model": 0.326332936534253,
+          "model_std": 0.2264399852803378,
+          "acc_model": 0.6666666666666666,
+          "llm": 0.15,
+          "q_voi": 0.21455367183225774,
+          "std_voi": 0.20306654526080262,
+          "acc_voi": 0.6666666666666666,
+          "picks_voi": [
+            "helene_marchand",
+            "julien_perrot"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.3463056967393861,
+          "std_llm": 0.20421726726267148,
+          "acc_llm": 0.6666666666666666,
+          "picks_llm": [
+            "helene_marchand",
+            "sophie_aubert"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.35904446560052,
+          "std_random": 0.21973449906194636,
+          "acc_random": 0.6666666666666666,
+          "picks_random": [
+            "marc_legoff",
+            "sophie_aubert"
+          ],
+          "veto_picks_random": 1
+        },
+        {
+          "meeting": 4,
+          "date": "2026-10-14",
+          "model": 0.2670606575951521,
+          "model_std": 0.19881404213038337,
+          "acc_model": 0.6666666666666666,
+          "llm": 0.12,
+          "q_voi": 0.1032946808728912,
+          "std_voi": 0.13921179920421048,
+          "acc_voi": 0.8333333333333334,
+          "picks_voi": [
+            "julien_perrot",
+            "helene_marchand"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.21664925256849887,
+          "std_llm": 0.18583947199745343,
+          "acc_llm": 0.6666666666666666,
+          "picks_llm": [
+            "helene_marchand",
+            "sophie_aubert"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.16882990818904153,
+          "std_random": 0.18238263261180743,
+          "acc_random": 0.6666666666666666,
+          "picks_random": [
+            "julien_perrot",
+            "karim_benali"
+          ],
+          "veto_picks_random": 1
+        }
+      ],
+      "extraction": [
+        {
+          "found": {
+            "helene_marchand": "support",
+            "marc_legoff": "support",
+            "karim_benali": "support",
+            "julien_perrot": "conditional"
+          },
+          "expected": {
+            "helene_marchand": "support",
+            "marc_legoff": "support",
+            "karim_benali": "support",
+            "julien_perrot": "neutral",
+            "sophie_aubert": "neutral"
+          }
+        },
+        {
+          "found": {
+            "marc_legoff": "support",
+            "karim_benali": "support",
+            "claire_fontaine": "conditional",
+            "sophie_aubert": "conditional"
+          },
+          "expected": {
+            "marc_legoff": "support",
+            "karim_benali": "support",
+            "claire_fontaine": "conditional",
+            "sophie_aubert": "conditional"
+          }
+        },
+        {
+          "found": {
+            "helene_marchand": "conditional",
+            "marc_legoff": "support",
+            "sophie_aubert": "neutral",
+            "julien_perrot": "conditional"
+          },
+          "expected": {
+            "helene_marchand": "neutral",
+            "marc_legoff": "support",
+            "sophie_aubert": "neutral",
+            "julien_perrot": "oppose"
+          }
+        },
+        {
+          "found": {
+            "sophie_aubert": "conditional",
+            "julien_perrot": "conditional",
+            "helene_marchand": "conditional",
+            "marc_legoff": "conditional"
+          },
+          "expected": {
+            "sophie_aubert": "conditional",
+            "julien_perrot": "conditional",
+            "helene_marchand": "neutral",
+            "marc_legoff": "neutral"
+          }
+        }
+      ]
+    },
+    {
+      "deal_id": "10_novacentre_valtaneuse_nord_distributio",
+      "outcome": "lost",
+      "y": 0,
+      "records": [
+        {
+          "meeting": 1,
+          "date": "2026-02-19",
+          "model": 0.3912208720849489,
+          "model_std": 0.25964831803009325,
+          "acc_model": 1.0,
+          "llm": 0.24,
+          "q_voi": 0.4089661849970626,
+          "std_voi": 0.2189633011561812,
+          "acc_voi": 1.0,
+          "picks_voi": [
+            "olivier_fontan",
+            "nadine_perrin"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.4089661849970626,
+          "std_llm": 0.2189633011561812,
+          "acc_llm": 1.0,
+          "picks_llm": [
+            "nadine_perrin",
+            "olivier_fontan"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.4089661849970626,
+          "std_random": 0.2189633011561812,
+          "acc_random": 1.0,
+          "picks_random": [
+            "nadine_perrin",
+            "olivier_fontan"
+          ],
+          "veto_picks_random": 2
+        },
+        {
+          "meeting": 2,
+          "date": "2026-05-06",
+          "model": 0.41507982532671805,
+          "model_std": 0.26671701619753646,
+          "acc_model": 1.0,
+          "llm": 0.22,
+          "q_voi": 0.4443822008332071,
+          "std_voi": 0.20023023969208922,
+          "acc_voi": 1.0,
+          "picks_voi": [
+            "olivier_fontan",
+            "nadine_perrin"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.4443822008332071,
+          "std_llm": 0.20023023969208922,
+          "acc_llm": 1.0,
+          "picks_llm": [
+            "nadine_perrin",
+            "olivier_fontan"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.43485797281725147,
+          "std_random": 0.2199475999908406,
+          "acc_random": 1.0,
+          "picks_random": [
+            "olivier_fontan",
+            "bastien_girard"
+          ],
+          "veto_picks_random": 1
+        },
+        {
+          "meeting": 3,
+          "date": "2026-07-09",
+          "model": 0.1771127656804564,
+          "model_std": 0.22090199519268597,
+          "acc_model": 0.8333333333333334,
+          "llm": 0.2,
+          "q_voi": 0.0673145986482867,
+          "std_voi": 0.1147792555546646,
+          "acc_voi": 0.8333333333333334,
+          "picks_voi": [
+            "nadine_perrin",
+            "olivier_fontan"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.0673145986482867,
+          "std_llm": 0.1147792555546646,
+          "acc_llm": 0.8333333333333334,
+          "picks_llm": [
+            "nadine_perrin",
+            "olivier_fontan"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.2027188892266854,
+          "std_random": 0.22686587425016905,
+          "acc_random": 0.8333333333333334,
+          "picks_random": [
+            "mehdi_kaci",
+            "camille_leroy"
+          ],
+          "veto_picks_random": 0
+        },
+        {
+          "meeting": 4,
+          "date": "2026-09-24",
+          "model": 0.0439176011037724,
+          "model_std": 0.09700334738467377,
+          "acc_model": 0.8333333333333334,
+          "llm": 0.12,
+          "q_voi": 0.008589758366832595,
+          "std_voi": 0.013461812954244546,
+          "acc_voi": 0.8333333333333334,
+          "picks_voi": [
+            "nadine_perrin",
+            "olivier_fontan"
+          ],
+          "veto_picks_voi": 2,
+          "q_llm": 0.008589758366832595,
+          "std_llm": 0.013461812954244546,
+          "acc_llm": 0.8333333333333334,
+          "picks_llm": [
+            "nadine_perrin",
+            "olivier_fontan"
+          ],
+          "veto_picks_llm": 2,
+          "q_random": 0.024803646963290536,
+          "std_random": 0.061156458430336416,
+          "acc_random": 0.8333333333333334,
+          "picks_random": [
+            "olivier_fontan",
+            "mehdi_kaci"
+          ],
+          "veto_picks_random": 1
+        }
+      ],
+      "extraction": [
+        {
+          "found": {
+            "elodie_roussel": "support",
+            "mehdi_kaci": "conditional"
+          },
+          "expected": {
+            "elodie_roussel": "support",
+            "mehdi_kaci": "neutral",
+            "bastien_girard": "neutral"
+          }
+        },
+        {
+          "found": {
+            "elodie_roussel": "support",
+            "mehdi_kaci": "support",
+            "olivier_fontan": "conditional"
+          },
+          "expected": {
+            "elodie_roussel": "support",
+            "mehdi_kaci": "support",
+            "olivier_fontan": "neutral",
+            "nadine_perrin": "neutral"
+          }
+        },
+        {
+          "found": {
+            "elodie_roussel": "support",
+            "mehdi_kaci": "support",
+            "nadine_perrin": "oppose",
+            "olivier_fontan": "conditional"
+          },
+          "expected": {
+            "elodie_roussel": "support",
+            "mehdi_kaci": "support",
+            "nadine_perrin": "oppose",
+            "olivier_fontan": "conditional"
+          }
+        },
+        {
+          "found": {
+            "elodie_roussel": "support",
+            "nadine_perrin": "oppose",
+            "olivier_fontan": "oppose",
+            "camille_leroy": "conditional",
+            "bastien_girard": "oppose"
+          },
+          "expected": {
+            "elodie_roussel": "support",
+            "nadine_perrin": "oppose",
+            "olivier_fontan": "oppose",
+            "camille_leroy": "oppose",
+            "bastien_girard": "oppose"
+          }
+        }
+      ]
+    }
+  ]
+}

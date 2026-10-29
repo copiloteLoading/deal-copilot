@@ -1,0 +1,151 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "06_dorsale_fibre_val_d_orbelle",
+  "name": "Dorsale Fibre Val d'Orbelle",
+  "seller": "Serevia Infrastructures",
+  "sales_rep": "Antoine Delmas",
+  "buyer": "Astrellia Telecom",
+  "description": "Contrat pluriannuel de conception, construction et maintenance d'une dorsale fibre optique régionale de 1 750 km pour l'opérateur Astrellia Telecom, afin de relier ses centraux de Rovillac, Clairbois et Valdor et de désaturer son réseau. Le vendeur Serevia Infrastructures propose un tracé en tranchée légère et micro-tunnelier, avec exploitation-maintenance sur 7 ans pour un montant d'environ 48 millions d'euros.",
+  "value_meur": 48.6,
+  "opened": "2026-02-18",
+  "target_signature": null,
+  "competitors": [
+    "Fibroval Systèmes",
+    "Norestia Câblage"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "Astrellia",
+        "l'opérateur"
+      ],
+      "id": "astrellia",
+      "name": "Astrellia Telecom",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "la BMI",
+        "la banque"
+      ],
+      "id": "bmi",
+      "name": "Banque Méridionale d'Investissement",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "Certival",
+        "le certificateur"
+      ],
+      "id": "certival",
+      "name": "Certival Contrôle",
+      "type": "regulator"
+    },
+    {
+      "aliases": [
+        "Travorel",
+        "le terrassier"
+      ],
+      "id": "travorel",
+      "name": "Travorel Génie Civil",
+      "type": "subcontractor"
+    }
+  ],
+  "actors": [
+    {
+      "id": "camille_verne",
+      "name": "Camille Verne",
+      "org": "astrellia",
+      "role": "Directrice du déploiement fibre chez Astrellia Telecom",
+      "influence": 0.9,
+      "veto": true,
+      "aliases": [
+        "Camille",
+        "la directrice déploiement",
+        "Madame Non"
+      ]
+    },
+    {
+      "id": "nicolas_fabre",
+      "name": "Nicolas Fabre",
+      "org": "astrellia",
+      "role": "Directeur administratif et financier d'Astrellia Telecom",
+      "influence": 0.82,
+      "veto": true,
+      "aliases": [
+        "Nicolas",
+        "le DAF"
+      ]
+    },
+    {
+      "id": "sophie_leroux",
+      "name": "Sophie Leroux",
+      "org": "astrellia",
+      "role": "Directrice technique réseau chez Astrellia Telecom",
+      "influence": 0.68,
+      "veto": false,
+      "aliases": [
+        "Sophie",
+        "la tech"
+      ]
+    },
+    {
+      "id": "mehdi_kaci",
+      "name": "Mehdi Kaci",
+      "org": "bmi",
+      "role": "Responsable financement infrastructures à la Banque Méridionale d'Investissement",
+      "influence": 0.62,
+      "veto": true,
+      "aliases": [
+        "Mehdi",
+        "le banquier"
+      ]
+    },
+    {
+      "id": "elise_perrot",
+      "name": "Elise Perrot",
+      "org": "certival",
+      "role": "Experte certification indépendante chez Certival Contrôle",
+      "influence": 0.53,
+      "veto": false,
+      "aliases": [
+        "Elise",
+        "la certificateuse"
+      ]
+    },
+    {
+      "id": "laurent_bodin",
+      "name": "Laurent Bodin",
+      "org": "travorel",
+      "role": "Chef de projet génie civil chez Travorel, sous-traitant pressenti",
+      "influence": 0.41,
+      "veto": false,
+      "aliases": [
+        "Laurent",
+        "le terrassier"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-02-18",
+      "title": "Présentation initiale de l'offre dorsale",
+      "debrief": "debriefs/1_2026-02-18.txt"
+    },
+    {
+      "date": "2026-04-22",
+      "title": "Revue technique et financière",
+      "debrief": "debriefs/2_2026-04-22.txt"
+    },
+    {
+      "date": "2026-07-08",
+      "title": "Visite du site pilote de Rovillac",
+      "debrief": "debriefs/3_2026-07-08.txt"
+    },
+    {
+      "date": "2026-09-24",
+      "title": "Cadrage final avant comité d'investissement",
+      "debrief": "debriefs/4_2026-09-24.txt"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+[
+  {
+    "date": "2026-02-17",
+    "mentions": [
+      {
+        "actor_id": "helene_v",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "olivier_b",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "marc_a",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "nadia_p",
+        "stance_expressed": "conditional"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-23",
+    "mentions": [
+      {
+        "actor_id": "helene_v",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "marc_a",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "olivier_b",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "julien_s",
+        "stance_expressed": "conditional"
+      }
+    ]
+  },
+  {
+    "date": "2026-07-09",
+    "mentions": [
+      {
+        "actor_id": "helene_v",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "marc_a",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "didier_l",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "olivier_b",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "nadia_p",
+        "stance_expressed": "conditional"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-30",
+    "mentions": [
+      {
+        "actor_id": "helene_v",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "olivier_b",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "didier_l",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "nadia_p",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "julien_s",
+        "stance_expressed": "conditional"
+      }
+    ]
+  }
+]

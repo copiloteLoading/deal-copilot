@@ -1,0 +1,87 @@
+{
+  "outcome": "delayed",
+  "outcome_explanation": "Quelques semaines après la dernière réunion, Certimar notifie officiellement un délai de 8 à 10 mois supplémentaires pour délivrer son permis d'homologation, faute d'essais concluants. La banque suspend donc son closing et le consortium refuse de signer en l'état. Le projet n'est pas abandonné, car la solution Merawatt reste préférée, mais la signature est gelée et reportée à l'année suivante dans l'attente du permis.",
+  "hidden_interests": {
+    "helene_roux": "Veut tenir la date de mise en service pour toucher son bonus de fin de projet et garder la confiance du consortium, donc pousse pour signer vite.",
+    "julien_perrot": "Veut la solution la plus robuste contre la corrosion et la houle pour éviter toute panne en mer, quitte à accepter de l'attente.",
+    "marc_aubertin": "Cherche à sécuriser le rendement du consortium et craint les surcoûts de location de navires liés à l'attente.",
+    "sylvie_marchand": "Ne débloquera les fonds que si l'homologation Certimar est obtenue, car son comité des risques l'exige pour couvrir le risque maritime.",
+    "etienne_lavigne": "Veut se couvrir personnellement après un incident sur une autre plateforme, donc multiplie les demandes d'études complémentaires et ne signera aucun avis favorable anticipé.",
+    "karim_bensaid": "Veut figer au plus tôt le planning de ses navires de pose et de ses équipes pour optimiser son carnet de charge."
+  },
+  "positions": [
+    {
+      "date": "2026-02-18",
+      "attendees": [
+        "helene_roux",
+        "julien_perrot",
+        "marc_aubertin",
+        "karim_bensaid"
+      ],
+      "what_really_happens": "Merawatt présente son design de topside et de jacket à l'équipe du parc et à Fondamar. Hélène et Julien sont enthousiastes sur le planning de 22 mois. En coulisses, Étienne indique que le dossier d'homologation est jugé incomplet sur la tenue à la corrosion et demande déjà un complément géotechnique. Sylvie prévient qu'aucun closing financier ne sera possible sans cet avis.",
+      "stances": {
+        "helene_roux": "support",
+        "julien_perrot": "support",
+        "marc_aubertin": "support",
+        "sylvie_marchand": "neutral",
+        "etienne_lavigne": "neutral",
+        "karim_bensaid": "support"
+      }
+    },
+    {
+      "date": "2026-05-07",
+      "attendees": [
+        "helene_roux",
+        "julien_perrot",
+        "sylvie_marchand",
+        "etienne_lavigne"
+      ],
+      "what_really_happens": "Étienne annonce que Certimar exige deux campagnes d'essais complémentaires en bassin et une étude de fatigue des soudures, car son laboratoire est saturé et sa grille interne s'est durcie. Il refuse tout avis conditionnel. Sylvie devient prudente et gèle la documentation bancaire. Marc commence à calculer le coût de l'attente sur les navires. Julien défend Merawatt mais reconnaît la nécessité des essais.",
+      "stances": {
+        "helene_roux": "support",
+        "julien_perrot": "support",
+        "marc_aubertin": "neutral",
+        "sylvie_marchand": "neutral",
+        "etienne_lavigne": "oppose",
+        "karim_bensaid": "neutral"
+      }
+    },
+    {
+      "date": "2026-07-22",
+      "attendees": [
+        "helene_roux",
+        "marc_aubertin",
+        "sylvie_marchand",
+        "etienne_lavigne",
+        "karim_bensaid"
+      ],
+      "what_really_happens": "Les résultats partiels des essais ne suffisent pas à Certimar, qui réclame une troisième série de tests et un audit du chantier de fabrication. Étienne confirme qu'aucun permis ne sortira avant 8 à 10 mois. Sylvie acte le blocage et suspend le processus de crédit, ce qui empêche toute signature. Karim annonce qu'il devra libérer son navire de pose pour un autre client. Hélène tente de proposer une signature en deux tranches, refusée par la banque.",
+      "stances": {
+        "helene_roux": "support",
+        "julien_perrot": "support",
+        "marc_aubertin": "neutral",
+        "sylvie_marchand": "oppose",
+        "etienne_lavigne": "oppose",
+        "karim_bensaid": "neutral"
+      }
+    },
+    {
+      "date": "2026-10-06",
+      "attendees": [
+        "helene_roux",
+        "julien_perrot",
+        "marc_aubertin",
+        "sylvie_marchand"
+      ],
+      "what_really_happens": "Sans Étienne mais avec son courrier confirmant le délai supplémentaire, les parties constatent que la date de mise en service n'est plus tenable. Sylvie maintient son veto financier tant que l'homologation n'est pas délivrée. Marc veut renégocier les prix et les pénalités avant de prolonger. Hélène, épuisée, admet qu'il faut reporter. Merawatt accepte de maintenir son offre technique mais ne peut pas garantir les prix des aciers au-delà de six mois.",
+      "stances": {
+        "helene_roux": "neutral",
+        "julien_perrot": "support",
+        "marc_aubertin": "neutral",
+        "sylvie_marchand": "oppose",
+        "etienne_lavigne": "oppose",
+        "karim_bensaid": "neutral"
+      }
+    }
+  ]
+}

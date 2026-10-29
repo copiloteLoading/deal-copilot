@@ -1,0 +1,87 @@
+{
+  "outcome": "lost",
+  "outcome_explanation": "Quelques semaines après la dernière réunion, la cheffe de file Hodierne a posé un ultimatum : pas de déblocage sans garantie maison-mère intégrale, garantie à première demande de 18 MEUR et responsabilité illimitée pour pertes de production. La banque du vendeur a refusé la ligne et sa holding ne pouvait pas porter cet engagement. Le parc, la coopérative et le certificateur se sont alignés sur le prêteur. Le cadre a été attribué à Voltsea, adossé à un grand groupe capable d'apporter les sûretés exigées.",
+  "hidden_interests": {
+    "ophelie_marchand": "Veut un prestataire très réactif avec navire dédié pour éviter les arrêts longs, quitte à forcer sur les garanties.",
+    "yannick_perrot": "Veut protéger le plan de financement et rester aligné avec le prêteur, même si cela coûte plus cher.",
+    "edouard_vasseur": "Ne veut prendre aucun risque résiduel sur la disponibilité des câbles : exige des sûretés maximales pour sécuriser la dette.",
+    "laure_belin": "Veut préserver la réputation de la coopérative et éviter tout appel en fonds complémentaire en cas de défaillance.",
+    "severin_collet": "Veut conditionner le maintien du certificat de maintenance à des engagements financiers et techniques inattaquables.",
+    "tristan_aubert": "Veut placer ses navires en sous-traitance longue durée et préfère le vendeur qui accepte son bord."
+  },
+  "positions": [
+    {
+      "date": "2026-02-18",
+      "attendees": [
+        "ophelie_marchand",
+        "laure_belin",
+        "severin_collet",
+        "tristan_aubert"
+      ],
+      "what_really_happens": "Réunion très technique sur les tronçons critiques, les joints et les délais d'intervention. L'offre du vendeur plaît : équipe expérimentée, outillage déjà qualifié, schéma naval avec Naviris crédible. Le prêteur n'est pas entré dans le détail des sûretés, il observe. Aucune mention d'ultimatum à ce stade.",
+      "stances": {
+        "ophelie_marchand": "support",
+        "yannick_perrot": "neutral",
+        "edouard_vasseur": "neutral",
+        "laure_belin": "support",
+        "severin_collet": "neutral",
+        "tristan_aubert": "support"
+      }
+    },
+    {
+      "date": "2026-04-24",
+      "attendees": [
+        "ophelie_marchand",
+        "yannick_perrot",
+        "severin_collet",
+        "tristan_aubert"
+      ],
+      "what_really_happens": "Le vendeur défend la mutualisation d'un navire avec un autre contrat pour tenir le prix. Tristan s'inquiète car cela réduit sa part garantie. Séverin demande des preuves de tenue en mer hivernale et de traçabilité des réparations. En coulisses, Hodierne commence à faire circuler une grille de garanties types, encore présentée comme standard.",
+      "stances": {
+        "ophelie_marchand": "support",
+        "yannick_perrot": "neutral",
+        "edouard_vasseur": "neutral",
+        "laure_belin": "neutral",
+        "severin_collet": "neutral",
+        "tristan_aubert": "neutral"
+      }
+    },
+    {
+      "date": "2026-07-02",
+      "attendees": [
+        "yannick_perrot",
+        "edouard_vasseur",
+        "ophelie_marchand",
+        "laure_belin"
+      ],
+      "what_really_happens": "Édouard durcit brutalement le ton : garantie maison-mère à 100%, garantie bancaire à première demande de 18 MEUR, responsabilité illimitée pour pertes de production et compte séquestre. Yannick suit le prêteur. Le commercial explique que sa banque refuse une telle ligne et que sa holding ne peut pas porter ce niveau d'engagement. Séverin annonce qu'il ne maintiendra pas la qualification sans couverture financière complète.",
+      "stances": {
+        "ophelie_marchand": "neutral",
+        "yannick_perrot": "oppose",
+        "edouard_vasseur": "oppose",
+        "laure_belin": "neutral",
+        "severin_collet": "oppose",
+        "tristan_aubert": "support"
+      }
+    },
+    {
+      "date": "2026-09-25",
+      "attendees": [
+        "ophelie_marchand",
+        "yannick_perrot",
+        "edouard_vasseur",
+        "laure_belin",
+        "severin_collet"
+      ],
+      "what_really_happens": "Dernière tentative : le vendeur propose responsabilité plafonnée à 150% du montant annuel, garantie bancaire de 5 MEUR et assurance pertes d'exploitation complémentaire. Édouard refuse toute dérogation et dit que le crédit ne sera pas débloqué sans le pack complet. Laure, qui hésitait, s'aligne sur le prêteur pour protéger la coopérative. Ophélie, seule défenseuse technique, ne s'oppose plus à l'éviction.",
+      "stances": {
+        "ophelie_marchand": "neutral",
+        "yannick_perrot": "oppose",
+        "edouard_vasseur": "oppose",
+        "laure_belin": "oppose",
+        "severin_collet": "oppose",
+        "tristan_aubert": "neutral"
+      }
+    }
+  ]
+}

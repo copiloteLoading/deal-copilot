@@ -1,0 +1,94 @@
+[
+  {
+    "date": "2026-02-18",
+    "mentions": [
+      {
+        "actor_id": "ines_leroux",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "karim_bensaid",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "romain_bellec",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "elise_marchand",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-14",
+    "mentions": [
+      {
+        "actor_id": "ines_leroux",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "romain_bellec",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "elise_marchand",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "marc_aubert",
+        "stance_expressed": "conditional"
+      }
+    ]
+  },
+  {
+    "date": "2026-07-23",
+    "mentions": [
+      {
+        "actor_id": "ines_leroux",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "sophie_queneau",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "elise_marchand",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "marc_aubert",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "romain_bellec",
+        "stance_expressed": "conditional"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-06",
+    "mentions": [
+      {
+        "actor_id": "elise_marchand",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "ines_leroux",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "romain_bellec",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "marc_aubert",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "karim_bensaid",
+        "stance_expressed": "neutral"
+      }
+    ]
+  }
+]

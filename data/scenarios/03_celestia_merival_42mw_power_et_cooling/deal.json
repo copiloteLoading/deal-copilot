@@ -1,0 +1,149 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "03_celestia_merival_42mw_power_et_cooling",
+  "name": "Célestia Mérival 42MW - Power et Cooling",
+  "seller": "Valdreuil Énergie Systèmes",
+  "sales_rep": "Antoine Delcourt",
+  "buyer": "Célestia Cloud Infrastructures",
+  "description": "Contrat pluriannuel de 6 ans pour la conception, la fourniture et la maintenance des infrastructures électriques et de refroidissement du nouveau campus hyperscale de Mérival (42 MW IT en 2 phases) pour Célestia Cloud Infrastructures. Le lot comprend 6 chaînes haute-tension avec onduleurs, 4 îles de refroidissement liquide par immersion couplées au free-cooling, supervision et engagement de PUE à 1,18. La Directrice technique pousse une rupture technologique pour tenir les délais et le PUE, tandis que la Direction générale et la Direction financière, échaudées par un surcoût passé, exigent des preuves de fiabilité, de CAPEX contrôlé et de garantie bancaire.",
+  "value_meur": 48.7,
+  "opened": "2026-02-17",
+  "target_signature": null,
+  "competitors": [
+    "Frigélor Data Power",
+    "Kryosea Technologies"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "Célestia",
+        "CCI"
+      ],
+      "id": "celestia",
+      "name": "Célestia Cloud Infrastructures",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "ANI"
+      ],
+      "id": "atelier_nord",
+      "name": "Atelier Nord Ingénierie",
+      "type": "consortium_member"
+    },
+    {
+      "aliases": [
+        "Finaurora"
+      ],
+      "id": "finaurora",
+      "name": "Finaurora Capital Privé",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "Certival"
+      ],
+      "id": "certival",
+      "name": "Certival Contrôle Privé",
+      "type": "regulator"
+    }
+  ],
+  "actors": [
+    {
+      "id": "helene_v",
+      "name": "Hélène Vasseur",
+      "org": "celestia",
+      "role": "Directrice technique et exploitation",
+      "influence": 0.9,
+      "veto": false,
+      "aliases": [
+        "Hélène",
+        "la championne technique",
+        "HV"
+      ]
+    },
+    {
+      "id": "olivier_b",
+      "name": "Olivier Bréval",
+      "org": "celestia",
+      "role": "Directeur administratif et financier",
+      "influence": 0.85,
+      "veto": true,
+      "aliases": [
+        "Olivier",
+        "le DAF",
+        "OB"
+      ]
+    },
+    {
+      "id": "didier_l",
+      "name": "Didier Lemoine",
+      "org": "celestia",
+      "role": "Directeur général",
+      "influence": 0.95,
+      "veto": true,
+      "aliases": [
+        "Didier",
+        "le DG"
+      ]
+    },
+    {
+      "id": "nadia_p",
+      "name": "Nadia Perrot",
+      "org": "finaurora",
+      "role": "Directrice des risques financement",
+      "influence": 0.6,
+      "veto": true,
+      "aliases": [
+        "Nadia",
+        "la banquière"
+      ]
+    },
+    {
+      "id": "marc_a",
+      "name": "Marc Aubertin",
+      "org": "atelier_nord",
+      "role": "Ingénieur-conseil principal",
+      "influence": 0.55,
+      "veto": false,
+      "aliases": [
+        "Marc",
+        "l'ingé-conseil"
+      ]
+    },
+    {
+      "id": "julien_s",
+      "name": "Julien Sarrazin",
+      "org": "certival",
+      "role": "Responsable certification privée",
+      "influence": 0.45,
+      "veto": false,
+      "aliases": [
+        "Julien",
+        "le certificateur"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-02-17",
+      "title": "Visite technique du site de Mérival et cadrage 42MW",
+      "debrief": "debriefs/1_2026-02-17.txt"
+    },
+    {
+      "date": "2026-04-23",
+      "title": "Revue d'architecture power et cooling",
+      "debrief": "debriefs/2_2026-04-23.txt"
+    },
+    {
+      "date": "2026-07-09",
+      "title": "Essai pilote et modèle TCO 6 ans",
+      "debrief": "debriefs/3_2026-07-09.txt"
+    },
+    {
+      "date": "2026-09-30",
+      "title": "Négociation garanties, pénalités et certification",
+      "debrief": "debriefs/4_2026-09-30.txt"
+    }
+  ]
+}

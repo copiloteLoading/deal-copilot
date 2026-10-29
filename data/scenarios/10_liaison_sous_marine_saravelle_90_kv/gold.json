@@ -1,0 +1,90 @@
+[
+  {
+    "date": "2026-02-19",
+    "mentions": [
+      {
+        "actor_id": "solene_kerbrat",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "maelle_tremeur",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "gwenael_priou",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "erwan_castel",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-23",
+    "mentions": [
+      {
+        "actor_id": "corentin_marlec",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "gwenael_priou",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "solene_kerbrat",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "maelle_tremeur",
+        "stance_expressed": "conditional"
+      }
+    ]
+  },
+  {
+    "date": "2026-07-02",
+    "mentions": [
+      {
+        "actor_id": "erwan_castel",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "ines_larnicol",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "solene_kerbrat",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "maelle_tremeur",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-24",
+    "mentions": [
+      {
+        "actor_id": "corentin_marlec",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "gwenael_priou",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "erwan_castel",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "solene_kerbrat",
+        "stance_expressed": "neutral"
+      },
+      {
+        "actor_id": "ines_larnicol",
+        "stance_expressed": "conditional"
+      }
+    ]
+  }
+]

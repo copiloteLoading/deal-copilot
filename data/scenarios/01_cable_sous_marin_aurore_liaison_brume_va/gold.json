@@ -1,0 +1,94 @@
+[
+  {
+    "date": "2026-02-19",
+    "mentions": [
+      {
+        "actor_id": "julien_perrot",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "nadia_belhacem",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "helene_marchand",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "marc_aubry",
+        "stance_expressed": "neutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-07",
+    "mentions": [
+      {
+        "actor_id": "julien_perrot",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "thierry_vasseur",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "paul_ribiere",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "helene_marchand",
+        "stance_expressed": "oppose"
+      },
+      {
+        "actor_id": "nadia_belhacem",
+        "stance_expressed": "support"
+      }
+    ]
+  },
+  {
+    "date": "2026-07-16",
+    "mentions": [
+      {
+        "actor_id": "helene_marchand",
+        "stance_expressed": "conditional"
+      },
+      {
+        "actor_id": "marc_aubry",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "thierry_vasseur",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "julien_perrot",
+        "stance_expressed": "support"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-25",
+    "mentions": [
+      {
+        "actor_id": "helene_marchand",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "marc_aubry",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "thierry_vasseur",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "nadia_belhacem",
+        "stance_expressed": "support"
+      },
+      {
+        "actor_id": "paul_ribiere",
+        "stance_expressed": "support"
+      }
+    ]
+  }
+]

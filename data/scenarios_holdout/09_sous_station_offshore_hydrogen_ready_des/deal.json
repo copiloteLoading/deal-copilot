@@ -1,0 +1,155 @@
+{
+  "_note": "Contrat fictif généré par Muse Spark pour l'évaluation.",
+  "deal_id": "09_sous_station_offshore_hydrogen_ready_des",
+  "name": "Sous-station offshore hydrogen-ready des Hauts-Fonds",
+  "seller": "Voltlittoral Systèmes",
+  "sales_rep": "Antoine Delcourt",
+  "buyer": "Brume Énergies Marines",
+  "description": "Contrat clé en main de 6 ans pour la conception, la fabrication et l'installation d'une sous-station offshore 320 MW dite hydrogen-ready, avec modules pré-équipés pour électrolyse et compression, maintenance 12 ans en option, pour le parc pilote de Brume Énergies Marines.",
+  "value_meur": 212.0,
+  "opened": "2026-02-18",
+  "target_signature": null,
+  "competitors": [
+    "Kelvar Offshore Grid",
+    "Héliante Power Systems"
+  ],
+  "organizations": [
+    {
+      "aliases": [
+        "Brume",
+        "BEM"
+      ],
+      "id": "brume_energies",
+      "name": "Brume Énergies Marines",
+      "type": "buyer"
+    },
+    {
+      "aliases": [
+        "Cap Ouest"
+      ],
+      "id": "cap_ouest",
+      "name": "Cap Ouest Participations",
+      "type": "consortium_member"
+    },
+    {
+      "aliases": [
+        "Finarmor"
+      ],
+      "id": "finarmor",
+      "name": "Finarmor Capital",
+      "type": "financier"
+    },
+    {
+      "aliases": [
+        "Certimer"
+      ],
+      "id": "certimer",
+      "name": "Certimer Atlantique",
+      "type": "regulator"
+    },
+    {
+      "aliases": [
+        "Hydrotech"
+      ],
+      "id": "hydrotech",
+      "name": "Hydrotech Services",
+      "type": "subcontractor"
+    }
+  ],
+  "actors": [
+    {
+      "id": "helene_marchand",
+      "name": "Hélène Marchand",
+      "org": "brume_energies",
+      "role": "Directrice générale de Brume Énergies Marines, porte la décision finale devant le conseil.",
+      "influence": 0.9,
+      "veto": true,
+      "aliases": [
+        "la DG",
+        "Hélène"
+      ]
+    },
+    {
+      "id": "marc_legoff",
+      "name": "Marc Le Goff",
+      "org": "brume_energies",
+      "role": "Directeur technique offshore, responsable du design de la sous-station et de l'interface hydrogène.",
+      "influence": 0.75,
+      "veto": false,
+      "aliases": [
+        "Marc",
+        "le tech"
+      ]
+    },
+    {
+      "id": "sophie_aubert",
+      "name": "Sophie Aubert",
+      "org": "cap_ouest",
+      "role": "Représentante de Cap Ouest Participations au comité projet, contrôle les engagements budgétaires du consortium.",
+      "influence": 0.82,
+      "veto": true,
+      "aliases": [
+        "Sophie",
+        "la voix de Cap Ouest"
+      ]
+    },
+    {
+      "id": "julien_perrot",
+      "name": "Julien Perrot",
+      "org": "finarmor",
+      "role": "Directeur financement de projet chez Finarmor Capital, conditionne le closing financier.",
+      "influence": 0.7,
+      "veto": true,
+      "aliases": [
+        "le banquier",
+        "Julien"
+      ]
+    },
+    {
+      "id": "claire_fontaine",
+      "name": "Claire Fontaine",
+      "org": "certimer",
+      "role": "Responsable certification systèmes offshore chez Certimer Atlantique, valide la conformité électrique et hydrogène.",
+      "influence": 0.55,
+      "veto": false,
+      "aliases": [
+        "la certificatrice",
+        "Claire"
+      ]
+    },
+    {
+      "id": "karim_benali",
+      "name": "Karim Benali",
+      "org": "hydrotech",
+      "role": "Conseiller intégration hydrogène pour Hydrotech Services, appuie technique de l'acheteur sur le lot électrolyse.",
+      "influence": 0.45,
+      "veto": false,
+      "aliases": [
+        "Karim",
+        "l'expert H2"
+      ]
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-02-18",
+      "title": "Cadrage technique et lancement d'offre",
+      "debrief": "debriefs/1_2026-02-18.txt"
+    },
+    {
+      "date": "2026-05-07",
+      "title": "Revue d'avant-projet et certification",
+      "debrief": "debriefs/2_2026-05-07.txt"
+    },
+    {
+      "date": "2026-08-26",
+      "title": "Ajustement scope après inflexion stratégique",
+      "debrief": "debriefs/3_2026-08-26.txt"
+    },
+    {
+      "date": "2026-10-14",
+      "title": "Négociation commerciale et planning de décision",
+      "debrief": "debriefs/4_2026-10-14.txt"
+    }
+  ]
+}
