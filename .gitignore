@@ -7,5 +7,7 @@ __pycache__/
 
 # Résultats générés et fichiers lourds
 outputs/
+*.db
+.pytest_cache/
 *.wav
 *.m4a

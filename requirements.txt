@@ -5,3 +5,4 @@ streamlit>=1.50
 plotly>=5.20
 # pandas 3.x est bloqué par le contrôle d'applications Windows sur la machine de dev
 pandas==2.2.3
+pytest>=8.0
