@@ -83,6 +83,9 @@ def test_add_signals_and_history(conn):
 
     sophie = memory.signals(conn, "port-aven-kerlis", "sophie_lenoir")
     assert len(sophie) == 1 and sophie[0]["org_id"] == "baltis"
+    assert sophie[0]["source_type"] == "direct"
+    oceanix = [s for s in memory.signals(conn, "port-aven-kerlis") if s["org_id"] == "oceanix"]
+    assert oceanix[0]["strength"] is None or oceanix[0]["strength"] in ("strong", "weak")
     contact = memory.last_contact(conn, "port-aven-kerlis")
     assert contact["sophie_lenoir"] == "2026-10-28"
     assert contact["thomas_riou"] is None     # cité en son absence : ce n'est pas un contact

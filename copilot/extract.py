@@ -126,6 +126,51 @@ def extract(text: str, conn=None, deal_id: str | None = None) -> dict:
     return data
 
 
+ANSWER_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "stance": {"type": "string", "enum": STANCES},
+        "strength": {"type": "string", "enum": ["strong", "weak"]},
+        "confidence": {"type": "number"},
+        "evidence_quote": {"type": "string"},
+        "explanation": {"type": "string"},
+    },
+    "required": ["stance", "strength", "confidence", "evidence_quote", "explanation"],
+    "additionalProperties": False,
+}
+
+ANSWER_RULES = """The assistant asked the sales rep a question about one person (the TARGET) in a large
+infrastructure deal. Interpret the rep's ANSWER only, and say what it implies about the TARGET's
+position towards OUR offer, using the same stances: support, conditional, neutral, oppose, unknown.
+- A condition that is now known to be unmet, or a decision that depends on something that is
+  not in place (for example: not in the budget, no funding planned), counts as "oppose":
+  "strong" if the rep states it as a fact, "weak" if it is a rumour or a guess.
+- If the answer says nothing about the TARGET's position, use "unknown".
+- evidence_quote: copy a short passage WORD FOR WORD from the ANSWER (never from the question).
+- explanation: one short sentence in French explaining your reading."""
+
+
+def interpret_answer(question: str, answer: str, target: dict) -> dict | None:
+    """Ce que la réponse du commercial dit de l'acteur visé par la question.
+
+    Renvoie un signal prêt pour la mémoire, ou None si la citation n'est pas dans la réponse.
+    """
+    user = (f"TARGET: {target['name']}, {target['role']}\n"
+            f"QUESTION: {question}\nANSWER: {answer}")
+    data = llm.chat_json([{"role": "developer", "content": ANSWER_RULES},
+                          {"role": "user", "content": user}],
+                         name="answer_reading", schema=ANSWER_SCHEMA, **llm.effort("low"))
+    signal = {"actor_name": target["name"], "entity_kind": "person", "organization": "",
+              "role": target.get("role", ""),
+              "signal_type": {"oppose": "risk", "conditional": "condition",
+                              "support": "support"}.get(data["stance"], "information"),
+              "stance": data["stance"], "strength": data["strength"],
+              "source_type": "reported", "description": data["explanation"],
+              "evidence_quote": data["evidence_quote"], "confidence": data["confidence"]}
+    kept, _ = check_signals(answer, [signal])
+    return kept[0] if kept else None
+
+
 def extract_and_store(conn, deal_id: str, date: str, text: str, title: str | None = None) -> dict:
     """Extrait, enregistre la réunion et ses signaux dans la mémoire, et renvoie le tout."""
     data = extract(text, conn, deal_id)

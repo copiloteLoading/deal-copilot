@@ -1,0 +1,50 @@
+# Paramètres du modèle de deal-copilot (copilot/model.py).
+# Fixés à la main à partir de l'expérience terrain : ce sont des hypothèses, pas des
+# valeurs apprises. Chacun est compréhensible et peut être discuté avec un commercial.
+
+# Ordre des positions cachées d'un acteur
+states: [support, neutral, oppose]
+
+# Position de départ d'un acteur dont on ne sait rien :
+# la plupart des interlocuteurs sont neutres, peu sont hostiles d'emblée.
+prior: [0.35, 0.50, 0.15]
+
+# A priori particulier selon le type d'organisation (sinon : prior ci-dessus).
+# Un régulateur refuse rarement un permis franchement ; il reste le plus souvent neutre.
+prior_by_org_type:
+  regulator: [0.20, 0.75, 0.05]
+
+# Chaque semaine sans nouvelle, ce que l'on sait d'un acteur s'efface de ce pourcentage
+# et sa position revient vers l'a priori : c'est ainsi que le silence fait monter l'incertitude.
+weekly_drift: 0.06
+
+# Vraisemblance d'une observation selon la vraie position [support, neutral, oppose].
+# Lecture : si l'acteur est vraiment « support », il y a 80 % de chances qu'un signal
+# le décrive comme « support ».
+# Une condition ou un report (« on en reparlera après le budget ») est ambigu : c'est aussi
+# la façon polie de dire non. On le juge presque aussi compatible avec « oppose » qu'avec « neutral ».
+likelihood:
+  support:     [0.80, 0.15, 0.05]
+  conditional: [0.20, 0.45, 0.35]
+  neutral:     [0.20, 0.60, 0.20]
+  oppose:      [0.05, 0.15, 0.80]
+
+# Poids d'une observation (exposant appliqué à la vraisemblance, entre 0 et 1) :
+# poids = confiance × force × origine. Un poids faible rapproche l'observation du « je ne sais pas ».
+strength_weight: {strong: 1.0, weak: 0.5}
+source_weight: {direct: 1.0, reported: 0.8, impression: 0.6}
+
+# Règle de signature : chaque détenteur de veto doit laisser passer.
+# Probabilité qu'un veto passe selon sa position. Un veto hostile n'est pas une fin
+# certaine sur un contrat de plusieurs années (concessions, changement d'interlocuteur).
+veto_pass: {support: 1.0, neutral: 0.8, oppose: 0.1}
+
+# Les autres acteurs pèsent selon leur influence :
+# score = moyenne pondérée de (+1 si support, -1 si oppose, 0 sinon), entre -1 et 1,
+# puis f(score) = 1 / (1 + exp(-(slope * score + offset))).
+support_curve: {slope: 3.0, offset: 0.0}
+
+# Monte-Carlo
+n_draws: 4000
+interval: [0.10, 0.90]   # intervalle à 80 %
+seed: 7                  # tirages identiques d'un calcul à l'autre : comparaisons stables

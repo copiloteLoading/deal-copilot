@@ -1,42 +1,39 @@
-"""Interface Streamlit de deal-copilot.
+"""Interface Streamlit de deal-copilot (V1 branchée sur la vraie chaîne).
 
-Squelette : la mise en page est complète, mais les chiffres viennent de copilot/mock.py
-et les boutons ne sont pas encore branchés.
+Débrief (voix ou texte) -> signaux (Muse Spark) -> mémoire -> modèle par acteur
+-> questions du débrief actif -> plan d'action et e-mail de suivi.
 
 Lancer : .\\.venv\\Scripts\\python.exe -m streamlit run app.py
 """
 
 from __future__ import annotations
 
-import json
 from datetime import date
 from pathlib import Path
 
 import plotly.graph_objects as go
 import streamlit as st
 
-from copilot import llm, mock
+from copilot import capture, llm, memory, model, pipeline
 
-DATA = Path(__file__).parent / "data"
-SILENCE_DAYS = 30  # au-delà, un acteur est considéré comme silencieux
+SILENCE_DAYS = 30
+TRAP_TEXT = (pipeline.DEMO_DIR / "trap" / "debrief_piege.txt").read_text(encoding="utf-8")
+TRAP_TRUTH_ANSWER = ("Le budget est voté en janvier, et d'après Julien, le câble n'est pas encore "
+                     "dans l'enveloppe prévue.")
 
-NAVY = "#1F4E79"
-INK = "#1A202C"
-MUTED = "#718096"
-GRID = "#E2E8F0"
-WARN = "#B7791F"
+NAVY, INK, MUTED, GRID, WARN = "#1F4E79", "#1A202C", "#718096", "#E2E8F0", "#B7791F"
 FONT = "Inter, sans-serif"
-
-STANCES = {
-    "support": ("Soutien", "#2F855A"),
+STANCE = {   # libellé, couleur
+    "support": ("Pour", "#2F855A"),
+    "conditional": ("Conditionnel", "#D69E2E"),
     "neutral": ("Neutre", "#718096"),
-    "oppose": ("Opposé", "#C53030"),
+    "oppose": ("Contre", "#C53030"),
     "unknown": ("Inconnu", "#CBD5E0"),
 }
+STRENGTH = {"strong": "nette", "weak": "faible"}
+SOURCE = {"direct": "directe", "reported": "rapportée", "impression": "impression"}
 
 st.set_page_config(page_title="deal-copilot", page_icon=":material/sailing:", layout="wide")
-
-# Les cartes sont des st.container(key="card_…") : Streamlit leur donne la classe st-key-card_…
 st.markdown(f"""
 <style>
 .block-container {{ padding-top: 3.2rem; max-width: 1400px; }}
@@ -52,34 +49,20 @@ st.markdown(f"""
     font-size: 0.78rem; color: {MUTED}; text-transform: uppercase; letter-spacing: 0.04em;
 }}
 [data-testid="stMetricValue"] {{ font-weight: 600; font-size: 1.7rem; }}
-.dc-overline {{
-    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-    color: {NAVY};
-}}
+[class*="st-key-card_actions"] hr {{ margin: 0.5rem 0; }}
+.dc-overline {{ font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: {NAVY}; }}
 .dc-title {{ font-size: 2rem; font-weight: 700; color: {INK}; margin: 0.15rem 0 0.2rem; }}
 .dc-meta {{ color: {MUTED}; font-size: 0.92rem; }}
 .dc-section {{ font-size: 1.02rem; font-weight: 600; color: {INK}; margin-bottom: 0.1rem; }}
-.dc-action-delta {{ text-align: right; font-size: 0.95rem; color: {MUTED}; white-space: nowrap; }}
-.dc-action-delta b {{ color: {INK}; font-size: 1.05rem; }}
-[class*="st-key-card_actions"] hr {{ margin: 0.5rem 0; }}
+.dc-delta {{ text-align: right; font-size: 0.95rem; color: {MUTED}; white-space: nowrap; }}
+.dc-delta b {{ color: {INK}; font-size: 1.05rem; }}
 .dc-brand {{ font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; }}
 </style>
 """, unsafe_allow_html=True)
 
 
-# ------------------------------------------------------------------ données
-@st.cache_data
-def load_deal(folder: str) -> tuple[dict, dict]:
-    path = DATA / folder
-    deal = json.loads((path / "deal.json").read_text(encoding="utf-8"))
-    unknowns = json.loads((path / "unknowns.json").read_text(encoding="utf-8"))
-    return deal, unknowns
-
-
-def days_since(day: str | None) -> int | None:
-    return None if day is None else (date.today() - date.fromisoformat(day)).days
-
-
+# ------------------------------------------------------------------ utilitaires
 def pct(x: float) -> str:
     return f"{x * 100:.0f} %"
 
@@ -90,17 +73,38 @@ def section(title: str, subtitle: str | None = None) -> None:
         st.caption(subtitle)
 
 
-def not_ready() -> None:
-    st.toast("Pas encore branché : arrive dans les prochains jours.",
-             icon=":material/construction:")
+def days_since(day: str | None) -> int | None:
+    return None if day is None else (date.today() - date.fromisoformat(day)).days
 
 
-deal, unknowns = load_deal("demo_deal")
-orgs = {o["id"]: o for o in deal["organizations"]}
-actors = {a["id"]: a for a in deal["actors"]}
-unknown_by_id = {u["id"]: u for u in unknowns["unknowns"]}
-silent = [a for a in deal["actors"]
-          if (days_since(a["last_contact"]) or 999) > SILENCE_DAYS]
+def stance_of(b) -> str:
+    """Position la plus probable, ou 'unknown' si l'acteur reste très incertain."""
+    return "unknown" if model.entropy(b) > 0.9 else model.STATES[int(b.argmax())]
+
+
+def reset_session() -> None:
+    for k in ["questions", "answers", "email", "transcript", "debrief_text"]:
+        st.session_state.pop(k, None)
+
+
+# ------------------------------------------------------------------ données
+conn = memory.connect()
+with st.spinner("Préparation du dossier de démonstration…"):
+    deal_id = pipeline.setup_demo(conn)
+S = pipeline.state(conn, deal_id)
+actors = {a["id"]: a for a in S.data.actors}
+orgs = {o["id"]: o for o in S.deal["organizations"]}
+if "questions" not in st.session_state:
+    st.session_state.questions = pipeline.questions(S)
+    st.session_state.answers = {}
+def is_silent(actor_id: str) -> bool:
+    d = days_since(S.last_contact.get(actor_id))
+    return d is None or d > SILENCE_DAYS
+
+
+silent = [a for a in S.data.actors if is_silent(a["id"])]
+vetoes = [a for a in S.data.actors if a["veto"]]
+most_uncertain = max(vetoes, key=lambda a: model.entropy(S.post.beliefs[a["id"]])) if vetoes else None
 
 
 # ------------------------------------------------------------------ graphiques
@@ -113,73 +117,95 @@ def base_layout(fig: go.Figure, height: int) -> go.Figure:
 
 
 def probability_chart() -> go.Figure:
-    dates, p, low, high, why = zip(*mock.PROBA_HISTORY)
+    labels = [label for label, _ in S.timeline]
+    posts = [p for _, p in S.timeline]
     fig = go.Figure()
-    # bande d'incertitude : borne haute puis borne basse remplie jusqu'à la haute
-    fig.add_trace(go.Scatter(x=dates, y=[h * 100 for h in high], mode="lines",
+    fig.add_trace(go.Scatter(x=labels, y=[p.high * 100 for p in posts], mode="lines",
                              line=dict(width=0), hoverinfo="skip", showlegend=False))
-    fig.add_trace(go.Scatter(x=dates, y=[l * 100 for l in low], mode="lines",
-                             line=dict(width=0), fill="tonexty",
-                             fillcolor="rgba(31,78,121,0.12)", hoverinfo="skip",
-                             name="Intervalle d'incertitude (80 %)"))
-    fig.add_trace(go.Scatter(x=dates, y=[v * 100 for v in p], mode="lines+markers",
+    fig.add_trace(go.Scatter(x=labels, y=[p.low * 100 for p in posts], mode="lines",
+                             line=dict(width=0), fill="tonexty", fillcolor="rgba(31,78,121,0.12)",
+                             hoverinfo="skip", name="Intervalle à 80 %"))
+    fig.add_trace(go.Scatter(x=labels, y=[p.p * 100 for p in posts], mode="lines+markers",
                              line=dict(color=NAVY, width=2.5),
-                             marker=dict(size=7, color="white", line=dict(color=NAVY, width=2)),
-                             customdata=why, name="Probabilité de signature",
-                             hovertemplate="%{x}<br><b>%{y:.0f} %</b><br>%{customdata}<extra></extra>"))
+                             marker=dict(size=8, color="white", line=dict(color=NAVY, width=2)),
+                             name="Probabilité de signature",
+                             customdata=[[p.low * 100, p.high * 100] for p in posts],
+                             hovertemplate="%{x}<br><b>%{y:.0f} %</b> (%{customdata[0]:.0f} – "
+                                           "%{customdata[1]:.0f} %)<extra></extra>"))
     fig.add_hline(y=50, line=dict(color=GRID, dash="dot", width=1))
     base_layout(fig, 300)
     fig.update_layout(yaxis=dict(range=[0, 100], ticksuffix=" %", gridcolor=GRID, zeroline=False),
-                      xaxis=dict(showgrid=False, linecolor=GRID),
+                      xaxis=dict(type="category", showgrid=False, linecolor=GRID),
                       legend=dict(orientation="h", y=-0.18, font=dict(size=11, color=MUTED)))
     return fig
 
 
+def layout_positions() -> tuple[dict, dict]:
+    """Organisations sur deux rangées, acteurs sous leur organisation."""
+    client_side = [o for o in orgs.values() if o["type"] != "competitor"]
+    top = [o for o in client_side if o["type"] in ("buyer", "consortium_member")]
+    bottom = [o for o in client_side if o not in top]
+    org_pos, actor_pos = {}, {}
+    for row, y in ((top, 1.6), (bottom, -0.6)):
+        for i, o in enumerate(row):
+            org_pos[o["id"]] = (-3.0 + 6.0 * (i + 0.5) / len(row), y)
+    for oid, (x, y) in org_pos.items():
+        members = [a for a in S.data.actors if a["org_id"] == oid]
+        for j, a in enumerate(members):
+            actor_pos[a["id"]] = (x + 1.1 * (j - (len(members) - 1) / 2), y - 0.85)
+    return org_pos, actor_pos
+
+
+def short_org(name: str) -> str:
+    """Coupe les noms longs sur deux lignes pour la carte."""
+    if len(name) <= 16:
+        return name
+    words, half = name.split(), len(name) // 2
+    cut = min(range(1, len(words)), key=lambda i: abs(len(" ".join(words[:i])) - half))
+    return " ".join(words[:cut]) + "<br>" + " ".join(words[cut:])
+
+
 def stakeholder_map() -> go.Figure:
+    org_pos, actor_pos = layout_positions()
     fig = go.Figure()
-    # liens acteur -> organisation
-    for aid, (x, y) in mock.MAP_ACTORS.items():
-        ox, oy = mock.MAP_ORGS[actors[aid]["org"]]
+    for aid, (x, y) in actor_pos.items():
+        ox, oy = org_pos[actors[aid]["org_id"]]
         fig.add_trace(go.Scatter(x=[x, ox], y=[y, oy], mode="lines", hoverinfo="skip",
                                  line=dict(color=GRID, width=1.2), showlegend=False))
-    # organisations
-    ox, oy = zip(*mock.MAP_ORGS.values())
     fig.add_trace(go.Scatter(
-        x=ox, y=oy, mode="markers+text", showlegend=False, hoverinfo="skip",
+        x=[p[0] for p in org_pos.values()], y=[p[1] for p in org_pos.values()],
+        mode="markers+text", showlegend=False, hoverinfo="skip",
         marker=dict(symbol="square", size=9, color=INK),
-        text=[f"<b>{label}</b>" for label in mock.MAP_ORG_LABELS.values()],
+        text=[f"<b>{short_org(orgs[o]['name'])}</b>" for o in org_pos],
         textposition="top center", textfont=dict(size=11, color=INK)))
-    # acteurs : couleur = position, taille = influence, contour gris = incertain
-    for stance, (label, color) in STANCES.items():
-        ids = [a for a in mock.MAP_ACTORS if actors[a]["stance"] == stance]
+    for key in ["support", "neutral", "oppose", "unknown"]:
+        label, color = STANCE[key] if key != "unknown" else ("Incertain", STANCE["unknown"][1])
+        ids = [a for a in actor_pos if stance_of(S.post.beliefs[a]) == key]
         if not ids:
             continue
         texts, hovers = [], []
         for a in ids:
-            act = actors[a]
-            d = days_since(act["last_contact"])
+            act, b = actors[a], S.post.beliefs[a]
+            d = days_since(S.last_contact.get(a))
             silence = ""
-            if d is None or d > SILENCE_DAYS:
+            if is_silent(a):
                 silence = (f"<br><span style='color:{WARN};font-size:10px'>"
-                           f"{'jamais contacté' if d is None else f'silence {d} j'}</span>")
+                           f"{'aucun échange direct' if d is None else f'silence {d} j'}</span>")
             texts.append(act["name"] + silence)
-            hovers.append(f"<b>{act['name']}</b><br>{act['role']}, {orgs[act['org']]['name']}"
+            hovers.append(f"<b>{act['name']}</b><br>{act['role']}"
                           f"{'<br><b>Détenteur de veto</b>' if act['veto'] else ''}"
-                          f"<br>Influence : {act['influence']:.0%}<br>Position : {label}"
-                          f"<br>Dernier contact : {'jamais' if d is None else f'il y a {d} j'}")
-        # contour épais et sombre pour les détenteurs de veto
-        line_colors = [INK if actors[a]["veto"] else ("white" if stance != "unknown" else MUTED)
-                       for a in ids]
-        line_widths = [3.5 if actors[a]["veto"] else 1.5 for a in ids]
+                          f"<br>Pour {b[0]:.0%} · Neutre {b[1]:.0%} · Contre {b[2]:.0%}"
+                          f"<br>Influence : {act['influence']:.0%}")
         fig.add_trace(go.Scatter(
-            x=[mock.MAP_ACTORS[a][0] for a in ids], y=[mock.MAP_ACTORS[a][1] for a in ids],
+            x=[actor_pos[a][0] for a in ids], y=[actor_pos[a][1] for a in ids],
             mode="markers+text", name=label, text=texts, textposition="bottom center",
             textfont=dict(size=11, color=INK), hovertext=hovers, hoverinfo="text",
             marker=dict(size=[16 + 26 * actors[a]["influence"] for a in ids], color=color,
-                        line=dict(color=line_colors, width=line_widths))))
+                        line=dict(color=[INK if actors[a]["veto"] else "white" for a in ids],
+                                  width=[3.5 if actors[a]["veto"] else 1.5 for a in ids]))))
     base_layout(fig, 380)
-    fig.update_layout(xaxis=dict(visible=False, range=[-3.2, 3.2]),
-                      yaxis=dict(visible=False, range=[-2.7, 2.4]),
+    fig.update_layout(xaxis=dict(visible=False, range=[-3.6, 3.6]),
+                      yaxis=dict(visible=False, range=[-2.4, 2.4]),
                       legend=dict(orientation="h", y=-0.02, font=dict(size=11, color=MUTED)))
     return fig
 
@@ -188,52 +214,44 @@ def stakeholder_map() -> go.Figure:
 with st.sidebar:
     st.markdown("<div class='dc-brand'>deal-copilot</div>", unsafe_allow_html=True)
     st.caption("Copilote confidentiel pour les contrats d'infrastructure")
-
-    st.selectbox("Contrat", [deal["name"]])
-    providers = ["meta", "baseten", "offline"]
-    st.radio("Modèle", providers, index=providers.index(llm.provider()), horizontal=True,
-             disabled=True, help="Se choisit avec LLM_PROVIDER dans .env")
-    st.toggle("Mode démo (réponses en cache)", value=True, on_change=not_ready)
+    st.selectbox("Contrat", [S.deal["name"]])
+    st.caption(f"Modèle : **{llm.provider()}** · {llm.model_name()}")
+    if st.button("Réinitialiser la démo", icon=":material/restart_alt:", width="stretch"):
+        pipeline.setup_demo(conn, reset=True)
+        reset_session()
+        st.rerun()
 
     st.divider()
-    st.caption("CLIENT")
-    st.markdown(deal["buyer"])
-    st.caption("VALEUR")
-    st.markdown(f"{deal['value_meur']} M€")
-    st.caption("SIGNATURE VISÉE")
-    st.markdown(deal["target_signature"])
-    st.caption("CONCURRENCE")
-    st.markdown(", ".join(deal["competitors"]))
-
+    for label, value in [("CLIENT", S.deal["buyer"]), ("VALEUR", f"{S.deal['value_meur']:.0f} M€"),
+                         ("SIGNATURE VISÉE", S.deal["target_signature"]),
+                         ("CONCURRENCE", ", ".join(S.deal["competitors"]))]:
+        st.caption(label)
+        st.markdown(value)
     st.divider()
     st.caption("RÉUNIONS")
-    for m in reversed(deal["meetings"]):
+    for m in reversed(S.meetings):
         st.markdown(f"**{m['date']}**  \n{m['title']}")
 
 
 # ------------------------------------------------------------------ en-tête
-head, badge = st.columns([4, 1.2], vertical_alignment="top")
-head.markdown(
-    f"<div class='dc-overline'>{deal['seller']} · {deal['buyer']}</div>"
-    f"<div class='dc-title'>{deal['name']}</div>"
-    f"<div class='dc-meta'>{deal['description']}</div>",
-    unsafe_allow_html=True)
-with badge:
-    st.badge("Maquette · données fictives", icon=":material/construction:", color="orange")
-
+st.markdown(
+    f"<div class='dc-overline'>{S.deal['seller']} · {S.deal['buyer']}</div>"
+    f"<div class='dc-title'>{S.deal['name']}</div>"
+    f"<div class='dc-meta'>{S.deal['description']}</div>", unsafe_allow_html=True)
 st.write("")
-previous_p = mock.PROBA_HISTORY[-2][1]
+
+prev = S.timeline[-2][1].p if len(S.timeline) > 1 else S.post.p
 c1, c2, c3, c4 = st.columns(4)
-c1.metric("Probabilité de signature", pct(mock.CURRENT["p"]),
-          f"{mock.CURRENT['delta_pts']:+d} (réunion précédente : {pct(previous_p)})")
-c2.metric("Intervalle d'incertitude", f"{pct(mock.CURRENT['low'])} – {pct(mock.CURRENT['high'])}")
-c3.metric("État probable du dossier", mock.CURRENT["state"])
-c4.metric("Acteurs silencieux", len(silent), f"plus de {SILENCE_DAYS} jours sans contact",
+c1.metric("Probabilité de signature", pct(S.post.p),
+          f"{(S.post.p - prev) * 100:+.0f} depuis l'étape précédente ({pct(prev)})")
+c2.metric("Intervalle d'incertitude (80 %)", f"{pct(S.post.low)} – {pct(S.post.high)}")
+c3.metric("Veto le plus incertain", most_uncertain["name"] if most_uncertain else "—",
+          most_uncertain["role"] if most_uncertain else None, delta_color="off", delta_arrow="off")
+c4.metric("Acteurs silencieux", len(silent), f"plus de {SILENCE_DAYS} jours sans échange direct",
           delta_color="off", delta_arrow="off")
-
 st.write("")
-tab_deal, tab_sources = st.tabs([":material/dashboard: Dossier",
-                                 ":material/description: Sources"])
+
+tab_deal, tab_sources = st.tabs([":material/dashboard: Dossier", ":material/description: Sources"])
 
 # ------------------------------------------------------------------ onglet Dossier
 with tab_deal:
@@ -242,119 +260,169 @@ with tab_deal:
     with left:
         with st.container(key="card_debrief"):
             section("Débrief de réunion", "Environ 60 secondes de dictée après la réunion.")
-            st.audio_input("Enregistrement vocal", label_visibility="collapsed")
-            st.file_uploader(":material/upload_file: Ou déposer un fichier audio",
-                             type=["wav", "m4a", "mp3"])
+            audio = st.audio_input("Enregistrement vocal", label_visibility="collapsed")
+            uploaded = st.file_uploader(":material/upload_file: Ou déposer un fichier audio (WAV)",
+                                        type=["wav"])
             with st.expander("Saisir le texte à la place", icon=":material/edit_note:"):
-                st.text_area("Texte du débrief", height=100, label_visibility="collapsed",
-                             placeholder="Réunion avec le consortium ce matin…")
-            st.button("Analyser le débrief", type="primary", icon=":material/auto_awesome:",
-                      on_click=not_ready, width="stretch")
+                if st.button("Charger le débrief de démonstration", icon=":material/science:"):
+                    st.session_state.debrief_text = TRAP_TEXT
+                text = st.text_area("Texte du débrief", key="debrief_text", height=160,
+                                    label_visibility="collapsed",
+                                    placeholder="Réunion avec le consortium ce matin…")
+            if st.button("Analyser le débrief", type="primary", icon=":material/auto_awesome:",
+                         width="stretch"):
+                source = audio or uploaded
+                try:
+                    with st.status("Analyse du débrief…", expanded=True) as status:
+                        if source is not None:
+                            st.write("Transcription (Muse Voice Transcribe)…")
+                            text = capture.transcribe(source.getvalue(), memory.keywords(conn, deal_id))
+                            st.session_state.transcript = text
+                        if not (text or "").strip():
+                            status.update(label="Aucun débrief à analyser", state="error")
+                            st.stop()
+                        st.write("Extraction des signaux (Muse Spark)…")
+                        pipeline.analyze_debrief(conn, deal_id, text)
+                        st.write("Mise à jour du modèle et choix des questions…")
+                        st.session_state.questions = pipeline.questions(pipeline.state(conn, deal_id))
+                        st.session_state.answers = {}
+                        st.session_state.pop("email", None)
+                        status.update(label="Débrief analysé", state="complete")
+                    st.rerun()
+                except Exception as e:   # l'appli doit rester debout en démo
+                    st.error(f"Échec de l'analyse : {e}")
+            if st.session_state.get("transcript"):
+                with st.expander("Transcription", icon=":material/record_voice_over:"):
+                    st.write(st.session_state.transcript)
 
     with right:
         with st.container(key="card_signals"):
-            section("Signaux extraits",
-                    "Débrief du 2026-10-27 · chaque citation est copiée mot pour mot.")
+            when = S.latest_debrief["date"] if S.latest_debrief else "—"
+            section("Signaux extraits", f"Dernier débrief ({when}) et réponses qui ont suivi · "
+                                        "chaque citation est vérifiée mot pour mot.")
             st.dataframe(
-                [{**s, "Position": STANCES[s["Position"]][0]} for s in mock.SIGNALS],
-                hide_index=True, width="stretch", height=250,
-                column_order=["Acteur", "Type", "Citation", "Position", "Confiance"],
+                [{"Acteur": s["raw_name"], "Type": s["signal_type"],
+                  "Position": STANCE.get(s["stance"], ("?",))[0],
+                  "Force": STRENGTH.get(s.get("strength") or "", "—"),
+                  "Origine": SOURCE.get(s.get("source_type") or "", "—"),
+                  "Citation": s["quote"], "Confiance": s["confidence"]}
+                 for s in S.latest_signals],
+                hide_index=True, width="stretch", height=260,
                 column_config={
-                    "Acteur": st.column_config.TextColumn(width="medium"),
-                    "Type": st.column_config.TextColumn(width="small"),
                     "Citation": st.column_config.TextColumn(width="large"),
-                    "Position": st.column_config.TextColumn(width="small"),
-                    "Confiance": st.column_config.ProgressColumn(
-                        min_value=0, max_value=1, format="%.2f", width="small"),
+                    "Confiance": st.column_config.ProgressColumn(min_value=0, max_value=1,
+                                                                 format="%.2f", width="small"),
                 })
 
     left, right = st.columns(2, gap="medium")
-
     with left:
         with st.container(key="card_proba"):
             section("Probabilité de signature",
-                    "Dernière variation : condition de phasage (Sophie Lenoir), "
-                    "silence de la banque (Thomas Riou).")
-            st.plotly_chart(probability_chart(), width="stretch",
-                            config={"displayModeBar": False})
-
+                    "Recalculée à chaque réunion par le modèle (positions des acteurs + veto).")
+            st.plotly_chart(probability_chart(), width="stretch", config={"displayModeBar": False})
+            if S.moves:
+                st.caption("Ce qui l'a fait bouger au dernier débrief :")
+                for mv in S.moves[:3]:
+                    st.markdown(f"<span style='color:{MUTED}'>{mv['delta'] * 100:+.1f} pts</span> · "
+                                f"**{mv['signal']['raw_name']}** : « {mv['signal']['quote']} »",
+                                unsafe_allow_html=True)
     with right:
         with st.container(key="card_map"):
             section("Parties prenantes",
-                    "Couleur : position · taille : influence · contour épais : détenteur de veto "
-                    "· gris clair : position inconnue")
-            st.plotly_chart(stakeholder_map(), width="stretch",
-                            config={"displayModeBar": False})
+                    "Couleur : position la plus probable · taille : influence · "
+                    "contour épais : détenteur de veto · gris clair : encore incertain")
+            st.plotly_chart(stakeholder_map(), width="stretch", config={"displayModeBar": False})
 
     left, right = st.columns(2, gap="medium")
-
     with left:
         with st.container(key="card_questions"):
-            section("Débrief actif",
-                    "Les questions qui réduisent le plus l'incertitude sur la signature.")
-            p, low, high = mock.CURRENT["p"], mock.CURRENT["low"], mock.CURRENT["high"]
-            for i, q in enumerate(mock.QUESTIONS, start=1):
-                u = unknown_by_id[q["unknown"]]
-                target = actors.get(u["actor"])
-                # intervalle attendu après la réponse : resserré autour de p
-                shrink = 1 - (q["gain_pts"] / 100) / (high - low)
-                new_low, new_high = p - (p - low) * shrink, p + (high - p) * shrink
+            qs = st.session_state.questions
+            section("Débrief actif", "Les questions qui réduisent le plus l'incertitude sur la "
+                                     "signature (au plus 2).")
+            if not qs:
+                st.info("Aucune question utile : la suivante n'apporterait presque rien.")
+            for i, q in enumerate(qs):
+                a = q["actor"]
                 with st.container(border=True):
-                    st.markdown(f"**Question {i} sur {len(mock.QUESTIONS)}**")
-                    if target and target["veto"]:
-                        st.badge(f"Détenteur de veto · {target['name']}",
-                                 icon=":material/gavel:", color="red")
-                    st.markdown(u["question"])
-                    st.caption(f"Intervalle attendu après la réponse : {pct(new_low)} – "
-                               f"{pct(new_high)} (aujourd'hui {pct(low)} – {pct(high)}). "
-                               f"{u['why_unknown']}")
-                    a, b, c = st.columns([2.4, 1.3, 1.1], vertical_alignment="bottom")
-                    a.text_input("Réponse", key=f"answer_{i}", label_visibility="collapsed",
-                                 placeholder="Répondez en une phrase…")
-                    b.button("Dicter", key=f"mic_{i}", icon=":material/mic:",
-                             on_click=not_ready, width="stretch")
-                    c.button("Passer", key=f"skip_{i}", on_click=not_ready, width="stretch")
-            st.button("Envoyer les réponses", type="primary", on_click=not_ready,
-                      width="stretch")
+                    st.markdown(f"**Question {i + 1} sur {len(qs)}**")
+                    if a["veto"]:
+                        st.badge(f"Détenteur de veto · {a['name']}", icon=":material/gavel:",
+                                 color="red")
+                    st.markdown(q["text"])
+                    st.caption(f"Incertitude réduite d'environ {q['gain'] * 100:.1f} pts en moyenne "
+                               f"· intervalle attendu après la réponse : {pct(q['expected_low'])} – "
+                               f"{pct(q['expected_high'])}")
+                    done = st.session_state.answers.get(i)
+                    if done == "skipped":
+                        st.caption("Question passée.")
+                    elif done is not None:
+                        if done.get("signal"):
+                            sig = done["signal"]
+                            st.success(f"Lecture de votre réponse : **{STANCE[sig['stance']][0]}** "
+                                       f"({STRENGTH[sig['strength']]}) · « {sig['evidence_quote']} » "
+                                       f"· {sig['description']}", icon=":material/check:")
+                        else:
+                            st.caption("Réponse enregistrée, sans information sur la position.")
+                    else:
+                        if a["id"] == "sophie_lenoir" and st.button(
+                                "Réponse de démonstration", key=f"demo_{i}", icon=":material/science:"):
+                            st.session_state[f"answer_{i}"] = TRAP_TRUTH_ANSWER
+                        answer = st.text_input("Réponse", key=f"answer_{i}",
+                                               label_visibility="collapsed",
+                                               placeholder="Répondez en une phrase…")
+                        b1, b2 = st.columns(2)
+                        if b1.button("Envoyer", key=f"send_{i}", type="primary", width="stretch",
+                                     disabled=not answer.strip()):
+                            with st.spinner("Lecture de la réponse (Muse Spark)…"):
+                                sig = pipeline.answer_question(conn, deal_id, q, answer)
+                            st.session_state.answers[i] = {"signal": sig}
+                            st.session_state.pop("email", None)
+                            st.rerun()
+                        if b2.button("Passer", key=f"skip_{i}", width="stretch"):
+                            st.session_state.answers[i] = "skipped"
+                            st.rerun()
 
     with right:
         with st.container(key="card_actions"):
-            section("Plan d'action",
-                    "Classé selon la probabilité de signature si l'action aboutit "
-                    "(simulée par le modèle).")
-            p = mock.CURRENT["p"]
-            for i, act in enumerate(mock.ACTIONS):
+            section("Plan d'action", "Classé selon la probabilité de signature si l'action aboutit "
+                                     "(simulée par le modèle).")
+            acts = pipeline.actions(S)
+            for i, act in enumerate(acts):
                 if i:
                     st.divider()
-                a, b, c = st.columns([4.5, 2, 0.4], vertical_alignment="center")
-                a.markdown(f"**{act['action']}**")
-                a.caption(f"{act['why']} · source : {act['source']}")
-                b.markdown(f"<div class='dc-action-delta'>{pct(p)} → "
-                           f"<b>{pct(p + act['effect_pts'] / 100)}</b></div>",
-                           unsafe_allow_html=True)
-                c.checkbox("Fait", key=f"done_{i}", label_visibility="collapsed")
+                a, b = st.columns([4.5, 2], vertical_alignment="center")
+                a.markdown(f"**{i + 1}. {act['title']}**")
+                a.caption(act["why"])
+                b.markdown(f"<div class='dc-delta'>{pct(act['p_before'])} → "
+                           f"<b>{pct(act['p_after'])}</b></div>", unsafe_allow_html=True)
             st.write("")
-            with st.expander("Compte rendu de la réunion", icon=":material/summarize:"):
-                st.markdown(mock.MEETING_SUMMARY.replace("\n", "  \n"))
-                st.button("Copier le compte rendu", icon=":material/content_copy:",
-                          on_click=not_ready)
-            with st.expander("E-mail de suivi pour l'action n° 1 (brouillon)",
-                             icon=":material/mail:"):
-                st.text_area("E-mail", mock.EMAIL_DRAFT, height=260,
-                             label_visibility="collapsed")
-                st.button("Copier l'e-mail", icon=":material/content_copy:", on_click=not_ready)
-            with st.expander(f"Rappels pour les acteurs silencieux ({len(silent)})",
-                             icon=":material/notifications:"):
+            if S.latest_debrief and S.latest_debrief.get("summary"):
+                with st.expander("Compte rendu du dernier débrief", icon=":material/summarize:"):
+                    st.write(S.latest_debrief["summary"])
+            if acts:
+                with st.expander(f"E-mail de suivi pour l'action n° 1", icon=":material/mail:"):
+                    if st.button("Rédiger l'e-mail (Muse Spark)", icon=":material/edit:"):
+                        with st.spinner("Rédaction…"):
+                            st.session_state.email = pipeline.followup_email(S, acts[0])
+                    if st.session_state.get("email"):
+                        st.text_area("E-mail", st.session_state.email, height=260,
+                                     label_visibility="collapsed")
+            with st.expander(f"Acteurs silencieux ({len(silent)})", icon=":material/notifications:"):
                 for a in silent:
-                    d = days_since(a["last_contact"])
-                    when = "jamais contacté(e)" if d is None else f"silence depuis {d} jours"
-                    st.markdown(f"- **{a['name']}** ({a['role']}, "
-                                f"{orgs[a['org']]['name']}) · {when}")
-                st.button("Créer les rappels", icon=":material/alarm_add:", on_click=not_ready)
+                    d = days_since(S.last_contact.get(a["id"]))
+                    when = "aucun échange direct enregistré" if d is None else f"silence depuis {d} jours"
+                    st.markdown(f"- **{a['name']}** ({a['role']}, {orgs[a['org_id']]['name']})"
+                                f"{' · veto' if a['veto'] else ''} · {when}")
 
 # ------------------------------------------------------------------ onglet Sources
 with tab_sources:
-    st.caption("Les débriefs d'origine : chaque chiffre et chaque affirmation y renvoie.")
-    for m in reversed(deal["meetings"]):
+    st.caption("Les débriefs d'origine et leurs signaux : chaque chiffre et chaque affirmation y renvoie.")
+    by_meeting: dict[int, list] = {}
+    for s in memory.signals(conn, deal_id):
+        by_meeting.setdefault(s["meeting_id"], []).append(s)
+    for m in reversed(S.meetings):
         with st.expander(f"{m['date']} · {m['title']}", icon=":material/article:"):
-            st.text((DATA / "demo_deal" / m["debrief"]).read_text(encoding="utf-8"))
+            st.text(m["transcript"] or "")
+            for s in by_meeting.get(m["id"], []):
+                st.markdown(f"- **{s['raw_name']}** · {STANCE.get(s['stance'], ('?',))[0]} · "
+                            f"« {s['quote']} »")

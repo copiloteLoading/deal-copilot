@@ -79,6 +79,7 @@ CREATE TABLE IF NOT EXISTS signals (
     description   TEXT,
     quote         TEXT,                         -- citation exacte du débrief
     confidence    REAL,
+    strength      TEXT,                         -- strong (déclaration nette) ou weak (indice)
     source_type   TEXT,                         -- direct (la personne l'a dit), reported, impression
     confirmed     INTEGER DEFAULT 0             -- 1 = confirmé par le commercial
 );
@@ -102,6 +103,11 @@ def connect(path: Path | str = DB_PATH) -> sqlite3.Connection:
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
     conn.executescript(SCHEMA)
+    # migration : colonnes ajoutées après la création des premières bases
+    columns = {r["name"] for r in conn.execute("PRAGMA table_info(signals)")}
+    for col in ("strength", "source_type"):
+        if col not in columns:
+            conn.execute(f"ALTER TABLE signals ADD COLUMN {col} TEXT")
     return conn
 
 
@@ -246,11 +252,12 @@ def add_signals(conn: sqlite3.Connection, deal_id: str, meeting_id: int,
                 org_id = resolve(conn, deal_id, s["organization"])[1]
             conn.execute(
                 """INSERT INTO signals (deal_id, meeting_id, actor_id, org_id, raw_name,
-                   signal_type, stance, description, quote, confidence, source_type)
-                   VALUES (?,?,?,?,?,?,?,?,?,?,?)""",
+                   signal_type, stance, description, quote, confidence, strength, source_type)
+                   VALUES (?,?,?,?,?,?,?,?,?,?,?,?)""",
                 (deal_id, meeting_id, actor_id, org_id, s.get("actor_name"),
                  s.get("signal_type"), s.get("stance"), s.get("description"),
-                 s.get("evidence_quote"), s.get("confidence"), s.get("source_type")))
+                 s.get("evidence_quote"), s.get("confidence"), s.get("strength"),
+                 s.get("source_type")))
             if actor_id is None and org_id is None:
                 unresolved.append(s)
     return unresolved
