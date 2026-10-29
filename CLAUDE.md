@@ -203,7 +203,8 @@ Un seul écran principal :
 **Avancement (jeu 29, midi)** :
 - Fait : clé API active (ping et extraction OK, citations exactes vérifiées), contrat de démo avec veto, scénario piège, `llm.py` avec cache et mode hors ligne, maquette Streamlit, `memory.py` (SQLite, alias, mots-clés de transcription, dernier contact direct) et ses tests.
 - Reste de mer 28 : test de transcription vocale (il faut un fichier WAV enregistré).
-- Reste de jeu 29 : transcription avec keywords, `extract.py` (ajouter `source_type`, position « conditionnelle », séparer organisations et personnes), fiches de personnages et jeu de test, mesure de l'extraction.
+- Fait (jeu 29, après-midi) : `extract.py` (position « conditionnelle », force du signal, `source_type`, citations vérifiées mot pour mot, effort de raisonnement `low`) et son enregistrement dans la mémoire. Le débrief piège donne bien Sophie Lenoir « conditionnelle ».
+- Reste de jeu 29 : transcription avec keywords, fiches de personnages et jeu de test, mesure de l'extraction.
 
 **Points de décision** :
 - Vendredi soir : si le modèle par acteur n'est pas stable, garder la version de secours à règles (le moteur de décision fonctionne avec n'importe quel modèle qui expose `simulate()`).

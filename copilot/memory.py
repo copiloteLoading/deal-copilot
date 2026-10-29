@@ -188,6 +188,7 @@ def last_contact(conn: sqlite3.Connection, deal_id: str) -> dict[str, str | None
             """SELECT s.actor_id, MAX(m.date) AS d FROM signals s
                JOIN meetings m ON m.id = s.meeting_id
                WHERE s.deal_id = ? AND s.actor_id IS NOT NULL AND s.source_type = 'direct'
+                 AND s.signal_type != 'deadline'
                GROUP BY s.actor_id""", (deal_id,)):
         out[r["actor_id"]] = r["d"]
     return out

@@ -62,6 +62,15 @@ def model_name() -> str:
     return PROVIDERS[name]["model"]
 
 
+def effort(level: str) -> dict:
+    """Effort de raisonnement ("low", "medium", "high") à passer à chat() / chat_json().
+
+    Réglable sur l'API Meta ; ailleurs on n'envoie rien. Hors ligne on garde le paramètre
+    pour retrouver les réponses mises en cache avec l'API Meta.
+    """
+    return {"reasoning_effort": level} if provider() in ("meta", "offline") else {}
+
+
 _client = None
 
 
