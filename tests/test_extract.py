@@ -48,6 +48,14 @@ def test_quotes_are_checked(conn):
     assert [s["evidence_quote"] for s in result["rejected"]] == ["nous validerons sans condition"]
 
 
+def test_one_word_quotes_prove_nothing():
+    notes = "Participants\nThomas Riou : « pas de financement tant que l'étude n'est pas validée »"
+    kept, rejected = extract.check_signals(notes, [{"evidence_quote": "Participants", "confidence": 0.5},
+                                                   {"evidence_quote": "pas de financement", "confidence": 0.9}])
+    assert [s["evidence_quote"] for s in kept] == ["pas de financement"]
+    assert [s["evidence_quote"] for s in rejected] == ["Participants"]
+
+
 def test_confidence_is_clamped(conn):
     result = extract.extract(TEXT, conn, "port-aven-kerlis")
     assert all(0 <= s["confidence"] <= 1 for s in result["signals"])

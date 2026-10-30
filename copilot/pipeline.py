@@ -30,9 +30,11 @@ def setup_demo(conn, reset: bool = False) -> str:
     return DEMO_ID
 
 
-def analyze_debrief(conn, deal_id: str, text: str, day: str | None = None) -> dict:
-    return extract.extract_and_store(conn, deal_id, day or date.today().isoformat(), text,
-                                     "Débrief du jour")
+def analyze_debrief(conn, deal_id: str, text: str, day: str | None = None,
+                    title: str = "Débrief du jour") -> dict:
+    """Débrief dicté, ou notes remises au propre depuis une photo (même extraction, même vérification
+    des citations, faite sur le texte validé par le commercial)."""
+    return extract.extract_and_store(conn, deal_id, day or date.today().isoformat(), text, title)
 
 
 def answer_question(conn, deal_id: str, question: dict, answer: str, day: str | None = None) -> dict | None:

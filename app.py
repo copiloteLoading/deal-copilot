@@ -8,13 +8,13 @@ Lancer : .\\.venv\\Scripts\\python.exe -m streamlit run app.py
 
 from __future__ import annotations
 
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 import plotly.graph_objects as go
 import streamlit as st
 
-from copilot import capture, llm, memory, model, pipeline
+from copilot import capture, llm, memory, model, orgchart, photo, pipeline, prepare
 
 SILENCE_DAYS = 30
 TRAP_TEXT = (pipeline.DEMO_DIR / "trap" / "debrief_piege.txt").read_text(encoding="utf-8")
@@ -31,6 +31,9 @@ STANCE = {   # libellé, couleur
     "unknown": ("Inconnu", "#CBD5E0"),
 }
 STRENGTH = {"strong": "nette", "weak": "faible"}
+ORG_TYPE_LABEL = {"buyer": "Client", "consortium_member": "Membre du consortium", "financier": "Financeur",
+                  "regulator": "Régulateur", "subcontractor": "Sous-traitant", "competitor": "Concurrent",
+                  "other": "Autre"}
 SOURCE = {"direct": "directe", "reported": "rapportée", "impression": "impression"}
 
 st.set_page_config(page_title="deal-copilot", page_icon=":material/sailing:", layout="wide")
@@ -59,6 +62,15 @@ st.markdown(f"""
 .dc-delta {{ text-align: right; font-size: 0.95rem; color: {MUTED}; white-space: nowrap; }}
 .dc-delta b {{ color: {INK}; font-size: 1.05rem; }}
 .dc-brand {{ font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; }}
+.dc-node {{ padding: 0.22rem 0; font-size: 0.95rem; color: {INK}; white-space: nowrap; overflow: hidden;
+    text-overflow: ellipsis; }}
+.dc-branch {{ color: {MUTED}; font-family: monospace; }}
+.dc-dot {{ display: inline-block; width: 0.7rem; height: 0.7rem; border-radius: 50%; margin: 0 0.45rem 0 0.1rem;
+    vertical-align: middle; }}
+.dc-role {{ color: {MUTED}; font-size: 0.86rem; margin-left: 0.3rem; }}
+.dc-tag {{ font-size: 0.72rem; font-weight: 600; border-radius: 6px; padding: 0.05rem 0.4rem; margin-left: 0.4rem; }}
+.dc-veto {{ background: #FDE8E8; color: #9B2C2C; }}
+.dc-silent {{ background: #FEF3C7; color: {WARN}; }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -84,7 +96,8 @@ def stance_of(b) -> str:
 
 
 def reset_session() -> None:
-    for k in ["plan", "answers", "email", "transcript", "debrief_text", "reminders", "noisy"]:
+    for k in ["plan", "answers", "email", "transcript", "debrief_text", "reminders", "noisy", "prep", "photo_image", "photo_read", "photo_rows", "photo_done",
+              "photo_notes"]:
         st.session_state.pop(k, None)
 
 
@@ -148,18 +161,29 @@ def probability_chart() -> go.Figure:
 
 
 def layout_positions() -> tuple[dict, dict]:
-    """Organisations sur deux rangées, acteurs sous leur organisation."""
+    """Organisations sur deux rangées, acteurs sous leur organisation (3 par ligne au plus).
+    Chaque organisation reçoit une largeur proportionnelle au nombre de ses membres."""
     client_side = [o for o in orgs.values() if o["type"] != "competitor"]
     top = [o for o in client_side if o["type"] in ("buyer", "consortium_member")]
     bottom = [o for o in client_side if o not in top]
-    org_pos, actor_pos = {}, {}
-    for row, y in ((top, 1.6), (bottom, -0.6)):
-        for i, o in enumerate(row):
-            org_pos[o["id"]] = (-3.0 + 6.0 * (i + 0.5) / len(row), y)
-    for oid, (x, y) in org_pos.items():
-        members = [a for a in S.data.actors if a["org_id"] == oid]
-        for j, a in enumerate(members):
-            actor_pos[a["id"]] = (x + 1.1 * (j - (len(members) - 1) / 2), y - 0.85)
+    org_pos, actor_pos, y = {}, {}, 1.6
+    for row in (top, bottom):
+        if not row:
+            continue
+        members = {o["id"]: [a for a in S.data.actors if a["org_id"] == o["id"]] for o in row}
+        cols = [max(1, min(3, len(members[o["id"]]))) for o in row]
+        x0, depth = -3.3, 0
+        for o, c in zip(row, cols):
+            span = 6.6 * c / sum(cols)
+            cx, x0 = x0 + span / 2, x0 + span
+            org_pos[o["id"]] = (cx, y)
+            ms = members[o["id"]]
+            for j, a in enumerate(ms):
+                line, k = divmod(j, 3)
+                n = min(3, len(ms) - 3 * line)
+                actor_pos[a["id"]] = (cx + min(1.1, span / c) * (k - (n - 1) / 2), y - 0.85 - 1.15 * line)
+            depth = max(depth, (len(ms) - 1) // 3 if ms else 0)
+        y -= 0.85 + 1.15 * depth + 1.35
     return org_pos, actor_pos
 
 
@@ -194,13 +218,16 @@ def stakeholder_map() -> go.Figure:
         for a in ids:
             act, b = actors[a], S.post.beliefs[a]
             d = days_since(S.last_contact.get(a))
+            crowded = sum(1 for x in S.data.actors if x["org_id"] == act["org_id"]) > 3
             silence = ""
             if is_silent(a):
+                never = "jamais vu" if crowded else "aucun échange direct"
                 silence = (f"<br><span style='color:{WARN};font-size:10px'>"
-                           f"{'aucun échange direct' if d is None else f'silence {d} j'}</span>")
+                           f"{never if d is None else f'silence {d} j'}</span>")
             if a in pending_ids:
                 silence += f"<br><span style='color:{WARN};font-size:10px'><b>à confirmer</b></span>"
-            texts.append(act["name"] + silence)
+            shown = f"{act['name'][0]}. {act['name'].split(' ', 1)[-1]}" if crowded else act["name"]
+            texts.append(shown + silence)
             hovers.append(f"<b>{act['name']}</b><br>{act['role']}"
                           f"{'<br><b>Détenteur de veto</b>' if act['veto'] else ''}"
                           f"<br>Pour {b[0]:.0%} · Neutre {b[1]:.0%} · Contre {b[2]:.0%}"
@@ -212,9 +239,10 @@ def stakeholder_map() -> go.Figure:
             marker=dict(size=[16 + 26 * actors[a]["influence"] for a in ids], color=color,
                         line=dict(color=[INK if actors[a]["veto"] else "white" for a in ids],
                                   width=[3.5 if actors[a]["veto"] else 1.5 for a in ids]))))
-    base_layout(fig, 380)
+    bottom = min([p[1] for p in actor_pos.values()] + [-1.5])
+    base_layout(fig, int(380 + 75 * max(0, -1.6 - bottom)))
     fig.update_layout(xaxis=dict(visible=False, range=[-3.6, 3.6]),
-                      yaxis=dict(visible=False, range=[-2.4, 2.4]),
+                      yaxis=dict(visible=False, range=[bottom - 0.8, 2.4]),
                       legend=dict(orientation="h", y=-0.02, font=dict(size=11, color=MUTED)))
     return fig
 
@@ -260,7 +288,9 @@ c4.metric("Acteurs silencieux", len(silent), f"plus de {SILENCE_DAYS} jours sans
           delta_color="off", delta_arrow="off")
 st.write("")
 
-tab_deal, tab_sources = st.tabs([":material/dashboard: Dossier", ":material/description: Sources"])
+tab_deal, tab_photo, tab_people, tab_prep, tab_sources = st.tabs(
+    [":material/dashboard: Dossier", ":material/photo_camera: Photos", ":material/account_tree: Organisations",
+     ":material/event: Préparer une réunion", ":material/description: Sources"])
 
 # ------------------------------------------------------------------ onglet Dossier
 with tab_deal:
@@ -501,6 +531,203 @@ with tab_deal:
                                     f"{len(args.get('actions', []))} action(s)")
                 for r in PLAN["rejected"]:
                     st.markdown(f"- ✕ Écarté ({r['kind']}) : {r['reason']}")
+
+# ------------------------------------------------------------------ onglet Préparer une réunion
+with tab_prep:
+    st.caption("Avant une réunion : ce qu'il faut obtenir de chaque participant, quoi leur demander, "
+               "et ce que la réunion peut faire basculer. Les chiffres viennent du modèle, les "
+               "formulations de Muse Spark.")
+    with st.container(key="card_prep_form"):
+        c1, c2 = st.columns([2, 1])
+        prep_title = c1.text_input("Réunion", "Comité de pilotage")
+        prep_day = c2.date_input("Date", date.today() + timedelta(days=7), format="DD/MM/YYYY")
+        who = st.multiselect(
+            "Participants", list(actors),
+            format_func=lambda a: f"{actors[a]['name']} · {actors[a]['role']} "
+                                  f"({orgs[actors[a]['org_id']]['name']}){' · veto' if actors[a]['veto'] else ''}",
+            placeholder="Qui sera présent ?")
+        if st.button("Préparer la réunion", type="primary", icon=":material/event_note:",
+                     disabled=not who):
+            with st.spinner("Le modèle chiffre les enjeux, Muse Spark formule…"):
+                st.session_state.prep = prepare.prepare(S.data, who, S.last_contact,
+                                                        prep_day.isoformat(), prep_title)
+    P = st.session_state.get("prep")
+    if P:
+        st.write("")
+        if P["fallback"]:
+            st.warning(f"Muse Spark indisponible ({P['fallback']}) : formulations par défaut.",
+                       icon=":material/warning:")
+        m1, m2, m3 = st.columns(3)
+        m1.metric("Probabilité aujourd'hui", pct(P["p_now"]))
+        m2.metric("Si la réunion se passe bien", pct(P["p_best"]),
+                  f"{(P['p_best'] - P['p_now']) * 100:+.0f} · tous les participants favorables")
+        m3.metric("Si l'enjeu principal se ferme", pct(P["p_worst"]),
+                  f"{(P['p_worst'] - P['p_now']) * 100:+.0f} · "
+                  f"{P['attendees'][0]['actor']['name']} défavorable")
+        if P["opening"]:
+            st.info(P["opening"], icon=":material/flag:")
+        for i, r in enumerate(P["attendees"]):
+            a, b = r["actor"], r["belief"]
+            with st.container(key=f"card_prep_{i}"):
+                left, right = st.columns([3, 1.2], vertical_alignment="top")
+                with left:
+                    st.markdown(f"**{i + 1}. {a['name']}** · {a['role']}, {orgs[a['org_id']]['name']}")
+                    if a["veto"]:
+                        st.badge("Détenteur de veto", icon=":material/gavel:", color="red")
+                    silence = ("aucun échange direct" if r["silence"] is None
+                               else f"dernier échange direct il y a {r['silence']} jours")
+                    st.caption(f"Aujourd'hui : pour {b[0]:.0%} · neutre {b[1]:.0%} · contre {b[2]:.0%} · {silence}")
+                    st.markdown(f":material/target: **Objectif** : {r['objective']}")
+                    st.markdown(f":material/help: **À lui demander** : {r['question']}")
+                    st.markdown(f":material/warning: **Attention** : {r['watch_out']}")
+                    if r["sources"]:
+                        st.caption("Sources : " + " · ".join(f"« {s['quote']} » ({s['date']})"
+                                                              for s in r["sources"][:3]))
+                with right:
+                    st.markdown(f"<div class='dc-delta'>favorable<br><b>{pct(r['p_if_support'])}</b></div>",
+                                unsafe_allow_html=True)
+                    st.markdown(f"<div class='dc-delta'>défavorable<br><b>{pct(r['p_if_oppose'])}</b></div>",
+                                unsafe_allow_html=True)
+        if P["absent_vetoes"]:
+            st.warning("Détenteurs de veto absents et mal connus, à aborder indirectement : "
+                       + ", ".join(f"**{a['name']}** ({a['role']})" for a in P["absent_vetoes"]),
+                       icon=":material/person_off:")
+
+# ------------------------------------------------------------------ onglet Photos
+SAMPLES = Path(__file__).resolve().parent / "samples"
+SAMPLE_PHOTOS = {"Notes manuscrites (rendez-vous banque)": "notes_reunion_banque.jpg",
+                 "Tableau blanc (atelier phasage)": "tableau_blanc_phasage.jpg",
+                 "Organigramme (Baltis Telecom)": "organigramme_baltis.jpg"}
+
+
+def reset_photo() -> None:
+    for k in ["photo_read", "photo_rows", "photo_notes", "photo_done"]:
+        st.session_state.pop(k, None)
+
+
+with tab_photo:
+    st.caption("Notes manuscrites, tableau blanc, organigramme : prenez-les en photo. Muse Spark les remet "
+               "au propre, vous relisez, et le dossier se met à jour comme après un débrief dicté.")
+    left, right = st.columns([1, 1.3], gap="medium")
+    with left:
+        with st.container(key="card_photo_in"):
+            shot = st.file_uploader("Photo", type=["jpg", "jpeg", "png"], on_change=reset_photo)
+            if shot is not None:
+                st.session_state.photo_image = (shot.getvalue(), shot.type or "image/jpeg")
+            c1, c2 = st.columns([2, 1], vertical_alignment="bottom")
+            sample = c1.selectbox("Ou un exemple", list(SAMPLE_PHOTOS))
+            if c2.button("Charger", icon=":material/science:", width="stretch"):
+                st.session_state.photo_image = ((SAMPLES / SAMPLE_PHOTOS[sample]).read_bytes(), "image/jpeg")
+                reset_photo()
+            if st.session_state.get("photo_image"):
+                st.image(st.session_state.photo_image[0], width="stretch")
+                if st.button("Lire la photo (Muse Spark)", type="primary", icon=":material/document_scanner:",
+                             width="stretch"):
+                    with st.spinner("Lecture et mise au propre…"):
+                        try:
+                            got = photo.read(*st.session_state.photo_image, deal_name=S.deal["name"],
+                                             known_names=[a["name"] for a in S.data.actors])
+                            st.session_state.photo_read = got
+                            st.session_state.photo_notes = got["clean_notes"]
+                            st.session_state.photo_rows = orgchart.propose(conn, deal_id, got)
+                        except Exception as e:
+                            st.error(f"Lecture impossible : {e}")
+    with right:
+        got = st.session_state.get("photo_read")
+        if not got:
+            with st.container(key="card_photo_empty"):
+                section("Données nettoyées")
+                st.caption("Chargez une photo puis lancez la lecture.")
+        else:
+            with st.container(key="card_photo_notes"):
+                section(f"{photo.KINDS[got['kind']]} · {got['title']}",
+                        "Remis au propre par Muse Spark. Relisez et corrigez : c'est ce texte qui sera "
+                        "analysé, et chaque citation devra s'y trouver mot pour mot.")
+                if got["illegible"]:
+                    st.warning("Passages illisibles : " + " · ".join(got["illegible"]), icon=":material/visibility_off:")
+                notes = st.text_area("Notes", key="photo_notes", height=300, label_visibility="collapsed")
+                c1, c2 = st.columns([1, 1.6], vertical_alignment="bottom")
+                written = got["date"] if len(got["date"]) == 10 else date.today().isoformat()
+                day = c1.date_input("Date", date.fromisoformat(written), format="DD/MM/YYYY", key="photo_day")
+                done = st.session_state.get("photo_done")
+                if c2.button("Notes ajoutées au dossier" if done else "Ajouter au dossier comme notes de réunion",
+                             type="primary", icon=":material/check:" if done else ":material/note_add:",
+                             width="stretch", disabled=done or not notes.strip() or got["kind"] == "org_chart"):
+                    with st.spinner("Extraction des signaux (Muse Spark)…"):
+                        res = pipeline.analyze_debrief(conn, deal_id, notes, day.isoformat(), f"Photo : {got['title']}")
+                    st.session_state.pop("plan", None)
+                    st.session_state.pop("prep", None)
+                    st.session_state.photo_done = True        # on garde la photo pour enregistrer les personnes
+                    st.toast(f"{len(res['signals'])} signal(s) ajouté(s) au dossier", icon=":material/check:")
+                    st.rerun()
+            rows = st.session_state.get("photo_rows") or []
+            if rows:
+                with st.container(key="card_photo_people"):
+                    section("Personnes repérées", "Cochez les nouvelles personnes à ajouter. La hiérarchie lue "
+                                                  "(« rattaché à ») est enregistrée ; le veto n'est jamais deviné.")
+                    table = [{"Ajouter": r["add"], "Nom": r["name"], "Fonction": r["role"],
+                              "Organisation": r["organization"], "Rattaché à": r["manager"],
+                              "Influence": r["influence"], "Veto": r["veto"],
+                              "Statut": "déjà dans le dossier" if r["known_as"] else "nouveau"} for r in rows]
+                    edited = st.data_editor(
+                        table, hide_index=True, width="stretch", key="photo_editor", disabled=["Nom", "Statut"],
+                        column_config={"Influence": st.column_config.NumberColumn(
+                            min_value=0.0, max_value=1.0, step=0.1, format="%.1f")})
+                    n_new = sum(1 for r, e in zip(rows, edited) if e["Ajouter"] and not r["known_as"])
+                    if st.button(f"Enregistrer ({n_new} nouvelle(s) personne(s) et la hiérarchie)",
+                                 icon=":material/group_add:", width="stretch"):
+                        chosen = [{**r, "add": e["Ajouter"], "role": e["Fonction"], "organization": e["Organisation"],
+                                   "manager": e["Rattaché à"], "influence": float(e["Influence"]),
+                                   "veto": bool(e["Veto"])} for r, e in zip(rows, edited)]
+                        created = orgchart.apply(conn, deal_id, chosen)
+                        st.session_state.photo_rows = None
+                        st.session_state.pop("plan", None)
+                        st.session_state.pop("prep", None)
+                        st.toast(f"{len(created)} personne(s) ajoutée(s), hiérarchie enregistrée",
+                                 icon=":material/check:")
+                        st.rerun()
+
+# ------------------------------------------------------------------ onglet Organisations
+with tab_people:
+    st.caption("La hiérarchie de chaque partie prenante : qui rapporte à qui, où sont les veto, "
+               "qui est silencieux. Couleur : position la plus probable.")
+    trees = memory.hierarchy(S.deal)
+    shown_orgs = [o for o in orgs.values() if o["id"] in trees]
+    cols = st.columns(2, gap="medium")
+    for i, o in enumerate(shown_orgs):
+        with cols[i % 2]:
+            with st.container(key=f"card_tree_{o['id']}"):
+                section(o["name"], ORG_TYPE_LABEL.get(o["type"], o["type"] or ""))
+                lines = []
+                for a, depth in trees[o["id"]]:
+                    b = S.post.beliefs[a["id"]]
+                    key = stance_of(b)
+                    color = STANCE[key][1]
+                    d = days_since(S.last_contact.get(a["id"]))
+                    tags = ""
+                    if a["veto"]:
+                        tags += "<span class='dc-tag dc-veto'>veto</span>"
+                    if is_silent(a["id"]):
+                        tags += f"<span class='dc-tag dc-silent'>{'jamais vu' if d is None else f'silence {d} j'}</span>"
+                    branch = "&nbsp;" * 6 * (depth - 1) + "└─&nbsp;" if depth else ""
+                    lines.append(
+                        f"<div class='dc-node'><span class='dc-branch'>{branch}</span>"
+                        f"<span class='dc-dot' style='background:{color}'></span>"
+                        f"<b>{a['name']}</b> <span class='dc-role'>{a['role'] or ''}</span>{tags}</div>")
+                st.markdown("".join(lines), unsafe_allow_html=True)
+
+    with st.expander("Modifier un rattachement", icon=":material/account_tree:"):
+        c1, c2, c3 = st.columns([1.3, 1.3, 1], vertical_alignment="bottom")
+        who = c1.selectbox("Personne", list(actors), format_func=lambda a: actors[a]["name"], key="h_who")
+        same_org = [None] + [a for a in actors if a != who and actors[a]["org_id"] == actors[who]["org_id"]]
+        boss = c2.selectbox("Rattachée à", same_org, key="h_boss",
+                            format_func=lambda a: "— personne (sommet) —" if a is None else actors[a]["name"])
+        if c3.button("Enregistrer", width="stretch", key="h_save"):
+            try:
+                memory.set_manager(conn, deal_id, who, boss)
+                st.rerun()
+            except ValueError as e:
+                st.error(str(e))
 
 # ------------------------------------------------------------------ onglet Sources
 with tab_sources:

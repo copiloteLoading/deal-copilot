@@ -106,7 +106,8 @@ def check_signals(text: str, signals: list[dict]) -> tuple[list[dict], list[dict
     kept, rejected = [], []
     for s in signals:
         quote = _squash(s.get("evidence_quote", "")).strip("\"' ")
-        if quote and quote in source:
+        # une citation d'un seul mot (« Participants », un titre de rubrique) ne prouve rien
+        if len(quote.split()) >= 2 and quote in source:
             s["confidence"] = min(1.0, max(0.0, float(s.get("confidence", 0.5))))
             kept.append(s)
         else:

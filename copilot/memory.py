@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS actors (
     veto           INTEGER DEFAULT 0,           -- 1 = détenteur de veto
     decision_power TEXT,
     aliases        TEXT DEFAULT '[]',           -- liste JSON
+    manager_id     TEXT,                        -- supérieur hiérarchique (id d'acteur) ou NULL
     PRIMARY KEY (deal_id, id)
 );
 
@@ -108,6 +109,8 @@ def connect(path: Path | str = DB_PATH) -> sqlite3.Connection:
     for col in ("strength", "source_type"):
         if col not in columns:
             conn.execute(f"ALTER TABLE signals ADD COLUMN {col} TEXT")
+    if "manager_id" not in {r["name"] for r in conn.execute("PRAGMA table_info(actors)")}:
+        conn.execute("ALTER TABLE actors ADD COLUMN manager_id TEXT")
     return conn
 
 
@@ -141,10 +144,12 @@ def import_deal(conn: sqlite3.Connection, folder: Path | str) -> str:
                  json.dumps(o.get("aliases", []), ensure_ascii=False)))
         for a in deal["actors"]:
             conn.execute(
-                "INSERT INTO actors VALUES (?,?,?,?,?,?,?,?,?)",
+                "INSERT INTO actors (id, deal_id, org_id, name, role, influence, veto, decision_power,"
+                " aliases, manager_id) VALUES (?,?,?,?,?,?,?,?,?,?)",
                 (a["id"], deal_id, a.get("org"), a["name"], a.get("role"),
                  a.get("influence", 0.5), int(a.get("veto", False)),
-                 a.get("decision_power"), json.dumps(a.get("aliases", []), ensure_ascii=False)))
+                 a.get("decision_power"), json.dumps(a.get("aliases", []), ensure_ascii=False),
+                 a.get("manager")))
         for m in deal.get("meetings", []):
             transcript = (folder / m["debrief"]).read_text(encoding="utf-8") if m.get("debrief") else None
             add_meeting(conn, deal_id, m["date"], m.get("title"), transcript)
@@ -261,6 +266,73 @@ def add_signals(conn: sqlite3.Connection, deal_id: str, meeting_id: int,
             if actor_id is None and org_id is None:
                 unresolved.append(s)
     return unresolved
+
+
+def _new_id(conn: sqlite3.Connection, table: str, deal_id: str, name: str) -> str:
+    base = "_".join(_normalize(name).replace("'", " ").replace("-", " ").split())[:40] or "item"
+    new, n = base, 2
+    while conn.execute(f"SELECT 1 FROM {table} WHERE deal_id = ? AND id = ?", (deal_id, new)).fetchone():
+        new, n = f"{base}_{n}", n + 1
+    return new
+
+
+def add_organization(conn: sqlite3.Connection, deal_id: str, name: str, org_type: str | None = None,
+                     aliases: list[str] | None = None) -> str:
+    """Ajoute une organisation (lue sur un organigramme, par exemple) et renvoie son id."""
+    org_id = _new_id(conn, "organizations", deal_id, name)
+    with conn:
+        conn.execute("INSERT INTO organizations VALUES (?,?,?,?,?)",
+                     (org_id, deal_id, name, org_type, json.dumps(aliases or [], ensure_ascii=False)))
+    return org_id
+
+
+def add_actor(conn: sqlite3.Connection, deal_id: str, name: str, org_id: str | None, role: str | None,
+              influence: float = 0.5, veto: bool = False, aliases: list[str] | None = None,
+              manager_id: str | None = None) -> str:
+    """Ajoute un acteur au dossier et renvoie son id (jamais d'écrasement d'un acteur existant)."""
+    actor_id = _new_id(conn, "actors", deal_id, name)
+    with conn:
+        conn.execute("INSERT INTO actors (id, deal_id, org_id, name, role, influence, veto, decision_power,"
+                     " aliases, manager_id) VALUES (?,?,?,?,?,?,?,?,?,?)",
+                     (actor_id, deal_id, org_id, name, role, float(influence), int(bool(veto)), None,
+                      json.dumps(aliases or [], ensure_ascii=False), manager_id))
+    return actor_id
+
+
+def set_manager(conn: sqlite3.Connection, deal_id: str, actor_id: str, manager_id: str | None) -> None:
+    """Rattache un acteur à son supérieur (None pour le détacher). Refuse les boucles."""
+    seen, cur = {actor_id}, manager_id
+    while cur:
+        if cur in seen:
+            raise ValueError("Ce rattachement créerait une boucle dans la hiérarchie.")
+        seen.add(cur)
+        row = conn.execute("SELECT manager_id FROM actors WHERE deal_id = ? AND id = ?",
+                           (deal_id, cur)).fetchone()
+        cur = row["manager_id"] if row else None
+    with conn:
+        conn.execute("UPDATE actors SET manager_id = ? WHERE deal_id = ? AND id = ?",
+                     (manager_id, deal_id, actor_id))
+
+
+def hierarchy(deal: dict) -> dict[str, list[tuple[dict, int]]]:
+    """Arbre de chaque organisation : liste (acteur, profondeur) dans l'ordre d'affichage.
+    Un acteur dont le supérieur est inconnu ou dans une autre organisation est une racine."""
+    actors = {a["id"]: a for a in deal["actors"]}
+    children: dict[str | None, list[dict]] = {}
+    for a in deal["actors"]:
+        boss = a.get("manager_id")
+        root = boss not in actors or actors[boss]["org_id"] != a["org_id"]
+        children.setdefault(None if root else boss, []).append(a)
+    out: dict[str, list[tuple[dict, int]]] = {}
+
+    def walk(a: dict, depth: int) -> None:
+        out.setdefault(a["org_id"], []).append((a, depth))
+        for c in sorted(children.get(a["id"], []), key=lambda x: (not x["veto"], -x["influence"])):
+            walk(c, depth + 1)
+
+    for a in sorted(children.get(None, []), key=lambda x: (not x["veto"], -x["influence"])):
+        walk(a, 0)
+    return out
 
 
 def link_alias(conn: sqlite3.Connection, deal_id: str, actor_id: str, alias: str) -> None:

@@ -28,6 +28,18 @@ The **sales rep** themself. It is their tool to win their deal, **not a monitori
 4. **Active debrief**: the agent asks at most 2 questions, chosen by **value of information** (the expected reduction of uncertainty on the signature probability), usually about the most uncertain veto holder.
 5. **Strategist**: a ranked action plan, each action priced by the model ("if the CFO became supportive: 38 % → 70 %"), plus the meeting minutes, the follow-up email and re-contact messages for silent stakeholders.
 6. **Safety nets**: a major position change (support ↔ oppose, or a veto turning against us) must be **confirmed, corrected or rejected** by the rep. Every claim cites its source quote. The LLM never writes a number.
+7. **Prepare the next meeting**: pick who will attend. The model prices what the meeting can change:
+   - each attendee's stake (the probability if they come out supportive or opposed);
+   - the "it goes well" and "the key person closes the door" scenarios;
+   - the uncertain veto holders who will not be in the room.
+
+   Muse Spark then writes an objective, a question to ask and a point of attention for each attendee, citing the signals.
+8. **Snap it instead of typing it**: handwritten meeting notes, a whiteboard, the client's org chart.
+   - Muse Spark's vision recognizes what the image is and rewrites it as **clean, structured notes**: participants, key points, positions expressed, decisions, actions.
+   - Nothing is invented, unreadable parts are marked `[illisible]`, and the deal's known names help it read handwriting.
+   - The rep reviews the text. It then goes through the same extraction as a dictated debrief, with quotes checked against the validated text.
+   - People spotted on the image are matched against the deal (known or new). Veto rights are never guessed.
+9. **Stakeholder hierarchy**: who reports to whom in each organization, read from org charts or set by hand, with vetoes and silent people highlighted in each chain.
 
 ## Architecture: the LLM proposes, the model decides
 
@@ -55,6 +67,9 @@ flowchart LR
 | [`copilot/decision.py`](copilot/decision.py) | Value of information for questions, expected effect of actions |
 | [`copilot/agent.py`](copilot/agent.py) | Muse Spark tool-calling loop (max 8 rounds); its plan is checked and re-scored by the model |
 | [`copilot/pipeline.py`](copilot/pipeline.py) | The end-to-end chain, change confirmations, emails and reminders |
+| [`copilot/prepare.py`](copilot/prepare.py) | Next-meeting brief: stakes priced by the model, wording by Muse Spark |
+| [`copilot/photo.py`](copilot/photo.py) | Photo of notes, whiteboard or org chart → clean structured notes and people (Muse Spark vision) |
+| [`copilot/orgchart.py`](copilot/orgchart.py) | People read on a photo → actors and hierarchy, validated by the rep |
 | [`app.py`](app.py) | Streamlit interface (in French, for French-speaking reps) |
 | [`eval/`](eval/) | Test-set generation, baselines and all experiments below |
 
@@ -65,7 +80,8 @@ flowchart LR
 | **Muse Voice Transcribe** (`muse-voice-transcribe-1.0`) | `capture.py` | Debrief transcription. The deal's proper names are sent as `keywords`; the API limits each keyword to 30 characters, so long names are split. |
 | **Muse Spark** (`muse-spark-1.3`), structured output | `extract.py` | Signals with stance, strength, source, confidence and verbatim quote (`reasoning_effort: low`). |
 | **Muse Spark**, tool calling | `agent.py` | The agent reads signals (`get_signals`), prices questions (`evaluate_question`) and creative actions (`simulate_action`, e.g. "a payment schedule backed by a bank guarantee"), then submits a plan (`submit_plan`). The model re-checks it: unknown actors, invented numbers and actions with no effect are rejected. |
-| **Muse Spark**, generation | `pipeline.py` | Minutes, follow-up email for action #1, re-contact messages. Rules: only facts from the file, no number, no internal analysis revealed. |
+| **Muse Spark**, generation | `pipeline.py`, `prepare.py` | Minutes, follow-up email for action #1, re-contact messages, next-meeting brief. Rules: only facts from the file, no number, no internal analysis revealed. |
+| **Muse Spark**, vision | `photo.py` | Turns a photo into clean data with structured output: the kind of document, rewritten notes, date, unreadable passages, people with title, organization, manager and level. On the three fictional samples in [`samples/`](samples/) (handwritten notes, whiteboard, org chart), every person is read correctly, "Sophie L." on the whiteboard is matched to Sophie Lenoir, and the quote written on the notes is kept word for word. |
 | **Muse Spark**, as an independent author | `eval/generate.py` | Writes the fictional test deals and the rep's imperfect debriefs **without knowing the model**. |
 | **Muse Spark alone** | `eval/baselines.py` | The baseline we compare against: it reads the same debriefs and gives a probability or picks the questions itself. |
 
@@ -193,7 +209,7 @@ copy .env.example .env      # then put your Meta Model API key in .env (never co
 Without a key, the app runs in **offline mode** and replays cached Muse responses.
 
 ```powershell
-.\.venv\Scripts\python.exe -m pytest tests -q              # 31 tests, no network
+.\.venv\Scripts\python.exe -m pytest tests -q              # 40 tests, no network
 .\.venv\Scripts\python.exe -m eval.evaluate                # forecasting, extraction, questions (dev set)
 .\.venv\Scripts\python.exe -m eval.evaluate holdout        # same on the validation set
 .\.venv\Scripts\python.exe -m eval.consistency holdout     # stability and coherence
