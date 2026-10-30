@@ -24,7 +24,7 @@ from pathlib import Path
 import numpy as np
 import yaml
 
-from copilot import memory
+from copilot import clock, memory
 
 # MODEL_PARAMS permet de comparer une autre version des paramètres (évaluation)
 PARAMS_PATH = Path(os.environ.get("MODEL_PARAMS")
@@ -145,7 +145,7 @@ def posterior(data: DealData, as_of: str | None = None, hypothesis: dict[str, st
     hypothesis : {actor_id: "support" | "neutral" | "oppose"} pour fixer une position (simulate).
     exclude    : ids de signaux à ignorer (pour mesurer l'effet d'un signal).
     """
-    as_of = as_of or date.today().isoformat()
+    as_of = as_of or clock.today().isoformat()
     beliefs = {a["id"]: belief(data, a["id"], as_of, exclude) for a in data.actors}
     for actor_id, state in (hypothesis or {}).items():
         beliefs[actor_id] = np.eye(3)[STATES.index(state)]

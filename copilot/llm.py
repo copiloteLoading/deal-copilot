@@ -21,7 +21,23 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-CACHE_DIR = Path(__file__).resolve().parent.parent / "data" / "cache"
+CACHE_DIR = Path(os.environ.get("DEAL_COPILOT_CACHE")       # autre dossier : pour simuler la démo en ligne
+                 or Path(__file__).resolve().parent.parent / "data" / "cache")
+# Réponses publiées avec le dépôt pour la démo en ligne (lecture seule) : le parcours de démo
+# tient même sans clé ou si l'API ne répond pas. Construit par eval/demo_cache.py.
+DEMO_CACHE_DIR = Path(__file__).resolve().parent.parent / "data" / "demo_cache"
+HITS: list[str] | None = None            # si c'est une liste, on y note chaque fichier de cache relu
+
+
+def cache_file(name: str) -> Path | None:
+    """Fichier de cache existant pour ce nom (cache local d'abord, puis cache de démo)."""
+    for folder in (CACHE_DIR, DEMO_CACHE_DIR):
+        path = folder / name
+        if path.exists():
+            if HITS is not None:
+                HITS.append(name)
+            return path
+    return None
 
 PROVIDERS = {
     "meta": {
@@ -103,8 +119,9 @@ def chat(messages: list[dict], response_format: dict | None = None, cache_tag: s
         request["response_format"] = response_format
 
     path = _cache_path({**request, "cache_tag": cache_tag} if cache_tag else request)
-    if path.exists():
-        return json.loads(path.read_text(encoding="utf-8"))["content"]
+    found = cache_file(path.name)
+    if found:
+        return json.loads(found.read_text(encoding="utf-8"))["content"]
     if provider() == "offline":
         raise OfflineMiss(f"Pas de réponse en cache pour cette requête ({path.name}).")
 

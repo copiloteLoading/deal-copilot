@@ -14,6 +14,8 @@ noms propres du dossier retrouvés (ce dont l'extraction a besoin).
 
 Usage : .\\.venv\\Scripts\\python.exe -m eval.noise
 Il faut le fichier outputs/debrief_piege.wav (non publié : *.wav est exclu du dépôt).
+Mesure faite le 29 octobre sur la version française du dossier (avant le passage en anglais) ;
+les mots-clés du dossier ayant changé depuis, une nouvelle exécution refait les transcriptions.
 """
 
 from __future__ import annotations
@@ -31,12 +33,13 @@ from copilot import capture, memory, pipeline
 
 ROOT = Path(__file__).resolve().parent.parent
 AUDIO = ROOT / "outputs" / "debrief_piege.wav"
-REFERENCE = pipeline.DEMO_DIR / "trap" / "debrief_piege.txt"
+# mesuré sur la version française du débrief piège (enregistrement et texte de l'époque)
+REFERENCE = Path(__file__).resolve().parent / "noise_reference_fr.txt"
 RESULTS = Path(__file__).resolve().parent
 RATE = capture.TARGET_RATE
 SNRS = [10, 5, 0]
 NAMES = ["Claire Dantec", "Julien Marec", "Yann Le Goff", "Sophie Lenoir", "Thomas Riou",
-         "Nordlink", "Port-Aven", "Kerlis"]
+         "Nordlink", "Port-Aven", "Kerlis"]   # enregistrement fait avant le renommage en Port-Lazen
 
 
 def make_noise(kind: str, speech: np.ndarray) -> np.ndarray:
@@ -100,7 +103,7 @@ def run() -> dict:
         kind, snr, den = case
         x = speech if snr is None else mix(speech, make_noise(kind, speech), snr)
         est = capture.estimate_snr(x)
-        text = capture.transcribe(capture.write_wav16k(x), keywords, clean=den)
+        text = capture.transcribe(capture.write_wav16k(x), keywords, language="french", clean=den)
         return {"noise": kind, "snr": snr, "denoised": den, "estimated_snr": est,
                 "wer": wer(reference, text),
                 "names": names_found(text), "transcript": text}

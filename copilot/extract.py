@@ -5,7 +5,7 @@ Ce que ce module garantit, quoi que réponde le modèle :
 - la confiance est bornée entre 0 et 1 ;
 - les noms connus du dossier sont fournis au modèle pour qu'il les écrive à l'identique.
 
-Usage : .\\.venv\\Scripts\\python.exe -m copilot.extract samples/debrief_exemple.txt
+Usage : .\\.venv\\Scripts\\python.exe -m copilot.extract samples/debrief_example.txt
 """
 
 from __future__ import annotations
@@ -71,7 +71,7 @@ For each signal:
 - source_type: "direct" if the actor said or did it in front of the rep; "reported" if someone else
   reported it or the actor was absent; "impression" if it is only the rep's feeling.
 - evidence_quote: copy a short passage WORD FOR WORD from the debrief (no paraphrase, no ellipsis).
-- confidence (0 to 1): lower it when the rep hesitates ("je crois", "peut-être", "apparemment").
+- confidence (0 to 1): lower it when the rep hesitates ("I think", "maybe", "apparently").
 - A deadline or a date is its own signal with signal_type "deadline" and stance "unknown"
   (a date says nothing about anyone's position). Attribute it to the client-side person or
   organization it concerns.
@@ -148,7 +148,7 @@ position towards OUR offer, using the same stances: support, conditional, neutra
   "strong" if the rep states it as a fact, "weak" if it is a rumour or a guess.
 - If the answer says nothing about the TARGET's position, use "unknown".
 - evidence_quote: copy a short passage WORD FOR WORD from the ANSWER (never from the question).
-- explanation: one short sentence in French explaining your reading."""
+- explanation: one short sentence in English explaining your reading."""
 
 
 def interpret_answer(question: str, answer: str, target: dict) -> dict | None:
@@ -182,7 +182,7 @@ def extract_and_store(conn, deal_id: str, date: str, text: str, title: str | Non
 
 
 if __name__ == "__main__":
-    path = Path(sys.argv[1] if len(sys.argv) > 1 else "samples/debrief_exemple.txt")
+    path = Path(sys.argv[1] if len(sys.argv) > 1 else "samples/debrief_example.txt")
     conn = memory.connect(":memory:")
     deal_id = memory.import_deal(conn, Path("data/demo_deal"))
     result = extract(path.read_text(encoding="utf-8"), conn, deal_id)

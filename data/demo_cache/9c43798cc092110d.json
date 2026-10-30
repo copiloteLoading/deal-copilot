@@ -1,0 +1,155 @@
+{
+  "request": {
+    "model": "muse-spark-1.3",
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You extract deal signals from a sales rep's spoken debrief about a large, multi-year\ninfrastructure contract. Report only what the debrief says: never invent a person, a number or a stance.\n\nFor each signal:\n- actor_name: the person concerned. If a known name from the deal context matches, write it exactly\n  as in the context. If the signal is about a company, bank or agency and no person is named,\n  use the organization name and set entity_kind to \"organization\".\n- stance: the actor's position towards OUR offer.\n  \"support\" = clearly in favour. \"oppose\" = clearly against or favouring a competitor.\n  \"conditional\" = will agree only if a condition is met, or postpones the decision\n  (e.g. \"we'll talk about it after the budget\"). \"neutral\" = no preference shown.\n  \"unknown\" = the debrief gives no information on their position.\n- strength: \"strong\" for an explicit, unambiguous statement; \"weak\" for a hint, a vague remark,\n  a nod, or something the rep interprets.\n- source_type: \"direct\" if the actor said or did it in front of the rep; \"reported\" if someone else\n  reported it or the actor was absent; \"impression\" if it is only the rep's feeling.\n- evidence_quote: copy a short passage WORD FOR WORD from the debrief (no paraphrase, no ellipsis).\n- confidence (0 to 1): lower it when the rep hesitates (\"I think\", \"maybe\", \"apparently\").\n- A deadline or a date is its own signal with signal_type \"deadline\" and stance \"unknown\"\n  (a date says nothing about anyone's position). Attribute it to the client-side person or\n  organization it concerns.\n- Our own company (the seller) and its staff are never actors: do not create signals about them.\n- An actor who is absent or silent is a \"risk\" signal with source_type \"reported\".\n\nKeep the language of the debrief for summary, description, next_steps and open_questions."
+      },
+      {
+        "role": "user",
+        "content": "Deal context:\nDeal: Port-Lazen – Kerlis submarine cable (buyer: Nordlink Bay Consortium, our company: Ondine Subsea)\nKnown people:\n- Claire Dantec, Chair of the consortium, Nordlink Bay Consortium (also called: Claire, Mrs Dantec, the chair)\n- Julien Marec, Chief Technology Officer, Baltis Telecom (also called: Julien, Marec, Baltis CTO)\n- Marion Kervella, Marine Permits Officer, Kerlis Coastal Agency (also called: Marion, Kervella)\n- Paul Ternaud, ADB legal, Atlantic Development Bank (also called: Ternaud)\n- Sophie Lenoir, Chief Financial Officer, Baltis Telecom (also called: Sophie, Lenoir, Baltis CFO)\n- Thomas Riou, Relationship Manager, Atlantic Development Bank (also called: Thomas, Riou, the bank's relationship manager)\n- Yann Le Goff, Head of Procurement, Kerlis Connect (also called: Yann, Le Goff)\nKnown organizations: Kerlis Coastal Agency, Atlantic Development Bank, Baltis Telecom, Kerlis Connect, Nordlink Bay Consortium, Oceanix Cables\n\nDebrief:\nParticipants\nYann, Julien, Sophie L., Claire\n\nKey points\nPhase 1: 2027 Port-Lazen -> 240 km\nPhase 2: 2028 -> Kerlis 180 km\nRISK: Baltis budget!!\nSupplier chosen at January committee\n\nPositions expressed\nYann: penalties OK\nJulien: \"repeaters = the right choice\"\nSophie L.: OK only if spread over 4 years?\nClaire: supplier chosen at January committee\n\nActions and deadlines\n-> propose phasing + bank guarantee"
+      }
+    ],
+    "reasoning_effort": "low",
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "deal_signals",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "summary": {
+              "type": "string"
+            },
+            "signals": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "actor_name": {
+                    "type": "string"
+                  },
+                  "entity_kind": {
+                    "type": "string",
+                    "enum": [
+                      "person",
+                      "organization"
+                    ]
+                  },
+                  "organization": {
+                    "type": "string"
+                  },
+                  "role": {
+                    "type": "string"
+                  },
+                  "signal_type": {
+                    "type": "string",
+                    "enum": [
+                      "support",
+                      "objection",
+                      "condition",
+                      "commitment",
+                      "risk",
+                      "deadline",
+                      "competitor",
+                      "budget",
+                      "information"
+                    ]
+                  },
+                  "stance": {
+                    "type": "string",
+                    "enum": [
+                      "support",
+                      "conditional",
+                      "neutral",
+                      "oppose",
+                      "unknown"
+                    ]
+                  },
+                  "strength": {
+                    "type": "string",
+                    "enum": [
+                      "strong",
+                      "weak"
+                    ]
+                  },
+                  "source_type": {
+                    "type": "string",
+                    "enum": [
+                      "direct",
+                      "reported",
+                      "impression"
+                    ]
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "evidence_quote": {
+                    "type": "string"
+                  },
+                  "confidence": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "actor_name",
+                  "entity_kind",
+                  "organization",
+                  "role",
+                  "signal_type",
+                  "stance",
+                  "strength",
+                  "source_type",
+                  "description",
+                  "evidence_quote",
+                  "confidence"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "next_steps": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "open_questions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "summary",
+            "signals",
+            "next_steps",
+            "open_questions"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  "content": "{\"next_steps\": [\"propose phasing + bank guarantee\"], \"open_questions\": [\"OK only if spread over 4 years?\"], \"signals\": [{\"actor_name\": \"Yann Le Goff\", \"confidence\": 0.9, \"description\": \"Yann accepts penalties\", \"entity_kind\": \"person\", \"evidence_quote\": \"Yann: penalties OK\", \"organization\": \"Kerlis Connect\", \"role\": \"Head of Procurement\", \"signal_type\": \"support\", \"source_type\": \"direct\", \"stance\": \"support\", \"strength\": \"strong\"}, {\"actor_name\": \"Julien Marec\", \"confidence\": 0.95, \"description\": \"Julien says repeaters are the right choice\", \"entity_kind\": \"person\", \"evidence_quote\": \"Julien: \\\"repeaters = the right choice\\\"\", \"organization\": \"Baltis Telecom\", \"role\": \"Chief Technology Officer\", \"signal_type\": \"support\", \"source_type\": \"direct\", \"stance\": \"support\", \"strength\": \"strong\"}, {\"actor_name\": \"Sophie Lenoir\", \"confidence\": 0.7, \"description\": \"Sophie L. OK only if spread over 4 years\", \"entity_kind\": \"person\", \"evidence_quote\": \"Sophie L.: OK only if spread over 4 years?\", \"organization\": \"Baltis Telecom\", \"role\": \"Chief Financial Officer\", \"signal_type\": \"condition\", \"source_type\": \"direct\", \"stance\": \"conditional\", \"strength\": \"strong\"}, {\"actor_name\": \"Claire Dantec\", \"confidence\": 0.9, \"description\": \"supplier chosen at January committee\", \"entity_kind\": \"person\", \"evidence_quote\": \"Claire: supplier chosen at January committee\", \"organization\": \"Nordlink Bay Consortium\", \"role\": \"Chair of the consortium\", \"signal_type\": \"deadline\", \"source_type\": \"direct\", \"stance\": \"unknown\", \"strength\": \"strong\"}, {\"actor_name\": \"Baltis Telecom\", \"confidence\": 0.8, \"description\": \"RISK on Baltis budget\", \"entity_kind\": \"organization\", \"evidence_quote\": \"RISK: Baltis budget!!\", \"organization\": \"Baltis Telecom\", \"role\": \"buyer organization\", \"signal_type\": \"risk\", \"source_type\": \"impression\", \"stance\": \"unknown\", \"strength\": \"strong\"}, {\"actor_name\": \"Nordlink Bay Consortium\", \"confidence\": 0.85, \"description\": \"Phase 1 in 2027 Port-Lazen 240 km\", \"entity_kind\": \"organization\", \"evidence_quote\": \"Phase 1: 2027 Port-Lazen -> 240 km\", \"organization\": \"Nordlink Bay Consortium\", \"role\": \"buyer organization\", \"signal_type\": \"deadline\", \"source_type\": \"impression\", \"stance\": \"unknown\", \"strength\": \"strong\"}, {\"actor_name\": \"Nordlink Bay Consortium\", \"confidence\": 0.85, \"description\": \"Phase 2 in 2028 Kerlis 180 km\", \"entity_kind\": \"organization\", \"evidence_quote\": \"Phase 2: 2028 -> Kerlis 180 km\", \"organization\": \"Nordlink Bay Consortium\", \"role\": \"buyer organization\", \"signal_type\": \"deadline\", \"source_type\": \"impression\", \"stance\": \"unknown\", \"strength\": \"strong\"}, {\"actor_name\": \"Marion Kervella\", \"confidence\": 0.6, \"description\": \"Marion absent from participants\", \"entity_kind\": \"person\", \"evidence_quote\": \"Yann, Julien, Sophie L., Claire\", \"organization\": \"Kerlis Coastal Agency\", \"role\": \"Marine Permits Officer\", \"signal_type\": \"risk\", \"source_type\": \"reported\", \"stance\": \"unknown\", \"strength\": \"weak\"}, {\"actor_name\": \"Paul Ternaud\", \"confidence\": 0.6, \"description\": \"Ternaud absent from participants\", \"entity_kind\": \"person\", \"evidence_quote\": \"Yann, Julien, Sophie L., Claire\", \"organization\": \"Atlantic Development Bank\", \"role\": \"ADB legal\", \"signal_type\": \"risk\", \"source_type\": \"reported\", \"stance\": \"unknown\", \"strength\": \"weak\"}, {\"actor_name\": \"Thomas Riou\", \"confidence\": 0.6, \"description\": \"Thomas absent from participants\", \"entity_kind\": \"person\", \"evidence_quote\": \"Yann, Julien, Sophie L., Claire\", \"organization\": \"Atlantic Development Bank\", \"role\": \"Relationship Manager\", \"signal_type\": \"risk\", \"source_type\": \"reported\", \"stance\": \"unknown\", \"strength\": \"weak\"}], \"summary\": \"Phase 1: 2027 Port-Lazen 240 km, Phase 2: 2028 Kerlis 180 km. RISK: Baltis budget. Supplier chosen at January committee. Yann: penalties OK. Julien: repeaters = the right choice. Sophie L.: OK only if spread over 4 years. Claire: supplier chosen at January committee.\"}",
+  "usage": {
+    "completion_tokens": 2966,
+    "prompt_tokens": 1045,
+    "total_tokens": 4011,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 1889,
+      "rejected_prediction_tokens": null,
+      "text_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cache_write_tokens": null,
+      "cached_tokens": 0,
+      "image_tokens": null,
+      "text_tokens": null
+    }
+  }
+}

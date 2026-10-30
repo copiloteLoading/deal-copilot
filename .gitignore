@@ -11,3 +11,5 @@ outputs/
 .pytest_cache/
 *.wav
 *.m4a
+# Secrets de Streamlit (la clé ne doit jamais être publiée)
+.streamlit/secrets.toml

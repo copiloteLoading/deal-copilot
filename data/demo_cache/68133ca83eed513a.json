@@ -1,0 +1,155 @@
+{
+  "request": {
+    "model": "muse-spark-1.3",
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You extract deal signals from a sales rep's spoken debrief about a large, multi-year\ninfrastructure contract. Report only what the debrief says: never invent a person, a number or a stance.\n\nFor each signal:\n- actor_name: the person concerned. If a known name from the deal context matches, write it exactly\n  as in the context. If the signal is about a company, bank or agency and no person is named,\n  use the organization name and set entity_kind to \"organization\".\n- stance: the actor's position towards OUR offer.\n  \"support\" = clearly in favour. \"oppose\" = clearly against or favouring a competitor.\n  \"conditional\" = will agree only if a condition is met, or postpones the decision\n  (e.g. \"we'll talk about it after the budget\"). \"neutral\" = no preference shown.\n  \"unknown\" = the debrief gives no information on their position.\n- strength: \"strong\" for an explicit, unambiguous statement; \"weak\" for a hint, a vague remark,\n  a nod, or something the rep interprets.\n- source_type: \"direct\" if the actor said or did it in front of the rep; \"reported\" if someone else\n  reported it or the actor was absent; \"impression\" if it is only the rep's feeling.\n- evidence_quote: copy a short passage WORD FOR WORD from the debrief (no paraphrase, no ellipsis).\n- confidence (0 to 1): lower it when the rep hesitates (\"I think\", \"maybe\", \"apparently\").\n- A deadline or a date is its own signal with signal_type \"deadline\" and stance \"unknown\"\n  (a date says nothing about anyone's position). Attribute it to the client-side person or\n  organization it concerns.\n- Our own company (the seller) and its staff are never actors: do not create signals about them.\n- An actor who is absent or silent is a \"risk\" signal with source_type \"reported\".\n\nKeep the language of the debrief for summary, description, next_steps and open_questions."
+      },
+      {
+        "role": "user",
+        "content": "Deal context:\nDeal: Port-Lazen – Kerlis submarine cable (buyer: Nordlink Bay Consortium, our company: Ondine Subsea)\nKnown people:\n- Claire Dantec, Chair of the consortium, Nordlink Bay Consortium (also called: Claire, Mrs Dantec, the chair)\n- Julien Marec, Chief Technology Officer, Baltis Telecom (also called: Julien, Marec, Baltis CTO)\n- Marion Kervella, Marine Permits Officer, Kerlis Coastal Agency (also called: Marion, Kervella)\n- Sophie Lenoir, Chief Financial Officer, Baltis Telecom (also called: Sophie, Lenoir, Baltis CFO)\n- Thomas Riou, Relationship Manager, Atlantic Development Bank (also called: Thomas, Riou, the bank's relationship manager)\n- Yann Le Goff, Head of Procurement, Kerlis Connect (also called: Yann, Le Goff)\nKnown organizations: Kerlis Coastal Agency, Atlantic Development Bank, Baltis Telecom, Kerlis Connect, Nordlink Bay Consortium, Oceanix Cables\n\nDebrief:\nDebrief of Tuesday's meeting with the Nordlink Bay consortium, Port-Lazen – Kerlis cable project.\n\nWell, a rather positive meeting overall. Julien Marec, the CTO of Baltis Telecom, is clearly on our side: he said our repeater solution was \"the most robust technically\". On the other hand their CFO, Sophie Lenoir, insisted a lot on the payment schedule, she wants to spread it over four years instead of three, otherwise she won't sign off.\n\nOn financing, the Atlantic Development Bank is still waiting for the environmental impact study before committing. Thomas Riou, their relationship manager, wasn't there, we haven't seen him for six weeks now. I think we need to chase him.\n\nThe competitor, Oceanix Cables, was mentioned twice, apparently they offered a lower price, but I'm not sure of the amount, maybe ten percent less.\n\nNext steps: send a four-year payment schedule proposal before the 15th, and set up a meeting with the bank before the end of the month.\n"
+      }
+    ],
+    "reasoning_effort": "low",
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "deal_signals",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "summary": {
+              "type": "string"
+            },
+            "signals": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "actor_name": {
+                    "type": "string"
+                  },
+                  "entity_kind": {
+                    "type": "string",
+                    "enum": [
+                      "person",
+                      "organization"
+                    ]
+                  },
+                  "organization": {
+                    "type": "string"
+                  },
+                  "role": {
+                    "type": "string"
+                  },
+                  "signal_type": {
+                    "type": "string",
+                    "enum": [
+                      "support",
+                      "objection",
+                      "condition",
+                      "commitment",
+                      "risk",
+                      "deadline",
+                      "competitor",
+                      "budget",
+                      "information"
+                    ]
+                  },
+                  "stance": {
+                    "type": "string",
+                    "enum": [
+                      "support",
+                      "conditional",
+                      "neutral",
+                      "oppose",
+                      "unknown"
+                    ]
+                  },
+                  "strength": {
+                    "type": "string",
+                    "enum": [
+                      "strong",
+                      "weak"
+                    ]
+                  },
+                  "source_type": {
+                    "type": "string",
+                    "enum": [
+                      "direct",
+                      "reported",
+                      "impression"
+                    ]
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "evidence_quote": {
+                    "type": "string"
+                  },
+                  "confidence": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "actor_name",
+                  "entity_kind",
+                  "organization",
+                  "role",
+                  "signal_type",
+                  "stance",
+                  "strength",
+                  "source_type",
+                  "description",
+                  "evidence_quote",
+                  "confidence"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "next_steps": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "open_questions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "summary",
+            "signals",
+            "next_steps",
+            "open_questions"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  "content": "{\"next_steps\": [\"send a four-year payment schedule proposal before the 15th\", \"set up a meeting with the bank before the end of the month\"], \"open_questions\": [\"amount of Oceanix Cables lower price, maybe ten percent less?\", \"status of the environmental impact study awaited by the Atlantic Development Bank?\"], \"signals\": [{\"actor_name\": \"Julien Marec\", \"confidence\": 0.9, \"description\": \"Julien Marec is clearly on our side, says our repeater solution is the most robust technically\", \"entity_kind\": \"person\", \"evidence_quote\": \"the most robust technically\", \"organization\": \"Baltis Telecom\", \"role\": \"Chief Technology Officer\", \"signal_type\": \"support\", \"source_type\": \"direct\", \"stance\": \"support\", \"strength\": \"strong\"}, {\"actor_name\": \"Sophie Lenoir\", \"confidence\": 0.9, \"description\": \"Sophie Lenoir wants to spread payment over four years instead of three, otherwise she won't sign off\", \"entity_kind\": \"person\", \"evidence_quote\": \"she wants to spread it over four years instead of three, otherwise she won't sign off.\", \"organization\": \"Baltis Telecom\", \"role\": \"Chief Financial Officer\", \"signal_type\": \"condition\", \"source_type\": \"direct\", \"stance\": \"conditional\", \"strength\": \"strong\"}, {\"actor_name\": \"Atlantic Development Bank\", \"confidence\": 0.8, \"description\": \"Atlantic Development Bank is still waiting for the environmental impact study before committing\", \"entity_kind\": \"organization\", \"evidence_quote\": \"is still waiting for the environmental impact study before committing.\", \"organization\": \"Atlantic Development Bank\", \"role\": \"bank\", \"signal_type\": \"condition\", \"source_type\": \"reported\", \"stance\": \"conditional\", \"strength\": \"strong\"}, {\"actor_name\": \"Thomas Riou\", \"confidence\": 0.85, \"description\": \"Thomas Riou wasn't there, not seen for six weeks, need to chase him\", \"entity_kind\": \"person\", \"evidence_quote\": \"we haven't seen him for six weeks now.\", \"organization\": \"Atlantic Development Bank\", \"role\": \"Relationship Manager\", \"signal_type\": \"risk\", \"source_type\": \"reported\", \"stance\": \"unknown\", \"strength\": \"strong\"}, {\"actor_name\": \"Oceanix Cables\", \"confidence\": 0.4, \"description\": \"Oceanix Cables apparently offered a lower price, maybe ten percent less, amount unsure\", \"entity_kind\": \"organization\", \"evidence_quote\": \"apparently they offered a lower price\", \"organization\": \"Oceanix Cables\", \"role\": \"competitor\", \"signal_type\": \"competitor\", \"source_type\": \"reported\", \"stance\": \"oppose\", \"strength\": \"weak\"}, {\"actor_name\": \"Sophie Lenoir\", \"confidence\": 0.9, \"description\": \"send a four-year payment schedule proposal before the 15th\", \"entity_kind\": \"person\", \"evidence_quote\": \"before the 15th\", \"organization\": \"Baltis Telecom\", \"role\": \"Chief Financial Officer\", \"signal_type\": \"deadline\", \"source_type\": \"direct\", \"stance\": \"unknown\", \"strength\": \"strong\"}, {\"actor_name\": \"Atlantic Development Bank\", \"confidence\": 0.9, \"description\": \"set up a meeting with the bank before the end of the month\", \"entity_kind\": \"organization\", \"evidence_quote\": \"before the end of the month.\", \"organization\": \"Atlantic Development Bank\", \"role\": \"bank\", \"signal_type\": \"deadline\", \"source_type\": \"direct\", \"stance\": \"unknown\", \"strength\": \"strong\"}], \"summary\": \"Rather positive meeting overall with the Nordlink Bay consortium for the Port-Lazen \\u2013 Kerlis cable project. CTO on our side on repeater solution, CFO conditions sign-off on four-year payment schedule, bank waits for environmental impact study, competitor Oceanix mentioned with lower price.\"}",
+  "usage": {
+    "completion_tokens": 2541,
+    "prompt_tokens": 1124,
+    "total_tokens": 3665,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 1688,
+      "rejected_prediction_tokens": null,
+      "text_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cache_write_tokens": null,
+      "cached_tokens": 0,
+      "image_tokens": null,
+      "text_tokens": null
+    }
+  }
+}

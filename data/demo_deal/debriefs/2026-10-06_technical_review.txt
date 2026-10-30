@@ -1,0 +1,9 @@
+Debrief of the technical review on October 6, with Baltis Telecom and Kerlis Connect.
+
+Very good meeting on the technical side. Julien Marec approved our repeater architecture, he even said he would defend it internally. Yann Le Goff, the head of procurement at Kerlis Connect, was there too. He is harder to read: he mostly talked about late-delivery penalties and guarantees, he wants stronger penalties than what we offer. I don't know if he leans towards us or towards Oceanix.
+
+He mentioned that the award decision will go through a committee where Claire Dantec has the final say, but that the bank must have given its agreement in principle before that.
+
+Nobody has any news of the impact study, I think it hasn't even been launched yet.
+
+Next steps: send a revised proposal on penalties to Yann Le Goff, and chase Thomas Riou about the protected areas note, he hasn't replied.

@@ -133,7 +133,7 @@ def denoise(x: np.ndarray, rate: int = TARGET_RATE, over: float = 0.2, floor: fl
     return _istft(X * gain, n, hop, len(x))
 
 
-def transcribe(audio: bytes, keywords: list[str] | None = None, language: str = "french",
+def transcribe(audio: bytes, keywords: list[str] | None = None, language: str = "english",
                clean: bool = False) -> str:
     """Renvoie le texte d'un débrief vocal (WAV). clean=True applique denoise() avant l'envoi."""
     x = read_wav16k(audio)
@@ -143,8 +143,9 @@ def transcribe(audio: bytes, keywords: list[str] | None = None, language: str = 
     keywords = fit_keywords(keywords or [])
     key = hashlib.sha256(wav + json.dumps(keywords or []).encode()).hexdigest()[:16]
     cache = llm.CACHE_DIR / f"asr_{key}.json"
-    if cache.exists():
-        return json.loads(cache.read_text(encoding="utf-8"))["transcript"]
+    found = llm.cache_file(cache.name)
+    if found:
+        return json.loads(found.read_text(encoding="utf-8"))["transcript"]
     if llm.provider() == "offline":
         raise llm.OfflineMiss("Transcription absente du cache (mode hors ligne).")
 
@@ -159,7 +160,7 @@ def transcribe(audio: bytes, keywords: list[str] | None = None, language: str = 
                "audio": ("debrief.wav", wav, "audio/wav")},
         timeout=300)
     if r.status_code != 200:
-        raise RuntimeError(f"Transcription refusée ({r.status_code}) : {r.text[:300]}")
+        raise RuntimeError(f"Transcription refused ({r.status_code}): {r.text[:300]}")
     result = r.json()
     llm.CACHE_DIR.mkdir(parents=True, exist_ok=True)
     cache.write_text(json.dumps({"request": request, **result}, ensure_ascii=False, indent=2),

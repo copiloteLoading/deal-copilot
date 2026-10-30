@@ -100,7 +100,7 @@ def connect(path: Path | str = DB_PATH) -> sqlite3.Connection:
     """Ouvre la base (":memory:" pour les tests) et crée les tables si besoin."""
     if path != ":memory:":
         Path(path).parent.mkdir(parents=True, exist_ok=True)
-    conn = sqlite3.connect(path)
+    conn = sqlite3.connect(path, check_same_thread=False)   # Streamlit relance le script sur d'autres fils
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
     conn.executescript(SCHEMA)
@@ -304,7 +304,7 @@ def set_manager(conn: sqlite3.Connection, deal_id: str, actor_id: str, manager_i
     seen, cur = {actor_id}, manager_id
     while cur:
         if cur in seen:
-            raise ValueError("Ce rattachement créerait une boucle dans la hiérarchie.")
+            raise ValueError("This reporting line would create a loop in the hierarchy.")
         seen.add(cur)
         row = conn.execute("SELECT manager_id FROM actors WHERE deal_id = ? AND id = ?",
                            (deal_id, cur)).fetchone()
@@ -314,25 +314,15 @@ def set_manager(conn: sqlite3.Connection, deal_id: str, actor_id: str, manager_i
                      (manager_id, deal_id, actor_id))
 
 
-def hierarchy(deal: dict) -> dict[str, list[tuple[dict, int]]]:
-    """Arbre de chaque organisation : liste (acteur, profondeur) dans l'ordre d'affichage.
-    Un acteur dont le supérieur est inconnu ou dans une autre organisation est une racine."""
-    actors = {a["id"]: a for a in deal["actors"]}
-    children: dict[str | None, list[dict]] = {}
-    for a in deal["actors"]:
-        boss = a.get("manager_id")
-        root = boss not in actors or actors[boss]["org_id"] != a["org_id"]
-        children.setdefault(None if root else boss, []).append(a)
-    out: dict[str, list[tuple[dict, int]]] = {}
-
-    def walk(a: dict, depth: int) -> None:
-        out.setdefault(a["org_id"], []).append((a, depth))
-        for c in sorted(children.get(a["id"], []), key=lambda x: (not x["veto"], -x["influence"])):
-            walk(c, depth + 1)
-
-    for a in sorted(children.get(None, []), key=lambda x: (not x["veto"], -x["influence"])):
-        walk(a, 0)
-    return out
+def unresolved(conn: sqlite3.Connection, deal_id: str) -> list[dict]:
+    """Noms cités dans les débriefs mais rattachés à personne : à faire confirmer par le commercial.
+    Un par nom, avec le nombre de signaux et la dernière citation."""
+    out: dict[str, dict] = {}
+    for s in signals(conn, deal_id):
+        if s["actor_id"] is None and s["org_id"] is None and (s["raw_name"] or "").strip():
+            item = out.setdefault(_normalize(s["raw_name"]), {"name": s["raw_name"], "count": 0})
+            item.update(count=item["count"] + 1, quote=s["quote"], date=s["date"])
+    return list(out.values())
 
 
 def link_alias(conn: sqlite3.Connection, deal_id: str, actor_id: str, alias: str) -> None:

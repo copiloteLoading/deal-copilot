@@ -19,7 +19,7 @@ import json
 import re
 from datetime import date
 
-from copilot import decision, llm, memory, model
+from copilot import clock, decision, llm, memory, model
 
 MAX_STEPS = 8          # tours de boucle au plus : évite les boucles coûteuses
 MAX_QUESTIONS = 2
@@ -88,12 +88,12 @@ Your job, using the tools:
 Rules:
 - Never invent a fact. Every question and action must rely on recorded signals: cite their ids.
 - Questions are asked TO THE REP right after the meeting, to learn what the rep already knows
-  or noticed (not tasks to do later). Write them as real questions in French, using "vous",
-  answerable in one sentence. Each question must aim at the actor's real position, or at what
-  could make them block the deal. Example: "Savez-vous si le projet est déjà inscrit au budget de
-  Baltis Telecom ?" Never "Demandez à X...".
-- Action titles start with a verb in the infinitive ("Proposer...", "Organiser..."); rationales are
-  one short sentence in French explaining which recorded signal makes the action useful.
+  or noticed (not tasks to do later). Write them as real questions in English, addressed to the
+  rep as "you", answerable in one sentence. Each question must aim at the actor's real position, or
+  at what could make them block the deal. Example: "Do you know whether the project is already in
+  Baltis Telecom's budget?" Never "Ask X to...".
+- Action titles start with a verb in the imperative ("Propose...", "Organize..."); rationales are
+  one short sentence in English explaining which recorded signal makes the action useful.
 - Never write a number, a percentage or a probability in any text: the interface shows the
   model's figures next to your text.
 - Use the tools; you have at most {MAX_STEPS} rounds."""
@@ -191,11 +191,11 @@ def finalize(data: model.DealData, plan: dict, as_of: str) -> dict:
     for q in plan.get("questions", []):
         a = actors.get(q.get("actor_id"))
         if a is None or a["id"] in seen or not q.get("text") or _has_number(q["text"]):
-            rejected.append({"kind": "question", "item": q, "reason": "acteur inconnu, doublon ou chiffre"})
+            rejected.append({"kind": "question", "item": q, "reason": "unknown actor, duplicate or number in the text"})
             continue
         v = decision.question_value(data, base, a["id"], as_of)
         if v["gain"] < MIN_GAIN:
-            rejected.append({"kind": "question", "item": q, "reason": "gain négligeable selon le modèle"})
+            rejected.append({"kind": "question", "item": q, "reason": "negligible gain according to the model"})
             continue
         cited = [signals[i] for i in q.get("signal_ids", []) if i in signals]
         seen.add(a["id"])
@@ -208,15 +208,15 @@ def finalize(data: model.DealData, plan: dict, as_of: str) -> dict:
         fx = _effects(act.get("effects", []), set(actors))
         texts = (act.get("title", ""), act.get("rationale", ""))
         if not fx or not texts[0] or any(_has_number(t) for t in texts):
-            rejected.append({"kind": "action", "item": act, "reason": "sans effet, sans titre ou chiffre"})
+            rejected.append({"kind": "action", "item": act, "reason": "no effect, no title or number in the text"})
             continue
         v = decision.action_value(data, base, fx, as_of)
         if v["gain"] <= 0:
-            rejected.append({"kind": "action", "item": act, "reason": "aucun gain selon le modèle"})
+            rejected.append({"kind": "action", "item": act, "reason": "no gain according to the model"})
             continue
         cited = [signals[i] for i in act.get("signal_ids", []) if i in signals]
         target = actors[next(iter(fx))]
-        why = ("détenteur de veto · " if target["veto"] else "") + act.get("rationale", "")
+        why = ("veto holder · " if target["veto"] else "") + act.get("rationale", "")
         actions.append({"actor": target, "title": act["title"], "why": why, "effects": fx,
                         "source": cited[0] if cited else None, "sources": cited,
                         "by_agent": True, **v})
@@ -227,7 +227,7 @@ def finalize(data: model.DealData, plan: dict, as_of: str) -> dict:
 
 def run(conn, deal_id: str, as_of: str | None = None) -> dict:
     """Lance la boucle de l'agent (ou relit son résultat en cache) et renvoie le plan vérifié."""
-    as_of = as_of or date.today().isoformat()
+    as_of = as_of or clock.today().isoformat()
     data = model.load(conn, deal_id)
     base = model.posterior(data, as_of)
     messages = [{"role": "developer", "content": RULES},
@@ -236,8 +236,9 @@ def run(conn, deal_id: str, as_of: str | None = None) -> dict:
     key = hashlib.sha256(json.dumps([llm.model_name(), messages, TOOLS], ensure_ascii=False)
                          .encode()).hexdigest()[:16]
     cache = llm.CACHE_DIR / f"agent_{key}.json"
-    if cache.exists():
-        saved = json.loads(cache.read_text(encoding="utf-8"))
+    found = llm.cache_file(cache.name)
+    if found:
+        saved = json.loads(found.read_text(encoding="utf-8"))
     else:
         tools = Tools(data, base, as_of)
         plan = None

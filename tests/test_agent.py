@@ -19,7 +19,7 @@ def conn():
     mid = memory.add_meeting(c, DEAL, "2026-10-29", "Débrief")
     memory.add_signals(c, DEAL, mid, [
         {"actor_name": "Sophie Lenoir", "signal_type": "condition", "stance": "conditional",
-         "strength": "strong", "source_type": "direct", "evidence_quote": "après le budget",
+         "strength": "strong", "source_type": "direct", "evidence_quote": "after the budget",
          "confidence": 0.9}])
     return c
 
@@ -37,16 +37,16 @@ def message(*calls):
 
 GOOD_PLAN = {
     "questions": [
-        {"actor_id": "sophie_lenoir", "text": "Savez-vous si le projet est inscrit au budget ?",
+        {"actor_id": "sophie_lenoir", "text": "Do you know whether the project is in the budget?",
          "signal_ids": [1, 999]},
         {"actor_id": "inconnu", "text": "Question sur personne ?", "signal_ids": []},
         {"actor_id": "thomas_riou", "text": "La banque a-t-elle 80 % de chances de suivre ?",
          "signal_ids": []},
     ],
     "actions": [
-        {"title": "Proposer un échéancier", "rationale": "La finance demande un étalement.",
+        {"title": "Propose a payment schedule", "rationale": "Finance asks for a longer schedule.",
          "effects": [{"actor_id": "sophie_lenoir", "stance": "support"}], "signal_ids": [1]},
-        {"title": "Proposer un échéancier garanti", "rationale": "Pour la finance et la banque.",
+        {"title": "Propose a guaranteed schedule", "rationale": "For finance and the bank.",
          "effects": [{"actor_id": "sophie_lenoir", "stance": "support"},
                      {"actor_id": "thomas_riou", "stance": "support"}], "signal_ids": []},
         {"title": "Action sans effet", "rationale": "Rien.", "effects": [], "signal_ids": []},
@@ -58,9 +58,9 @@ def test_finalize_checks_and_ranks_with_the_model(conn):
     data = model.load(conn, DEAL)
     out = agent.finalize(data, GOOD_PLAN, "2026-10-29")
     assert [q["actor"]["id"] for q in out["questions"]] == ["sophie_lenoir"]   # inconnu et chiffre écartés
-    assert out["questions"][0]["sources"][0]["quote"] == "après le budget"       # id 999 ignoré
+    assert out["questions"][0]["sources"][0]["quote"] == "after the budget"       # id 999 ignoré
     titles = [a["title"] for a in out["actions"]]
-    assert titles == ["Proposer un échéancier garanti", "Proposer un échéancier"]  # classé par le modèle
+    assert titles == ["Propose a guaranteed schedule", "Propose a payment schedule"]  # classé par le modèle
     assert len(out["rejected"]) == 3
 
 

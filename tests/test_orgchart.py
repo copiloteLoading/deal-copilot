@@ -38,7 +38,7 @@ def test_read_sends_the_image_in_the_user_message(monkeypatch):
         return CHART
 
     monkeypatch.setattr(llm, "chat_json", fake)
-    assert photo.read(b"\xff\xd8fake", "image/jpeg", "Port-Aven", ["Sophie Lenoir"]) == CHART
+    assert photo.read(b"\xff\xd8fake", "image/jpeg", "Port-Lazen", ["Sophie Lenoir"]) == CHART
     user = seen["messages"][1]
     assert user["role"] == "user" and user["content"][1]["image_url"]["url"].startswith("data:image/jpeg;base64,")
     assert "Sophie Lenoir" in user["content"][0]["text"]          # noms connus : aide à la lecture
@@ -63,13 +63,10 @@ def test_apply_adds_new_people_without_overwriting(conn):
     assert "herve_quillec" in model.posterior(data, "2026-10-29").beliefs           # le modèle le voit
 
 
-def test_hierarchy_is_read_and_drawn(conn):
+def test_reporting_line_is_recorded(conn):
     orgchart.apply(conn, DEAL, orgchart.propose(conn, DEAL, CHART))
     deal = memory.get_deal(conn, DEAL)
     assert next(a for a in deal["actors"] if a["id"] == "sophie_lenoir")["manager_id"] == "herve_quillec"
-    tree = [(a["id"], depth) for a, depth in memory.hierarchy(deal)["baltis"]]
-    assert tree[0] == ("herve_quillec", 0) and ("sophie_lenoir", 1) in tree
-    assert ("julien_marec", 0) in tree                       # pas de supérieur connu : racine
 
 
 def test_set_manager_refuses_loops(conn):

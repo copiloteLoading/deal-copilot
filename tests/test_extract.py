@@ -18,15 +18,15 @@ def signal(name, quote, **kw):
 
 
 FAKE = {
-    "summary": "Réunion positive.",
+    "summary": "Positive meeting.",
     "signals": [
-        signal("Julien Marec", "la plus solide techniquement"),
+        signal("Julien Marec", "the most robust technically"),
         # apostrophe typographique et espaces en trop : doit être accepté
-        signal("Thomas Riou", "ça fait  maintenant six semaines qu’on ne l’a pas vu",
+        signal("Thomas Riou", "we haven’t seen him for  six weeks now",
                signal_type="risk", stance="unknown", source_type="reported"),
         # citation inventée : doit être écartée
-        signal("Sophie Lenoir", "nous validerons sans condition", confidence=1.4),
-        signal("Sophie Lenoir", "elle veut étaler sur quatre ans au lieu de trois",
+        signal("Sophie Lenoir", "we will sign off without conditions", confidence=1.4),
+        signal("Sophie Lenoir", "she wants to spread it over four years instead of three",
                signal_type="condition", stance="conditional", confidence=1.4),
     ],
     "next_steps": [], "open_questions": [],
@@ -45,7 +45,7 @@ def test_quotes_are_checked(conn):
     result = extract.extract(TEXT, conn, "port-aven-kerlis")
     kept = [s["evidence_quote"] for s in result["signals"]]
     assert len(kept) == 3
-    assert [s["evidence_quote"] for s in result["rejected"]] == ["nous validerons sans condition"]
+    assert [s["evidence_quote"] for s in result["rejected"]] == ["we will sign off without conditions"]
 
 
 def test_one_word_quotes_prove_nothing():
@@ -63,7 +63,7 @@ def test_confidence_is_clamped(conn):
 
 def test_context_lists_known_names_without_positions(conn):
     ctx = extract._deal_context(conn, "port-aven-kerlis")
-    assert "Sophie Lenoir" in ctx and "la DAF de Baltis" in ctx
+    assert "Sophie Lenoir" in ctx and "Baltis CFO" in ctx
     assert "support" not in ctx and "veto" not in ctx.lower()
 
 

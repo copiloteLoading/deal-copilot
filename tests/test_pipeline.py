@@ -31,8 +31,8 @@ def debrief(conn, *signals):
 
 
 def test_veto_turning_against_us_must_be_confirmed(conn):
-    debrief(conn, sig("Thomas Riou", "oppose", "la banque ne suivra pas"),
-            sig("Thomas Riou", "oppose", "pas à ces conditions"), sig("Julien Marec", "support"))
+    debrief(conn, sig("Thomas Riou", "oppose", "the bank will not follow"),
+            sig("Thomas Riou", "oppose", "not on these terms"), sig("Julien Marec", "support"))
     changes = pipeline.pending_changes(pipeline.state(conn, DEAL, DAY), DAY)
     assert [c["actor"]["id"] for c in changes] == ["thomas_riou"]   # Julien ne change pas d'avis
     assert (changes[0]["before"], changes[0]["after"]) == ("support", "oppose")
@@ -43,8 +43,8 @@ def test_veto_turning_against_us_must_be_confirmed(conn):
 
 
 def test_rejected_change_no_longer_counts(conn):
-    debrief(conn, sig("Thomas Riou", "oppose", "la banque ne suivra pas"),
-            sig("Thomas Riou", "oppose", "pas à ces conditions"))
+    debrief(conn, sig("Thomas Riou", "oppose", "the bank will not follow"),
+            sig("Thomas Riou", "oppose", "not on these terms"))
     st = pipeline.state(conn, DEAL, DAY)
     p_with = st.post.p
     pipeline.confirm_change(conn, pipeline.pending_changes(st, DAY)[0], stance="unknown")
@@ -55,5 +55,5 @@ def test_rejected_change_no_longer_counts(conn):
 
 
 def test_small_moves_are_not_flagged(conn):
-    debrief(conn, sig("Thomas Riou", "neutral", "il attend de voir"))
+    debrief(conn, sig("Thomas Riou", "neutral", "he is waiting to see"))
     assert pipeline.pending_changes(pipeline.state(conn, DEAL, DAY), DAY) == []

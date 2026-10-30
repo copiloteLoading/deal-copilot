@@ -1,7 +1,7 @@
 {
-  "_note": "Vérité cachée du scénario piège de la vidéo. Sert à vérifier l'agent et à simuler les réponses du commercial. Ne jamais la donner au modèle ni à l'agent.",
+  "_note": "Hidden truth of the trap scenario used in the video. Used to check the agent and to simulate the rep's answers. Never give it to the model or the agent.",
   "debrief": "debrief_piege.txt",
-  "trap": "La réunion semble excellente, mais la directrice financière (détentrice de veto) a reporté sa décision : « on en reparlera après le budget ».",
+  "trap": "The meeting looks excellent, but the CFO (a veto holder) postponed her decision: \"we'll talk about it after the budget\".",
   "hidden_positions": {
     "claire_dantec": "support",
     "julien_marec": "support",
@@ -12,10 +12,10 @@
   },
   "expected_agent_behavior": {
     "question_target": "sophie_lenoir",
-    "question_idea": "Quand Sophie Lenoir dit « après le budget », savez-vous quand le budget est arrêté, et si notre projet y figure ?",
-    "rep_answer": "Le budget est voté en janvier, et d'après Julien, le câble n'est pas encore dans l'enveloppe prévue.",
+    "question_idea": "When Sophie Lenoir says \"after the budget\", do you know when the budget is set, and whether our project is in it?",
+    "rep_answer": "The budget is voted in January, and according to Julien, the cable is not in the planned envelope yet.",
     "probability_direction": "down",
-    "plan_change": "L'action n°1 devient : obtenir avant janvier une réunion avec Sophie Lenoir pour inscrire le projet au budget, avec un phasage adapté."
+    "plan_change": "Action #1 becomes: get a meeting with Sophie Lenoir before January to put the project in the budget, with an adapted phasing."
   },
   "outcome": "delayed"
 }

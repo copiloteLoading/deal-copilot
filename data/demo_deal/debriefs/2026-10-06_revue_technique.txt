@@ -1,9 +1,0 @@
-Débrief revue technique du 6 octobre, avec Baltis Telecom et Kerlis Connect.
-
-Très bonne réunion côté technique. Julien Marec a validé notre architecture de répéteurs, il a même dit qu'il la défendrait en interne. Yann Le Goff, le responsable achats de Kerlis Connect, était là aussi. Lui, c'est plus compliqué à lire : il a surtout parlé des pénalités de retard et des garanties, il veut des pénalités plus fortes que ce qu'on propose. Je ne sais pas s'il penche pour nous ou pour Oceanix.
-
-Il a mentionné que la décision d'attribution passerait par un comité où Claire Dantec a le dernier mot, mais que la banque doit avoir donné son accord de principe avant.
-
-Personne n'a de nouvelles de l'étude d'impact, je crois qu'elle n'a pas encore été lancée.
-
-Prochaines étapes : envoyer une proposition révisée sur les pénalités à Yann Le Goff, et relancer Thomas Riou sur la note zones protégées, il n'a pas répondu.

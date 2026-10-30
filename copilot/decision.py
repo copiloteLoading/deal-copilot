@@ -18,7 +18,7 @@ from __future__ import annotations
 
 from datetime import date
 
-from copilot import model
+from copilot import clock, model
 
 SILENCE_DAYS = 30
 
@@ -38,14 +38,13 @@ def _question_text(actor: dict, signals: list[dict], silence: int | None) -> tup
     """Gabarit de question, avec le signal qui la justifie (pour la citation)."""
     cond = _last(signals, stance="conditional")
     if cond:
-        return (f"À propos de {actor['name']} ({actor['role']}), le débrief dit : « {cond['quote']} ». "
-                f"Savez-vous de quoi dépend sa décision, et quand elle sera prise ?", cond)
+        return (f"About {actor['name']} ({actor['role']}), the debrief says: \u201c{cond['quote']}\u201d. "
+                f"Do you know what their decision depends on, and when it will be taken?", cond)
     if silence is None or silence > SILENCE_DAYS:
-        since = f"depuis {silence} jours" if silence is not None else "à ce jour"
-        return (f"Aucun échange direct avec {actor['name']} ({actor['role']}) {since}. "
-                f"Avez-vous eu un signe, même indirect, de sa position ?", _last(signals))
-    return (f"Quelle est aujourd'hui la position de {actor['name']} ({actor['role']}) "
-            f"sur notre offre ?", _last(signals))
+        since = f"for {silence} days" if silence is not None else "so far"
+        return (f"No direct exchange with {actor['name']} ({actor['role']}) {since}. "
+                f"Have you had any sign, even indirect, of their position?", _last(signals))
+    return (f"Where does {actor['name']} ({actor['role']}) stand on our offer today?", _last(signals))
 
 
 def question_value(data: model.DealData, base: model.Posterior, actor_id: str,
@@ -73,7 +72,7 @@ def action_value(data: model.DealData, base: model.Posterior, effects: dict[str,
 
 def rank_questions(data: model.DealData, last_contact: dict[str, str | None],
                    as_of: str | None = None, k: int = 2, min_gain: float = 0.01) -> list[dict]:
-    as_of = as_of or date.today().isoformat()
+    as_of = as_of or clock.today().isoformat()
     base = model.posterior(data, as_of)
     out = []
     for a in data.actors:
@@ -87,7 +86,7 @@ def rank_questions(data: model.DealData, last_contact: dict[str, str | None],
 
 def rank_actions(data: model.DealData, last_contact: dict[str, str | None],
                  as_of: str | None = None, k: int = 4) -> list[dict]:
-    as_of = as_of or date.today().isoformat()
+    as_of = as_of or clock.today().isoformat()
     base = model.posterior(data, as_of)
     out = []
     for a in data.actors:
@@ -97,16 +96,16 @@ def rank_actions(data: model.DealData, last_contact: dict[str, str | None],
         silence = _days_since(last_contact.get(a["id"]), as_of)
         cond = _last(data.signals[a["id"]], stance="conditional")
         if cond:
-            title = f"Lever la condition posée par {a['name']}"
-            why = f"« {cond['quote']} »"
+            title = f"Lift the condition set by {a['name']}"
+            why = f"\u201c{cond['quote']}\u201d"
         elif silence is None or silence > SILENCE_DAYS:
-            title = f"Obtenir un rendez-vous avec {a['name']} ({a['role']})"
-            why = "jamais rencontré(e) directement" if silence is None else f"aucun échange direct depuis {silence} jours"
+            title = f"Get a meeting with {a['name']} ({a['role']})"
+            why = "never met directly" if silence is None else f"no direct exchange for {silence} days"
         else:
-            title = f"Consolider le soutien de {a['name']} ({a['role']})"
-            why = f"position actuelle incertaine ({b[0]:.0%} favorable)"
+            title = f"Secure {a['name']}'s support ({a['role']})"
+            why = "current position uncertain"
         if a["veto"]:
-            why = "détenteur de veto · " + why
+            why = "veto holder · " + why
         out.append({"actor": a, "title": title, "why": why, "source": cond or _last(data.signals[a["id"]]),
                     "effects": {a["id"]: "support"},
                     **action_value(data, base, {a["id"]: "support"}, as_of)})

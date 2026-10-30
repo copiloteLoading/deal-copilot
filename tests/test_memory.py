@@ -15,23 +15,23 @@ DEMO = Path(__file__).resolve().parent.parent / "data" / "demo_deal"
 # complétés du champ source_type que extract.py demandera
 EXTRACTED = [
     {"actor_name": "Julien Marec", "organization": "Baltis Telecom", "signal_type": "support",
-     "stance": "support", "description": "soutient nos répéteurs",
-     "evidence_quote": "la plus solide techniquement", "confidence": 0.95, "source_type": "direct"},
+     "stance": "support", "description": "backs our repeaters",
+     "evidence_quote": "the most robust technically", "confidence": 0.95, "source_type": "direct"},
     {"actor_name": "Sophie Lenoir", "organization": "", "signal_type": "objection",
-     "stance": "oppose", "description": "veut un phasage sur quatre ans",
-     "evidence_quote": "elle veut étaler sur quatre ans au lieu de trois, sinon elle ne valide pas",
+     "stance": "oppose", "description": "wants a four-year schedule",
+     "evidence_quote": "she wants to spread it over four years instead of three, otherwise she won't sign off",
      "confidence": 0.9, "source_type": "direct"},
-    {"actor_name": "Banque Atlantique de Développement", "organization": "Banque Atlantique de Développement",
-     "signal_type": "commitment", "stance": "unknown", "description": "attend l'étude d'impact",
-     "evidence_quote": "attend toujours l'étude d'impact environnemental avant de s'engager",
+    {"actor_name": "Atlantic Development Bank", "organization": "Atlantic Development Bank",
+     "signal_type": "commitment", "stance": "unknown", "description": "waits for the impact study",
+     "evidence_quote": "is still waiting for the environmental impact study before committing",
      "confidence": 0.9},
     {"actor_name": "Thomas Riou", "organization": "", "signal_type": "risk", "stance": "unknown",
-     "description": "absent depuis six semaines",
-     "evidence_quote": "ça fait maintenant six semaines qu'on ne l'a pas vu", "confidence": 0.85,
+     "description": "absent for six weeks",
+     "evidence_quote": "we haven't seen him for six weeks now", "confidence": 0.85,
      "source_type": "reported"},
     {"actor_name": "Oceanix Cables", "organization": "Oceanix Cables", "signal_type": "competitor",
-     "stance": "oppose", "description": "prix plus bas, montant incertain",
-     "evidence_quote": "ils ont proposé un prix plus bas", "confidence": 0.4},
+     "stance": "oppose", "description": "lower price, uncertain amount",
+     "evidence_quote": "they offered a lower price", "confidence": 0.4},
 ]
 
 
@@ -57,12 +57,13 @@ def test_import_twice_does_not_duplicate(conn):
 
 @pytest.mark.parametrize("name, expected", [
     ("Sophie Lenoir", ("sophie_lenoir", "baltis")),
-    ("la DAF de Baltis", ("sophie_lenoir", "baltis")),
+    ("Baltis CFO", ("sophie_lenoir", "baltis")),
     ("sophie LENOIR", ("sophie_lenoir", "baltis")),
-    ("la présidente", ("claire_dantec", "nordlink")),
-    ("la presidente", ("claire_dantec", "nordlink")),       # sans accent
-    ("Banque Atlantique de Développement", (None, "bad")),  # une organisation, pas une personne
-    ("Pierre Inconnu", (None, None)),
+    ("the chair", ("claire_dantec", "nordlink")),
+    ("THE CHAIR", ("claire_dantec", "nordlink")),          # sans tenir compte de la casse
+    ("Lea Garnier", (None, None)),                          # la commerciale n'est pas un acteur
+    ("Atlantic Development Bank", (None, "bad")),           # une organisation, pas une personne
+    ("Pierre Unknown", (None, None)),
 ])
 def test_resolve(conn, name, expected):
     assert memory.resolve(conn, "port-aven-kerlis", name) == expected
@@ -72,7 +73,7 @@ def test_keywords(conn):
     words = memory.keywords(conn, "port-aven-kerlis")
     for w in ["Sophie Lenoir", "Thomas Riou", "Baltis Telecom", "Oceanix Cables", "Kervella"]:
         assert w in words
-    assert "la banque" not in words           # pas un nom propre
+    assert "the bank" not in words            # pas un nom propre
     assert len(words) == len(set(words))      # pas de doublon
 
 
@@ -97,8 +98,11 @@ def test_unresolved_then_alias_confirmed(conn):
     signal = {"actor_name": "le banquier", "organization": "", "signal_type": "risk",
               "stance": "unknown", "evidence_quote": "le banquier ne répond pas", "confidence": 0.7}
     assert memory.add_signals(conn, "port-aven-kerlis", mid, [signal]) == [signal]
+    pending = memory.unresolved(conn, "port-aven-kerlis")
+    assert [(u["name"], u["count"], u["quote"]) for u in pending] == [("le banquier", 1, "le banquier ne répond pas")]
 
     memory.link_alias(conn, "port-aven-kerlis", "thomas_riou", "le banquier")
+    assert memory.unresolved(conn, "port-aven-kerlis") == []
     riou = memory.signals(conn, "port-aven-kerlis", "thomas_riou")
     assert len(riou) == 1 and riou[0]["confirmed"] == 1
     assert memory.resolve(conn, "port-aven-kerlis", "Le Banquier") == ("thomas_riou", "bad")

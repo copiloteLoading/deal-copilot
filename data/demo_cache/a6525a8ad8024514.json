@@ -1,0 +1,81 @@
+{
+  "request": {
+    "model": "muse-spark-1.3",
+    "messages": [
+      {
+        "role": "developer",
+        "content": "The assistant asked the sales rep a question about one person (the TARGET) in a large\ninfrastructure deal. Interpret the rep's ANSWER only, and say what it implies about the TARGET's\nposition towards OUR offer, using the same stances: support, conditional, neutral, oppose, unknown.\n- A condition that is now known to be unmet, or a decision that depends on something that is\n  not in place (for example: not in the budget, no funding planned), counts as \"oppose\":\n  \"strong\" if the rep states it as a fact, \"weak\" if it is a rumour or a guess.\n- If the answer says nothing about the TARGET's position, use \"unknown\".\n- evidence_quote: copy a short passage WORD FOR WORD from the ANSWER (never from the question).\n- explanation: one short sentence in English explaining your reading."
+      },
+      {
+        "role": "user",
+        "content": "TARGET: Sophie Lenoir, Chief Financial Officer\nQUESTION: Do you know whether you can secure budget approval if payment is spread as requested?\nANSWER: The budget is voted in January, and according to Julien, the cable is not in the planned envelope yet."
+      }
+    ],
+    "reasoning_effort": "low",
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "answer_reading",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "stance": {
+              "type": "string",
+              "enum": [
+                "support",
+                "conditional",
+                "neutral",
+                "oppose",
+                "unknown"
+              ]
+            },
+            "strength": {
+              "type": "string",
+              "enum": [
+                "strong",
+                "weak"
+              ]
+            },
+            "confidence": {
+              "type": "number"
+            },
+            "evidence_quote": {
+              "type": "string"
+            },
+            "explanation": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "stance",
+            "strength",
+            "confidence",
+            "evidence_quote",
+            "explanation"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  "content": "{\"confidence\": 0.7, \"evidence_quote\": \"the cable is not in the planned envelope yet\", \"explanation\": \"As CFO, missing budget envelope implies she cannot approve, reported via Julien so hearsay.\", \"stance\": \"oppose\", \"strength\": \"weak\"}",
+  "usage": {
+    "completion_tokens": 773,
+    "prompt_tokens": 339,
+    "total_tokens": 1112,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 705,
+      "rejected_prediction_tokens": null,
+      "text_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cache_write_tokens": null,
+      "cached_tokens": 0,
+      "image_tokens": null,
+      "text_tokens": null
+    }
+  }
+}

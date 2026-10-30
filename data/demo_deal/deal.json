@@ -1,11 +1,11 @@
 {
-  "_note": "Contrat entièrement fictif : entreprises, personnes et chiffres sont inventés.",
+  "_note": "Entirely fictional deal: companies, people and figures are invented.",
   "deal_id": "port-aven-kerlis",
-  "name": "Câble sous-marin Port-Aven – Kerlis",
+  "name": "Port-Lazen – Kerlis submarine cable",
   "seller": "Ondine Subsea",
   "sales_rep": "Léa Garnier",
-  "buyer": "Consortium Nordlink Bay",
-  "description": "Fourniture et pose d'un câble de télécommunication sous-marin de 420 km avec répéteurs, entre Port-Aven et Kerlis.",
+  "buyer": "Nordlink Bay Consortium",
+  "description": "Supply and installation of a 420 km submarine telecom cable with repeaters, between Port-Lazen and Kerlis.",
   "value_meur": 185,
   "opened": "2026-04-14",
   "target_signature": "2027-03-31",
@@ -15,11 +15,11 @@
   "organizations": [
     {
       "id": "nordlink",
-      "name": "Consortium Nordlink Bay",
+      "name": "Nordlink Bay Consortium",
       "type": "buyer",
       "aliases": [
         "Nordlink",
-        "le consortium"
+        "the consortium"
       ]
     },
     {
@@ -40,20 +40,20 @@
     },
     {
       "id": "bad",
-      "name": "Banque Atlantique de Développement",
+      "name": "Atlantic Development Bank",
       "type": "financier",
       "aliases": [
-        "la banque",
-        "BAD"
+        "the bank",
+        "ADB"
       ]
     },
     {
       "id": "agence_littoral",
-      "name": "Agence du littoral de Kerlis",
+      "name": "Kerlis Coastal Agency",
       "type": "regulator",
       "aliases": [
-        "l'agence",
-        "le régulateur"
+        "the agency",
+        "the regulator"
       ]
     },
     {
@@ -70,15 +70,13 @@
       "id": "claire_dantec",
       "name": "Claire Dantec",
       "org": "nordlink",
-      "role": "Présidente du consortium",
+      "role": "Chair of the consortium",
       "influence": 0.95,
-      "decision_power": "préside le comité d'attribution",
-      "stance": "unknown",
-      "last_contact": "2026-09-15",
+      "decision_power": "chairs the award committee",
       "aliases": [
         "Claire",
-        "Mme Dantec",
-        "la présidente"
+        "Mrs Dantec",
+        "the chair"
       ],
       "veto": false
     },
@@ -86,15 +84,13 @@
       "id": "julien_marec",
       "name": "Julien Marec",
       "org": "baltis",
-      "role": "Directeur technique",
+      "role": "Chief Technology Officer",
       "influence": 0.6,
-      "decision_power": "prescripteur technique",
-      "stance": "support",
-      "last_contact": "2026-10-27",
+      "decision_power": "technical prescriber",
       "aliases": [
         "Julien",
         "Marec",
-        "le DT de Baltis"
+        "Baltis CTO"
       ],
       "veto": false
     },
@@ -102,15 +98,13 @@
       "id": "sophie_lenoir",
       "name": "Sophie Lenoir",
       "org": "baltis",
-      "role": "Directrice financière",
+      "role": "Chief Financial Officer",
       "influence": 0.8,
-      "decision_power": "droit de veto budgétaire",
-      "stance": "neutral",
-      "last_contact": "2026-10-27",
+      "decision_power": "budget veto",
       "aliases": [
         "Sophie",
         "Lenoir",
-        "la DAF de Baltis"
+        "Baltis CFO"
       ],
       "veto": true
     },
@@ -118,11 +112,9 @@
       "id": "yann_le_goff",
       "name": "Yann Le Goff",
       "org": "kerlis_connect",
-      "role": "Responsable achats",
+      "role": "Head of Procurement",
       "influence": 0.5,
-      "decision_power": "pilote l'appel d'offres",
-      "stance": "neutral",
-      "last_contact": "2026-10-06",
+      "decision_power": "runs the tender",
       "aliases": [
         "Yann",
         "Le Goff"
@@ -133,15 +125,13 @@
       "id": "thomas_riou",
       "name": "Thomas Riou",
       "org": "bad",
-      "role": "Chargé d'affaires",
+      "role": "Relationship Manager",
       "influence": 0.9,
-      "decision_power": "conditionne le financement",
-      "stance": "unknown",
-      "last_contact": "2026-09-15",
+      "decision_power": "conditions the financing",
       "aliases": [
         "Thomas",
         "Riou",
-        "le chargé d'affaires de la banque"
+        "the bank's relationship manager"
       ],
       "veto": true
     },
@@ -149,11 +139,9 @@
       "id": "marion_kervella",
       "name": "Marion Kervella",
       "org": "agence_littoral",
-      "role": "Chargée des autorisations maritimes",
+      "role": "Marine Permits Officer",
       "influence": 0.4,
-      "decision_power": "délivre le permis de pose",
-      "stance": "unknown",
-      "last_contact": null,
+      "decision_power": "issues the installation permit",
       "aliases": [
         "Marion",
         "Kervella"
@@ -164,17 +152,17 @@
   "meetings": [
     {
       "date": "2026-09-15",
-      "title": "Lancement avec le consortium et la banque",
-      "debrief": "debriefs/2026-09-15_lancement.txt"
+      "title": "Kick-off with the consortium and the bank",
+      "debrief": "debriefs/2026-09-15_kickoff.txt"
     },
     {
       "date": "2026-10-06",
-      "title": "Revue technique avec Baltis et Kerlis Connect",
-      "debrief": "debriefs/2026-10-06_revue_technique.txt"
+      "title": "Technical review with Baltis and Kerlis Connect",
+      "debrief": "debriefs/2026-10-06_technical_review.txt"
     },
     {
       "date": "2026-10-27",
-      "title": "Réunion consortium (phasage, financement)",
+      "title": "Consortium meeting (phasing, financing)",
       "debrief": "debriefs/2026-10-27_consortium.txt"
     }
   ]

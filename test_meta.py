@@ -3,7 +3,7 @@
 Usage:
     python test_meta.py ping
     python test_meta.py transcribe samples/debrief.wav [--lang french]
-    python test_meta.py extract samples/debrief_exemple.txt
+    python test_meta.py extract samples/debrief_example.txt
     python test_meta.py image samples/organigramme.jpg
     python test_meta.py all samples/debrief.wav samples/organigramme.jpg
 

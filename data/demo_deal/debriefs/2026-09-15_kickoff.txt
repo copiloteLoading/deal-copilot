@@ -1,0 +1,11 @@
+Debrief of the kick-off meeting on September 15, Port-Lazen – Kerlis project.
+
+So, first real meeting with everyone around the table. Claire Dantec, the chair of the Nordlink Bay consortium, opened the meeting. She mostly talked about the schedule: she wants the cable in service before the end of 2028, that's her absolute priority. She didn't take a position on suppliers, she stayed very neutral.
+
+Thomas Riou, from the Atlantic Development Bank, was there. He said the bank was "interested in principle" but that a full environmental impact study would be needed before any commitment. He asked us for a note on our experience laying cable in protected areas.
+
+Julien Marec, the CTO of Baltis, asked a lot of questions about the repeaters, he seemed happy with the answers.
+
+Oceanix Cables has also been consulted, Claire said so openly.
+
+Next steps: send the note on protected areas to Thomas Riou by the end of September, and prepare the technical review in early October.

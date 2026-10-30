@@ -1,5 +1,6 @@
-"""La chaîne complète, utilisée par l'interface (et plus tard par l'évaluation) :
-débrief -> signaux -> mémoire -> modèle -> questions et actions.
+"""La chaîne complète, utilisée par l'interface :
+débrief (voix, texte ou photo) -> signaux -> mémoire -> positions des acteurs (modèle)
+-> probabilité de signature (Muse Spark) -> questions et actions (agent, classées par le modèle).
 """
 
 from __future__ import annotations
@@ -8,11 +9,11 @@ from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
-from copilot import agent, decision, extract, llm, memory, model
+from copilot import agent, clock, decision, extract, forecast, llm, memory, model
 
 DEMO_DIR = Path(__file__).resolve().parent.parent / "data" / "demo_deal"
 DEMO_ID = "port-aven-kerlis"
-ANSWER_TITLE = "Réponse au débrief actif"
+ANSWER_TITLE = "Answer to the copilot"
 
 
 def setup_demo(conn, reset: bool = False) -> str:
@@ -31,18 +32,18 @@ def setup_demo(conn, reset: bool = False) -> str:
 
 
 def analyze_debrief(conn, deal_id: str, text: str, day: str | None = None,
-                    title: str = "Débrief du jour") -> dict:
+                    title: str = "Today's debrief") -> dict:
     """Débrief dicté, ou notes remises au propre depuis une photo (même extraction, même vérification
     des citations, faite sur le texte validé par le commercial)."""
-    return extract.extract_and_store(conn, deal_id, day or date.today().isoformat(), text, title)
+    return extract.extract_and_store(conn, deal_id, day or clock.today().isoformat(), text, title)
 
 
 def answer_question(conn, deal_id: str, question: dict, answer: str, day: str | None = None) -> dict | None:
     """Muse Spark lit la réponse à propos de l'acteur visé ; le signal obtenu passe par le modèle
     comme n'importe quel autre. Renvoie ce signal (None si rien d'exploitable)."""
     signal = extract.interpret_answer(question["text"], answer, question["actor"])
-    meeting_id = memory.add_meeting(conn, deal_id, day or date.today().isoformat(), ANSWER_TITLE,
-                                    f"Question : {question['text']}\nRéponse : {answer}")
+    meeting_id = memory.add_meeting(conn, deal_id, day or clock.today().isoformat(), ANSWER_TITLE,
+                                    f"Question: {question['text']}\nAnswer: {answer}")
     if signal:
         memory.add_signals(conn, deal_id, meeting_id, [signal])
     return signal
@@ -52,38 +53,44 @@ def answer_question(conn, deal_id: str, question: dict, answer: str, day: str | 
 class DealState:
     deal: dict
     data: model.DealData
-    post: model.Posterior
+    post: model.Posterior                         # positions des acteurs (modèle)
     last_contact: dict
     meetings: list[dict]
-    timeline: list[tuple[str, model.Posterior]]   # (étiquette, probabilité après cette réunion)
+    forecast: dict | None                         # probabilité de signature (Muse Spark), None hors ligne
+    timeline: list[tuple[str, dict]]              # (étiquette, prévision après cette entrée du dossier)
     latest_debrief: dict | None                   # dernière réunion (hors réponses)
     latest_signals: list[dict]                    # signaux du dernier débrief et des réponses qui suivent
-    moves: list[dict]                             # ce qui a fait bouger la probabilité
 
 
 def state(conn, deal_id: str, as_of: str | None = None) -> DealState:
-    as_of = as_of or date.today().isoformat()
+    as_of = as_of or clock.today().isoformat()
     data = model.load(conn, deal_id)
     meetings = memory.meetings(conn, deal_id)
     all_signals = memory.signals(conn, deal_id)
 
+    deal = memory.get_deal(conn, deal_id)
+
+    # une prévision par entrée du dossier (déjà en cache sauf la dernière)
     timeline = []
     for m in meetings:
-        later = {s["id"] for s in all_signals if s["meeting_id"] > m["id"]}
-        label = date.fromisoformat(m["date"]).strftime("%d/%m")
+        if not m["transcript"]:
+            continue
+        label = date.fromisoformat(m["date"]).strftime("%b %d")
         if m["title"] == ANSWER_TITLE:
-            label += " · réponse"
-        timeline.append((label, model.posterior(data, m["date"], exclude=later)))
+            label += " · answer"
+        try:
+            timeline.append((label, forecast.forecast(deal, forecast.texts_until(conn, deal_id, m["id"]))))
+        except Exception:          # hors ligne et pas en cache, ou API indisponible
+            pass
 
     debriefs = [m for m in meetings if m["title"] != ANSWER_TITLE]
     latest = debriefs[-1] if debriefs else None
     latest_ids = {m["id"] for m in meetings if latest and m["id"] >= latest["id"]}
     latest_signals = [s for s in all_signals if s["meeting_id"] in latest_ids]
-    moves = model.explain(data, [s["id"] for s in latest_signals], as_of)
+    current = timeline[-1][1] if timeline and len(timeline) == sum(1 for m in meetings if m["transcript"]) else None
 
-    return DealState(memory.get_deal(conn, deal_id), data, model.posterior(data, as_of),
-                     memory.last_contact(conn, deal_id), meetings, timeline, latest,
-                     latest_signals, moves)
+    return DealState(deal, data, model.posterior(data, as_of), memory.last_contact(conn, deal_id),
+                     meetings, current, timeline, latest, latest_signals)
 
 
 def pending_changes(st: DealState, as_of: str | None = None) -> list[dict]:
@@ -91,7 +98,7 @@ def pending_changes(st: DealState, as_of: str | None = None) -> list[dict]:
     un acteur qui passe de « pour » à « contre » (ou l'inverse), ou un veto qui bascule « contre ».
     Le modèle les compte déjà, mais le commercial doit les valider : une erreur d'extraction
     sur ces signaux-là changerait tout le plan."""
-    as_of = as_of or date.today().isoformat()
+    as_of = as_of or clock.today().isoformat()
     latest = {s["id"] for s in st.latest_signals}
     before = model.posterior(st.data, as_of, exclude=latest).beliefs
     out = []
@@ -133,12 +140,12 @@ def refresh_actions(st: DealState, actions: list[dict]) -> list[dict]:
     """Rechiffre les actions déjà proposées avec l'état actuel (après une réponse, par exemple)."""
     out = []
     for act in actions:
-        v = decision.action_value(st.data, st.post, act["effects"], date.today().isoformat())
+        v = decision.action_value(st.data, st.post, act["effects"], clock.today().isoformat())
         out.append({**act, **v})
     return sorted(out, key=lambda a: -a["gain"])
 
 
-EMAIL_RULES = """You write a short, professional follow-up email in French for a sales rep.
+EMAIL_RULES = """You write a short, professional follow-up email in English for a sales rep.
 Use only the facts given. Never invent a number, a date or a commitment. No probabilities.
 Sign with the rep's name. Return only the email (subject line first, starting with "Objet :")."""
 
@@ -156,28 +163,3 @@ def followup_email(st: DealState, action: dict) -> str:
         facts.append(f"Summary of the last meeting: {st.latest_debrief['summary']}")
     return llm.chat([{"role": "developer", "content": EMAIL_RULES},
                      {"role": "user", "content": "\n".join(facts)}], **llm.effort("low"))
-
-
-REMINDER_RULES = """You write a short message in French (5 to 8 lines) from a sales rep to a stakeholder
-they have not talked to directly for a while, to re-establish contact and propose a short exchange.
-Use only the facts given. Never invent a number, a date, a meeting or a commitment.
-Never reveal the rep's internal analysis: no positions, no probabilities, no "you have been silent".
-Courteous and concrete, adapted to the recipient's role. Sign with the rep's name.
-Return only the message (subject line first, starting with "Objet :")."""
-
-
-def reminder(st: DealState, actor: dict) -> str:
-    """Message de reprise de contact pour un acteur silencieux, rédigé par Muse Spark."""
-    org = next((o["name"] for o in st.deal["organizations"] if o["id"] == actor["org_id"]), "")
-    last = st.last_contact.get(actor["id"])
-    facts = [f"Rep: {st.deal['sales_rep']} ({st.deal['seller']})",
-             f"Deal: {st.deal['name']} ({st.deal['description']})",
-             f"Recipient: {actor['name']}, {actor['role']}, {org}",
-             f"Last direct exchange: {last or 'none recorded'}"]
-    known = st.data.signals[actor["id"]]
-    if known:
-        s = known[-1]
-        facts.append(f"Last thing reported about them ({s['date']}): « {s['quote']} »")
-    return llm.chat([{"role": "developer", "content": REMINDER_RULES},
-                     {"role": "user", "content": "\n".join(facts)}], **llm.effort("low"))
-
