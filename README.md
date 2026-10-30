@@ -44,7 +44,7 @@ We started with a stochastic model for everything, then measured it against Muse
 |---|---|---|
 | The probability of signature | **Muse Spark**, average of 3 draws | It forecasts the outcome better than our model: Brier 0.178 against 0.24 on two separate test sets. Averaging 3 draws halves its run-to-run noise without losing accuracy. |
 | Remembering each stakeholder, vetoes, silences | **Per-actor model** (Markov + Bayes) | It is stable and coherent. Muse Spark alone moves by up to 20 points with no new information, and orders "veto says no" < "today" < "veto says yes" correctly in only 35–45 % of cases. |
-| Choosing the 2 questions | **Muse Spark proposes, the model ranks** | The questions reach the veto holders 98–100 % of the time and reduce uncertainty by 18–24 % (random questions: 45–51 % and 4–9 %). |
+| Choosing the 2 questions | **Muse Spark proposes, the model ranks** | The questions reach the veto holders 98–100 % of the time and reduce uncertainty by 18–24 % (random questions: 45–51 % and 4–9 %). They do not make Muse Spark's forecast more accurate on our test set (see Results). |
 | Ranking actions | **Muse Spark proposes, the model ranks** | The model's "what if?" does not depend on the wording; Muse Spark's moves by up to 22 points between two phrasings of the same hypothesis. Impact is shown as high / medium / low, so the model's scale never contradicts the displayed probability. |
 | Reading speech, photos, writing emails | **Muse Voice Transcribe, Muse Spark** | That is what they are for. Nothing is invented: every quote is checked, and generated texts contain no figures. |
 
@@ -173,6 +173,21 @@ That is why the stable model ranks questions and actions. One honest note: part 
 
 The ranked questions clearly beat random ones. They beat Muse Spark's own picks only by a small margin, and on the validation set, random questions give as many correct positions (80 %).
 
+**Do the answers improve the displayed forecast? No, not on this test set.** In the product, the rep's answers are added to the deal file and Muse Spark re-reads everything. We replayed exactly that on all 80 forecasts, with the answers simulated from the hidden truth. See [`eval/questions_forecast.md`](eval/questions_forecast.md).
+
+| Brier score of Muse Spark's forecast | Dev | Validation | Both (90 % interval of the gain) |
+|---|---|---|---|
+| No question | 0.178 | 0.178 | 0.178 |
+| + answers to the copilot's 2 questions | 0.172 | 0.189 | 0.180 ([−0.014 ; +0.010]) |
+| + answers on Muse Spark's own picks | 0.174 | 0.187 | 0.181 ([−0.011 ; +0.006]) |
+| + answers on 2 random actors | 0.173 | 0.182 | 0.178 ([−0.008 ; +0.009]) |
+
+The answers move the forecast by 4 to 5 points on average, barely more than the spread between two draws. Two reasons:
+- **early in a deal, today's positions do not predict the outcome**, because these stories turn on later reversals (the Brier score is about 0.27 at meetings 1–2 with or without answers);
+- **at the last meeting, the debriefs already say almost everything** (Brier 0.036).
+
+So we do not claim that the questions make the forecast more accurate. What they demonstrably do is fill the deal file where it is blind: they target the veto holders, correct the actors' positions (72 % → 79 %) and cut the model's uncertainty by about a fifth. In the trap demo, that one answer is what surfaces the hidden risk.
+
 ### 4. Dictating in noisy places
 
 Reps dictate where they can: on the train, in the car. We mixed the trap debrief (52 s, synthetic voice, French version) with synthetic transport, shower and babble noise at 10, 5 and 0 dB SNR. See [`eval/noise.md`](eval/noise.md).
@@ -214,6 +229,7 @@ The hosted version is the same app, calling Muse live, on Streamlit Community Cl
 .\.venv\Scripts\python.exe -m eval.evaluate                # forecasting, extraction, questions (dev set)
 .\.venv\Scripts\python.exe -m eval.evaluate holdout        # same on the validation set
 .\.venv\Scripts\python.exe -m eval.consistency holdout     # stability and coherence
+.\.venv\Scripts\python.exe -m eval.questions_forecast      # do answers improve Muse Spark's forecast?
 .\.venv\Scripts\python.exe -m eval.demo_cache              # rebuild the safety-net cache
 ```
 
