@@ -196,6 +196,18 @@ Reps dictate where they can: on the train, in the car. We mixed the trap debrief
 - **A spectral-subtraction denoiser does not reliably help.** It improves the SNR by up to 11 dB, but the transcription varies as much from one run to the next as the filter's effect.
 - So the audio is sent as is, and a blind SNR estimate (accurate to about 1 dB) only warns the rep when the recording is very noisy.
 
+### 5. Lessons from past deals
+
+When a deal closes, Muse Spark writes the end-of-deal review from the whole file: turning points, what went well and badly, and 2 to 4 lessons in general terms (by role and situation, no names). Every turning point and lesson must carry a quote found word for word in the debriefs ([`copilot/retro.py`](copilot/retro.py)). **Do these lessons help forecast a new deal?** Cross-validation: each set's deals are forecast with the 30 lessons from the other set. See [`eval/lessons_forecast.md`](eval/lessons_forecast.md).
+
+| Muse Spark's forecast (mean of 3 draws, 80 forecasts) | Brier | AUC |
+|---|---|---|
+| Without lessons | 0.182 | 0.83 |
+| Without lessons + best constant shift, chosen knowing the outcomes | 0.171 | 0.83 |
+| **With lessons from the other set** | **0.163** | **0.86** |
+
+The gain is +0.020 (90 % interval [+0.007 ; +0.033]): +0.024 when forecasting the dev set, +0.015 on the validation set. It beats even the best shift chosen after the fact, so the lessons carry information, not just a level. Signed deals are recognized earlier. Caveat: the stories and the lessons come from the same model, which may flatter the result.
+
 ### Limits
 
 - Small sets: 2 × 10 deals and 2 × 40 forecasts.
@@ -230,6 +242,7 @@ The hosted version is the same app, calling Muse live, on Streamlit Community Cl
 .\.venv\Scripts\python.exe -m eval.evaluate holdout        # same on the validation set
 .\.venv\Scripts\python.exe -m eval.consistency holdout     # stability and coherence
 .\.venv\Scripts\python.exe -m eval.questions_forecast      # do answers improve Muse Spark's forecast?
+.\.venv\Scripts\python.exe -m eval.lessons_forecast        # do lessons from past deals help?
 .\.venv\Scripts\python.exe -m eval.demo_cache              # rebuild the safety-net cache
 ```
 

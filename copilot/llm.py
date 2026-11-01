@@ -98,7 +98,8 @@ def _get_client():
         conf = PROVIDERS[provider()]
         if not _has_real_key(conf["key_env"]):
             raise RuntimeError(f"{conf['key_env']} manquante ou fictive dans .env")
-        _client = OpenAI(base_url=conf["base_url"], api_key=os.environ[conf["key_env"]])
+        # coupures réseau passagères : le SDK réessaie avec une attente croissante
+        _client = OpenAI(base_url=conf["base_url"], api_key=os.environ[conf["key_env"]], max_retries=6)
     return _client
 
 

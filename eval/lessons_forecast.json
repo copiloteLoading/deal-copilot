@@ -1,0 +1,526 @@
+{
+  "dev": [
+    {
+      "deal_id": "01_cable_sous_marin_aurore_liaison_brume_va",
+      "y": 1,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.19666666666666666,
+          "lessons": 0.26666666666666666
+        },
+        {
+          "meeting": 2,
+          "none": 0.22666666666666666,
+          "lessons": 0.26666666666666666
+        },
+        {
+          "meeting": 3,
+          "none": 0.75,
+          "lessons": 0.7633333333333333
+        },
+        {
+          "meeting": 4,
+          "none": 0.8366666666666666,
+          "lessons": 0.8633333333333333
+        }
+      ]
+    },
+    {
+      "deal_id": "02_cable_d_export_225_kv_parc_des_dunes_bla",
+      "y": 0,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.3233333333333333,
+          "lessons": 0.3833333333333333
+        },
+        {
+          "meeting": 2,
+          "none": 0.30666666666666664,
+          "lessons": 0.34333333333333327
+        },
+        {
+          "meeting": 3,
+          "none": 0.30666666666666664,
+          "lessons": 0.27666666666666667
+        },
+        {
+          "meeting": 4,
+          "none": 0.22,
+          "lessons": 0.18000000000000002
+        }
+      ]
+    },
+    {
+      "deal_id": "03_celestia_merival_42mw_power_et_cooling",
+      "y": 1,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.19333333333333333,
+          "lessons": 0.22666666666666668
+        },
+        {
+          "meeting": 2,
+          "none": 0.18000000000000002,
+          "lessons": 0.19333333333333336
+        },
+        {
+          "meeting": 3,
+          "none": 0.5833333333333334,
+          "lessons": 0.6900000000000001
+        },
+        {
+          "meeting": 4,
+          "none": 0.66,
+          "lessons": 0.6833333333333332
+        }
+      ]
+    },
+    {
+      "deal_id": "04_liaison_sous_marine_lumen_cap_des_aigret",
+      "y": 0,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.35333333333333333,
+          "lessons": 0.34
+        },
+        {
+          "meeting": 2,
+          "none": 0.32,
+          "lessons": 0.31666666666666665
+        },
+        {
+          "meeting": 3,
+          "none": 0.17666666666666667,
+          "lessons": 0.20000000000000004
+        },
+        {
+          "meeting": 4,
+          "none": 0.13999999999999999,
+          "lessons": 0.13999999999999999
+        }
+      ]
+    },
+    {
+      "deal_id": "05_sous_station_haute_mer_des_brumes",
+      "y": 0,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.22666666666666666,
+          "lessons": 0.28
+        },
+        {
+          "meeting": 2,
+          "none": 0.22666666666666666,
+          "lessons": 0.3133333333333333
+        },
+        {
+          "meeting": 3,
+          "none": 0.15,
+          "lessons": 0.1466666666666667
+        },
+        {
+          "meeting": 4,
+          "none": 0.13999999999999999,
+          "lessons": 0.13
+        }
+      ]
+    },
+    {
+      "deal_id": "06_dorsale_fibre_val_d_orbelle",
+      "y": 1,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.23666666666666666,
+          "lessons": 0.24333333333333332
+        },
+        {
+          "meeting": 2,
+          "none": 0.2133333333333333,
+          "lessons": 0.24
+        },
+        {
+          "meeting": 3,
+          "none": 0.32666666666666666,
+          "lessons": 0.5733333333333334
+        },
+        {
+          "meeting": 4,
+          "none": 0.8066666666666666,
+          "lessons": 0.8133333333333334
+        }
+      ]
+    },
+    {
+      "deal_id": "07_campus_ossonet_val_d_aubray_stockage_on_",
+      "y": 0,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.19999999999999998,
+          "lessons": 0.24666666666666667
+        },
+        {
+          "meeting": 2,
+          "none": 0.15,
+          "lessons": 0.19333333333333336
+        },
+        {
+          "meeting": 3,
+          "none": 0.1466666666666667,
+          "lessons": 0.18000000000000002
+        },
+        {
+          "meeting": 4,
+          "none": 0.12666666666666668,
+          "lessons": 0.12
+        }
+      ]
+    },
+    {
+      "deal_id": "08_cadre_septennal_reparation_et_maintenanc",
+      "y": 1,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.36999999999999994,
+          "lessons": 0.43
+        },
+        {
+          "meeting": 2,
+          "none": 0.3666666666666667,
+          "lessons": 0.4266666666666667
+        },
+        {
+          "meeting": 3,
+          "none": 0.3499999999999999,
+          "lessons": 0.5266666666666666
+        },
+        {
+          "meeting": 4,
+          "none": 0.82,
+          "lessons": 0.8333333333333334
+        }
+      ]
+    },
+    {
+      "deal_id": "09_ferme_pilote_eole_flottante_de_valbrise",
+      "y": 0,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.3233333333333333,
+          "lessons": 0.27666666666666667
+        },
+        {
+          "meeting": 2,
+          "none": 0.31666666666666665,
+          "lessons": 0.22
+        },
+        {
+          "meeting": 3,
+          "none": 0.15,
+          "lessons": 0.18000000000000002
+        },
+        {
+          "meeting": 4,
+          "none": 0.18666666666666668,
+          "lessons": 0.18666666666666668
+        }
+      ]
+    },
+    {
+      "deal_id": "10_liaison_sous_marine_saravelle_90_kv",
+      "y": 0,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.29000000000000004,
+          "lessons": 0.28
+        },
+        {
+          "meeting": 2,
+          "none": 0.17,
+          "lessons": 0.18000000000000002
+        },
+        {
+          "meeting": 3,
+          "none": 0.11333333333333333,
+          "lessons": 0.13999999999999999
+        },
+        {
+          "meeting": 4,
+          "none": 0.06666666666666667,
+          "lessons": 0.08
+        }
+      ]
+    }
+  ],
+  "holdout": [
+    {
+      "deal_id": "01_modernisation_station_d_atterrissage_cap",
+      "y": 1,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.19000000000000003,
+          "lessons": 0.25333333333333335
+        },
+        {
+          "meeting": 2,
+          "none": 0.25,
+          "lessons": 0.26666666666666666
+        },
+        {
+          "meeting": 3,
+          "none": 0.35000000000000003,
+          "lessons": 0.5133333333333333
+        },
+        {
+          "meeting": 4,
+          "none": 0.7833333333333332,
+          "lessons": 0.8133333333333334
+        }
+      ]
+    },
+    {
+      "deal_id": "02_array_cables_66_kv_ferme_des_brumes_780_",
+      "y": 0,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.23666666666666666,
+          "lessons": 0.22999999999999998
+        },
+        {
+          "meeting": 2,
+          "none": 0.18333333333333335,
+          "lessons": 0.19999999999999998
+        },
+        {
+          "meeting": 3,
+          "none": 0.12333333333333334,
+          "lessons": 0.18000000000000002
+        },
+        {
+          "meeting": 4,
+          "none": 0.08,
+          "lessons": 0.11333333333333333
+        }
+      ]
+    },
+    {
+      "deal_id": "03_orivale_edge_horizon_24",
+      "y": 1,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.21333333333333335,
+          "lessons": 0.27666666666666667
+        },
+        {
+          "meeting": 2,
+          "none": 0.27666666666666667,
+          "lessons": 0.3233333333333333
+        },
+        {
+          "meeting": 3,
+          "none": 0.6,
+          "lessons": 0.5166666666666667
+        },
+        {
+          "meeting": 4,
+          "none": 0.8266666666666667,
+          "lessons": 0.8066666666666666
+        }
+      ]
+    },
+    {
+      "deal_id": "04_liaison_fibre_abyssale_alizee_segment_va",
+      "y": 0,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.3233333333333333,
+          "lessons": 0.27666666666666667
+        },
+        {
+          "meeting": 2,
+          "none": 0.20333333333333334,
+          "lessons": 0.27666666666666667
+        },
+        {
+          "meeting": 3,
+          "none": 0.17,
+          "lessons": 0.18000000000000002
+        },
+        {
+          "meeting": 4,
+          "none": 0.12,
+          "lessons": 0.14
+        }
+      ]
+    },
+    {
+      "deal_id": "05_retrofit_cooling_hexacube_valmea_free_co",
+      "y": 0,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.2233333333333333,
+          "lessons": 0.2833333333333333
+        },
+        {
+          "meeting": 2,
+          "none": 0.26,
+          "lessons": 0.26
+        },
+        {
+          "meeting": 3,
+          "none": 0.15,
+          "lessons": 0.17
+        },
+        {
+          "meeting": 4,
+          "none": 0.16,
+          "lessons": 0.17
+        }
+      ]
+    },
+    {
+      "deal_id": "06_cable_aurore_liaison_sous_marine_mirval_",
+      "y": 1,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.2733333333333333,
+          "lessons": 0.31666666666666665
+        },
+        {
+          "meeting": 2,
+          "none": 0.16,
+          "lessons": 0.22333333333333336
+        },
+        {
+          "meeting": 3,
+          "none": 0.3833333333333333,
+          "lessons": 0.4000000000000001
+        },
+        {
+          "meeting": 4,
+          "none": 0.7200000000000001,
+          "lessons": 0.6999999999999998
+        }
+      ]
+    },
+    {
+      "deal_id": "07_cadre_reparation_cables_brume_2026_2031",
+      "y": 0,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.3333333333333333,
+          "lessons": 0.3333333333333333
+        },
+        {
+          "meeting": 2,
+          "none": 0.31,
+          "lessons": 0.3433333333333333
+        },
+        {
+          "meeting": 3,
+          "none": 0.15,
+          "lessons": 0.17333333333333334
+        },
+        {
+          "meeting": 4,
+          "none": 0.07666666666666667,
+          "lessons": 0.10000000000000002
+        }
+      ]
+    },
+    {
+      "deal_id": "08_anneau_fibre_clairval_cur_rhea",
+      "y": 1,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.25666666666666665,
+          "lessons": 0.3499999999999999
+        },
+        {
+          "meeting": 2,
+          "none": 0.20000000000000004,
+          "lessons": 0.21666666666666667
+        },
+        {
+          "meeting": 3,
+          "none": 0.34,
+          "lessons": 0.37666666666666665
+        },
+        {
+          "meeting": 4,
+          "none": 0.6766666666666666,
+          "lessons": 0.7799999999999999
+        }
+      ]
+    },
+    {
+      "deal_id": "09_sous_station_offshore_hydrogen_ready_des",
+      "y": 0,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.2633333333333333,
+          "lessons": 0.2966666666666667
+        },
+        {
+          "meeting": 2,
+          "none": 0.20666666666666667,
+          "lessons": 0.20666666666666667
+        },
+        {
+          "meeting": 3,
+          "none": 0.17,
+          "lessons": 0.18000000000000002
+        },
+        {
+          "meeting": 4,
+          "none": 0.12666666666666668,
+          "lessons": 0.1466666666666667
+        }
+      ]
+    },
+    {
+      "deal_id": "10_novacentre_valtaneuse_nord_distributio",
+      "y": 0,
+      "records": [
+        {
+          "meeting": 1,
+          "none": 0.20666666666666667,
+          "lessons": 0.29
+        },
+        {
+          "meeting": 2,
+          "none": 0.24,
+          "lessons": 0.2833333333333334
+        },
+        {
+          "meeting": 3,
+          "none": 0.17666666666666667,
+          "lessons": 0.18666666666666668
+        },
+        {
+          "meeting": 4,
+          "none": 0.11333333333333333,
+          "lessons": 0.12
+        }
+      ]
+    }
+  ]
+}

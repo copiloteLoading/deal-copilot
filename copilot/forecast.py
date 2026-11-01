@@ -42,9 +42,13 @@ def deal_context(deal: dict, texts: list[tuple[str, str]]) -> str:
 
 
 def one_draw(deal: dict, texts: list[tuple[str, str]], hypothesis: str | None = None,
-             cache_tag: str | None = None) -> dict:
-    """Un tirage : {"probability", "rationale"}. hypothesis : phrase « et si ? » (test de cohérence)."""
+             cache_tag: str | None = None, lessons: str | None = None) -> dict:
+    """Un tirage : {"probability", "rationale"}. hypothesis : phrase « et si ? » (test de cohérence) ;
+    lessons : leçons des contrats passés du commercial (copilot/retro.py)."""
     user = deal_context(deal, texts)
+    if lessons:
+        user += ("\n\nLessons from the rep's past deals (other contracts, validated by the rep; "
+                 "use them only where they fit):\n" + lessons)
     if hypothesis:
         user += f"\n\nHypothesis (assume it is true): {hypothesis}"
     data = llm.chat_json([{"role": "developer", "content": RULES}, {"role": "user", "content": user}],
