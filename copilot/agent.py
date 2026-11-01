@@ -6,6 +6,8 @@ Muse Spark reçoit l'état du dossier et quatre outils :
   simulate_action(effects)     la probabilité si une action réussissait (modèle)
   submit_plan(...)             rend le plan : au plus 2 questions, des actions
 Il propose librement (y compris des actions créatives), mais chaque chiffre vient d'un outil.
+Il voit aussi les leçons des contrats passés du commercial (copilot/retro.py) et peut en citer une
+à l'appui d'une action quand la situation correspond.
 
 Après la boucle, on ne fait pas confiance au plan tel quel : finalize() vérifie les acteurs et
 les citations, rejette tout texte contenant un chiffre, recalcule chaque valeur avec le modèle
@@ -65,8 +67,9 @@ TOOLS = [
                 "title": {"type": "string"},
                 "rationale": {"type": "string"},
                 "effects": EFFECTS_SCHEMA,
-                "signal_ids": {"type": "array", "items": {"type": "integer"}}},
-                "required": ["title", "rationale", "effects", "signal_ids"],
+                "signal_ids": {"type": "array", "items": {"type": "integer"}},
+                "lesson_ids": {"type": "array", "items": {"type": "integer"}}},
+                "required": ["title", "rationale", "effects", "signal_ids", "lesson_ids"],
                 "additionalProperties": False}}},
             "required": ["questions", "actions"], "additionalProperties": False}}},
 ]
@@ -87,6 +90,9 @@ Your job, using the tools:
 
 Rules:
 - Never invent a fact. Every question and action must rely on recorded signals: cite their ids.
+- Lessons from the rep's past deals are listed with their ids. When a lesson's warning sign clearly
+  matches this deal, use it to shape an action and cite it in lesson_ids; otherwise leave lesson_ids
+  empty. Never cite a lesson that does not fit.
 - Questions are asked TO THE REP right after the meeting, to learn what the rep already knows
   or noticed (not tasks to do later). Write them as real questions in English, addressed to the
   rep as "you", answerable in one sentence. Each question must aim at the actor's real position, or
@@ -123,6 +129,10 @@ def _state_message(conn, deal_id: str, data: model.DealData, base: model.Posteri
         lines.append("Signals of that meeting (id | actor | stance | quote):")
         lines += [f"- {s['id']} | {s['actor_id'] or s['raw_name']} | {s['stance']} | « {s['quote']} »"
                   for s in sigs]
+    past = memory.lessons(conn, exclude_deal=deal_id)
+    if past:
+        lines += ["", "Lessons from the rep's past deals (id | outcome of that deal | lesson | relevant when):"]
+        lines += [f"- {x['id']} | {x['outcome']} | {x['lesson']} | {x['applies_when']}" for x in past]
     return "\n".join(lines)
 
 
@@ -180,8 +190,10 @@ def _has_number(text: str) -> bool:
     return bool(re.search(r"\d", text or ""))
 
 
-def finalize(data: model.DealData, plan: dict, as_of: str) -> dict:
-    """Vérifie le plan proposé par Muse Spark et le chiffre avec le modèle (qui a le dernier mot)."""
+def finalize(data: model.DealData, plan: dict, as_of: str, lessons: list[dict] | None = None) -> dict:
+    """Vérifie le plan proposé par Muse Spark et le chiffre avec le modèle (qui a le dernier mot).
+    lessons : leçons des contrats passés ; seules celles qui existent vraiment sont gardées."""
+    known_lessons = {x["id"]: x for x in lessons or []}
     base = model.posterior(data, as_of)
     actors = {a["id"]: a for a in data.actors}
     signals = {s["id"]: s for sigs in data.signals.values() for s in sigs}
@@ -219,6 +231,7 @@ def finalize(data: model.DealData, plan: dict, as_of: str) -> dict:
         why = ("veto holder · " if target["veto"] else "") + act.get("rationale", "")
         actions.append({"actor": target, "title": act["title"], "why": why, "effects": fx,
                         "source": cited[0] if cited else None, "sources": cited,
+                        "lessons": [known_lessons[i] for i in act.get("lesson_ids", []) if i in known_lessons],
                         "by_agent": True, **v})
     actions.sort(key=lambda x: -x["gain"])
     return {"questions": questions[:MAX_QUESTIONS], "actions": actions[:MAX_ACTIONS],
@@ -265,6 +278,6 @@ def run(conn, deal_id: str, as_of: str | None = None) -> dict:
         llm.CACHE_DIR.mkdir(parents=True, exist_ok=True)
         cache.write_text(json.dumps(saved, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    result = finalize(data, saved["plan"], as_of)
+    result = finalize(data, saved["plan"], as_of, memory.lessons(conn, exclude_deal=deal_id))
     result.update(trace=saved["trace"], steps=saved["steps"], proposed=saved["plan"])
     return result

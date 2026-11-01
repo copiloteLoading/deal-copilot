@@ -1,23 +1,33 @@
 """La chaîne complète, utilisée par l'interface :
 débrief (voix, texte ou photo) -> signaux -> mémoire -> positions des acteurs (modèle)
 -> probabilité de signature (Muse Spark) -> questions et actions (agent, classées par le modèle).
+En fin de contrat : retour d'expérience (copilot/retro.py), dont les leçons servent aux contrats suivants.
 """
 
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
-from copilot import agent, clock, decision, extract, forecast, llm, memory, model
+from copilot import agent, clock, decision, extract, forecast, llm, memory, model, retro
 
 DEMO_DIR = Path(__file__).resolve().parent.parent / "data" / "demo_deal"
 DEMO_ID = "port-aven-kerlis"
 ANSWER_TITLE = "Answer to the copilot"
+PAST_LESSONS = DEMO_DIR.parent / "past_lessons.json"     # leçons des contrats passés (eval/past_lessons.py)
 
 
 def setup_demo(conn, reset: bool = False) -> str:
-    """Charge le contrat de démo et extrait les signaux des réunions passées (réponses en cache)."""
+    """Charge le contrat de démo et extrait les signaux des réunions passées (réponses en cache).
+    Charge aussi les leçons des contrats passés si la base n'en a encore aucune."""
+    if not conn.execute("SELECT 1 FROM lessons").fetchone() and PAST_LESSONS.exists():
+        by_deal = {}
+        for x in json.loads(PAST_LESSONS.read_text(encoding="utf-8")):
+            by_deal.setdefault((x["source_deal"], x["source_name"], x["outcome"]), []).append(x)
+        for (src, name, outcome), items in by_deal.items():
+            memory.add_lessons(conn, src, name, outcome, items)
     known = conn.execute("SELECT 1 FROM deals WHERE id = ?", (DEMO_ID,)).fetchone()
     if reset or not known:
         memory.import_deal(conn, DEMO_DIR)
@@ -69,6 +79,7 @@ def state(conn, deal_id: str, as_of: str | None = None) -> DealState:
     all_signals = memory.signals(conn, deal_id)
 
     deal = memory.get_deal(conn, deal_id)
+    lessons = retro.lessons_text(memory.lessons(conn, exclude_deal=deal_id)) or None
 
     # une prévision par entrée du dossier (déjà en cache sauf la dernière)
     timeline = []
@@ -79,7 +90,7 @@ def state(conn, deal_id: str, as_of: str | None = None) -> DealState:
         if m["title"] == ANSWER_TITLE:
             label += " · answer"
         try:
-            timeline.append((label, forecast.forecast(deal, forecast.texts_until(conn, deal_id, m["id"]))))
+            timeline.append((label, forecast.forecast(deal, forecast.texts_until(conn, deal_id, m["id"]), lessons)))
         except Exception:          # hors ligne et pas en cache, ou API indisponible
             pass
 
@@ -163,3 +174,17 @@ def followup_email(st: DealState, action: dict) -> str:
         facts.append(f"Summary of the last meeting: {st.latest_debrief['summary']}")
     return llm.chat([{"role": "developer", "content": EMAIL_RULES},
                      {"role": "user", "content": "\n".join(facts)}], **llm.effort("low"))
+
+
+# ------------------------------------------------------------------ fin de contrat
+def review(conn, deal_id: str, outcome: str, rep_note: str = "") -> dict:
+    """Retour d'expérience rédigé par Muse Spark ; rien n'est enregistré avant validation du commercial."""
+    deal = memory.get_deal(conn, deal_id)
+    return retro.review(deal, forecast.texts_until(conn, deal_id), outcome, rep_note)
+
+
+def close_deal(conn, deal_id: str, outcome: str, kept_lessons: list[dict], day: str | None = None) -> None:
+    """Le commercial a relu le bilan : on clôt le contrat et on garde les leçons qu'il a validées."""
+    day = day or clock.today().isoformat()
+    memory.close_deal(conn, deal_id, outcome, day)
+    memory.add_lessons(conn, deal_id, memory.get_deal(conn, deal_id)["name"], outcome, kept_lessons, day)

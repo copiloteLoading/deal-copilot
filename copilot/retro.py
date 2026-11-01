@@ -46,7 +46,8 @@ sales rep who ran it. You get the deal's actors, every debrief in order, and the
   situation ("a finance veto holder who ties approval to the budget cycle"), never with the names of
   people, companies or places from this deal. applies_when: the warning sign that makes the lesson
   relevant on a new deal. evidence_quote: an exact quote from the debriefs that supports it.
-- Say "observed" rather than claiming a cause you cannot prove. Never invent numbers. Write in English.
+- Do not claim causes you cannot prove: say what happened and in what order ("after X, Y followed"),
+  not "X caused Y". Plain, grammatical sentences. Never invent numbers. Write in English.
 """
 
 

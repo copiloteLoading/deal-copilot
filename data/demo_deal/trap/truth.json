@@ -15,7 +15,8 @@
     "question_idea": "When Sophie Lenoir says \"after the budget\", do you know when the budget is set, and whether our project is in it?",
     "rep_answer": "The budget is voted in January, and according to Julien, the cable is not in the planned envelope yet.",
     "probability_direction": "down",
-    "plan_change": "Action #1 becomes: get a meeting with Sophie Lenoir before January to put the project in the budget, with an adapted phasing."
+    "plan_change": "Action #1 becomes: get a meeting with Sophie Lenoir before January to put the project in the budget, with an adapted phasing.",
+    "closing_note": "The CFO's condition was never lifted: the cable was left out of the January budget."
   },
   "outcome": "delayed"
 }

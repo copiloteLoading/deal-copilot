@@ -3,6 +3,8 @@
 Un seul écran, dans l'ordre du problème : débrief (voix, texte ou photo) -> signaux (Muse Spark)
 -> probabilité de signature (Muse Spark, moyenne de 3 tirages) et positions des acteurs (modèle)
 -> au plus 2 questions -> plan d'action, compte rendu, e-mail de suivi.
+En fin de contrat : retour d'expérience rédigé par Muse Spark, dont les leçons validées servent ensuite
+à la prévision et au plan des autres contrats.
 
 Lancer : .\\.venv\\Scripts\\python.exe -m streamlit run app.py
 """
@@ -17,13 +19,15 @@ from pathlib import Path
 import plotly.graph_objects as go
 import streamlit as st
 
-from copilot import capture, clock, llm, memory, model, orgchart, photo, pipeline
+from copilot import capture, clock, llm, memory, model, orgchart, photo, pipeline, retro
 
 SILENCE_DAYS = 30
 TRAP_TEXT = (pipeline.DEMO_DIR / "trap" / "debrief_piege.txt").read_text(encoding="utf-8")
-TRAP_ANSWER = json.loads((pipeline.DEMO_DIR / "trap" / "truth.json").read_text(encoding="utf-8")
-                         )["expected_agent_behavior"]["rep_answer"]
+TRAP_EXPECTED = json.loads((pipeline.DEMO_DIR / "trap" / "truth.json").read_text(encoding="utf-8")
+                           )["expected_agent_behavior"]
+TRAP_ANSWER, EXAMPLE_NOTE = TRAP_EXPECTED["rep_answer"], TRAP_EXPECTED["closing_note"]
 SAMPLES = Path(__file__).resolve().parent / "samples"
+OUTCOMES = {"lost": "Lost", "signed": "Signed", "delayed": "Delayed"}
 SAMPLE_PHOTOS = {"Handwritten notes (bank meeting)": "notes_bank_meeting.jpg",
                  "Whiteboard (phasing workshop)": "whiteboard_phasing.jpg"}
 
@@ -57,6 +61,7 @@ st.markdown(f"""
 [data-testid="stMetricValue"] {{ font-weight: 600; font-size: 1.7rem; }}
 [class*="st-key-card_actions"] hr {{ margin: 0.5rem 0; }}
 [class*="st-key-card_confirm"], [class*="st-key-card_unknown"] {{ border-left: 4px solid {WARN}; }}
+[class*="st-key-card_close"] {{ border-left: 4px solid {NAVY}; }}
 .dc-overline {{ font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
     text-transform: uppercase; color: {NAVY}; }}
 .dc-title {{ font-size: 2rem; font-weight: 700; color: {INK}; margin: 0.15rem 0 0.2rem; }}
@@ -100,7 +105,7 @@ def level(gain: float, high: float, medium: float) -> tuple[str, str]:
 
 def reset_session() -> None:
     for k in ["plan", "answers", "email", "transcript", "debrief_text", "noisy", "photo_image",
-              "photo_read", "photo_rows", "photo_notes", "ignored_names"]:
+              "photo_read", "photo_rows", "photo_notes", "ignored_names", "review", "review_note"]:
         st.session_state.pop(k, None)
 
 
@@ -154,6 +159,8 @@ def is_silent(actor_id: str) -> bool:
 
 
 silent = [a for a in S.data.actors if is_silent(a["id"])]
+PAST = memory.lessons(conn, exclude_deal=deal_id)
+CLOSED = memory.closure(conn, deal_id)
 pending = pipeline.pending_changes(S)
 pending_ids = {c["actor"]["id"] for c in pending}
 vetoes = [a for a in S.data.actors if a["veto"]]
@@ -275,6 +282,8 @@ with st.sidebar:
     st.markdown("<div class='dc-brand'>deal-copilot</div>", unsafe_allow_html=True)
     st.caption("The sales rep's private copilot for multi-year infrastructure deals")
     st.selectbox("Deal", [S.deal["name"]])
+    if CLOSED:
+        st.caption(f":material/flag: Closed on {CLOSED['closed_on']} · {OUTCOMES[CLOSED['outcome']].lower()}")
     st.caption(f"Muse Spark (`{llm.model_name()}`) · Muse Voice Transcribe · {llm.provider()}")
     if st.button("Back to the initial deal", icon=":material/restart_alt:", width="stretch"):
         pipeline.setup_demo(conn, reset=True)
@@ -503,6 +512,15 @@ with left:
             st.plotly_chart(probability_chart(), width="stretch", config={"displayModeBar": False})
         if S.forecast:
             st.markdown(f":material/lightbulb: {S.forecast['rationale']}")
+        if PAST:
+            with st.expander(f"Lessons from your past deals ({len(PAST)}), read by Muse Spark",
+                             icon=":material/history_edu:"):
+                st.caption("Written at the end of each past deal and validated by you. With them, Muse Spark "
+                           "forecast our test deals more accurately (Brier 0.182 → 0.163).")
+                for x in PAST:
+                    st.markdown(f"- **{OUTCOMES[x['outcome']]}** · {x['lesson']}  \n"
+                                f"  <span style='color:{MUTED};font-size:0.85rem'>Relevant when: "
+                                f"{x['applies_when']}</span>", unsafe_allow_html=True)
 with right:
     with st.container(key="card_map"):
         section("Stakeholders", "Each person's position, remembered across meetings by the model · size: "
@@ -571,6 +589,9 @@ with right:
             a, b = st.columns([4.5, 1.5], vertical_alignment="center")
             a.markdown(f"**{i + 1}. {act['title']}**")
             a.caption(act["why"])
+            for x in act.get("lessons", []):
+                a.caption(f":material/history_edu: From a past deal ({OUTCOMES[x['outcome']].lower()}): "
+                          f"{x['lesson']}")
             label, color = level(act["gain"], 0.10, 0.04)
             b.markdown(f"<div class='dc-impact' style='color:{color}'>{label}</div>", unsafe_allow_html=True)
         st.write("")
@@ -590,6 +611,67 @@ with right:
             st.caption("Silent: " + " · ".join(
                 f"{a['name']}{' (veto)' if a['veto'] else ''}"
                 for a in sorted(silent, key=lambda x: (not x["veto"], -x["influence"]))))
+
+# ------------------------------------------------------------------ fin de contrat
+def close_card() -> None:
+    """Fin de contrat : l'issue, une phrase du commercial, puis le bilan de Muse Spark à valider."""
+    section("Close the deal", "When the deal ends, Muse Spark writes the review from the whole file. The lessons "
+                              "you keep help forecast and plan your next deals, even if someone else takes over.")
+    if CLOSED:
+        mine = conn.execute("SELECT COUNT(*) FROM lessons WHERE source_deal = ?", (deal_id,)).fetchone()[0]
+        st.success(f"Deal closed on {CLOSED['closed_on']} ({OUTCOMES[CLOSED['outcome']].lower()}) · "
+                   f"{mine} lesson(s) kept for your next deals.", icon=":material/flag:")
+        return
+    review = st.session_state.get("review")
+    if review is None:
+        c1, c2 = st.columns([1, 2.4], vertical_alignment="bottom")
+        outcome = c1.radio("Outcome", list(OUTCOMES), format_func=OUTCOMES.get, horizontal=True, key="review_outcome")
+        if c2.button("Example", icon=":material/science:", key="review_example"):
+            st.session_state.review_note = EXAMPLE_NOTE
+        note = st.text_input("In one sentence, what made the difference? (optional)", key="review_note")
+        if st.button("Write the end-of-deal review (Muse Spark)", type="primary", icon=":material/history_edu:",
+                     width="stretch"):
+            if not allow_action():
+                st.stop()
+            with st.spinner("Muse Spark is reading the whole file…"):
+                try:
+                    st.session_state.review = {"outcome": outcome,
+                                               **pipeline.review(conn, deal_id, outcome, note)}
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"Could not write the review: {e}")
+        return
+
+    st.markdown(f"**{OUTCOMES[review['outcome']]}** · {review['summary']}")
+    if review["turning_points"]:
+        st.markdown("**Turning points**")
+        for tp in review["turning_points"]:
+            st.markdown(f"- **{tp['date']}** · {tp['what']} · “{tp['evidence_quote']}”")
+    c1, c2 = st.columns(2)
+    with c1:
+        st.markdown("**What went well**")
+        for x in review["went_well"] or ["—"]:
+            st.markdown(f"- {x}")
+    with c2:
+        st.markdown("**What went badly**")
+        for x in review["went_badly"] or ["—"]:
+            st.markdown(f"- {x}")
+    st.markdown("**Lessons for your next deals** · keep the ones you agree with")
+    kept = [x for i, x in enumerate(review["lessons"])
+            if st.checkbox(f"{x['lesson']} *(relevant when: {x['applies_when']})*", value=True, key=f"lesson_{i}")]
+    b1, b2 = st.columns(2)
+    if b1.button("Keep these lessons and close the deal", type="primary", icon=":material/flag:", width="stretch"):
+        pipeline.close_deal(conn, deal_id, review["outcome"], kept)
+        st.session_state.pop("review", None)
+        st.rerun()
+    if b2.button("Discard the review", icon=":material/close:", width="stretch"):
+        st.session_state.pop("review", None)
+        st.rerun()
+
+
+with st.container(key="card_close"):
+    close_card()
+st.write("")
 
 # ------------------------------------------------------------------ raisonnement de l'agent
 with st.container(key="card_agent"):

@@ -3,8 +3,8 @@ comme filet de sécurité (si l'API ne répond pas, l'appli reste utilisable sur
 
 On rejoue le parcours de la vidéo exactement comme l'interface l'enchaîne, à une date fixe :
 ouverture du dossier (extraction, prévision, plan), lecture des deux photos d'exemple, débrief
-piège, réponse d'exemple à la question sur Sophie Lenoir, e-mail de suivi, puis ajout des notes
-manuscrites et du tableau blanc. Premier passage : appels réels pour ce qui manque. Second
+piège, réponse d'exemple à la question sur Sophie Lenoir, e-mail de suivi, ajout des notes
+manuscrites et du tableau blanc, puis retour d'expérience de fin de contrat (issue « perdu »). Premier passage : appels réels pour ce qui manque. Second
 passage, hors ligne : on note chaque réponse relue et on copie exactement celles-là.
 Les réponses qui dépendent de la date du jour (débrief du jour, plan de l'agent) ne servent
 que si l'appli tourne à cette même date (DEAL_COPILOT_TODAY).
@@ -24,8 +24,9 @@ os.environ.setdefault("DEAL_COPILOT_TODAY", "2026-10-29")     # même date que l
 from copilot import llm, memory, orgchart, photo, pipeline  # noqa: E402
 
 TRAP = (pipeline.DEMO_DIR / "trap" / "debrief_piege.txt").read_text(encoding="utf-8")
-TRAP_ANSWER = json.loads((pipeline.DEMO_DIR / "trap" / "truth.json").read_text(encoding="utf-8")
-                         )["expected_agent_behavior"]["rep_answer"]
+EXPECTED = json.loads((pipeline.DEMO_DIR / "trap" / "truth.json").read_text(encoding="utf-8")
+                      )["expected_agent_behavior"]
+TRAP_ANSWER, CLOSING_NOTE = EXPECTED["rep_answer"], EXPECTED["closing_note"]
 SAMPLES = pipeline.DEMO_DIR.parent.parent / "samples"
 
 
@@ -63,6 +64,9 @@ def journey() -> None:
         pipeline.analyze_debrief(conn, d, got["clean_notes"], got["date"] or None, f"Photo: {got['title']}")
         pipeline.state(conn, d)
         pipeline.plan(conn, d)
+
+    # fin de contrat : le bilan, comme l'interface le demande par défaut (issue « perdu »)
+    pipeline.review(conn, d, "lost", CLOSING_NOTE)
 
 
 if __name__ == "__main__":

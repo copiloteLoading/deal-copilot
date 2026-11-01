@@ -1,0 +1,573 @@
+{
+  "plan": {
+    "actions": [
+      {
+        "effects": [
+          {
+            "actor_id": "sophie_lenoir",
+            "stance": "support"
+          },
+          {
+            "actor_id": "thomas_riou",
+            "stance": "support"
+          }
+        ],
+        "lesson_ids": [
+          1,
+          32
+        ],
+        "rationale": "Sophie conditions sign-off on spreading payments and Thomas finds the guarantee idea worth exploring.",
+        "signal_ids": [
+          12,
+          31,
+          34,
+          21
+        ],
+        "title": "Propose milestone-based payment schedule backed by a bank guarantee"
+      },
+      {
+        "effects": [
+          {
+            "actor_id": "thomas_riou",
+            "stance": "support"
+          }
+        ],
+        "lesson_ids": [
+          4
+        ],
+        "rationale": "Thomas conditions any financing commitment on approval of the environmental study.",
+        "signal_ids": [
+          3,
+          26
+        ],
+        "title": "Organize joint review of environmental study approval timetable with the lender"
+      },
+      {
+        "effects": [
+          {
+            "actor_id": "sophie_lenoir",
+            "stance": "support"
+          }
+        ],
+        "lesson_ids": [
+          19
+        ],
+        "rationale": "Sophie defers discussion until after the budget while the cable is flagged as outside the planned envelope.",
+        "signal_ids": [
+          12,
+          22,
+          25
+        ],
+        "title": "Reframe offer as capped multi-year cost with acceptance-gated milestones"
+      },
+      {
+        "effects": [
+          {
+            "actor_id": "claire_dantec",
+            "stance": "support"
+          },
+          {
+            "actor_id": "julien_marec",
+            "stance": "support"
+          },
+          {
+            "actor_id": "yann_le_goff",
+            "stance": "support"
+          }
+        ],
+        "lesson_ids": [
+          48
+        ],
+        "rationale": "Julien publicly defends the technical choice while finance delays the budget decision.",
+        "signal_ids": [
+          18,
+          32,
+          33
+        ],
+        "title": "Invite technical champion to defend whole-life value in finance forum"
+      }
+    ],
+    "questions": [
+      {
+        "actor_id": "sophie_lenoir",
+        "signal_ids": [
+          12,
+          22,
+          25,
+          34
+        ],
+        "text": "Do you know whether Sophie Lenoir told you what spread would let her sign off after the budget talk?"
+      },
+      {
+        "actor_id": "thomas_riou",
+        "signal_ids": [
+          3,
+          26,
+          31
+        ],
+        "text": "Do you know whether Thomas Riou told you what remains for the study to be approved so he can commit?"
+      }
+    ]
+  },
+  "trace": [
+    {
+      "tool": "get_signals",
+      "args": {
+        "actor_id": "sophie_lenoir"
+      },
+      "result": {
+        "signals": [
+          {
+            "id": 12,
+            "date": "2026-10-27",
+            "stance": "conditional",
+            "strength": "strong",
+            "source": "direct",
+            "quote": "she wants to spread it over four years instead of three, otherwise she won't sign off."
+          },
+          {
+            "id": 22,
+            "date": "2026-10-29",
+            "stance": "conditional",
+            "strength": "strong",
+            "source": "direct",
+            "quote": "Sophie Lenoir just said \"we'll talk about it after the budget\""
+          },
+          {
+            "id": 25,
+            "date": "2026-10-29",
+            "stance": "oppose",
+            "strength": "weak",
+            "source": "reported",
+            "quote": "the cable is not in the planned envelope yet"
+          },
+          {
+            "id": 34,
+            "date": "2026-10-29",
+            "stance": "conditional",
+            "strength": "strong",
+            "source": "direct",
+            "quote": "Sophie L.: OK only if spread over 4 years?"
+          }
+        ]
+      }
+    },
+    {
+      "tool": "get_signals",
+      "args": {
+        "actor_id": "thomas_riou"
+      },
+      "result": {
+        "signals": [
+          {
+            "id": 3,
+            "date": "2026-09-15",
+            "stance": "conditional",
+            "strength": "strong",
+            "source": "direct",
+            "quote": "He said the bank was \"interested in principle\" but that a full environmental impact study would be needed before any commitment."
+          },
+          {
+            "id": 26,
+            "date": "2026-10-22",
+            "stance": "conditional",
+            "strength": "strong",
+            "source": "direct",
+            "quote": "no financing until the study is approved"
+          },
+          {
+            "id": 31,
+            "date": "2026-10-22",
+            "stance": "support",
+            "strength": "weak",
+            "source": "direct",
+            "quote": "Bank guarantee on the payment plan: he finds the idea interesting, to be investigated further."
+          }
+        ]
+      }
+    },
+    {
+      "tool": "get_signals",
+      "args": {
+        "actor_id": "marion_kervella"
+      },
+      "result": {
+        "signals": []
+      }
+    },
+    {
+      "tool": "get_signals",
+      "args": {
+        "actor_id": "claire_dantec"
+      },
+      "result": {
+        "signals": [
+          {
+            "id": 2,
+            "date": "2026-09-15",
+            "stance": "neutral",
+            "strength": "strong",
+            "source": "direct",
+            "quote": "She didn't take a position on suppliers, she stayed very neutral."
+          },
+          {
+            "id": 18,
+            "date": "2026-10-29",
+            "stance": "support",
+            "strength": "strong",
+            "source": "direct",
+            "quote": "Claire Dantec was there, she said in front of everyone that our offer was \"the market benchmark\" on the technical side."
+          },
+          {
+            "id": 21,
+            "date": "2026-10-29",
+            "stance": "support",
+            "strength": "weak",
+            "source": "direct",
+            "quote": "We presented the four-year phasing, everyone nodded."
+          }
+        ]
+      }
+    },
+    {
+      "tool": "get_signals",
+      "args": {
+        "actor_id": "paul_ternaud"
+      },
+      "result": {
+        "signals": []
+      }
+    },
+    {
+      "tool": "evaluate_question",
+      "args": {
+        "actor_id": "sophie_lenoir"
+      },
+      "result": {
+        "uncertainty_reduction_points": 7.7,
+        "expected_interval_after_answer": [
+          5,
+          51
+        ]
+      }
+    },
+    {
+      "tool": "evaluate_question",
+      "args": {
+        "actor_id": "thomas_riou"
+      },
+      "result": {
+        "uncertainty_reduction_points": 4.2,
+        "expected_interval_after_answer": [
+          6,
+          57
+        ]
+      }
+    },
+    {
+      "tool": "evaluate_question",
+      "args": {
+        "actor_id": "marion_kervella"
+      },
+      "result": {
+        "uncertainty_reduction_points": 2.0,
+        "expected_interval_after_answer": [
+          6,
+          60
+        ]
+      }
+    },
+    {
+      "tool": "simulate_action",
+      "args": {
+        "effects": [
+          {
+            "actor_id": "sophie_lenoir",
+            "stance": "support"
+          },
+          {
+            "actor_id": "thomas_riou",
+            "stance": "support"
+          }
+        ]
+      },
+      "result": {
+        "probability_now_percent": 37,
+        "probability_if_success_percent": 71
+      }
+    },
+    {
+      "tool": "simulate_action",
+      "args": {
+        "effects": [
+          {
+            "actor_id": "thomas_riou",
+            "stance": "support"
+          }
+        ]
+      },
+      "result": {
+        "probability_now_percent": 37,
+        "probability_if_success_percent": 48
+      }
+    },
+    {
+      "tool": "simulate_action",
+      "args": {
+        "effects": [
+          {
+            "actor_id": "julien_marec",
+            "stance": "support"
+          },
+          {
+            "actor_id": "yann_le_goff",
+            "stance": "support"
+          },
+          {
+            "actor_id": "claire_dantec",
+            "stance": "support"
+          }
+        ]
+      },
+      "result": {
+        "probability_now_percent": 37,
+        "probability_if_success_percent": 39
+      }
+    },
+    {
+      "tool": "get_signals",
+      "args": {
+        "actor_id": "yann_le_goff"
+      },
+      "result": {
+        "signals": [
+          {
+            "id": 7,
+            "date": "2026-10-06",
+            "stance": "conditional",
+            "strength": "strong",
+            "source": "direct",
+            "quote": "he wants stronger penalties than what we offer."
+          },
+          {
+            "id": 20,
+            "date": "2026-10-29",
+            "stance": "support",
+            "strength": "strong",
+            "source": "direct",
+            "quote": "Yann Le Goff accepted our proposal on penalties, he said it was \"a fair compromise\"."
+          },
+          {
+            "id": 32,
+            "date": "2026-10-29",
+            "stance": "support",
+            "strength": "strong",
+            "source": "direct",
+            "quote": "Yann: penalties OK"
+          }
+        ]
+      }
+    },
+    {
+      "tool": "get_signals",
+      "args": {
+        "actor_id": "julien_marec"
+      },
+      "result": {
+        "signals": [
+          {
+            "id": 4,
+            "date": "2026-09-15",
+            "stance": "support",
+            "strength": "weak",
+            "source": "impression",
+            "quote": "he seemed happy with the answers."
+          },
+          {
+            "id": 6,
+            "date": "2026-10-06",
+            "stance": "support",
+            "strength": "strong",
+            "source": "direct",
+            "quote": "Julien Marec approved our repeater architecture, he even said he would defend it internally."
+          },
+          {
+            "id": 11,
+            "date": "2026-10-27",
+            "stance": "support",
+            "strength": "strong",
+            "source": "direct",
+            "quote": "the most robust technically"
+          },
+          {
+            "id": 19,
+            "date": "2026-10-29",
+            "stance": "support",
+            "strength": "strong",
+            "source": "direct",
+            "quote": "Julien Marec defended our repeaters again"
+          },
+          {
+            "id": 33,
+            "date": "2026-10-29",
+            "stance": "support",
+            "strength": "strong",
+            "source": "direct",
+            "quote": "Julien: \"repeaters = the right choice\""
+          }
+        ]
+      }
+    },
+    {
+      "tool": "simulate_action",
+      "args": {
+        "effects": [
+          {
+            "actor_id": "sophie_lenoir",
+            "stance": "support"
+          }
+        ]
+      },
+      "result": {
+        "probability_now_percent": 37,
+        "probability_if_success_percent": 55
+      }
+    },
+    {
+      "tool": "simulate_action",
+      "args": {
+        "effects": [
+          {
+            "actor_id": "sophie_lenoir",
+            "stance": "neutral"
+          },
+          {
+            "actor_id": "thomas_riou",
+            "stance": "neutral"
+          }
+        ]
+      },
+      "result": {
+        "probability_now_percent": 37,
+        "probability_if_success_percent": 46
+      }
+    },
+    {
+      "tool": "submit_plan",
+      "args": {
+        "actions": [
+          {
+            "effects": [
+              {
+                "actor_id": "sophie_lenoir",
+                "stance": "support"
+              },
+              {
+                "actor_id": "thomas_riou",
+                "stance": "support"
+              }
+            ],
+            "lesson_ids": [
+              1,
+              32
+            ],
+            "rationale": "Sophie conditions sign-off on spreading payments and Thomas finds the guarantee idea worth exploring.",
+            "signal_ids": [
+              12,
+              31,
+              34,
+              21
+            ],
+            "title": "Propose milestone-based payment schedule backed by a bank guarantee"
+          },
+          {
+            "effects": [
+              {
+                "actor_id": "thomas_riou",
+                "stance": "support"
+              }
+            ],
+            "lesson_ids": [
+              4
+            ],
+            "rationale": "Thomas conditions any financing commitment on approval of the environmental study.",
+            "signal_ids": [
+              3,
+              26
+            ],
+            "title": "Organize joint review of environmental study approval timetable with the lender"
+          },
+          {
+            "effects": [
+              {
+                "actor_id": "sophie_lenoir",
+                "stance": "support"
+              }
+            ],
+            "lesson_ids": [
+              19
+            ],
+            "rationale": "Sophie defers discussion until after the budget while the cable is flagged as outside the planned envelope.",
+            "signal_ids": [
+              12,
+              22,
+              25
+            ],
+            "title": "Reframe offer as capped multi-year cost with acceptance-gated milestones"
+          },
+          {
+            "effects": [
+              {
+                "actor_id": "claire_dantec",
+                "stance": "support"
+              },
+              {
+                "actor_id": "julien_marec",
+                "stance": "support"
+              },
+              {
+                "actor_id": "yann_le_goff",
+                "stance": "support"
+              }
+            ],
+            "lesson_ids": [
+              48
+            ],
+            "rationale": "Julien publicly defends the technical choice while finance delays the budget decision.",
+            "signal_ids": [
+              18,
+              32,
+              33
+            ],
+            "title": "Invite technical champion to defend whole-life value in finance forum"
+          }
+        ],
+        "questions": [
+          {
+            "actor_id": "sophie_lenoir",
+            "signal_ids": [
+              12,
+              22,
+              25,
+              34
+            ],
+            "text": "Do you know whether Sophie Lenoir told you what spread would let her sign off after the budget talk?"
+          },
+          {
+            "actor_id": "thomas_riou",
+            "signal_ids": [
+              3,
+              26,
+              31
+            ],
+            "text": "Do you know whether Thomas Riou told you what remains for the study to be approved so he can commit?"
+          }
+        ]
+      },
+      "result": {
+        "received": true
+      }
+    }
+  ],
+  "steps": 5
+}

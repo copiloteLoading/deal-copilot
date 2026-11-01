@@ -1,0 +1,482 @@
+[
+  {
+    "source_deal": "01_cable_sous_marin_aurore_liaison_brume_va",
+    "source_name": "Câble Sous-Marin Aurore - Liaison Brume-Valserine",
+    "outcome": "signed",
+    "lesson": "When a finance veto holder blocks over upfront concentration, reframe the price as milestone payments tied to acceptance records so their own cash curve validates compliance.",
+    "applies_when": "a finance veto holder ties approval to a cash ceiling and flags a large deposit as non-compliant",
+    "evidence_quote": "elle a tout de suite bloqué sur l'acompte de 40% et les appels de fonds sur 2026"
+  },
+  {
+    "source_deal": "01_cable_sous_marin_aurore_liaison_brume_va",
+    "source_name": "Câble Sous-Marin Aurore - Liaison Brume-Valserine",
+    "outcome": "signed",
+    "lesson": "Align the lender's tranche releases with the customer's acceptance milestones early, so the bank is observed to follow once the finance holder's curve turns positive.",
+    "applies_when": "a private infrastructure lender makes support conditional on smoothing disbursements",
+    "evidence_quote": "il a été clair que ça passera que si on lisse la trésorerie"
+  },
+  {
+    "source_deal": "01_cable_sous_marin_aurore_liaison_brume_va",
+    "source_name": "Câble Sous-Marin Aurore - Liaison Brume-Valserine",
+    "outcome": "signed",
+    "lesson": "Keep technical and operations supporters engaged while reworking commercials, so a higher face price is observed to remain defensible on technical and whole-life value.",
+    "applies_when": "a technical champion supports capacity while finance threatens to switch to a cheaper rival",
+    "evidence_quote": "elle a même parlé de regarder Abyss Line qui serait moins cher"
+  },
+  {
+    "source_deal": "02_cable_d_export_225_kv_parc_des_dunes_bla",
+    "source_name": "Câble d'export 225 kV – Parc des Dunes Blanches",
+    "outcome": "lost",
+    "lesson": "When a lending veto holder ties approval to an independent audit, treat the auditor and the study timetable as the commercial critical path and maintain direct engagement with the lender.",
+    "applies_when": "a lending veto holder says financing approval must wait for an external environmental study",
+    "evidence_quote": "il attend l'étude benthique de mai avant de se prononcer pour le financement"
+  },
+  {
+    "source_deal": "02_cable_d_export_225_kv_parc_des_dunes_bla",
+    "source_name": "Câble d'export 225 kV – Parc des Dunes Blanches",
+    "outcome": "lost",
+    "lesson": "When an independent certifier will not pre-validate an incomplete file, do not plan to catch up in parallel; re-baseline schedule, cost and risk with the finance veto holder immediately.",
+    "applies_when": "an independent auditor refuses any interim validation and requires a complete file",
+    "evidence_quote": "elle veut pas pré-valider en l'état"
+  },
+  {
+    "source_deal": "02_cable_d_export_225_kv_parc_des_dunes_bla",
+    "source_name": "Câble d'export 225 kV – Parc des Dunes Blanches",
+    "outcome": "lost",
+    "lesson": "When signature depends on lender attestation and partners reject waiting costs, secure a funded waiting agreement early rather than observing the financing line drift until it is reallocated.",
+    "applies_when": "a finance veto holder blocks signature pending lender attestation while a co-funding partner refuses standby costs",
+    "evidence_quote": "il peut pas faire signer au prix et au planning actuels sans l'attestation de la banque"
+  },
+  {
+    "source_deal": "03_celestia_merival_42mw_power_et_cooling",
+    "source_name": "Célestia Mérival 42MW - Power et Cooling",
+    "outcome": "signed",
+    "lesson": "Observed that a finance veto holder who ties approval to upfront cost can be moved by reframing to capped multi-year total cost plus contractual price and performance caps.",
+    "applies_when": "a finance veto holder frames the decision as CAPEX too high versus a cheaper legacy alternative",
+    "evidence_quote": "il dit qu'on est 18% trop haut apparemment"
+  },
+  {
+    "source_deal": "03_celestia_merival_42mw_power_et_cooling",
+    "source_name": "Célestia Mérival 42MW - Power et Cooling",
+    "outcome": "signed",
+    "lesson": "Observed to secure a cautious lender by offering penalized efficiency guarantees, delay and performance penalties, and a bank guarantee early rather than treating financing as a final formality.",
+    "applies_when": "a private financing risk holder conditions support on enforceable performance protection",
+    "evidence_quote": "sans garantie de PUE avec pénalités, elle ne suivra pas sur le financement"
+  },
+  {
+    "source_deal": "03_celestia_merival_42mw_power_et_cooling",
+    "source_name": "Célestia Mérival 42MW - Power et Cooling",
+    "outcome": "signed",
+    "lesson": "Observed to convert prudence into support by staging a live pilot with measured performance in front of stakeholders and obtaining public validation from the consulting engineer.",
+    "applies_when": "a technical champion supports a novel architecture but a consulting engineer and a chief executive remain prudent",
+    "evidence_quote": "PUE à 1,16 mesuré devant tout le monde"
+  },
+  {
+    "source_deal": "04_liaison_sous_marine_lumen_cap_des_aigret",
+    "source_name": "Liaison Sous-Marine Lumen - Cap des Aigrettes",
+    "outcome": "lost",
+    "lesson": "When a procurement veto holder ties support to schedule security, observed lesson is to lock agreed total-cost and risk criteria with them before a low-price indicative offer resets the negotiation to price alone.",
+    "applies_when": "The procurement veto holder initially favours quality to protect schedule but then asks to match a cheaper rival.",
+    "evidence_quote": "elle nous demande clairement de nous aligner sur les prix."
+  },
+  {
+    "source_deal": "04_liaison_sous_marine_lumen_cap_des_aigret",
+    "source_name": "Liaison Sous-Marine Lumen - Cap des Aigrettes",
+    "outcome": "lost",
+    "lesson": "When a finance veto holder and an external lender focus on CAPEX and financability, observed lesson is to engage them early on cost transparency and funding constraints rather than relying on the technical chooser alone.",
+    "applies_when": "A finance veto holder demands a full cost breakdown and frames the decision around financability.",
+    "evidence_quote": "il exige une décomposition complète des coûts de pose avant d'arbitrer quoi que ce soit."
+  },
+  {
+    "source_deal": "04_liaison_sous_marine_lumen_cap_des_aigret",
+    "source_name": "Liaison Sous-Marine Lumen - Cap des Aigrettes",
+    "outcome": "lost",
+    "lesson": "When an independent certifier can level the technical field, observed lesson is to build a commercial and lifecycle-cost defence in parallel and not let the technical argument carry the deal alone.",
+    "applies_when": "An independent technical certifier is expected to differentiate the offers but rates both options as acceptable.",
+    "evidence_quote": "il a dit que les deux solutions étaient certifiables"
+  },
+  {
+    "source_deal": "05_sous_station_haute_mer_des_brumes",
+    "source_name": "Sous-station Haute-Mer des Brumes",
+    "outcome": "delayed",
+    "lesson": "Engage the certification veto holder and the finance veto holder early, even when the project owner and technical lead are enthusiastic, because late certification requirements were observed to freeze financing.",
+    "applies_when": "A certification veto holder is absent from early technical alignment and financing is not discussed in detail.",
+    "evidence_quote": "donc on n'a pas parlé financement ni homologation en détail."
+  },
+  {
+    "source_deal": "05_sous_station_haute_mer_des_brumes",
+    "source_name": "Sous-station Haute-Mer des Brumes",
+    "outcome": "delayed",
+    "lesson": "Treat certification approval as a predecessor to bankability in the sales plan when a lender conditions closing on it, and sequence testing, audits, and documentation accordingly.",
+    "applies_when": "A finance veto holder explicitly ties financial closing to prior certification approval.",
+    "evidence_quote": "elle ne peut pas avancer sur le closing financier tant qu'elle n'a pas l'avis de Certimar"
+  },
+  {
+    "source_deal": "05_sous_station_haute_mer_des_brumes",
+    "source_name": "Sous-station Haute-Mer des Brumes",
+    "outcome": "delayed",
+    "lesson": "Secure explicit schedule contingency with installation partners when certification timelines are uncertain, as resource reallocation was observed alongside extended approval delays.",
+    "applies_when": "An installation contractor signals that a key vessel or crew may be reallocated if the schedule slips.",
+    "evidence_quote": "il va devoir liberer son navire de pose pour un autre client si ca traine"
+  },
+  {
+    "source_deal": "06_dorsale_fibre_val_d_orbelle",
+    "source_name": "Dorsale Fibre Val d'Orbelle",
+    "outcome": "signed",
+    "lesson": "When a deployment veto holder blocks on operational risk, arrange a live reference visit with field measurements rather than adding slides; observed shift followed direct inspection.",
+    "applies_when": "A high-influence technical veto holder attacks schedule and network-break risk and cites past failures by others.",
+    "evidence_quote": "elle nous a attaqués sur le planning et la casse réseau"
+  },
+  {
+    "source_deal": "06_dorsale_fibre_val_d_orbelle",
+    "source_name": "Dorsale Fibre Val d'Orbelle",
+    "outcome": "signed",
+    "lesson": "When a finance veto holder conditions funding on guarantees, offer phased milestones each gated by independent audit; observed alignment followed that structure.",
+    "applies_when": "A financing veto holder withholds approval pending firm schedule guarantees and third-party quality control.",
+    "evidence_quote": "il exige des garanties fermes sur les délais et un audit qualité externe avant de se prononcer"
+  },
+  {
+    "source_deal": "06_dorsale_fibre_val_d_orbelle",
+    "source_name": "Dorsale Fibre Val d'Orbelle",
+    "outcome": "signed",
+    "lesson": "When an independent certifier demands field evidence, have metrics validated publicly on site in front of stakeholders; observed credibility followed public validation.",
+    "applies_when": "An independent certifier stays cautious and asks for additional field data while the technical champion already supports the architecture.",
+    "evidence_quote": "elle reste prudente et elle réclame des mesures de terrain complémentaires"
+  },
+  {
+    "source_deal": "07_campus_ossonet_val_d_aubray_stockage_on_",
+    "source_name": "Campus Ossonet Val d'Aubray + Stockage on-site",
+    "outcome": "lost",
+    "lesson": "When a finance veto holder ties approval to the budget cycle, treat a missing CAPEX line as a blocking issue and pause technical work until an OPEX or interim funding path is validated.",
+    "applies_when": "A finance veto holder says no CAPEX line can be booked until a future budget cycle",
+    "evidence_quote": "qu'il peut pas inscrire la ligne CAPEX pour l'instant"
+  },
+  {
+    "source_deal": "07_campus_ossonet_val_d_aubray_stockage_on_",
+    "source_name": "Campus Ossonet Val d'Aubray + Stockage on-site",
+    "outcome": "lost",
+    "lesson": "When bank funding depends on a voted budget, sequence the budget vote before detailed sizing and make the lender requirement visible to the economic buyer early.",
+    "applies_when": "An infrastructure lender says a voted budget resolution is required to price and take the file to credit committee",
+    "evidence_quote": "il lui faut le CAPEX voté pour chiffrer le prêt vert et passer en comité"
+  },
+  {
+    "source_deal": "07_campus_ossonet_val_d_aubray_stockage_on_",
+    "source_name": "Campus Ossonet Val d'Aubray + Stockage on-site",
+    "outcome": "lost",
+    "lesson": "When the top executive avoids overruling finance ahead of a board vote, observed enthusiasm does not substitute for arbitration, so secure an explicit pre-board decision or a reduced scope that finance will present.",
+    "applies_when": "A chief executive stays enthusiastic but defers to finance and does not arbitrate before the board",
+    "evidence_quote": "elle a pas vraiment arbitré sur place"
+  },
+  {
+    "source_deal": "08_cadre_septennal_reparation_et_maintenanc",
+    "source_name": "Cadre septennal réparation et maintenance câbles Valmarec",
+    "outcome": "signed",
+    "lesson": "When a legal veto holder ties approval to completing a risk analysis, observed progress stays technical-only until caps and insurance language are tabled early in redrafts.",
+    "applies_when": "a legal veto holder says she will not comment until her risk and cap analysis is finished",
+    "evidence_quote": "elle ne dira rien tant qu'elle n'a pas fini son analyse des risques et des plafonds"
+  },
+  {
+    "source_deal": "08_cadre_septennal_reparation_et_maintenanc",
+    "source_name": "Cadre septennal réparation et maintenance câbles Valmarec",
+    "outcome": "signed",
+    "lesson": "When a legal reviewer blocks on liability and penalties, observed movement follows a concrete counter-proposal such as a dual cap and shared deductible rather than general reassurance.",
+    "applies_when": "a legal veto holder raises a long list of blocking points on liability, insurance and delay penalties",
+    "evidence_quote": "quatorze points bloquants sur la responsabilité"
+  },
+  {
+    "source_deal": "08_cadre_septennal_reparation_et_maintenanc",
+    "source_name": "Cadre septennal réparation et maintenance câbles Valmarec",
+    "outcome": "signed",
+    "lesson": "When an independent auditor controls technical credibility, observed support consolidates after a live operational demonstration validated as compliant with his framework.",
+    "applies_when": "an independent technical auditor must validate methods against his own framework",
+    "evidence_quote": "c'était conforme à son référentiel"
+  },
+  {
+    "source_deal": "09_ferme_pilote_eole_flottante_de_valbrise",
+    "source_name": "Ferme Pilote Éole Flottante de Valbrise",
+    "outcome": "delayed",
+    "lesson": "When a finance veto holder ties approval to a usage-based cost split, observed risk is deadlock unless the allocation model is renegotiated before further technical work.",
+    "applies_when": "a finance veto holder openly rejects the proposed split of an unexpected cost increase",
+    "evidence_quote": "elle veut pas qu'AéroCiel paye la moitié du surcoût"
+  },
+  {
+    "source_deal": "09_ferme_pilote_eole_flottante_de_valbrise",
+    "source_name": "Ferme Pilote Éole Flottante de Valbrise",
+    "outcome": "delayed",
+    "lesson": "When two veto holders defend opposing cost keys, observed pattern is delay until a jointly accepted formula is secured rather than parallel technical validation.",
+    "applies_when": "a technical veto holder makes signature conditional on rebalancing costs while the finance veto holder refuses",
+    "evidence_quote": "sans un nouvel équilibre Voltis pourrait pas signer le lot flotteurs"
+  },
+  {
+    "source_deal": "09_ferme_pilote_eole_flottante_de_valbrise",
+    "source_name": "Ferme Pilote Éole Flottante de Valbrise",
+    "outcome": "delayed",
+    "lesson": "When a lender makes funding conditional on partner alignment, observed need is to treat partner agreement as the critical path and sequence selling effort accordingly.",
+    "applies_when": "a project lender states that financing cannot proceed without prior agreement between partners",
+    "evidence_quote": "tant que la clé n'est pas signée par les deux elle ne pourra pas débloquer le prêt"
+  },
+  {
+    "source_deal": "10_liaison_sous_marine_saravelle_90_kv",
+    "source_name": "Liaison Sous-Marine Saravelle 90 kV",
+    "outcome": "lost",
+    "lesson": "A board chair who controls scoring weights and favors local servicing must be engaged before criteria lock; once the weighting is validated, observed technical superiority no longer compensates.",
+    "applies_when": "When a board-level veto holder starts assigning a large share of the score to local presence and local stock.",
+    "evidence_quote": "trente pour cent de la note sur la proximité de la maintenance et le stock local"
+  },
+  {
+    "source_deal": "10_liaison_sous_marine_saravelle_90_kv",
+    "source_name": "Liaison Sous-Marine Saravelle 90 kV",
+    "outcome": "lost",
+    "lesson": "A finance veto holder who ties approval to locally collateralized guarantees needs an alternative security structure early; observed persistence of the demand blocks progress if left unaddressed.",
+    "applies_when": "When a financing veto holder makes approval conditional on guarantees backed by in-territory assets and local surety.",
+    "evidence_quote": "des garanties adossées à des actifs sur l'île et un cautionnement local"
+  },
+  {
+    "source_deal": "10_liaison_sous_marine_saravelle_90_kv",
+    "source_name": "Liaison Sous-Marine Saravelle 90 kV",
+    "outcome": "lost",
+    "lesson": "A private certifier who can impose extended testing that conflicts with the installation window must be de-risked in parallel with technical selling; observed delay creates a schedule disqualification even when testing looks workable.",
+    "applies_when": "When a private certifier conditions approval on several months of additional testing while installation faces a seasonal weather deadline.",
+    "evidence_quote": "quatre mois d'essais complémentaires pour l'homologation"
+  },
+  {
+    "source_deal": "01_modernisation_station_d_atterrissage_cap",
+    "source_name": "Modernisation Station d'Atterrissage Cap-Méridien",
+    "outcome": "signed",
+    "lesson": "When a procurement veto holder pressures on price alongside a finance veto holder worried about CAPEX, observed support from the technical evaluator alone does not hold the short-list; trade any investment reduction for a longer locked-price maintenance term that moves spend to smoothed OPEX.",
+    "applies_when": "a procurement veto holder frames the bid as overpriced versus a named competitor and a finance veto holder calls CAPEX too heavy",
+    "evidence_quote": "notre prix était trop haut"
+  },
+  {
+    "source_deal": "01_modernisation_station_d_atterrissage_cap",
+    "source_name": "Modernisation Station d'Atterrissage Cap-Méridien",
+    "outcome": "signed",
+    "lesson": "When a finance veto holder prefers smoothed OPEX and a lender observes the financing, offer an extended maintenance with locked annuities and availability penalties to turn finance and the lender into supporters rather than conceding price alone.",
+    "applies_when": "a finance veto holder and a lender need multi-year visibility before they will support the deal",
+    "evidence_quote": "elle aime bien le côté OPEX lissé apparemment"
+  },
+  {
+    "source_deal": "01_modernisation_station_d_atterrissage_cap",
+    "source_name": "Modernisation Station d'Atterrissage Cap-Méridien",
+    "outcome": "signed",
+    "lesson": "When a co-user with veto power stays neutral on price but worries about cohabitation, explicitly guarantee priority access slots during maintenance to keep that veto neutral-to-positive while the commercial negotiation closes.",
+    "applies_when": "a co-user with veto power stays neutral and asks for priority access during maintenance windows",
+    "evidence_quote": "il demande juste des garanties d'accès prioritaire pendant les maintenances"
+  },
+  {
+    "source_deal": "02_array_cables_66_kv_ferme_des_brumes_780_",
+    "source_name": "Array câbles 66 kV – Ferme des Brumes 780 MW",
+    "outcome": "lost",
+    "lesson": "Map succession risk early and build a parallel relationship with a likely technical successor from a competing background, rather than relying on one champion.",
+    "applies_when": "When a deal relies on a single technical champion and rumors emerge that the champion may leave",
+    "evidence_quote": "c'est lui qui remplacerait Julien qui partirait fin mai"
+  },
+  {
+    "source_deal": "02_array_cables_66_kv_ferme_des_brumes_780_",
+    "source_name": "Array câbles 66 kV – Ferme des Brumes 780 MW",
+    "outcome": "lost",
+    "lesson": "Treat the installation subcontractor as a de facto influencer and lock in its method, tooling and cost commitment before a specification can be reopened.",
+    "applies_when": "When an installation subcontractor initially favors a lighter solution but later seeks to secure its campaign with familiar technology",
+    "evidence_quote": "il a dit qu'il allait chiffrer un surcoût de formation pour ses équipes si c'est nous"
+  },
+  {
+    "source_deal": "02_array_cables_66_kv_ferme_des_brumes_780_",
+    "source_name": "Array câbles 66 kV – Ferme des Brumes 780 MW",
+    "outcome": "lost",
+    "lesson": "Quantify requalification, interface and certification cost with the finance veto holder early, so a price discount is not observed as insufficient against later risk costs.",
+    "applies_when": "When a finance veto holder and a lender make unconditional certification a condition for funding",
+    "evidence_quote": "notre écart de prix ne compensait plus le coût de requalification"
+  },
+  {
+    "source_deal": "03_orivale_edge_horizon_24",
+    "source_name": "Orivale Edge Horizon 24",
+    "outcome": "signed",
+    "lesson": "When a lender makes funding conditional on an independent audit, treat the audit as the critical path and align scope, access, and timing early with the auditor.",
+    "applies_when": "a lender with veto power ties funding release to independent technical validation",
+    "evidence_quote": "sans un audit indépendant sur le PUE, la redondance électrique et la cyber"
+  },
+  {
+    "source_deal": "03_orivale_edge_horizon_24",
+    "source_name": "Orivale Edge Horizon 24",
+    "outcome": "signed",
+    "lesson": "When a finance guardian waits for external validation, sequence the close by securing the technical sign-off first, then observed budget approval follows.",
+    "applies_when": "a finance veto holder defers their budget decision until an external party rules",
+    "evidence_quote": "veut attendre les résultats avant de se prononcer"
+  },
+  {
+    "source_deal": "03_orivale_edge_horizon_24",
+    "source_name": "Orivale Edge Horizon 24",
+    "outcome": "signed",
+    "lesson": "When a deal faces a waiting period for validation, keep an active technical champion defending performance in front of the sponsor to sustain support.",
+    "applies_when": "a long validation pause creates risk of losing momentum with the sponsor",
+    "evidence_quote": "elle a vraiment défendu notre solution devant Elodie"
+  },
+  {
+    "source_deal": "04_liaison_fibre_abyssale_alizee_segment_va",
+    "source_name": "Liaison Fibre Abyssale Alizee - Segment Valbreuse",
+    "outcome": "lost",
+    "lesson": "When a finance veto holder ties approval to the budget cycle and cash preservation, secure joint success criteria and a conditional path to approval before re-costing, as observed when repeated rework did not advance the decision.",
+    "applies_when": "a finance veto holder ties approval to cash position and asks for full budget and financing structure early",
+    "evidence_quote": "elle nous a demandé une estimation budgétaire complète"
+  },
+  {
+    "source_deal": "04_liaison_fibre_abyssale_alizee_segment_va",
+    "source_name": "Liaison Fibre Abyssale Alizee - Segment Valbreuse",
+    "outcome": "lost",
+    "lesson": "When a bank financing contact conditions support on equity preservation, align the commercial phasing directly with that financing condition and test it early, as observed when prudence hardened into withdrawal.",
+    "applies_when": "a lending veto holder makes bridge funding conditional on preserving equity",
+    "evidence_quote": "la banque suivra seulement si les fonds propres sont préservés"
+  },
+  {
+    "source_deal": "04_liaison_fibre_abyssale_alizee_segment_va",
+    "source_name": "Liaison Fibre Abyssale Alizee - Segment Valbreuse",
+    "outcome": "lost",
+    "lesson": "When a final decision-maker avoids arbitration and proposes delay, escalate to force an explicit go, no-go, or conditions for yes, as observed when consensus-seeking left the project exposed to a freeze.",
+    "applies_when": "a final decision-maker defers choice to a later investment committee while budget pressure grows",
+    "evidence_quote": "il n'a pas tranché, il dit qu'on revoit ça à l'automne"
+  },
+  {
+    "source_deal": "05_retrofit_cooling_hexacube_valmea_free_co",
+    "source_name": "Retrofit Cooling Hexacube Valméa - Free-Cooling",
+    "outcome": "delayed",
+    "lesson": "Treat a grid connection veto holder as the critical path from discovery and get a written lead-time range in weeks, as observed when the study plus works signal preceded a long delay.",
+    "applies_when": "a grid connection manager first mentions a capacity study plus new high-voltage works on a deal needing extra megawatts",
+    "evidence_quote": "quatre à six mois juste pour l'étude puis les travaux derrière"
+  },
+  {
+    "source_deal": "05_retrofit_cooling_hexacube_valmea_free_co",
+    "source_name": "Retrofit Cooling Hexacube Valméa - Free-Cooling",
+    "outcome": "delayed",
+    "lesson": "Sequence a finance veto holder who requires written proof of power availability before any equipment commitment, as observed when funding stayed blocked without that attestation.",
+    "applies_when": "a project finance veto holder ties fund release to a firm written date for power availability",
+    "evidence_quote": "elle ne débloquera rien tant qu'elle n'a pas une attestation écrite de mise à disposition de la puissance"
+  },
+  {
+    "source_deal": "05_retrofit_cooling_hexacube_valmea_free_co",
+    "source_name": "Retrofit Cooling Hexacube Valméa - Free-Cooling",
+    "outcome": "delayed",
+    "lesson": "Align early with an operations veto holder who refuses installation without guaranteed supply to define phasing and go/no-go criteria, as observed when installation waited on the grid schedule.",
+    "applies_when": "an operations director veto holder states zero tolerance for customer interruption during retrofit works",
+    "evidence_quote": "elle ne prendrait pas le risque d'installer les machines sans l'alim garantie"
+  },
+  {
+    "source_deal": "06_cable_aurore_liaison_sous_marine_mirval_",
+    "source_name": "Câble Aurore - Liaison sous-marine Mirval-Varecq-Sylmorne",
+    "outcome": "signed",
+    "lesson": "When a veto holder ties cost share to traffic doubts, reframe the offer around risk-sharing with a guaranteed revenue floor rather than re-arguing forecasts.",
+    "applies_when": "when a veto-holding partner disputes cost-sharing and doubts traffic forecasts",
+    "evidence_quote": "il conteste la répartition cinquante-cinquante"
+  },
+  {
+    "source_deal": "06_cable_aurore_liaison_sous_marine_mirval_",
+    "source_name": "Câble Aurore - Liaison sous-marine Mirval-Varecq-Sylmorne",
+    "outcome": "signed",
+    "lesson": "Sequence a bankable deal by first securing the reluctant operator, observed to unlock the lender, rather than pressing the lender for approval in parallel.",
+    "applies_when": "when a lender makes funding conditional on long-term joint commitment",
+    "evidence_quote": "sans engagement ferme des deux opérateurs sur la durée il pourra pas financer"
+  },
+  {
+    "source_deal": "06_cable_aurore_liaison_sous_marine_mirval_",
+    "source_name": "Câble Aurore - Liaison sous-marine Mirval-Varecq-Sylmorne",
+    "outcome": "signed",
+    "lesson": "Keep the technical champion visible in financial forums to sustain momentum when commercial veto holders stall.",
+    "applies_when": "when a technical champion is enthusiastic but absent from financial decisions",
+    "evidence_quote": "Sophie n'était pas là, ni Claire d'ailleurs"
+  },
+  {
+    "source_deal": "07_cadre_reparation_cables_brume_2026_2031",
+    "source_name": "Cadre réparation câbles Brume 2026-2031",
+    "outcome": "lost",
+    "lesson": "A lead lender risk veto holder who ties approval to the budget cycle and loan drawdown needs early direct engagement on guarantees, observed before the technical solution is locked.",
+    "applies_when": "When a lead lender veto holder starts talking about a standard guarantee grid before financial review",
+    "evidence_quote": "la banque préparerait une grille de garanties standard"
+  },
+  {
+    "source_deal": "07_cadre_reparation_cables_brume_2026_2031",
+    "source_name": "Cadre réparation câbles Brume 2026-2031",
+    "outcome": "lost",
+    "lesson": "A certification veto holder who can suspend qualification if coverage is incomplete needs a parallel compliance track, observed to align with the lender rather than the technical champion late in the deal.",
+    "applies_when": "When a certifier veto holder asks for proof on winter performance and traceability without endorsing the approach",
+    "evidence_quote": "il veut des preuves sur la tenue hivernale et la traçabilité des réparations"
+  },
+  {
+    "source_deal": "07_cadre_reparation_cables_brume_2026_2031",
+    "source_name": "Cadre réparation câbles Brume 2026-2031",
+    "outcome": "lost",
+    "lesson": "A cooperative shareholder veto holder who fears capital calls needs reassurance on financial security separate from technical preference, observed to follow the lender once guarantees become the issue.",
+    "applies_when": "When a cooperative co-shareholder veto holder expresses worry about risk to its members and avoids taking a position",
+    "evidence_quote": "elle veut éviter les risques pour ses sociétaires"
+  },
+  {
+    "source_deal": "08_anneau_fibre_clairval_cur_rhea",
+    "source_name": "Anneau Fibre Clairval Cœur - Rhéa",
+    "outcome": "signed",
+    "lesson": "When a legal veto holder flags standard liability caps as insufficient early, observed to engage them in clause-by-clause workshops to reshape the cap structure before the formal offer review.",
+    "applies_when": "A legal veto holder signals early that standard caps are insufficient for long outages.",
+    "evidence_quote": "elle trouvait apparemment notre plafond à cent pour cent insuffisant pour les coupures longues"
+  },
+  {
+    "source_deal": "08_anneau_fibre_clairval_cur_rhea",
+    "source_name": "Anneau Fibre Clairval Cœur - Rhéa",
+    "outcome": "signed",
+    "lesson": "When a finance veto holder ties approval to a fixed budget cycle envelope, observed to keep any liability compromise inside that envelope so financial approval is not reopened.",
+    "applies_when": "A finance veto holder insists on a single global envelope validated by a funder.",
+    "evidence_quote": "il nous a redemandé un cap global unique"
+  },
+  {
+    "source_deal": "08_anneau_fibre_clairval_cur_rhea",
+    "source_name": "Anneau Fibre Clairval Cœur - Rhéa",
+    "outcome": "signed",
+    "lesson": "When a lender follows the legal veto holder on residual risk, observed to offer funder-readable proof such as supplemental insurance taken by the seller to allow alignment without changing the price envelope.",
+    "applies_when": "A private lender defers to legal on residual risk and waits for final proof of cover.",
+    "evidence_quote": "il attend de voir la police d'assurance définitive avant de se prononcer vraiment"
+  },
+  {
+    "source_deal": "09_sous_station_offshore_hydrogen_ready_des",
+    "source_name": "Sous-station offshore hydrogen-ready des Hauts-Fonds",
+    "outcome": "delayed",
+    "lesson": "Treat a certification holder who ties approval to evolving standards as a critical path risk and co-build a qualification plan early, rather than relying on a technical champion.",
+    "applies_when": "a certification authority signals an unstable standard and requests additional testing",
+    "evidence_quote": "elle nous demande des essais complémentaires sur les traversées H2 et la sécurité ATEX"
+  },
+  {
+    "source_deal": "09_sous_station_offshore_hydrogen_ready_des",
+    "source_name": "Sous-station offshore hydrogen-ready des Hauts-Fonds",
+    "outcome": "delayed",
+    "lesson": "Engage the budget veto holder from kickoff with quantified option economics, because observed late cost-comparison requests reopen scope.",
+    "applies_when": "a budget veto holder who was absent early starts asking for a stripped-down cost comparison",
+    "evidence_quote": "elle nous a demandé une variante sans les pré-équipements pour comparer les coûts"
+  },
+  {
+    "source_deal": "09_sous_station_offshore_hydrogen_ready_des",
+    "source_name": "Sous-station offshore hydrogen-ready des Hauts-Fonds",
+    "outcome": "delayed",
+    "lesson": "When a financing veto holder conditions closing on bankability, bring revised revenue hypotheses and risk-sharing options quickly instead of repeating the same tariff.",
+    "applies_when": "a project financier repeatedly refuses the pricing and asks for revised revenue assumptions",
+    "evidence_quote": "il a refusé de valider notre grille tarifaire en l'état"
+  },
+  {
+    "source_deal": "10_novacentre_valtaneuse_nord_distributio",
+    "source_name": "Novacentre Valtaneuse-Nord - Distribution 120 MW",
+    "outcome": "lost",
+    "lesson": "Engage purchasing and finance veto holders from the first site visit, as observed technical enthusiasm alone did not move price-led decision makers later.",
+    "applies_when": "When a technical sponsor and an operations user are enthusiastic but finance and purchasing veto holders are absent from early visits",
+    "evidence_quote": "Les achats et la finance n’étaient pas là"
+  },
+  {
+    "source_deal": "10_novacentre_valtaneuse_nord_distributio",
+    "source_name": "Novacentre Valtaneuse-Nord - Distribution 120 MW",
+    "outcome": "lost",
+    "lesson": "Reframe a technically superior offer into finance-approved TCO and budget terms early when a price-only rule is signaled, as observed continued technical optimism did not prevent a 60% price weight.",
+    "applies_when": "When word circulates that purchasing wants a strict price-led tender while the team feels technically ahead",
+    "evidence_quote": "les achats voudraient un appel d’offres strict au prix"
+  },
+  {
+    "source_deal": "10_novacentre_valtaneuse_nord_distributio",
+    "source_name": "Novacentre Valtaneuse-Nord - Distribution 120 MW",
+    "outcome": "lost",
+    "lesson": "Build a joint case with the lender and the construction partner on total risk and lifecycle cost, as observed late alignment of those influencers with the low-price option left the discount insufficient.",
+    "applies_when": "When a project finance bank states a preference for low CAPEX and the construction partner favors simpler installation",
+    "evidence_quote": "elle a confirmé que la banque préfère le CAPEX bas"
+  }
+]

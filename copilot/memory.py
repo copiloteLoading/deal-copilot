@@ -7,6 +7,8 @@ Tables :
   meetings       réunions et texte de leur débrief
   signals        observations extraites d'un débrief, avec citation exacte et confiance
   positions      historique des positions estimées par le modèle (rempli par model.py)
+  closures       contrats terminés : issue et date de clôture
+  lessons        leçons des retours d'expérience, réutilisées sur les autres contrats
 
 Résolution d'entités volontairement simple : un nom extrait est rattaché à un acteur
 s'il correspond à son nom ou à un de ses alias (sans tenir compte des accents ni de la casse).
@@ -92,6 +94,23 @@ CREATE TABLE IF NOT EXISTS positions (
     p_support REAL, p_neutral REAL, p_oppose REAL,
     PRIMARY KEY (deal_id, actor_id, date)
 );
+
+CREATE TABLE IF NOT EXISTS closures (
+    deal_id   TEXT PRIMARY KEY,
+    outcome   TEXT NOT NULL,                    -- signed, lost, delayed
+    closed_on TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS lessons (
+    id           INTEGER PRIMARY KEY AUTOINCREMENT,
+    source_deal  TEXT NOT NULL,                 -- contrat dont vient la leçon (pas forcément dans la base)
+    source_name  TEXT,
+    outcome      TEXT NOT NULL,                 -- issue de ce contrat
+    lesson       TEXT NOT NULL,                 -- en termes généraux, sans nom propre
+    applies_when TEXT,                          -- le signe qui la rend pertinente ailleurs
+    quote        TEXT,                          -- citation exacte du dossier d'origine
+    added        TEXT
+);
 """
 
 
@@ -129,8 +148,9 @@ def import_deal(conn: sqlite3.Connection, folder: Path | str) -> str:
     deal_id = deal["deal_id"]
 
     with conn:
-        for table in ("signals", "meetings", "positions", "actors", "organizations"):
+        for table in ("signals", "meetings", "positions", "actors", "organizations", "closures"):
             conn.execute(f"DELETE FROM {table} WHERE deal_id = ?", (deal_id,))
+        conn.execute("DELETE FROM lessons WHERE source_deal = ?", (deal_id,))   # contrat rouvert
         conn.execute(
             "INSERT OR REPLACE INTO deals VALUES (?,?,?,?,?,?,?,?,?,?)",
             (deal_id, deal["name"], deal.get("seller"), deal.get("sales_rep"),
@@ -353,3 +373,31 @@ def confirm_signal(conn: sqlite3.Connection, signal_id: int, stance: str | None 
                          (stance, signal_id))
         else:
             conn.execute("UPDATE signals SET confirmed = 1 WHERE id = ?", (signal_id,))
+
+
+# ------------------------------------------------------------------ fin de contrat
+def close_deal(conn: sqlite3.Connection, deal_id: str, outcome: str, day: str) -> None:
+    with conn:
+        conn.execute("INSERT OR REPLACE INTO closures VALUES (?,?,?)", (deal_id, outcome, day))
+
+
+def closure(conn: sqlite3.Connection, deal_id: str) -> dict | None:
+    row = conn.execute("SELECT * FROM closures WHERE deal_id = ?", (deal_id,)).fetchone()
+    return dict(row) if row else None
+
+
+def add_lessons(conn: sqlite3.Connection, source_deal: str, source_name: str, outcome: str,
+                items: list[dict], day: str | None = None) -> None:
+    """items : {"lesson", "applies_when", "evidence_quote"} (format de copilot/retro.py)."""
+    with conn:
+        conn.executemany(
+            "INSERT INTO lessons (source_deal, source_name, outcome, lesson, applies_when, quote, added)"
+            " VALUES (?,?,?,?,?,?,?)",
+            [(source_deal, source_name, outcome, x["lesson"], x.get("applies_when"),
+              x.get("evidence_quote"), day) for x in items])
+
+
+def lessons(conn: sqlite3.Connection, exclude_deal: str | None = None) -> list[dict]:
+    """Toutes les leçons, sauf celles du contrat en cours (on ne s'aide pas de son propre bilan)."""
+    return [dict(r) for r in conn.execute(
+        "SELECT * FROM lessons WHERE source_deal != ? ORDER BY id", (exclude_deal or "",))]

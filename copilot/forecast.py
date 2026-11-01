@@ -56,11 +56,12 @@ def one_draw(deal: dict, texts: list[tuple[str, str]], hypothesis: str | None = 
     return {"probability": min(1.0, max(0.0, float(data["probability"]))), "rationale": data["rationale"]}
 
 
-def forecast(deal: dict, texts: list[tuple[str, str]]) -> dict:
-    """Moyenne de N_DRAWS tirages indépendants (lancés en parallèle). Le premier fournit l'explication."""
+def forecast(deal: dict, texts: list[tuple[str, str]], lessons: str | None = None) -> dict:
+    """Moyenne de N_DRAWS tirages indépendants (lancés en parallèle). Le premier fournit l'explication.
+    lessons : leçons des contrats passés (eval/lessons_forecast.md : Brier 0,182 -> 0,163)."""
     tags = [None] + [f"draw{i}" for i in range(1, N_DRAWS)]
     with ThreadPoolExecutor(max_workers=N_DRAWS) as pool:
-        draws = list(pool.map(lambda tag: one_draw(deal, texts, cache_tag=tag), tags))
+        draws = list(pool.map(lambda tag: one_draw(deal, texts, cache_tag=tag, lessons=lessons), tags))
     probs = [d["probability"] for d in draws]
     return {"p": sum(probs) / len(probs), "draws": probs, "rationale": draws[0]["rationale"]}
 

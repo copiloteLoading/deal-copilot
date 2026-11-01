@@ -2,7 +2,7 @@
 
 **A private, voice-first copilot for sales reps negotiating multi-year infrastructure contracts** (submarine cables, offshore wind, data centers). Built with Meta's Muse models during the Meta Global AI Developer Hackathon (October 27 – November 4, 2026).
 
-> 60 seconds of dictation after a meeting. The copilot spots what you missed, asks you at most 2 questions, and gives you the minutes, a ranked action plan and the follow-up email.
+> 60 seconds of dictation after a meeting. The copilot spots what you missed, asks you at most 2 questions, and gives you the minutes, a ranked action plan and the follow-up email. When the deal ends, it writes the review, and its lessons make the next deal's forecast more accurate.
 
 All companies, people, projects and figures in this repository are **fictional**.
 
@@ -31,7 +31,8 @@ The **sales rep** themself. It is their tool to win their deal, **not a monitori
 4. **Who supports, who blocks**: a per-actor stochastic model remembers each stakeholder's position across months. It weighs silence and spots the **most uncertain veto holder**.
 5. **The copilot's questions**: at most 2, proposed by Muse Spark and ranked by the model by **value of information**. In practice, they aim at the veto holder the rep has not really read.
 6. **Action plan**: Muse Spark proposes actions, including creative ones ("a payment schedule backed by a bank guarantee"). The model checks and ranks them, then Muse Spark drafts the minutes and the follow-up email.
-7. **Safety nets**:
+7. **End-of-deal review**: the rep gives the outcome (signed, lost, delayed) and, optionally, one sentence on what made the difference. Muse Spark writes the review from the whole file: turning points with their quote, what went well and badly, and 2 to 4 lessons in general terms. The rep keeps the lessons they agree with. On every other deal, Muse Spark reads them to forecast, and the agent cites the one that fits next to an action. The history no longer leaves with the rep.
+8. **Safety nets**:
    - a major position change (supportive ↔ opposed, or a veto holder turning against us) must be **confirmed, corrected or rejected** by the rep;
    - an unknown name must be linked to someone before it counts;
    - every claim cites its quote.
@@ -46,6 +47,7 @@ We started with a stochastic model for everything, then measured it against Muse
 | Remembering each stakeholder, vetoes, silences | **Per-actor model** (Markov + Bayes) | It is stable and coherent. Muse Spark alone moves by up to 20 points with no new information, and orders "veto says no" < "today" < "veto says yes" correctly in only 35–45 % of cases. |
 | Choosing the 2 questions | **Muse Spark proposes, the model ranks** | The questions reach the veto holders 98–100 % of the time and reduce uncertainty by 18–24 % (random questions: 45–51 % and 4–9 %). They do not make Muse Spark's forecast more accurate on our test set (see Results). |
 | Ranking actions | **Muse Spark proposes, the model ranks** | The model's "what if?" does not depend on the wording; Muse Spark's moves by up to 22 points between two phrasings of the same hypothesis. Impact is shown as high / medium / low, so the model's scale never contradicts the displayed probability. |
+| Learning from past deals | **Muse Spark writes the review, the rep validates the lessons** | With the lessons of other deals, Muse Spark's forecast improves: Brier 0.182 → 0.163, better than the best constant shift chosen after the fact (0.171). |
 | Reading speech, photos, writing emails | **Muse Voice Transcribe, Muse Spark** | That is what they are for. Nothing is invented: every quote is checked, and generated texts contain no figures. |
 
 ```mermaid
@@ -60,6 +62,9 @@ flowchart LR
     F --> G[≤ 2 questions<br/>ranked action plan]
     G -->|answer| D
     G -->|Muse Spark| H[Minutes, follow-up email]
+    D -->|deal closed<br/>Muse Spark| R[Review + lessons<br/>validated by the rep]
+    R -->|other deals| P
+    R -->|other deals| F
 ```
 
 | Module | Role |
@@ -68,8 +73,9 @@ flowchart LR
 | [`copilot/capture.py`](copilot/capture.py) | Audio conversion to 16 kHz mono WAV, Muse Voice Transcribe, blind SNR estimate |
 | [`copilot/photo.py`](copilot/photo.py) | Photo of notes or a whiteboard → clean structured notes and the people visible (Muse Spark vision) |
 | [`copilot/extract.py`](copilot/extract.py) | Signal extraction (JSON schema), quote verification, reading of the rep's answers |
-| [`copilot/memory.py`](copilot/memory.py) | SQLite: deals, organizations, actors with aliases and vetoes, meetings, signals, confirmations |
-| [`copilot/forecast.py`](copilot/forecast.py) | Probability of signature by Muse Spark, average of 3 parallel draws |
+| [`copilot/memory.py`](copilot/memory.py) | SQLite: deals, organizations, actors with aliases and vetoes, meetings, signals, confirmations, closed deals, lessons |
+| [`copilot/forecast.py`](copilot/forecast.py) | Probability of signature by Muse Spark, average of 3 parallel draws, with the lessons of past deals |
+| [`copilot/retro.py`](copilot/retro.py) | End-of-deal review by Muse Spark: turning points, what went well and badly, general lessons, quotes checked word for word |
 | [`copilot/model.py`](copilot/model.py) | Per-actor hidden positions, veto rule, Monte-Carlo, `posterior`, `simulate` |
 | [`copilot/decision.py`](copilot/decision.py) | Value of information for questions, expected effect of actions |
 | [`copilot/agent.py`](copilot/agent.py) | Muse Spark tool-calling loop (max 8 rounds); its plan is checked and re-scored by the model |
@@ -83,9 +89,9 @@ flowchart LR
 |---|---|---|
 | **Muse Voice Transcribe** (`muse-voice-transcribe-1.0`) | `capture.py` | Debrief transcription. The deal's proper names are sent as `keywords`; the API limits each keyword to 30 characters, so long names are split. |
 | **Muse Spark** (`muse-spark-1.3`), structured output | `extract.py`, `forecast.py` | Signals with stance, strength, source, confidence and verbatim quote; the probability of signature with its rationale (`reasoning_effort: low`). |
-| **Muse Spark**, tool calling | `agent.py` | The agent reads signals (`get_signals`), evaluates questions (`evaluate_question`) and creative actions (`simulate_action`), then submits a plan (`submit_plan`). The model re-checks it: unknown actors, invented numbers and actions with no effect are rejected. |
+| **Muse Spark**, tool calling | `agent.py` | The agent reads signals (`get_signals`), evaluates questions (`evaluate_question`) and creative actions (`simulate_action`), then submits a plan (`submit_plan`), citing the lessons of past deals that fit. The model re-checks it: unknown actors, invented numbers and actions with no effect are rejected. |
 | **Muse Spark**, vision | `photo.py` | A photo of handwritten notes or a whiteboard becomes structured data: kind of document, cleaned-up notes in sections, date, unreadable passages, people with title and organization. The deal's known names help it read handwriting: "Sophie L." on the sample whiteboard is matched to Sophie Lenoir, and a new person spotted on the notes is offered to the rep. |
-| **Muse Spark**, generation | `pipeline.py` | Minutes and the follow-up email for action #1. Rules: only facts from the file, no figures. |
+| **Muse Spark**, generation | `pipeline.py`, `retro.py` | Minutes, the follow-up email for action #1, and the end-of-deal review. Rules: only facts from the file, no figures, no cause claimed without proof. |
 | **Muse Spark**, as an independent author | `eval/generate.py` | Writes the fictional test deals and the rep's imperfect debriefs **without knowing our model**. |
 
 Open weights: `llm.py` can switch to Muse Spark Open (`meta-models/muse-spark-open-1026` on Baseten) through an environment variable. **This path has not been tested yet.**
@@ -227,7 +233,7 @@ copy .env.example .env      # then put your Meta Model API key in .env (never co
 .\.venv\Scripts\python.exe -m streamlit run app.py
 ```
 
-Every analysis calls Muse live. The Muse responses for the sample deal and the two sample photos are also published in [`data/demo_cache/`](data/demo_cache/), as a **safety net**: if the API does not answer, the app still works on these inputs instead of failing.
+The app comes with the 60 lessons written from the 20 closed test deals ([`data/past_lessons.json`](data/past_lessons.json), built by `eval/past_lessons.py`), standing in for the rep's past deals. Every analysis calls Muse live. The Muse responses for the sample deal and the two sample photos are also published in [`data/demo_cache/`](data/demo_cache/), as a **safety net**: if the API does not answer, the app still works on these inputs instead of failing.
 
 ### Online version
 
