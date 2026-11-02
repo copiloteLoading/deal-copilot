@@ -96,8 +96,10 @@ Rules:
 - Questions are asked TO THE REP right after the meeting, to learn what the rep already knows
   or noticed (not tasks to do later). Write them as real questions in English, addressed to the
   rep as "you", answerable in one sentence. Each question must aim at the actor's real position, or
-  at what could make them block the deal. Example: "Do you know whether the project is already in
-  Baltis Telecom's budget?" Never "Ask X to...".
+  at what could make them block the deal. Ask about the fact directly, in plain words. Examples:
+  "Is the cable already in Baltis Telecom's budget?", "Did the bank say when the credit committee
+  meets?", "Who else at the agency has to approve the permit?". Never "Ask X to...", never
+  "Do you know whether you have seen/heard...".
 - Action titles start with a verb in the imperative ("Propose...", "Organize..."); rationales are
   one short sentence in English explaining which recorded signal makes the action useful.
 - Never write a number, a percentage or a probability in any text: the interface shows the

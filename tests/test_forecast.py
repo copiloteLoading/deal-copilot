@@ -38,3 +38,8 @@ def test_texts_include_answers_in_order():
     late = memory.add_meeting(conn, DEAL, "2026-10-20", "Photo", "notes")
     assert ("2026-10-20", "notes") in forecast.texts_until(conn, DEAL, mid)
     assert forecast.texts_until(conn, DEAL, late)[-1] == ("2026-10-20", "notes")
+
+
+def test_rationale_hides_influence_weights():
+    text = "Thomas Riou (veto, 0.90) waits; Marion Kervella permits veto (0.40) absent; vote (January)."
+    assert forecast.WEIGHT.sub("", text) == "Thomas Riou waits; Marion Kervella permits veto absent; vote (January)."

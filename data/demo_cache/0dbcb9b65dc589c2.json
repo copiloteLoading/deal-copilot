@@ -8,7 +8,7 @@
       },
       {
         "role": "user",
-        "content": "TARGET: Sophie Lenoir, Chief Financial Officer\nQUESTION: Do you know whether you could secure a budget line for the extended phasing before the next budget discussion closes?\nANSWER: The budget is voted in January, and according to Julien, the cable is not in the planned envelope yet."
+        "content": "TARGET: Sophie Lenoir, Chief Financial Officer\nQUESTION: Is the cable already in Baltis Telecom budget for the coming cycle?\nANSWER: The budget is voted in January, and according to Julien, the cable is not in the planned envelope yet."
       }
     ],
     "reasoning_effort": "low",
@@ -58,15 +58,15 @@
       }
     }
   },
-  "content": "{\"confidence\": 0.7, \"evidence_quote\": \"the cable is not in the planned envelope yet\", \"explanation\": \"Missing budget means the funding condition for the CFO is unmet, reported second-hand via Julien.\", \"stance\": \"oppose\", \"strength\": \"weak\"}",
+  "content": "{\"confidence\": 0.65, \"evidence_quote\": \"the cable is not in the planned envelope yet\", \"explanation\": \"No budget funding means the financial condition for the CFO is currently unmet, reported second-hand.\", \"stance\": \"oppose\", \"strength\": \"weak\"}",
   "usage": {
-    "completion_tokens": 946,
-    "prompt_tokens": 345,
-    "total_tokens": 1291,
+    "completion_tokens": 1002,
+    "prompt_tokens": 337,
+    "total_tokens": 1339,
     "completion_tokens_details": {
       "accepted_prediction_tokens": null,
       "audio_tokens": null,
-      "reasoning_tokens": 877,
+      "reasoning_tokens": 933,
       "rejected_prediction_tokens": null,
       "text_tokens": null
     },

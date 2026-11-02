@@ -13,3 +13,5 @@ outputs/
 *.m4a
 # Secrets de Streamlit (la clé ne doit jamais être publiée)
 .streamlit/secrets.toml
+# Cache local des réponses de Muse (le filet de sécurité publié est data/demo_cache/)
+data/cache/

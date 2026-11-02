@@ -2,7 +2,7 @@
 
 Ce fichier donne à Claude Code tout le contexte du projet. Lis-le en entier avant toute action. Réponds en français.
 
-Dernière mise à jour : mercredi 28 octobre 2026, après l'audit du projet (voir section 9).
+Dernière mise à jour : lundi 2 novembre 2026 (sections 2 à 8 alignées sur les décisions 9 à 12 et le retour d'expérience).
 
 ## 1. Le contexte
 
@@ -36,15 +36,18 @@ Prix bonus visés : Best Agentic Use-Case, Best Build on Meta Open Weight Models
 
 **L'utilisateur** : le commercial lui-même. C'est **son outil**, qui l'aide à gagner son contrat, **pas un outil de surveillance** pour son manager. Il tourne idéalement en local, pour la confidentialité.
 
-**La promesse** : « 60 secondes de dictée après une réunion. L'agent repère ce que vous n'avez pas vu, vous pose au plus 2 questions, et vous donne le compte rendu, le plan d'action et l'e-mail de suivi. »
+**La promesse** : « 60 secondes de dictée après une réunion. L'agent repère ce que vous n'avez pas vu, vous pose au plus 2 questions, et vous donne le compte rendu, le plan d'action et l'e-mail de suivi. En fin de contrat, il rédige le bilan, et ses leçons rendent la prévision du contrat suivant plus juste. »
 
 **Le parcours** :
-1. Après une réunion, le commercial **dicte un débrief** d'environ 60 secondes.
+1. Après une réunion, le commercial **dicte un débrief** d'environ 60 secondes (ou le tape, ou photographie ses notes ou un tableau blanc).
 2. Le système extrait des **signaux structurés** (acteur, position, objection, échéance, citation exacte, confiance).
-3. Le **modèle stochastique** met à jour la position probable de chaque acteur et la **probabilité de signature avec son incertitude**.
-4. **L'agent** pose au plus 2 questions ciblées (avec un bouton « Passer »), puis propose un plan d'action classé, rédige le compte rendu et l'e-mail de suivi.
+3. **Muse Spark** estime la **probabilité de signature** (moyenne de 3 tirages, en lisant aussi les leçons des contrats passés) ; le **modèle stochastique** met à jour la position probable de chaque acteur (veto, silences).
+4. **L'agent** pose au plus 2 questions ciblées (avec un bouton « Passer »), puis propose un plan d'action classé, en citant les leçons qui s'appliquent, et rédige le compte rendu et l'e-mail de suivi.
+5. **En fin de contrat**, le commercial donne l'issue ; Muse Spark rédige le retour d'expérience (tournants, ce qui a marché ou bloqué, leçons générales sourcées), le commercial garde les leçons qu'il valide, et elles servent aux autres contrats.
 
 ## 3. Le modèle stochastique : positions des acteurs et détenteurs de veto
+
+**Rôle actuel (décision 9)** : la probabilité affichée vient de Muse Spark, qui prévoit mieux l'issue. Le modèle ci-dessous sert à la mémoire des acteurs (veto, silences), au veto le plus incertain, au choix des questions et au classement des actions (affichés en impact élevé / moyen / faible).
 
 **Décision de l'audit : on ne fait PAS de HMM global sur l'état du dossier.** Trop de paramètres pour trop peu de données, et un état « en péril » n'est pas observable. On modélise les acteurs, comme fonctionne réellement un grand contrat.
 
@@ -83,7 +86,13 @@ Un moteur unique répond à la question : « quelle information ou quelle action
 
 ### Stratège
 - Plan d'action classé avec l'effet attendu de chaque action et son explication.
-- Rédaction automatique du compte rendu, de l'e-mail de suivi pour l'action n°1, et de rappels pour les acteurs silencieux.
+- Rédaction automatique du compte rendu et de l'e-mail de suivi pour l'action n°1 (les rappels aux acteurs silencieux ont été retirés, décision 10).
+- L'agent voit les leçons des contrats passés avec leur id et cite celle qui s'applique à une action (`lesson_ids`, vérifiés par `finalize`).
+
+### Retour d'expérience (fin de contrat)
+- Muse Spark rédige le bilan à partir de tout le dossier (`copilot/retro.py`) ; chaque tournant et chaque leçon porte une citation retrouvée mot pour mot.
+- Leçons en termes généraux (rôle, situation), jamais de nom propre ; pas de cause affirmée sans preuve ; pas de « statistiques » (trop peu de contrats par commercial).
+- Le commercial valide les leçons ; un contrat ne s'aide jamais de son propre bilan.
 
 ### Règles de vérifiabilité (non négociables)
 - L'agent **ne fabrique jamais un chiffre** et **ne modifie jamais les probabilités lui-même** : il passe toujours par les outils du modèle.
@@ -127,6 +136,8 @@ Un moteur unique répond à la question : « quelle information ou quelle action
 
 Si l'hybride ne bat pas le LLM seul, le dire honnêtement et ajuster le récit.
 
+Mesures ajoutées ensuite (détails en section 10) : les réponses aux 2 questions n'améliorent pas la prévision de Muse Spark (`eval/questions_forecast.md`) ; les leçons des contrats passés l'améliorent (Brier 0,182 → 0,163, `eval/lessons_forecast.md`).
+
 ## 7. Règles non négociables
 
 1. **Aucune donnée réelle d'entreprise.** Tout est fictif : entreprises, personnes, projets. Ne jamais mentionner l'employeur du participant, ni dans le code, ni dans les données, ni dans le README, ni dans la vidéo. Dire « expérience dans l'industrie des télécoms ».
@@ -152,29 +163,49 @@ deal-copilot/
 │   ├── llm.py              ← client unique, bascule API Meta / Muse Spark Open
 │   ├── capture.py          ← voix (Muse Voice Transcribe, keywords tirés de la mémoire)
 │   ├── extract.py          ← signaux structurés (JSON schema, citation exacte, confiance)
-│   ├── memory.py           ← SQLite : contrats, acteurs (avec alias et veto), réunions, signaux, historique des positions
-│   ├── model.py            ← positions cachées par acteur (Markov + Bayes), règle de veto, Monte-Carlo, explain(), simulate(), version de secours
+│   ├── photo.py            ← photo de notes ou de tableau blanc → notes propres (vision de Muse Spark)
+│   ├── orgchart.py         ← nouvelles personnes vues sur une photo, ajoutées après validation
+│   ├── memory.py           ← SQLite : contrats, acteurs (avec alias et veto), réunions, signaux, clôtures, leçons
+│   ├── forecast.py         ← probabilité de signature par Muse Spark (3 tirages, leçons des contrats passés)
+│   ├── model.py            ← positions cachées par acteur (Markov + Bayes), règle de veto, Monte-Carlo, explain(), simulate()
 │   ├── decision.py         ← valeur de l'information (questions) et effet attendu (actions)
-│   └── agent.py            ← le LLM propose, le modèle tranche : débrief actif + stratège, citations, confirmations
+│   ├── agent.py            ← le LLM propose, le modèle tranche : questions et plan, citations, leçons
+│   ├── retro.py            ← retour d'expérience de fin de contrat et leçons
+│   ├── pipeline.py         ← la chaîne complète, confirmations, e-mail, clôture
+│   └── clock.py            ← date du jour (figeable par DEAL_COPILOT_TODAY)
 ├── data/
-│   ├── demo_deal/          ← contrat de démo fictif (câble Port-Lazen – Kerlis) et scénario « piège » de la vidéo
-│   └── scenarios/          ← jeu de test : fiches de personnages, vérité cachée, débriefs générés
+│   ├── demo_deal/          ← contrat d'exemple fictif (câble Port-Lazen – Kerlis) et scénario « piège » de la vidéo
+│   ├── demo_cache/         ← réponses de Muse du parcours d'exemple (filet de sécurité si l'API ne répond pas)
+│   ├── past_lessons.json   ← 60 leçons des 20 contrats de test terminés (contrats passés du commercial)
+│   ├── scenarios/          ← jeu de test : fiches de personnages, vérité cachée, débriefs générés
+│   └── scenarios_holdout/  ← jeu de validation
 ├── eval/
 │   ├── generate.py         ← génère les histoires et les débriefs à partir des fiches (indépendamment du modèle)
 │   ├── baselines.py        ← Muse Spark seul (probabilité et questions)
-│   └── evaluate.py         ← extraction, Brier et calibration, utilité des questions, détection anticipée
-├── samples/                ← débriefs d'exemple
+│   ├── evaluate.py         ← extraction, Brier et calibration, utilité des questions, détection anticipée
+│   ├── consistency.py      ← stabilité et cohérence (Muse Spark seul contre le modèle)
+│   ├── questions_forecast.py ← les réponses aux questions améliorent-elles la prévision ? (non)
+│   ├── lessons_forecast.py ← les leçons des contrats passés améliorent-elles la prévision ? (oui)
+│   ├── noise.py            ← dictée dans le bruit
+│   ├── past_lessons.py     ← construit data/past_lessons.json
+│   └── demo_cache.py       ← reconstruit data/demo_cache/
+├── tests/                  ← tests sans réseau (pytest)
+├── samples/                ← débrief et photos d'exemple
 └── test_meta.py            ← tests de fumée de l'API (ping, transcribe, extract, image)
 ```
 
-### Interface (Streamlit)
+### Interface (Streamlit, en anglais)
 Un seul écran principal :
-- bouton **Débrief** (enregistrement ou dépôt d'un fichier audio) ;
-- **carte des parties prenantes** : couleur = position la plus probable, taille = influence, **contour marqué pour les détenteurs de veto**, **pointillé pour les signaux incertains** jusqu'à confirmation ;
-- **courbe de probabilité de signature** avec zone d'incertitude, qui se resserre quand le commercial répond aux questions ;
-- **questions de l'agent** (au plus 2, bouton « Passer ») ;
-- **plan d'action classé**, compte rendu et e-mail de suivi ;
-- **mode démo** avec le contrat préchargé et des réponses en cache en secours.
+- cartes **Please confirm** (changements de position importants) et **Who is this?** (noms inconnus) quand il y a lieu ;
+- **Debrief** : voix, texte ou photo ;
+- **signaux** du dernier débrief, avec citation et confiance ;
+- **courbe de probabilité de signature** (Muse Spark, un point par entrée du dossier) avec son explication et les leçons lues ;
+- **carte des parties prenantes** : couleur = position la plus probable, taille = influence, contour marqué pour les détenteurs de veto, gris clair si encore incertain ;
+- **questions de l'agent** (au plus 2, bouton « Skip ») ;
+- **plan d'action classé** (impact élevé / moyen / faible, leçons citées), compte rendu et e-mail de suivi ;
+- **Close the deal** : bilan à relire, leçons à valider ;
+- **raisonnement de l'agent** (appels d'outils, propositions rejetées).
+Pas de mode démo (décision 12) : le contrat d'exemple est préchargé, et `data/demo_cache/` ne sert que de filet de sécurité.
 
 ## 9. Décisions de l'audit (28 octobre)
 

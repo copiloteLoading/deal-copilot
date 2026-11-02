@@ -12,6 +12,7 @@ Le texte des consignes est celui de l'évaluation : les mesures restent valables
 
 from __future__ import annotations
 
+import re
 from concurrent.futures import ThreadPoolExecutor
 
 from copilot import llm, memory
@@ -27,6 +28,10 @@ SCHEMA = {
 RULES = ("You are an experienced sales director. Estimate the probability (between 0 and 1) "
          "that this contract will be SIGNED, as opposed to lost or delayed for a long time. "
          "Veto holders must all agree for the contract to be signed. Be calibrated.")
+
+# poids d'influence recopiés dans l'explication (« Thomas Riou (veto, 0.90) ») : sans intérêt pour le
+# commercial. On les retire à l'affichage plutôt que dans la consigne, qui reste celle qui a été mesurée.
+WEIGHT = re.compile(r"\s*\((?:veto,\s*)?(?:influence\s*)?[01]?\.\d+\)", re.IGNORECASE)
 
 
 def deal_context(deal: dict, texts: list[tuple[str, str]]) -> str:
@@ -63,7 +68,7 @@ def forecast(deal: dict, texts: list[tuple[str, str]], lessons: str | None = Non
     with ThreadPoolExecutor(max_workers=N_DRAWS) as pool:
         draws = list(pool.map(lambda tag: one_draw(deal, texts, cache_tag=tag, lessons=lessons), tags))
     probs = [d["probability"] for d in draws]
-    return {"p": sum(probs) / len(probs), "draws": probs, "rationale": draws[0]["rationale"]}
+    return {"p": sum(probs) / len(probs), "draws": probs, "rationale": WEIGHT.sub("", draws[0]["rationale"])}
 
 
 def texts_until(conn, deal_id: str, last_meeting_id: int | None = None) -> list[tuple[str, str]]:

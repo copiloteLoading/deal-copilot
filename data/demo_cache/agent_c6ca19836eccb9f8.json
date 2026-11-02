@@ -9,31 +9,13 @@
           }
         ],
         "lesson_ids": [
-          32
+          1
         ],
-        "rationale": "Her recorded wish to spread payment over the extended phasing everyone nodded to makes a smoothed schedule with locked annuities useful.",
+        "rationale": "Sophie conditions sign-off on spreading payments, so guaranteed milestones directly answer her block.",
         "signal_ids": [
-          12,
-          21
+          12
         ],
-        "title": "Propose a smoothed milestone payment schedule backed by a bank guarantee"
-      },
-      {
-        "effects": [
-          {
-            "actor_id": "thomas_riou",
-            "stance": "support"
-          }
-        ],
-        "lesson_ids": [
-          4
-        ],
-        "rationale": "His repeated conditioning of any commitment on the environmental study makes the study timetable the critical path to address directly.",
-        "signal_ids": [
-          3,
-          13
-        ],
-        "title": "Organize a direct review of the environmental study timetable and access needs with the bank"
+        "title": "Propose milestone payments backed by a bank guarantee"
       },
       {
         "effects": [
@@ -47,24 +29,62 @@
           }
         ],
         "lesson_ids": [
-          2
+          32
         ],
-        "rationale": "Linking the bank tranche releases to the extended phasing she requested aligns both finance and lender expectations in one structure.",
+        "rationale": "Finance and the bank both need visibility over time, so locked service terms answer both together.",
         "signal_ids": [
           12,
-          9
+          13
         ],
-        "title": "Align lender tranche releases with customer acceptance milestones in a joint financing session"
+        "title": "Offer extended maintenance with locked service terms and delay penalties"
+      },
+      {
+        "effects": [
+          {
+            "actor_id": "julien_marec",
+            "stance": "support"
+          },
+          {
+            "actor_id": "sophie_lenoir",
+            "stance": "support"
+          }
+        ],
+        "lesson_ids": [
+          3
+        ],
+        "rationale": "The technical champion defends our solution while finance eyes a cheaper rival, so joint defence protects value.",
+        "signal_ids": [
+          11,
+          12,
+          15
+        ],
+        "title": "Organize joint technical defence with the champion in front of finance"
+      },
+      {
+        "effects": [
+          {
+            "actor_id": "thomas_riou",
+            "stance": "neutral"
+          }
+        ],
+        "lesson_ids": [
+          4
+        ],
+        "rationale": "The bank waits for the environmental study before committing, so treating the study as the critical path unlocks movement.",
+        "signal_ids": [
+          3,
+          13
+        ],
+        "title": "Treat the environmental study as the critical path with the bank"
       }
     ],
     "questions": [
       {
         "actor_id": "sophie_lenoir",
         "signal_ids": [
-          12,
-          22
+          12
         ],
-        "text": "Do you know whether you could secure a budget line for the extended phasing before the next budget discussion closes?"
+        "text": "Have you confirmed Sophie Lenoir will sign off if payments are spread as she asked?"
       },
       {
         "actor_id": "thomas_riou",
@@ -72,7 +92,7 @@
           3,
           13
         ],
-        "text": "Do you know what would make the bank move forward once the environmental study timetable is clarified?"
+        "text": "Did Thomas Riou say what he still needs beyond the environmental study to support the deal?"
       }
     ]
   },
@@ -91,14 +111,6 @@
             "strength": "strong",
             "source": "direct",
             "quote": "she wants to spread it over four years instead of three, otherwise she won't sign off."
-          },
-          {
-            "id": 22,
-            "date": "2026-10-29",
-            "stance": "conditional",
-            "strength": "strong",
-            "source": "direct",
-            "quote": "Sophie Lenoir just said \"we'll talk about it after the budget\""
           }
         ]
       }
@@ -160,22 +172,6 @@
             "strength": "strong",
             "source": "direct",
             "quote": "She didn't take a position on suppliers, she stayed very neutral."
-          },
-          {
-            "id": 18,
-            "date": "2026-10-29",
-            "stance": "support",
-            "strength": "strong",
-            "source": "direct",
-            "quote": "Claire Dantec was there, she said in front of everyone that our offer was \"the market benchmark\" on the technical side."
-          },
-          {
-            "id": 21,
-            "date": "2026-10-29",
-            "stance": "support",
-            "strength": "weak",
-            "source": "direct",
-            "quote": "We presented the four-year phasing, everyone nodded."
           }
         ]
       }
@@ -183,25 +179,17 @@
     {
       "tool": "get_signals",
       "args": {
-        "actor_id": "sophie_lenoir"
+        "actor_id": "yann_le_goff"
       },
       "result": {
         "signals": [
           {
-            "id": 12,
-            "date": "2026-10-27",
+            "id": 7,
+            "date": "2026-10-06",
             "stance": "conditional",
             "strength": "strong",
             "source": "direct",
-            "quote": "she wants to spread it over four years instead of three, otherwise she won't sign off."
-          },
-          {
-            "id": 22,
-            "date": "2026-10-29",
-            "stance": "conditional",
-            "strength": "strong",
-            "source": "direct",
-            "quote": "Sophie Lenoir just said \"we'll talk about it after the budget\""
+            "quote": "he wants stronger penalties than what we offer."
           }
         ]
       }
@@ -236,40 +224,6 @@
             "strength": "strong",
             "source": "direct",
             "quote": "the most robust technically"
-          },
-          {
-            "id": 19,
-            "date": "2026-10-29",
-            "stance": "support",
-            "strength": "strong",
-            "source": "direct",
-            "quote": "Julien Marec defended our repeaters again"
-          }
-        ]
-      }
-    },
-    {
-      "tool": "get_signals",
-      "args": {
-        "actor_id": "yann_le_goff"
-      },
-      "result": {
-        "signals": [
-          {
-            "id": 7,
-            "date": "2026-10-06",
-            "stance": "conditional",
-            "strength": "strong",
-            "source": "direct",
-            "quote": "he wants stronger penalties than what we offer."
-          },
-          {
-            "id": 20,
-            "date": "2026-10-29",
-            "stance": "support",
-            "strength": "strong",
-            "source": "direct",
-            "quote": "Yann Le Goff accepted our proposal on penalties, he said it was \"a fair compromise\"."
           }
         ]
       }
@@ -280,10 +234,10 @@
         "actor_id": "sophie_lenoir"
       },
       "result": {
-        "uncertainty_reduction_points": 5.5,
+        "uncertainty_reduction_points": 4.8,
         "expected_interval_after_answer": [
-          6,
-          55
+          4,
+          49
         ]
       }
     },
@@ -293,10 +247,10 @@
         "actor_id": "thomas_riou"
       },
       "result": {
-        "uncertainty_reduction_points": 5.5,
+        "uncertainty_reduction_points": 4.2,
         "expected_interval_after_answer": [
-          6,
-          56
+          4,
+          49
         ]
       }
     },
@@ -306,10 +260,10 @@
         "actor_id": "marion_kervella"
       },
       "result": {
-        "uncertainty_reduction_points": 2.1,
+        "uncertainty_reduction_points": 1.7,
         "expected_interval_after_answer": [
-          6,
-          58
+          5,
+          53
         ]
       }
     },
@@ -324,8 +278,8 @@
         ]
       },
       "result": {
-        "probability_now_percent": 38,
-        "probability_if_success_percent": 52
+        "probability_now_percent": 31,
+        "probability_if_success_percent": 41
       }
     },
     {
@@ -334,47 +288,13 @@
         "effects": [
           {
             "actor_id": "thomas_riou",
-            "stance": "support"
+            "stance": "neutral"
           }
         ]
       },
       "result": {
-        "probability_now_percent": 38,
-        "probability_if_success_percent": 52
-      }
-    },
-    {
-      "tool": "simulate_action",
-      "args": {
-        "effects": [
-          {
-            "actor_id": "sophie_lenoir",
-            "stance": "support"
-          },
-          {
-            "actor_id": "thomas_riou",
-            "stance": "support"
-          }
-        ]
-      },
-      "result": {
-        "probability_now_percent": 38,
-        "probability_if_success_percent": 72
-      }
-    },
-    {
-      "tool": "simulate_action",
-      "args": {
-        "effects": [
-          {
-            "actor_id": "marion_kervella",
-            "stance": "support"
-          }
-        ]
-      },
-      "result": {
-        "probability_now_percent": 38,
-        "probability_if_success_percent": 47
+        "probability_now_percent": 31,
+        "probability_if_success_percent": 34
       }
     },
     {
@@ -392,7 +312,26 @@
         ]
       },
       "result": {
-        "probability_now_percent": 38,
+        "probability_now_percent": 31,
+        "probability_if_success_percent": 46
+      }
+    },
+    {
+      "tool": "simulate_action",
+      "args": {
+        "effects": [
+          {
+            "actor_id": "sophie_lenoir",
+            "stance": "support"
+          },
+          {
+            "actor_id": "thomas_riou",
+            "stance": "support"
+          }
+        ]
+      },
+      "result": {
+        "probability_now_percent": 31,
         "probability_if_success_percent": 57
       }
     },
@@ -405,14 +344,14 @@
             "stance": "support"
           },
           {
-            "actor_id": "claire_dantec",
+            "actor_id": "julien_marec",
             "stance": "support"
           }
         ]
       },
       "result": {
-        "probability_now_percent": 38,
-        "probability_if_success_percent": 55
+        "probability_now_percent": 31,
+        "probability_if_success_percent": 42
       }
     },
     {
@@ -420,18 +359,37 @@
       "args": {
         "effects": [
           {
+            "actor_id": "sophie_lenoir",
+            "stance": "support"
+          },
+          {
             "actor_id": "thomas_riou",
             "stance": "support"
           },
           {
-            "actor_id": "marion_kervella",
+            "actor_id": "julien_marec",
             "stance": "support"
           }
         ]
       },
       "result": {
-        "probability_now_percent": 38,
-        "probability_if_success_percent": 65
+        "probability_now_percent": 31,
+        "probability_if_success_percent": 58
+      }
+    },
+    {
+      "tool": "simulate_action",
+      "args": {
+        "effects": [
+          {
+            "actor_id": "julien_marec",
+            "stance": "support"
+          }
+        ]
+      },
+      "result": {
+        "probability_now_percent": 31,
+        "probability_if_success_percent": 31
       }
     },
     {
@@ -446,31 +404,13 @@
               }
             ],
             "lesson_ids": [
-              32
+              1
             ],
-            "rationale": "Her recorded wish to spread payment over the extended phasing everyone nodded to makes a smoothed schedule with locked annuities useful.",
+            "rationale": "Sophie conditions sign-off on spreading payments, so guaranteed milestones directly answer her block.",
             "signal_ids": [
-              12,
-              21
+              12
             ],
-            "title": "Propose a smoothed milestone payment schedule backed by a bank guarantee"
-          },
-          {
-            "effects": [
-              {
-                "actor_id": "thomas_riou",
-                "stance": "support"
-              }
-            ],
-            "lesson_ids": [
-              4
-            ],
-            "rationale": "His repeated conditioning of any commitment on the environmental study makes the study timetable the critical path to address directly.",
-            "signal_ids": [
-              3,
-              13
-            ],
-            "title": "Organize a direct review of the environmental study timetable and access needs with the bank"
+            "title": "Propose milestone payments backed by a bank guarantee"
           },
           {
             "effects": [
@@ -484,24 +424,62 @@
               }
             ],
             "lesson_ids": [
-              2
+              32
             ],
-            "rationale": "Linking the bank tranche releases to the extended phasing she requested aligns both finance and lender expectations in one structure.",
+            "rationale": "Finance and the bank both need visibility over time, so locked service terms answer both together.",
             "signal_ids": [
               12,
-              9
+              13
             ],
-            "title": "Align lender tranche releases with customer acceptance milestones in a joint financing session"
+            "title": "Offer extended maintenance with locked service terms and delay penalties"
+          },
+          {
+            "effects": [
+              {
+                "actor_id": "julien_marec",
+                "stance": "support"
+              },
+              {
+                "actor_id": "sophie_lenoir",
+                "stance": "support"
+              }
+            ],
+            "lesson_ids": [
+              3
+            ],
+            "rationale": "The technical champion defends our solution while finance eyes a cheaper rival, so joint defence protects value.",
+            "signal_ids": [
+              11,
+              12,
+              15
+            ],
+            "title": "Organize joint technical defence with the champion in front of finance"
+          },
+          {
+            "effects": [
+              {
+                "actor_id": "thomas_riou",
+                "stance": "neutral"
+              }
+            ],
+            "lesson_ids": [
+              4
+            ],
+            "rationale": "The bank waits for the environmental study before committing, so treating the study as the critical path unlocks movement.",
+            "signal_ids": [
+              3,
+              13
+            ],
+            "title": "Treat the environmental study as the critical path with the bank"
           }
         ],
         "questions": [
           {
             "actor_id": "sophie_lenoir",
             "signal_ids": [
-              12,
-              22
+              12
             ],
-            "text": "Do you know whether you could secure a budget line for the extended phasing before the next budget discussion closes?"
+            "text": "Have you confirmed Sophie Lenoir will sign off if payments are spread as she asked?"
           },
           {
             "actor_id": "thomas_riou",
@@ -509,7 +487,7 @@
               3,
               13
             ],
-            "text": "Do you know what would make the bank move forward once the environmental study timetable is clarified?"
+            "text": "Did Thomas Riou say what he still needs beyond the environmental study to support the deal?"
           }
         ]
       },
@@ -518,5 +496,5 @@
       }
     }
   ],
-  "steps": 6
+  "steps": 7
 }

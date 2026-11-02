@@ -6,16 +6,39 @@
           {
             "actor_id": "sophie_lenoir",
             "stance": "support"
+          },
+          {
+            "actor_id": "thomas_riou",
+            "stance": "support"
           }
         ],
         "lesson_ids": [
           1
         ],
-        "rationale": "Sophie conditions her sign-off on spreading payments over a longer horizon.",
+        "rationale": "Sophie asked to spread payments and Thomas called the guarantee idea worth exploring further.",
         "signal_ids": [
-          12
+          12,
+          21,
+          31
         ],
-        "title": "Propose milestone-based payments gated by acceptance records"
+        "title": "Propose a milestone payment schedule backed by a bank guarantee"
+      },
+      {
+        "effects": [
+          {
+            "actor_id": "sophie_lenoir",
+            "stance": "support"
+          }
+        ],
+        "lesson_ids": [
+          19
+        ],
+        "rationale": "The cable sits outside the planned envelope and discussion was deferred until after the budget.",
+        "signal_ids": [
+          22,
+          25
+        ],
+        "title": "Reframe the offer to fit the budget cycle with an interim funding path"
       },
       {
         "effects": [
@@ -27,68 +50,30 @@
         "lesson_ids": [
           4
         ],
-        "rationale": "The bank states it waits for the environmental study before committing.",
+        "rationale": "Financing waits on approval of the study flagged as required before any commitment.",
         "signal_ids": [
           3,
-          13
+          26
         ],
-        "title": "Organize joint scoping of the environmental study with the lender"
-      },
-      {
-        "effects": [
-          {
-            "actor_id": "sophie_lenoir",
-            "stance": "support"
-          },
-          {
-            "actor_id": "thomas_riou",
-            "stance": "support"
-          }
-        ],
-        "lesson_ids": [
-          2
-        ],
-        "rationale": "Finance seeks smoother outflows while the bank waits for the impact study.",
-        "signal_ids": [
-          12,
-          13
-        ],
-        "title": "Align tranche releases with acceptance milestones under bank guarantee"
-      },
-      {
-        "effects": [
-          {
-            "actor_id": "julien_marec",
-            "stance": "support"
-          }
-        ],
-        "lesson_ids": [
-          3
-        ],
-        "rationale": "Julien defends the repeater solution as most robust while a cheaper rival is mentioned.",
-        "signal_ids": [
-          6,
-          11,
-          15
-        ],
-        "title": "Mobilize the technical champion in commercial discussions"
+        "title": "Organize a joint timetable to secure approval of the environmental study"
       }
     ],
     "questions": [
       {
         "actor_id": "sophie_lenoir",
         "signal_ids": [
-          12
+          22,
+          25
         ],
-        "text": "Do you know whether you have already tested the extended payment horizon she conditions her sign-off on?"
+        "text": "When did Sophie tell you the budget envelope that could include the cable will be decided?"
       },
       {
         "actor_id": "thomas_riou",
         "signal_ids": [
           3,
-          13
+          26
         ],
-        "text": "Do you know what you could offer to re-engage the bank directly while it waits for the environmental study before committing?"
+        "text": "What did Thomas tell you is still missing for the study to be approved for financing?"
       }
     ]
   },
@@ -107,6 +92,22 @@
             "strength": "strong",
             "source": "direct",
             "quote": "she wants to spread it over four years instead of three, otherwise she won't sign off."
+          },
+          {
+            "id": 22,
+            "date": "2026-10-29",
+            "stance": "conditional",
+            "strength": "strong",
+            "source": "direct",
+            "quote": "Sophie Lenoir just said \"we'll talk about it after the budget\""
+          },
+          {
+            "id": 25,
+            "date": "2026-10-29",
+            "stance": "oppose",
+            "strength": "weak",
+            "source": "reported",
+            "quote": "the cable is not in the planned envelope yet"
           }
         ]
       }
@@ -127,20 +128,20 @@
             "quote": "He said the bank was \"interested in principle\" but that a full environmental impact study would be needed before any commitment."
           },
           {
-            "id": 9,
-            "date": "2026-10-06",
+            "id": 26,
+            "date": "2026-10-22",
             "stance": "conditional",
             "strength": "strong",
-            "source": "reported",
-            "quote": "the bank must have given its agreement in principle before that."
+            "source": "direct",
+            "quote": "no financing until the study is approved"
           },
           {
-            "id": 13,
-            "date": "2026-10-27",
-            "stance": "conditional",
-            "strength": "strong",
-            "source": "reported",
-            "quote": "is still waiting for the environmental impact study before committing."
+            "id": 31,
+            "date": "2026-10-22",
+            "stance": "support",
+            "strength": "weak",
+            "source": "direct",
+            "quote": "Bank guarantee on the payment plan: he finds the idea interesting, to be investigated further."
           }
         ]
       }
@@ -149,6 +150,15 @@
       "tool": "get_signals",
       "args": {
         "actor_id": "marion_kervella"
+      },
+      "result": {
+        "signals": []
+      }
+    },
+    {
+      "tool": "get_signals",
+      "args": {
+        "actor_id": "paul_ternaud"
       },
       "result": {
         "signals": []
@@ -168,6 +178,22 @@
             "strength": "strong",
             "source": "direct",
             "quote": "She didn't take a position on suppliers, she stayed very neutral."
+          },
+          {
+            "id": 18,
+            "date": "2026-10-29",
+            "stance": "support",
+            "strength": "strong",
+            "source": "direct",
+            "quote": "Claire Dantec was there, she said in front of everyone that our offer was \"the market benchmark\" on the technical side."
+          },
+          {
+            "id": 21,
+            "date": "2026-10-29",
+            "stance": "support",
+            "strength": "weak",
+            "source": "direct",
+            "quote": "We presented the four-year phasing, everyone nodded."
           }
         ]
       }
@@ -202,24 +228,14 @@
             "strength": "strong",
             "source": "direct",
             "quote": "the most robust technically"
-          }
-        ]
-      }
-    },
-    {
-      "tool": "get_signals",
-      "args": {
-        "actor_id": "yann_le_goff"
-      },
-      "result": {
-        "signals": [
+          },
           {
-            "id": 7,
-            "date": "2026-10-06",
-            "stance": "conditional",
+            "id": 19,
+            "date": "2026-10-29",
+            "stance": "support",
             "strength": "strong",
             "source": "direct",
-            "quote": "he wants stronger penalties than what we offer."
+            "quote": "Julien Marec defended our repeaters again"
           }
         ]
       }
@@ -230,10 +246,10 @@
         "actor_id": "sophie_lenoir"
       },
       "result": {
-        "uncertainty_reduction_points": 4.8,
+        "uncertainty_reduction_points": 8.2,
         "expected_interval_after_answer": [
-          4,
-          49
+          5,
+          50
         ]
       }
     },
@@ -243,23 +259,10 @@
         "actor_id": "thomas_riou"
       },
       "result": {
-        "uncertainty_reduction_points": 4.2,
-        "expected_interval_after_answer": [
-          4,
-          49
-        ]
-      }
-    },
-    {
-      "tool": "evaluate_question",
-      "args": {
-        "actor_id": "claire_dantec"
-      },
-      "result": {
-        "uncertainty_reduction_points": 1.2,
+        "uncertainty_reduction_points": 4.0,
         "expected_interval_after_answer": [
           5,
-          53
+          57
         ]
       }
     },
@@ -269,41 +272,11 @@
         "actor_id": "marion_kervella"
       },
       "result": {
-        "uncertainty_reduction_points": 1.7,
+        "uncertainty_reduction_points": 1.9,
         "expected_interval_after_answer": [
-          5,
-          53
+          6,
+          60
         ]
-      }
-    },
-    {
-      "tool": "simulate_action",
-      "args": {
-        "effects": [
-          {
-            "actor_id": "sophie_lenoir",
-            "stance": "support"
-          }
-        ]
-      },
-      "result": {
-        "probability_now_percent": 31,
-        "probability_if_success_percent": 41
-      }
-    },
-    {
-      "tool": "simulate_action",
-      "args": {
-        "effects": [
-          {
-            "actor_id": "thomas_riou",
-            "stance": "support"
-          }
-        ]
-      },
-      "result": {
-        "probability_now_percent": 31,
-        "probability_if_success_percent": 42
       }
     },
     {
@@ -321,8 +294,8 @@
         ]
       },
       "result": {
-        "probability_now_percent": 31,
-        "probability_if_success_percent": 57
+        "probability_now_percent": 36,
+        "probability_if_success_percent": 70
       }
     },
     {
@@ -330,40 +303,13 @@
       "args": {
         "effects": [
           {
-            "actor_id": "sophie_lenoir",
-            "stance": "support"
-          },
-          {
             "actor_id": "thomas_riou",
-            "stance": "support"
-          },
-          {
-            "actor_id": "julien_marec",
             "stance": "support"
           }
         ]
       },
       "result": {
-        "probability_now_percent": 31,
-        "probability_if_success_percent": 58
-      }
-    },
-    {
-      "tool": "simulate_action",
-      "args": {
-        "effects": [
-          {
-            "actor_id": "sophie_lenoir",
-            "stance": "support"
-          },
-          {
-            "actor_id": "thomas_riou",
-            "stance": "neutral"
-          }
-        ]
-      },
-      "result": {
-        "probability_now_percent": 31,
+        "probability_now_percent": 36,
         "probability_if_success_percent": 46
       }
     },
@@ -372,14 +318,14 @@
       "args": {
         "effects": [
           {
-            "actor_id": "julien_marec",
+            "actor_id": "sophie_lenoir",
             "stance": "support"
           }
         ]
       },
       "result": {
-        "probability_now_percent": 31,
-        "probability_if_success_percent": 31
+        "probability_now_percent": 36,
+        "probability_if_success_percent": 54
       }
     },
     {
@@ -387,61 +333,24 @@
       "args": {
         "effects": [
           {
-            "actor_id": "sophie_lenoir",
+            "actor_id": "claire_dantec",
             "stance": "support"
           },
           {
-            "actor_id": "thomas_riou",
+            "actor_id": "julien_marec",
             "stance": "support"
-          },
-          {
-            "actor_id": "marion_kervella",
-            "stance": "neutral"
           }
         ]
       },
       "result": {
-        "probability_now_percent": 31,
-        "probability_if_success_percent": 57
+        "probability_now_percent": 36,
+        "probability_if_success_percent": 38
       }
     },
     {
       "tool": "submit_plan",
       "args": {
         "actions": [
-          {
-            "effects": [
-              {
-                "actor_id": "sophie_lenoir",
-                "stance": "support"
-              }
-            ],
-            "lesson_ids": [
-              1
-            ],
-            "rationale": "Sophie conditions her sign-off on spreading payments over a longer horizon.",
-            "signal_ids": [
-              12
-            ],
-            "title": "Propose milestone-based payments gated by acceptance records"
-          },
-          {
-            "effects": [
-              {
-                "actor_id": "thomas_riou",
-                "stance": "support"
-              }
-            ],
-            "lesson_ids": [
-              4
-            ],
-            "rationale": "The bank states it waits for the environmental study before committing.",
-            "signal_ids": [
-              3,
-              13
-            ],
-            "title": "Organize joint scoping of the environmental study with the lender"
-          },
           {
             "effects": [
               {
@@ -454,49 +363,67 @@
               }
             ],
             "lesson_ids": [
-              2
+              1
             ],
-            "rationale": "Finance seeks smoother outflows while the bank waits for the impact study.",
+            "rationale": "Sophie asked to spread payments and Thomas called the guarantee idea worth exploring further.",
             "signal_ids": [
               12,
-              13
+              21,
+              31
             ],
-            "title": "Align tranche releases with acceptance milestones under bank guarantee"
+            "title": "Propose a milestone payment schedule backed by a bank guarantee"
           },
           {
             "effects": [
               {
-                "actor_id": "julien_marec",
+                "actor_id": "sophie_lenoir",
                 "stance": "support"
               }
             ],
             "lesson_ids": [
-              3
+              19
             ],
-            "rationale": "Julien defends the repeater solution as most robust while a cheaper rival is mentioned.",
+            "rationale": "The cable sits outside the planned envelope and discussion was deferred until after the budget.",
             "signal_ids": [
-              6,
-              11,
-              15
+              22,
+              25
             ],
-            "title": "Mobilize the technical champion in commercial discussions"
+            "title": "Reframe the offer to fit the budget cycle with an interim funding path"
+          },
+          {
+            "effects": [
+              {
+                "actor_id": "thomas_riou",
+                "stance": "support"
+              }
+            ],
+            "lesson_ids": [
+              4
+            ],
+            "rationale": "Financing waits on approval of the study flagged as required before any commitment.",
+            "signal_ids": [
+              3,
+              26
+            ],
+            "title": "Organize a joint timetable to secure approval of the environmental study"
           }
         ],
         "questions": [
           {
             "actor_id": "sophie_lenoir",
             "signal_ids": [
-              12
+              22,
+              25
             ],
-            "text": "Do you know whether you have already tested the extended payment horizon she conditions her sign-off on?"
+            "text": "When did Sophie tell you the budget envelope that could include the cable will be decided?"
           },
           {
             "actor_id": "thomas_riou",
             "signal_ids": [
               3,
-              13
+              26
             ],
-            "text": "Do you know what you could offer to re-engage the bank directly while it waits for the environmental study before committing?"
+            "text": "What did Thomas tell you is still missing for the study to be approved for financing?"
           }
         ]
       },
@@ -505,5 +432,5 @@
       }
     }
   ],
-  "steps": 7
+  "steps": 5
 }
