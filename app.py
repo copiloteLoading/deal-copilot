@@ -1,8 +1,9 @@
 """Interface Streamlit de deal-copilot.
 
-Un seul écran, dans l'ordre du problème : débrief (voix, texte ou photo) -> signaux (Muse Spark)
--> probabilité de signature (Muse Spark, moyenne de 3 tirages) et positions des acteurs (modèle)
--> au plus 2 questions -> plan d'action, compte rendu, e-mail de suivi.
+En haut, le contrat et ses 3 chiffres clés ; dessous, une vue à la fois, dans l'ordre du travail :
+Debrief (voix, texte ou photo, puis les signaux) -> Questions & plan (au plus 2 questions, plan d'action,
+compte rendu, e-mail de suivi) -> Deal overview (probabilité de signature par Muse Spark, positions des
+acteurs par le modèle) -> Close the deal. Après un débrief, l'appli passe d'elle-même aux questions.
 En fin de contrat : retour d'expérience rédigé par Muse Spark, dont les leçons validées servent ensuite
 à la prévision et au plan des autres contrats.
 
@@ -69,6 +70,10 @@ st.markdown(f"""
 .dc-section {{ font-size: 1.02rem; font-weight: 600; color: {INK}; margin-bottom: 0.1rem; }}
 .dc-impact {{ text-align: right; font-size: 0.8rem; font-weight: 600; white-space: nowrap; }}
 .dc-brand {{ font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; }}
+.st-key-view, .st-key-view [data-testid="stButtonGroup"], .st-key-view [data-testid="stButtonGroup"] > div
+    {{ width: 100% !important; max-width: none !important; }}
+.st-key-view button {{ flex: 1 1 0; max-width: none; padding: 0.55rem 0.8rem; }}
+.st-key-view button p {{ font-size: 0.95rem; font-weight: 600; }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -127,9 +132,14 @@ def allow_action() -> bool:
 
 
 def after_new_entry() -> None:
-    """Un débrief, une réponse ou des notes ont été ajoutés : l'agent refera son plan."""
+    """Un débrief ou des notes ont été ajoutés : l'agent refera son plan, et on montre ses questions."""
     for k in ["plan", "email"]:
         st.session_state.pop(k, None)
+    st.session_state.goto = "plan"
+
+
+VIEWS = {"debrief": ":material/mic: Debrief", "plan": ":material/checklist: Questions & plan",
+         "deal": ":material/monitoring: Deal overview", "close": ":material/flag: Close the deal"}
 
 
 # ------------------------------------------------------------------ données
@@ -146,11 +156,16 @@ with st.spinner("Muse Spark is estimating the probability of signature…"):
     S = pipeline.state(conn, deal_id)
 actors = {a["id"]: a for a in S.data.actors}
 orgs = {o["id"]: o for o in S.deal["organizations"]}
-if "plan" not in st.session_state:
-    with st.spinner("The copilot is choosing its questions and its plan (Muse Spark + model)…"):
-        st.session_state.plan = pipeline.plan(conn, deal_id)
-    st.session_state.answers = {}
-PLAN = st.session_state.plan
+
+
+def get_plan() -> dict:
+    """Questions et plan de l'agent, calculés seulement quand on ouvre leur vue (environ 1 min en direct) :
+    le reste de l'écran s'affiche sans attendre."""
+    if "plan" not in st.session_state:
+        with st.spinner("The copilot is choosing its questions and its plan (Muse Spark + model)…"):
+            st.session_state.plan = pipeline.plan(conn, deal_id)
+        st.session_state.answers = {}
+    return st.session_state.plan
 
 
 def is_silent(actor_id: str) -> bool:
@@ -296,10 +311,9 @@ with st.sidebar:
                          ("COMPETITION", ", ".join(S.deal["competitors"]))]:
         st.caption(label)
         st.markdown(value)
-    st.divider()
-    st.caption("HISTORY")
-    for m in reversed(S.meetings):
-        st.markdown(f"**{m['date']}**  \n{m['title']}")
+    with st.expander(f"History ({len(S.meetings)})", icon=":material/history:"):
+        for m in reversed(S.meetings):
+            st.markdown(f"**{m['date']}**  \n{m['title']}")
 
 
 # ------------------------------------------------------------------ en-tête
@@ -377,6 +391,14 @@ if unknown:
                 st.rerun()
     st.write("")
 
+# ------------------------------------------------------------------ navigation : une vue à la fois
+if "goto" in st.session_state:          # avant le widget : Streamlit interdit de changer sa valeur après
+    st.session_state.view = st.session_state.pop("goto")
+st.session_state.setdefault("view", "debrief")
+VIEW = st.segmented_control("View", list(VIEWS), format_func=VIEWS.get, key="view",
+                            label_visibility="collapsed") or "debrief"   # None si l'on reclique sur la vue
+st.write("")
+
 
 # ------------------------------------------------------------------ débrief
 def read_photo_input() -> None:
@@ -440,177 +462,180 @@ def read_photo_input() -> None:
         st.rerun()
 
 
-left, right = st.columns([1, 1.4], gap="medium")
-with left:
-    with st.container(key="card_debrief"):
-        section("Debrief", "About 60 seconds after the meeting: dictate it, type it, or snap your notes.")
-        t_voice, t_text, t_photo = st.tabs([":material/mic: Voice", ":material/edit_note: Text",
-                                            ":material/photo_camera: Photo"])
-        with t_voice:
-            audio = st.audio_input("Voice recording", label_visibility="collapsed")
-            uploaded = st.file_uploader("Or upload an audio file (WAV)", type=["wav"])
-        with t_text:
-            if st.button("Use an example debrief", icon=":material/science:"):
-                st.session_state.debrief_text = TRAP_TEXT
-            text = st.text_area("Debrief text", key="debrief_text", height=180, label_visibility="collapsed",
-                                placeholder="Meeting with the consortium this morning…")
-        with t_photo:
-            read_photo_input()
-        if st.button("Analyze the debrief", type="primary", icon=":material/auto_awesome:", width="stretch",
-                     help="Voice recording or uploaded file first, otherwise the typed text."):
-            if not allow_action():
-                st.stop()
-            source = audio or uploaded
-            try:
-                with st.status("Analyzing the debrief…", expanded=True) as status:
-                    if source is not None:
-                        st.write("Transcription (Muse Voice Transcribe, with the deal's names as keywords)…")
-                        text = capture.transcribe(source.getvalue(), memory.keywords(conn, deal_id))
-                        st.session_state.transcript = text
-                        snr = capture.estimate_snr(capture.read_wav16k(source.getvalue()))
-                        st.session_state.noisy = snr < capture.NOISY_BELOW_DB
-                    if not (text or "").strip():
-                        status.update(label="Nothing to analyze", state="error")
-                        st.stop()
-                    st.write("Signal extraction (Muse Spark, quotes checked word for word)…")
-                    pipeline.analyze_debrief(conn, deal_id, text)
-                    after_new_entry()
-                    status.update(label="Debrief analyzed", state="complete")
-                st.rerun()
-            except Exception as e:   # l'appli doit rester debout si l'API échoue
-                st.error(f"Analysis failed: {e}")
-        if st.session_state.get("noisy"):
-            st.warning("Very noisy recording: check the transcript before relying on it.", icon=":material/hearing:")
-        if st.session_state.get("transcript"):
-            with st.expander("Transcript", icon=":material/record_voice_over:"):
-                st.write(st.session_state.transcript)
+if VIEW == "debrief":
+    left, right = st.columns([1, 1.4], gap="medium")
+    with left:
+        with st.container(key="card_debrief"):
+            section("Debrief", "About 60 seconds after the meeting: dictate it, type it, or snap your notes.")
+            t_voice, t_text, t_photo = st.tabs([":material/mic: Voice", ":material/edit_note: Text",
+                                                ":material/photo_camera: Photo"])
+            with t_voice:
+                audio = st.audio_input("Voice recording", label_visibility="collapsed")
+                uploaded = st.file_uploader("Or upload an audio file (WAV)", type=["wav"])
+            with t_text:
+                if st.button("Use an example debrief", icon=":material/science:"):
+                    st.session_state.debrief_text = TRAP_TEXT
+                text = st.text_area("Debrief text", key="debrief_text", height=180, label_visibility="collapsed",
+                                    placeholder="Meeting with the consortium this morning…")
+            with t_photo:
+                read_photo_input()
+            if st.button("Analyze the debrief", type="primary", icon=":material/auto_awesome:", width="stretch",
+                         help="Voice recording or uploaded file first, otherwise the typed text."):
+                if not allow_action():
+                    st.stop()
+                source = audio or uploaded
+                try:
+                    with st.status("Analyzing the debrief…", expanded=True) as status:
+                        if source is not None:
+                            st.write("Transcription (Muse Voice Transcribe, with the deal's names as keywords)…")
+                            text = capture.transcribe(source.getvalue(), memory.keywords(conn, deal_id))
+                            st.session_state.transcript = text
+                            snr = capture.estimate_snr(capture.read_wav16k(source.getvalue()))
+                            st.session_state.noisy = snr < capture.NOISY_BELOW_DB
+                        if not (text or "").strip():
+                            status.update(label="Nothing to analyze", state="error")
+                            st.stop()
+                        st.write("Signal extraction (Muse Spark, quotes checked word for word)…")
+                        pipeline.analyze_debrief(conn, deal_id, text)
+                        after_new_entry()
+                        status.update(label="Debrief analyzed", state="complete")
+                    st.rerun()
+                except Exception as e:   # l'appli doit rester debout si l'API échoue
+                    st.error(f"Analysis failed: {e}")
+            if st.session_state.get("noisy"):
+                st.warning("Very noisy recording: check the transcript before relying on it.", icon=":material/hearing:")
+            if st.session_state.get("transcript"):
+                with st.expander("Transcript", icon=":material/record_voice_over:"):
+                    st.write(st.session_state.transcript)
 
-with right:
-    with st.container(key="card_signals"):
-        when = S.latest_debrief["date"] if S.latest_debrief else "—"
-        section("Signals", f"Last debrief ({when}) and the answers that followed · every quote is checked "
-                           "word for word against what you said.")
-        st.dataframe(
-            [{"Who": s["raw_name"], "Type": s["signal_type"], "Stance": STANCE.get(s["stance"], ("?",))[0],
-              "Strength": STRENGTH.get(s.get("strength") or "", "—"),
-              "Source": SOURCE.get(s.get("source_type") or "", "—"),
-              "Quote": s["quote"], "Confidence": s["confidence"]}
-             for s in S.latest_signals],
-            hide_index=True, width="stretch", height=300,
-            column_config={"Quote": st.column_config.TextColumn(width="large"),
-                           "Confidence": st.column_config.ProgressColumn(min_value=0, max_value=1, format="%.2f",
-                                                                         width="small")})
+    with right:
+        with st.container(key="card_signals"):
+            when = S.latest_debrief["date"] if S.latest_debrief else "—"
+            section("Signals", f"Last debrief ({when}) and the answers that followed · every quote is checked "
+                               "word for word against what you said.")
+            st.dataframe(
+                [{"Who": s["raw_name"], "Stance": STANCE.get(s["stance"], ("?",))[0],
+                  "Quote": s["quote"], "Source": SOURCE.get(s.get("source_type") or "", "—"),
+                  "Confidence": s["confidence"]}
+                 for s in S.latest_signals],
+                hide_index=True, width="stretch", height=420,
+                column_config={"Quote": st.column_config.TextColumn(width="large"),
+                               "Confidence": st.column_config.ProgressColumn(min_value=0, max_value=1, format="%.2f",
+                                                                             width="small")})
 
 # ------------------------------------------------------------------ probabilité et acteurs
-left, right = st.columns(2, gap="medium")
-with left:
-    with st.container(key="card_proba"):
-        section("Probability of signature",
-                "Muse Spark reads the whole file (debriefs, answers, notes) and estimates the probability; "
-                "average of 3 independent draws, re-estimated after every entry.")
-        if S.timeline:
-            st.plotly_chart(probability_chart(), width="stretch", config={"displayModeBar": False})
-        if S.forecast:
-            st.markdown(f":material/lightbulb: {S.forecast['rationale']}")
-        if PAST:
-            with st.expander(f"Lessons from your past deals ({len(PAST)}), read by Muse Spark",
-                             icon=":material/history_edu:"):
-                st.caption("Written at the end of each past deal and validated by you. With them, Muse Spark "
-                           "forecast our test deals more accurately (Brier 0.182 → 0.163).")
-                for x in PAST:
-                    st.markdown(f"- **{OUTCOMES[x['outcome']]}** · {x['lesson']}  \n"
-                                f"  <span style='color:{MUTED};font-size:0.85rem'>Relevant when: "
-                                f"{x['applies_when']}</span>", unsafe_allow_html=True)
-with right:
-    with st.container(key="card_map"):
-        section("Stakeholders", "Each person's position, remembered across meetings by the model · size: "
-                                "influence · thick outline: veto holder · light grey: still uncertain")
-        st.plotly_chart(stakeholder_map(), width="stretch", config={"displayModeBar": False})
+if VIEW == "deal":
+    left, right = st.columns(2, gap="medium")
+    with left:
+        with st.container(key="card_proba"):
+            section("Probability of signature",
+                    "Muse Spark reads the whole file (debriefs, answers, notes) and estimates the probability; "
+                    "average of 3 independent draws, re-estimated after every entry.")
+            if S.timeline:
+                st.plotly_chart(probability_chart(), width="stretch", config={"displayModeBar": False})
+            if S.forecast:
+                st.markdown(f":material/lightbulb: {S.forecast['rationale']}")
+            if PAST:
+                with st.expander(f"Lessons from your past deals ({len(PAST)}), read by Muse Spark",
+                                 icon=":material/history_edu:"):
+                    st.caption("Written at the end of each past deal and validated by you. With them, Muse Spark "
+                               "forecast our test deals more accurately (Brier 0.182 → 0.163).")
+                    for x in PAST:
+                        st.markdown(f"- **{OUTCOMES[x['outcome']]}** · {x['lesson']}  \n"
+                                    f"  <span style='color:{MUTED};font-size:0.85rem'>Relevant when: "
+                                    f"{x['applies_when']}</span>", unsafe_allow_html=True)
+    with right:
+        with st.container(key="card_map"):
+            section("Stakeholders", "Each person's position, remembered across meetings by the model · size: "
+                                    "influence · thick outline: veto holder · light grey: still uncertain")
+            st.plotly_chart(stakeholder_map(), width="stretch", config={"displayModeBar": False})
 
 # ------------------------------------------------------------------ questions et plan
-left, right = st.columns(2, gap="medium")
-with left:
-    with st.container(key="card_questions"):
-        qs = PLAN["questions"]
-        section("The copilot's questions", "At most 2, aimed at what you may not have seen: proposed by Muse "
-                                           "Spark, kept and ranked by the model by how much the answer would "
-                                           "clarify the deal.")
-        if not qs:
-            st.info("No useful question: the next one would add almost nothing.")
-        for i, q in enumerate(qs):
-            a = q["actor"]
-            with st.container(border=True):
-                head, imp = st.columns([4, 1.4], vertical_alignment="center")
-                head.markdown(f"**Question {i + 1} of {len(qs)}**")
-                label, color = level(q["gain"], 0.04, 0.015)
-                imp.markdown(f"<div class='dc-impact' style='color:{color}'>{label}</div>", unsafe_allow_html=True)
-                if a["veto"]:
-                    st.badge(f"Veto holder · {a['name']}", icon=":material/gavel:", color="red")
-                st.markdown(q["text"])
-                done = st.session_state.answers.get(i)
-                if done == "skipped":
-                    st.caption("Skipped.")
-                elif done is not None:
-                    if done.get("signal"):
-                        sig = done["signal"]
-                        st.success(f"Your answer, as understood: **{STANCE[sig['stance']][0]}** "
-                                   f"({STRENGTH[sig['strength']]}) · “{sig['evidence_quote']}” "
-                                   f"· {sig['description']}", icon=":material/check:")
+if VIEW == "plan":
+    PLAN = get_plan()
+    left, right = st.columns(2, gap="medium")
+    with left:
+        with st.container(key="card_questions"):
+            qs = PLAN["questions"]
+            section("The copilot's questions", "At most 2, aimed at what you may not have seen: proposed by Muse "
+                                               "Spark, kept and ranked by the model by how much the answer would "
+                                               "clarify the deal.")
+            if not qs:
+                st.info("No useful question: the next one would add almost nothing.")
+            for i, q in enumerate(qs):
+                a = q["actor"]
+                with st.container(border=True):
+                    head, imp = st.columns([4, 1.4], vertical_alignment="center")
+                    head.markdown(f"**Question {i + 1} of {len(qs)}**")
+                    label, color = level(q["gain"], 0.04, 0.015)
+                    imp.markdown(f"<div class='dc-impact' style='color:{color}'>{label}</div>", unsafe_allow_html=True)
+                    if a["veto"]:
+                        st.badge(f"Veto holder · {a['name']}", icon=":material/gavel:", color="red")
+                    st.markdown(q["text"])
+                    done = st.session_state.answers.get(i)
+                    if done == "skipped":
+                        st.caption("Skipped.")
+                    elif done is not None:
+                        if done.get("signal"):
+                            sig = done["signal"]
+                            st.success(f"Your answer, as understood: **{STANCE[sig['stance']][0]}** "
+                                       f"({STRENGTH[sig['strength']]}) · “{sig['evidence_quote']}” "
+                                       f"· {sig['description']}", icon=":material/check:")
+                        else:
+                            st.caption("Answer saved, without information on the position.")
                     else:
-                        st.caption("Answer saved, without information on the position.")
-                else:
-                    if a["id"] == "sophie_lenoir" and st.button("Example answer", key=f"demo_{i}",
-                                                                icon=":material/science:"):
-                        st.session_state[f"answer_{i}"] = TRAP_ANSWER
-                    answer = st.text_input("Answer", key=f"answer_{i}", label_visibility="collapsed",
-                                           placeholder="Answer in one sentence…")
-                    b1, b2 = st.columns(2)
-                    if b1.button("Send", key=f"send_{i}", type="primary", width="stretch",
-                                 disabled=not answer.strip()):
+                        if a["id"] == "sophie_lenoir" and st.button("Example answer", key=f"demo_{i}",
+                                                                    icon=":material/science:"):
+                            st.session_state[f"answer_{i}"] = TRAP_ANSWER
+                        answer = st.text_input("Answer", key=f"answer_{i}", label_visibility="collapsed",
+                                               placeholder="Answer in one sentence…")
+                        b1, b2 = st.columns(2)
+                        if b1.button("Send", key=f"send_{i}", type="primary", width="stretch",
+                                     disabled=not answer.strip()):
+                            if not allow_action():
+                                st.stop()
+                            with st.spinner("Reading your answer (Muse Spark)…"):
+                                sig = pipeline.answer_question(conn, deal_id, q, answer)
+                            st.session_state.answers[i] = {"signal": sig}
+                            st.session_state.pop("email", None)
+                            st.rerun()
+                        if b2.button("Skip", key=f"skip_{i}", width="stretch"):
+                            st.session_state.answers[i] = "skipped"
+                            st.rerun()
+
+    with right:
+        with st.container(key="card_actions"):
+            section("Action plan", "Proposed by Muse Spark, including creative options; checked and ranked by the "
+                                   "model by their effect on the veto holders and the other stakeholders.")
+            acts = pipeline.refresh_actions(S, PLAN["actions"])
+            for i, act in enumerate(acts):
+                if i:
+                    st.divider()
+                a, b = st.columns([4.5, 1.5], vertical_alignment="center")
+                a.markdown(f"**{i + 1}. {act['title']}**")
+                a.caption(act["why"])
+                for x in act.get("lessons", []):
+                    a.caption(f":material/history_edu: From a past deal ({OUTCOMES[x['outcome']].lower()}): "
+                              f"{x['lesson']}")
+                label, color = level(act["gain"], 0.10, 0.04)
+                b.markdown(f"<div class='dc-impact' style='color:{color}'>{label}</div>", unsafe_allow_html=True)
+            st.write("")
+            if S.latest_debrief and S.latest_debrief.get("summary"):
+                with st.expander("Minutes of the last debrief", icon=":material/summarize:"):
+                    st.write(S.latest_debrief["summary"])
+            if acts:
+                with st.expander("Follow-up email for action #1", icon=":material/mail:"):
+                    if st.button("Draft the email (Muse Spark)", icon=":material/edit:"):
                         if not allow_action():
                             st.stop()
-                        with st.spinner("Reading your answer (Muse Spark)…"):
-                            sig = pipeline.answer_question(conn, deal_id, q, answer)
-                        st.session_state.answers[i] = {"signal": sig}
-                        st.session_state.pop("email", None)
-                        st.rerun()
-                    if b2.button("Skip", key=f"skip_{i}", width="stretch"):
-                        st.session_state.answers[i] = "skipped"
-                        st.rerun()
-
-with right:
-    with st.container(key="card_actions"):
-        section("Action plan", "Proposed by Muse Spark, including creative options; checked and ranked by the "
-                               "model by their effect on the veto holders and the other stakeholders.")
-        acts = pipeline.refresh_actions(S, PLAN["actions"])
-        for i, act in enumerate(acts):
-            if i:
-                st.divider()
-            a, b = st.columns([4.5, 1.5], vertical_alignment="center")
-            a.markdown(f"**{i + 1}. {act['title']}**")
-            a.caption(act["why"])
-            for x in act.get("lessons", []):
-                a.caption(f":material/history_edu: From a past deal ({OUTCOMES[x['outcome']].lower()}): "
-                          f"{x['lesson']}")
-            label, color = level(act["gain"], 0.10, 0.04)
-            b.markdown(f"<div class='dc-impact' style='color:{color}'>{label}</div>", unsafe_allow_html=True)
-        st.write("")
-        if S.latest_debrief and S.latest_debrief.get("summary"):
-            with st.expander("Minutes of the last debrief", icon=":material/summarize:"):
-                st.write(S.latest_debrief["summary"])
-        if acts:
-            with st.expander("Follow-up email for action #1", icon=":material/mail:"):
-                if st.button("Draft the email (Muse Spark)", icon=":material/edit:"):
-                    if not allow_action():
-                        st.stop()
-                    with st.spinner("Drafting…"):
-                        st.session_state.email = pipeline.followup_email(S, acts[0])
-                if st.session_state.get("email"):
-                    st.text_area("Email", st.session_state.email, height=260, label_visibility="collapsed")
-        if silent:
-            st.caption("Silent: " + " · ".join(
-                f"{a['name']}{' (veto)' if a['veto'] else ''}"
-                for a in sorted(silent, key=lambda x: (not x["veto"], -x["influence"]))))
+                        with st.spinner("Drafting…"):
+                            st.session_state.email = pipeline.followup_email(S, acts[0])
+                    if st.session_state.get("email"):
+                        st.text_area("Email", st.session_state.email, height=260, label_visibility="collapsed")
+            if silent:
+                st.caption("Silent: " + " · ".join(
+                    f"{a['name']}{' (veto)' if a['veto'] else ''}"
+                    for a in sorted(silent, key=lambda x: (not x["veto"], -x["influence"]))))
 
 # ------------------------------------------------------------------ fin de contrat
 def close_card() -> None:
@@ -669,40 +694,43 @@ def close_card() -> None:
         st.rerun()
 
 
-with st.container(key="card_close"):
-    close_card()
-st.write("")
+if VIEW == "close":
+    _, mid, _ = st.columns([1, 3, 1])     # un texte à lire et relire : colonne plus étroite
+    with mid, st.container(key="card_close"):
+        close_card()
+    st.write("")
 
 # ------------------------------------------------------------------ raisonnement de l'agent
-with st.container(key="card_agent"):
-    section("How the copilot reasoned",
-            "Muse Spark proposes and queries the stakeholder model through tools; the model scores and "
-            "decides. The language model never writes a figure.")
-    if PLAN.get("fallback"):
-        st.warning(f"Agent unavailable ({PLAN['fallback']}): questions and actions come from the decision "
-                   "engine's templates.", icon=":material/warning:")
-    else:
-        n_tools = sum(1 for c in PLAN["trace"] if c["tool"] != "submit_plan")
-        st.caption(f"{PLAN['steps']} rounds · {n_tools} tool calls · {len(PLAN['rejected'])} proposal(s) "
-                   "rejected by the model")
-        with st.expander("See every tool call", icon=":material/account_tree:"):
-            for c in PLAN["trace"]:
-                args, res = c["args"], c["result"]
-                name = actors.get(args.get("actor_id"), {}).get("name", args.get("actor_id"))
-                if "error" in res:
-                    st.markdown(f"- `{c['tool']}` → error: {res['error']}")
-                elif c["tool"] == "get_signals":
-                    st.markdown(f"- **Reads the signals** about {name} ({len(res['signals'])})")
-                elif c["tool"] == "evaluate_question":
-                    lab = level(res["uncertainty_reduction_points"] / 100, 0.04, 0.015)[0].lower()
-                    st.markdown(f"- **Evaluates a question** about {name}: {lab}")
-                elif c["tool"] == "simulate_action":
-                    fx = ", ".join(f"{actors[e['actor_id']]['name']} → {STANCE[e['stance']][0].lower()}"
-                                   for e in args["effects"] if e["actor_id"] in actors)
-                    gain = (res["probability_if_success_percent"] - res["probability_now_percent"]) / 100
-                    st.markdown(f"- **Simulates** “{fx}”: {level(gain, 0.10, 0.04)[0].lower()}")
-                else:
-                    st.markdown(f"- **Submits its plan**: {len(args.get('questions', []))} question(s), "
-                                f"{len(args.get('actions', []))} action(s)")
-            for r in PLAN["rejected"]:
-                st.markdown(f"- ✕ Rejected ({r['kind']}): {r['reason']}")
+if VIEW == "plan":
+    with st.container(key="card_agent"):
+        section("How the copilot reasoned",
+                "Muse Spark proposes and queries the stakeholder model through tools; the model scores and "
+                "decides. The language model never writes a figure.")
+        if PLAN.get("fallback"):
+            st.warning(f"Agent unavailable ({PLAN['fallback']}): questions and actions come from the decision "
+                       "engine's templates.", icon=":material/warning:")
+        else:
+            n_tools = sum(1 for c in PLAN["trace"] if c["tool"] != "submit_plan")
+            st.caption(f"{PLAN['steps']} rounds · {n_tools} tool calls · {len(PLAN['rejected'])} proposal(s) "
+                       "rejected by the model")
+            with st.expander("See every tool call", icon=":material/account_tree:"):
+                for c in PLAN["trace"]:
+                    args, res = c["args"], c["result"]
+                    name = actors.get(args.get("actor_id"), {}).get("name", args.get("actor_id"))
+                    if "error" in res:
+                        st.markdown(f"- `{c['tool']}` → error: {res['error']}")
+                    elif c["tool"] == "get_signals":
+                        st.markdown(f"- **Reads the signals** about {name} ({len(res['signals'])})")
+                    elif c["tool"] == "evaluate_question":
+                        lab = level(res["uncertainty_reduction_points"] / 100, 0.04, 0.015)[0].lower()
+                        st.markdown(f"- **Evaluates a question** about {name}: {lab}")
+                    elif c["tool"] == "simulate_action":
+                        fx = ", ".join(f"{actors[e['actor_id']]['name']} → {STANCE[e['stance']][0].lower()}"
+                                       for e in args["effects"] if e["actor_id"] in actors)
+                        gain = (res["probability_if_success_percent"] - res["probability_now_percent"]) / 100
+                        st.markdown(f"- **Simulates** “{fx}”: {level(gain, 0.10, 0.04)[0].lower()}")
+                    else:
+                        st.markdown(f"- **Submits its plan**: {len(args.get('questions', []))} question(s), "
+                                    f"{len(args.get('actions', []))} action(s)")
+                for r in PLAN["rejected"]:
+                    st.markdown(f"- ✕ Rejected ({r['kind']}): {r['reason']}")
