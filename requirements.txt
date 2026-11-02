@@ -5,7 +5,8 @@ streamlit>=1.50
 plotly>=5.20
 numpy>=1.26
 pillow>=10.0
-# pandas 3.x est bloqué par le contrôle d'applications Windows sur la machine de dev
-pandas==2.2.3
+# pandas 3.x est bloqué par le contrôle d'applications Windows sur la machine de dev ;
+# ailleurs (hébergement), streamlit installe la version qui a des binaires pour son Python
+pandas==2.2.3; sys_platform == "win32"
 pytest>=8.0
 pyyaml>=6.0
