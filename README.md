@@ -6,6 +6,21 @@
 
 All companies, people, projects and figures in this repository are **fictional**.
 
+**Try it live: [deal-copilot.streamlit.app](https://deal-copilot.streamlit.app)**
+
+![The copilot after the trap debrief: questions on the veto holders and a ranked action plan](docs/screenshot.jpg)
+
+### Try it in 2 minutes
+
+The sample deal (a 420 km submarine cable, Port-Lazen – Kerlis) is already loaded, at about 20%.
+
+1. **Debrief** → **Text** → *Use an example debrief* → *Analyze the debrief*. The meeting sounds excellent, but the client's CFO, a veto holder, only said "we'll talk about it after the budget".
+2. The app moves to **Questions & plan** (about a minute, the agent works live). One question asks whether the cable is in the client's budget: click *Example answer*, then *Send*. The probability drops (typically 20% → 16% → 12%) and the plan cites lessons from past deals.
+3. **Deal overview**: the probability curve and the stakeholder map (veto holders outlined, silent ones flagged).
+4. **Close the deal**: pick an outcome, click *Example*, then *Write the end-of-deal review*. Muse Spark writes the review and the lessons for your next deals.
+
+If the app has had no visitor for a while, Streamlit shows "This app has gone to sleep": click the button and wait about a minute. You can also dictate a debrief in the **Voice** tab, or load a photo of handwritten notes in the **Photo** tab. Each visitor gets a private copy of the deal and 25 actions that call Muse. Figures move by a few points from one run to another: they come from Muse Spark's draws.
+
 ---
 
 ## The problem
@@ -80,7 +95,7 @@ flowchart LR
 | [`copilot/decision.py`](copilot/decision.py) | Value of information for questions, expected effect of actions |
 | [`copilot/agent.py`](copilot/agent.py) | Muse Spark tool-calling loop (max 8 rounds); its plan is checked and re-scored by the model |
 | [`copilot/pipeline.py`](copilot/pipeline.py) | The end-to-end chain, change confirmations, follow-up email |
-| [`app.py`](app.py) | Streamlit interface: one screen, in the order of the workflow |
+| [`app.py`](app.py) | Streamlit interface: the deal and its 3 key figures on top, then one view at a time (Debrief, Questions & plan, Deal overview, Close the deal) |
 | [`eval/`](eval/) | Test-set generation, baselines and all the experiments below |
 
 ### How each Meta model is used
