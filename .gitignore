@@ -15,3 +15,5 @@ outputs/
 .streamlit/secrets.toml
 # Cache local des réponses de Muse (le filet de sécurité publié est data/demo_cache/)
 data/cache/
+# Notes de travail locales (contexte pour l'assistant), non publiées
+CLAUDE.md
