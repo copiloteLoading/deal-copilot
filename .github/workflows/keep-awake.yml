@@ -1,0 +1,39 @@
+# Streamlit Community Cloud met l'appli en veille après une période sans visite.
+# Cette tâche l'ouvre dans un vrai navigateur toutes les 3 heures, et clique sur le bouton de réveil si besoin,
+# pour que les juges la trouvent prête. Elle n'appelle pas Muse : elle s'arrête à l'écran d'accueil.
+name: Keep the live app awake
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+
+jobs:
+  visit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install playwright==1.48.0 && python -m playwright install --with-deps chromium
+      - name: Visit the app
+        shell: python
+        run: |
+          import time
+          from playwright.sync_api import sync_playwright
+
+          with sync_playwright() as p:
+              page = p.chromium.launch().new_page()
+              page.goto("https://deal-copilot.streamlit.app", timeout=120000)
+              for _ in range(60):
+                  wake = page.get_by_role("button", name="Yes, get this app back up!")
+                  if wake.count():
+                      print("asleep: waking it up")
+                      wake.click()
+                  if page.frame_locator("iframe").get_by_text("Analyze the debrief").count():
+                      print("app is up")
+                      break
+                  time.sleep(5)
+              else:
+                  raise SystemExit("the app did not come up")
